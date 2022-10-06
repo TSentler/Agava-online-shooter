@@ -1,0 +1,17 @@
+{
+    "name": "Enemy.Score",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e6473e87ac46fb7759981092833df42e",
+        "GUID:b34e029ada225c883b2bbe23f584ae92"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
