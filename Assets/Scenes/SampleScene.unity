@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18029143, g: 0.22572419, b: 0.30693057, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2839,8 +2839,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _witPanel: {fileID: 1880116029}
-  _create: {fileID: 906309796}
-  _join: {fileID: 1501099754}
+  _roomNameInputField: {fileID: 906309796}
+  _roomNameText: {fileID: 0}
 --- !u!1 &1968787511
 GameObject:
   m_ObjectHideFlags: 0
