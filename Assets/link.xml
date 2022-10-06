@@ -1,0 +1,9 @@
+<linker>
+  <!--Preserve types and members in an assembly-->
+    <assembly fullname="PhotonWebSocket">
+      <type fullname="ExitGames.Client.Photon.SocketWebTcp" preserve="all"/>
+    </assembly>
+    <assembly fullname="PhotonWebSocket">
+      <type fullname="ExitGames.Client.Photon.SocketWebSecure" preserve="all"/>
+    </assembly>
+</linker>
