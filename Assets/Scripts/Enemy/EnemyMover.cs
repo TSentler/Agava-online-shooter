@@ -29,7 +29,6 @@ public class EnemyMover : MonoBehaviour
         
         if (_stalker.GetDistance() < 0.2f)
         {
-            _stalker.Contact();
             Die();
         }
     }
@@ -39,6 +38,7 @@ public class EnemyMover : MonoBehaviour
         if (PhotonNetwork.IsMasterClient == false)
             return;
         
+        _stalker.Contact();
         OnDie?.Invoke();
         PhotonNetwork.Destroy(gameObject);
     }
