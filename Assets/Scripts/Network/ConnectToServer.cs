@@ -5,28 +5,27 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Network
 {
     public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         private Coroutine _connectCoroutine;
+
+        [SerializeField] private string _version;
+        [SerializeField] private ConnectToServerView _connectView;
         
-        [SerializeField] private GameObject _witPanel;
-        [SerializeField] private TMP_InputField _create;
-        [SerializeField] private TMP_Dropdown _join;
-        [SerializeField] private TMP_Text _joinLabel;
-
-        private void Awake()
-        {
-            _witPanel.SetActive(true);
-            _create.text = "Room1";
-            _join.ClearOptions();
-        }
-
         private void Start()
         {
+            SetVersion();
             Connect();
+        }
+
+        private void SetVersion()
+        {
+            PhotonNetwork.GameVersion = _version;
+            _connectView.SetVersion(_version);
         }
 
         private void Connect()
@@ -35,21 +34,24 @@ namespace Network
                 return;
 
             Debug.Log("TryConnect");
-            _witPanel.SetActive(true);
+            _connectView.WaitShow();
             PhotonNetwork.ConnectUsingSettings();
         }
         
         public void CreateRoom()
         {
-            PhotonNetwork.CreateRoom(_create.text);
+            if (_connectView.CreateRoomName == string.Empty)
+                return;
+            
+            PhotonNetwork.CreateRoom(_connectView.CreateRoomName);
         }
 
         public void JoinRoom()
         {
-            if (_join.options.Count == 0)
+            if (_connectView.JoinRoomName == string.Empty)
                 return;
             
-            PhotonNetwork.JoinRoom(_join.options[_join.value].text);
+            PhotonNetwork.JoinRoom(_connectView.JoinRoomName);
         }
 
         public override void OnJoinedRoom()
@@ -63,22 +65,14 @@ namespace Network
                 where room.IsVisible && room.IsOpen
                 orderby room.Name
                 select room.Name).ToList();
-            _join.ClearOptions();
-            if (roomNames.Count == 0)
-            {
-                _joinLabel.SetText("Search Rooms..");
-            }
-            else
-            {
-                _join.AddOptions(roomNames);
-            }
+            _connectView.RoomUpdate(roomNames);
         }
 
         public override void OnConnectedToMaster()
         {
             Debug.Log("IsConnectAndReady" 
                       + PhotonNetwork.IsConnectedAndReady);
-            _witPanel.SetActive(false);
+            _connectView.WaitHide();
         }
 
         public override void OnDisconnected(DisconnectCause cause)
