@@ -1,5 +1,6 @@
 using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 
@@ -19,27 +20,41 @@ namespace Score
         {
             _view = GetComponent<PhotonView>();
             _text = GetComponent<TMP_Text>();
-            if (PhotonNetwork.IsMasterClient 
-                && PhotonNetwork.MasterClient.CustomProperties.ContainsKey(
-                    _scoreName) == false)
-            {
-                PhotonNetwork.MasterClient.CustomProperties.Add("Score", _score);
-            }
-            
+            Init();
         }
-    
+
+        private void Init()
+        {
+            _view.RPC(nameof(InitRPC), RpcTarget.All);
+        }
+        
+        [PunRPC]
+        private void InitRPC()
+        {
+            Debug.Log("InitRPC ++");
+            if (PhotonNetwork.IsMasterClient == false)
+                return;
+            
+            SyncScore();
+        }
+
         [PunRPC]
         private void SetScoreRPC(int value)
         {
             if (PhotonNetwork.IsMasterClient)
             {
                 _score += value;
-                _view.RPC(nameof(SyncScore), RpcTarget.All, _score);
+                SyncScore();
             }
         }
 
+        private void SyncScore()
+        {
+            _view.RPC(nameof(SyncScoreRPC), RpcTarget.All, _score);
+        }
+
         [PunRPC]
-        private void SyncScore(int value)
+        private void SyncScoreRPC(int value)
         {
             _score = value;
             // object score = null; 

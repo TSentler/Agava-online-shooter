@@ -7,7 +7,7 @@ namespace Score.Enemy
     {
         private ScoreCounter _score;
         private EnemyMover _enemyMover;
-
+        
         [SerializeField] private int _count = 1;
 
         private void Awake()
