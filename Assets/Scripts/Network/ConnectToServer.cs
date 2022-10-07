@@ -46,6 +46,9 @@ namespace Network
 
         public void JoinRoom()
         {
+            if (_join.options.Count == 0)
+                return;
+            
             PhotonNetwork.JoinRoom(_join.options[_join.value].text);
         }
 

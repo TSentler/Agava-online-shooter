@@ -21,14 +21,11 @@ namespace Network
         
         private IEnumerator JoinLobbyCoroutine()
         {
-            Debug.Log(PhotonNetwork.InLobby);
             while (PhotonNetwork.InLobby == false)
             {
                 Debug.Log("TryJoinLobby");
                 PhotonNetwork.JoinLobby();
                 yield return new WaitForSeconds(2f);
-                Debug.Log(PhotonNetwork.InLobby 
-                      + " " + PhotonNetwork.IsConnectedAndReady);
             }
             _joinLobbyCoroutine = null;
         }
