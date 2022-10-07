@@ -1,6 +1,4 @@
 using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +11,10 @@ public class RoomItemView : MonoBehaviour
 
     private RoomInfo _roomInfo;
 
+    public event UnityAction<RoomInfo> Click;
+
+    public RoomInfo RoomInfo => _roomInfo;
+
     public void Render(RoomInfo roomInfo)
     {
         _roomInfo = roomInfo;
@@ -21,6 +23,6 @@ public class RoomItemView : MonoBehaviour
 
     public void OnClick()
     {
-        ConnectToServer.Instance.JoinRoom(_roomInfo);
+        Click?.Invoke(_roomInfo);
     }
 }

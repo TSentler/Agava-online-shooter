@@ -10,7 +10,8 @@ public class NicknameInput : MonoBehaviour
     private void Awake()
     {
         _input = GetComponent<TMP_InputField>();
-        _input.onValueChanged.AddListener(SetNick);
+        SetNick(_input.text);
+        _input.onValueChanged.AddListener(SetNick);      
     }
 
     private void SetNick(string value)
