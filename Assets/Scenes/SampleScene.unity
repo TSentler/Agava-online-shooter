@@ -3347,6 +3347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1883229936}
   - component: {fileID: 1883229937}
+  - component: {fileID: 1883229938}
   m_Layer: 0
   m_Name: ConnectToServer
   m_TagString: Untagged
@@ -3385,6 +3386,18 @@ MonoBehaviour:
   _create: {fileID: 906309796}
   _join: {fileID: 1954778543}
   _joinLabel: {fileID: 1067737139}
+--- !u!114 &1883229938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883229935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ed88bd23a681d198d58138d561d5ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1954778541
 GameObject:
   m_ObjectHideFlags: 0

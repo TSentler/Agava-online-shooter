@@ -6,69 +6,82 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 
-public class ConnectToServer : MonoBehaviourPunCallbacks
+namespace Network
 {
-    [SerializeField] private GameObject _witPanel;
-    [SerializeField] private TMP_InputField _create;
-    [SerializeField] private TMP_Dropdown _join;
-    [SerializeField] private TMP_Text _joinLabel;
-
-    private void Awake()
+    public class ConnectToServer : MonoBehaviourPunCallbacks
     {
-        _witPanel.SetActive(true);
-        _create.text = "Room1";
-        _join.ClearOptions();
-    }
+        private Coroutine _connectCoroutine;
+        
+        [SerializeField] private GameObject _witPanel;
+        [SerializeField] private TMP_InputField _create;
+        [SerializeField] private TMP_Dropdown _join;
+        [SerializeField] private TMP_Text _joinLabel;
 
-    private IEnumerator Start()
-    {
-        PhotonNetwork.ConnectUsingSettings();
-        while (PhotonNetwork.IsConnectedAndReady == false)
+        private void Awake()
         {
-            yield return new WaitForSeconds(0.5f);
+            _witPanel.SetActive(true);
+            _create.text = "Room1";
+            _join.ClearOptions();
         }
-        _witPanel.SetActive(false);
-        while (PhotonNetwork.InLobby == false)
+
+        private void Start()
         {
-            PhotonNetwork.JoinLobby(TypedLobby.Default);
-            yield return new WaitForSeconds(2f);
+            Connect();
         }
-    }
 
-    public void CreateRoom()
-    {
-        PhotonNetwork.CreateRoom(_create.text);
-    }
-
-    public void JoinRoom()
-    {
-        PhotonNetwork.JoinRoom(_join.options[_join.value].text);
-    }
-
-    public override void OnJoinedLobby()
-    {
-        Debug.Log("OnJoinedLobby");
-    }
-    
-    public override void OnJoinedRoom()
-    {
-        PhotonNetwork.LoadLevel("Game");
-    }
-
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
-        var roomNames = (from room in roomList
-            where room.IsVisible && room.IsOpen
-            orderby room.Name
-            select room.Name).ToList();
-        _join.ClearOptions();
-        if (roomNames.Count == 0)
+        private void Connect()
         {
-            _joinLabel.SetText("Search Rooms..");
+            if (PhotonNetwork.IsConnectedAndReady)
+                return;
+
+            Debug.Log("TryConnect");
+            _witPanel.SetActive(true);
+            PhotonNetwork.ConnectUsingSettings();
         }
-        else
+        
+        public void CreateRoom()
         {
-            _join.AddOptions(roomNames);
+            PhotonNetwork.CreateRoom(_create.text);
+        }
+
+        public void JoinRoom()
+        {
+            PhotonNetwork.JoinRoom(_join.options[_join.value].text);
+        }
+
+        public override void OnJoinedRoom()
+        {
+            PhotonNetwork.LoadLevel("Game");
+        }
+
+        public override void OnRoomListUpdate(List<RoomInfo> roomList)
+        {
+            var roomNames = (from room in roomList
+                where room.IsVisible && room.IsOpen
+                orderby room.Name
+                select room.Name).ToList();
+            _join.ClearOptions();
+            if (roomNames.Count == 0)
+            {
+                _joinLabel.SetText("Search Rooms..");
+            }
+            else
+            {
+                _join.AddOptions(roomNames);
+            }
+        }
+
+        public override void OnConnectedToMaster()
+        {
+            Debug.Log("IsConnectAndReady" 
+                      + PhotonNetwork.IsConnectedAndReady);
+            _witPanel.SetActive(false);
+        }
+
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            Debug.Log("Disconnect");
+            Connect();
         }
     }
 }
