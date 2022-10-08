@@ -46,7 +46,6 @@ namespace Chat
         [PunRPC]
         private void SyncMessagesRPC(object container)
         {
-            
             var messages = (List<ChatMessage>)Packer.
                 ByteArrayToObject((byte[])container);
             List<ChatMessage> temp = new();
@@ -55,7 +54,7 @@ namespace Chat
             _messages.AddRange(messages);
             _messages.AddRange(temp);
             _chatView.Clear();
-            foreach (var message in messages)
+            foreach (var message in _messages)
             {
                 _chatView.AddMessage(message.Nick, message.Text);
             }
