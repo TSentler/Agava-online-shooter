@@ -1,5 +1,4 @@
 using Photon.Pun;
-using TMPro;
 using UnityEngine;
 
 namespace Score
@@ -9,9 +8,9 @@ namespace Score
     {
         private PhotonView _view;
         private int _score;
-    
+
         [SerializeField] private ScoreCounterText _text;
-        
+
         private void Awake()
         {
             _view = GetComponent<PhotonView>();

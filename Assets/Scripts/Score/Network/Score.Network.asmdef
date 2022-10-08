@@ -1,9 +1,9 @@
 {
-    "name": "Enemy.Score",
+    "name": "Score.Network",
     "rootNamespace": "",
     "references": [
-        "GUID:e6473e87ac46fb7759981092833df42e",
-        "GUID:b34e029ada225c883b2bbe23f584ae92"
+        "GUID:b34e029ada225c883b2bbe23f584ae92",
+        "GUID:31b9fe034416438aa8b3ca5994d31bab"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
