@@ -1,4 +1,6 @@
+using System;
 using ExitGames.Client.Photon;
+using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +12,16 @@ namespace Network
         public event UnityAction<Player> OnPlayerEnter, OnPlayerLeft, OnMasterSwitch;
         public event UnityAction<Player, Hashtable> OnPlayerPropsUpdate;
         public event UnityAction<Hashtable> OnRoomPropsUpdate;
+
+        private void OnEnable()
+        {
+            PhotonNetwork.AddCallbackTarget(this);
+        }
+
+        private void OnDisable()
+        {
+            PhotonNetwork.RemoveCallbackTarget(this);
+        }
 
         public void OnPlayerEnteredRoom(Player newPlayer)
         {

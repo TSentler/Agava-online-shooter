@@ -1,22 +1,18 @@
 using Network;
-using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
 namespace Score.Network
 {
-    [RequireComponent(typeof(ScoreCounter),
-        typeof(PhotonView))]
+    [RequireComponent(typeof(ScoreCounter))]
     public class ScoreInitializer : MonoBehaviour
     {
         private PlayerEnteredRoomCatcher _catcher;
         private ScoreCounter _counter;
-        private PhotonView _view;
         
         private void Awake()
         {
             _counter = GetComponent<ScoreCounter>();
-            _view = GetComponent<PhotonView>();
             _catcher = FindObjectOfType<PlayerEnteredRoomCatcher>();
         }
 

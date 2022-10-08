@@ -43,6 +43,7 @@ namespace Score
                 return;
             
             _score += value;
+            _text.SetScore(_score);
             _view.RPC(nameof(SyncScoreRPC), RpcTarget.All, _score);
         }
     }
