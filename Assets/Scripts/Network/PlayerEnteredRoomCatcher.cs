@@ -1,4 +1,3 @@
-using System;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
@@ -7,46 +6,49 @@ using UnityEngine.Events;
 
 namespace Network
 {
-    public class PlayerEnteredRoomCatcher : MonoBehaviour, IInRoomCallbacks
+    public class PlayerEnteredRoomCatcher : MonoBehaviour
     {
-        public event UnityAction<Player> OnPlayerEnter, OnPlayerLeft, OnMasterSwitch;
-        public event UnityAction<Player, Hashtable> OnPlayerPropsUpdate;
-        public event UnityAction<Hashtable> OnRoomPropsUpdate;
+        private InRoomCallbackListener _inRoomCallbacks;
+        
+        public event UnityAction<Player> OnPlayerEnter
+        {
+            add => _inRoomCallbacks.OnPlayerEnter += value;
+            remove => _inRoomCallbacks.OnPlayerEnter -= value;
+        }
+        public event UnityAction<Player> OnPlayerLeft
+        {
+            add => _inRoomCallbacks.OnPlayerLeft += value;
+            remove => _inRoomCallbacks.OnPlayerLeft -= value;
+        }
+        public event UnityAction<Player> OnMasterSwitch
+        { 
+            add => _inRoomCallbacks.OnMasterSwitch += value;
+            remove => _inRoomCallbacks.OnMasterSwitch -= value;
+        }
+        public event UnityAction<Player, Hashtable> OnPlayerPropsUpdate
+        {
+            add => _inRoomCallbacks.OnPlayerPropsUpdate += value;
+            remove => _inRoomCallbacks.OnPlayerPropsUpdate -= value;
+        }
+        public event UnityAction<Hashtable> OnRoomPropsUpdate
+        {
+            add => _inRoomCallbacks.OnRoomPropsUpdate += value;
+            remove => _inRoomCallbacks.OnRoomPropsUpdate -= value;
+        }
+        
+        private void Awake()
+        {
+            _inRoomCallbacks = new InRoomCallbackListener();
+        }
 
         private void OnEnable()
         {
-            PhotonNetwork.AddCallbackTarget(this);
+            PhotonNetwork.AddCallbackTarget(_inRoomCallbacks);
         }
 
         private void OnDisable()
         {
-            PhotonNetwork.RemoveCallbackTarget(this);
-        }
-
-        public void OnPlayerEnteredRoom(Player newPlayer)
-        {
-            OnPlayerEnter?.Invoke(newPlayer);
-        }
-
-        public void OnPlayerLeftRoom(Player otherPlayer)
-        {
-            OnPlayerLeft?.Invoke(otherPlayer);
-        }
-
-        public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
-        {
-            OnRoomPropsUpdate?.Invoke(propertiesThatChanged);
-        }
-
-        public void OnPlayerPropertiesUpdate(Player targetPlayer, 
-            Hashtable changedProps)
-        {
-            OnPlayerPropsUpdate?.Invoke(targetPlayer, changedProps);
-        }
-
-        public void OnMasterClientSwitched(Player newMasterClient)
-        {
-            OnMasterSwitch?.Invoke(newMasterClient);
+            PhotonNetwork.RemoveCallbackTarget(_inRoomCallbacks);
         }
     }
 }
