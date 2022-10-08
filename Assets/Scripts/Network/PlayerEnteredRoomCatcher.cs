@@ -7,18 +7,18 @@ namespace Network
 {
     public class PlayerEnteredRoomCatcher : MonoBehaviour, IInRoomCallbacks
     {
-        public event UnityAction<Player> OnEnter, OnLeft, OnMasterSwitch;
+        public event UnityAction<Player> OnPlayerEnter, OnPlayerLeft, OnMasterSwitch;
         public event UnityAction<Player, Hashtable> OnPlayerPropsUpdate;
         public event UnityAction<Hashtable> OnRoomPropsUpdate;
 
         public void OnPlayerEnteredRoom(Player newPlayer)
         {
-            OnEnter?.Invoke(newPlayer);
+            OnPlayerEnter?.Invoke(newPlayer);
         }
 
         public void OnPlayerLeftRoom(Player otherPlayer)
         {
-            OnLeft?.Invoke(otherPlayer);
+            OnPlayerLeft?.Invoke(otherPlayer);
         }
 
         public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)

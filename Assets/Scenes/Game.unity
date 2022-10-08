@@ -779,6 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588928254}
   - component: {fileID: 588928256}
+  - component: {fileID: 588928257}
   - component: {fileID: 588928255}
   m_Layer: 0
   m_Name: Score
@@ -836,7 +837,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69caf4e4377fd83a3b70f8b731bd3cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 0}
+  _text: {fileID: 268142106}
+--- !u!114 &588928257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588928253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fb70340dd3b1613ab5f13a67495c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &646939865
 GameObject:
   m_ObjectHideFlags: 0

@@ -3691,7 +3691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba31b617366fb71abde9707d2038bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 0.0.1
+  _version: 0.0.2
   _connectView: {fileID: 1883229939}
 --- !u!114 &1883229938
 MonoBehaviour:

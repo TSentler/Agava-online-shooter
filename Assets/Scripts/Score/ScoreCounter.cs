@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace Score
@@ -11,6 +12,8 @@ namespace Score
 
         [SerializeField] private ScoreCounterText _text;
 
+        public int Score => _score;
+        
         private void Awake()
         {
             _view = GetComponent<PhotonView>();
@@ -26,8 +29,19 @@ namespace Score
             _text.SetScore(score);
         }
 
+        public void SyncScore(Player player)
+        {
+            if (PhotonNetwork.IsMasterClient == false)
+                return;
+
+            _view.RPC(nameof(SyncScoreRPC), player, _score);
+        }
+        
         public void SetScore(int value)
         {
+            if (PhotonNetwork.IsMasterClient == false)
+                return;
+            
             _score += value;
             _view.RPC(nameof(SyncScoreRPC), RpcTarget.All, _score);
         }
