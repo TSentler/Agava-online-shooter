@@ -1231,6 +1231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956793411}
   - component: {fileID: 956793412}
+  - component: {fileID: 956793414}
   - component: {fileID: 956793413}
   m_Layer: 0
   m_Name: Chat
@@ -1289,6 +1290,18 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &956793414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956793410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7197cab286bc80a76bbedff4b51312cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1137802596
 GameObject:
   m_ObjectHideFlags: 0

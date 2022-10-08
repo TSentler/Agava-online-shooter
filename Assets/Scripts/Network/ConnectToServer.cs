@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Network
 {
@@ -70,8 +67,6 @@ namespace Network
 
         public override void OnConnectedToMaster()
         {
-            Debug.Log("IsConnectAndReady" 
-                      + PhotonNetwork.IsConnectedAndReady);
             _connectView.WaitHide();
         }
 

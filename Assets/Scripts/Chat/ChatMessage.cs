@@ -1,5 +1,8 @@
+using System;
+
 namespace Chat
 {
+    [Serializable]
     public class ChatMessage
     {
         public ChatMessage(string nick, string text)

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Network.UI;
+using Pack;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -7,10 +7,10 @@ using UnityEngine;
 namespace Chat
 {
     [RequireComponent(typeof(PhotonView))]
-    public class MessageSender : MonoBehaviourPunCallbacks
+    public class MessageSender : MonoBehaviour
     {
         private PhotonView _view;
-        private List<ChatMessage> _messages;
+        [SerializeField] private List<ChatMessage> _messages = new();
         
         [SerializeField] private ChatView _chatView;
         
@@ -31,30 +31,43 @@ namespace Chat
 
         private void SendMesage(string text)
         {
-            if (_chatView.IsSendReady )
-            {
-                _view.RPC(nameof(SendMessageRPC), RpcTarget.All,
-                    PhotonNetwork.NickName, text);
-            }
+            _view.RPC(nameof(SendMessageRPC), RpcTarget.All,
+                PhotonNetwork.NickName, text);
         }
         
         [PunRPC]
         private void SendMessageRPC(string nick, string text)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                var message = new ChatMessage(nick, text);
-                _messages.Add(message);
-            }
+            var message = new ChatMessage(nick, text);
+            _messages.Add(message);
             _chatView.AddMessage(nick, text);
         }
 
-        public override void OnPlayerEnteredRoom(Player newPlayer)
+        [PunRPC]
+        private void SyncMessagesRPC(object container)
+        {
+            
+            var messages = (List<ChatMessage>)Packer.
+                ByteArrayToObject((byte[])container);
+            List<ChatMessage> temp = new();
+            temp.AddRange(_messages);
+            _messages.Clear();
+            _messages.AddRange(messages);
+            _messages.AddRange(temp);
+            _chatView.Clear();
+            foreach (var message in messages)
+            {
+                _chatView.AddMessage(message.Nick, message.Text);
+            }
+        }
+
+        public void SyncMessages(Player player)
         {
             if (PhotonNetwork.IsMasterClient == false)
                 return;
-            
-            
+
+            byte[] container = Packer.ObjectToByteArray((object)_messages);
+            _view.RPC(nameof(SyncMessagesRPC), player, (object)container);
         }
     }
 }

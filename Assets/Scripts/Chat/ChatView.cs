@@ -13,7 +13,7 @@ namespace Chat
         [SerializeField] private TMP_InputField _input;
         [SerializeField] private Button _button;
         
-        public bool IsSendReady => _input.text != string.Empty;
+        private bool IsSendReady => _input.text != string.Empty;
 
         public event UnityAction<string> OnSubmit;
 
@@ -47,7 +47,12 @@ namespace Chat
         
         private void SendHandler()
         {
-            OnSubmit?.Invoke(_input.text);
+            if (IsSendReady == false)
+                return;
+            
+            var text = _input.text;
+            _input.text = "";
+            OnSubmit?.Invoke(text);
         }
 
         public void AddMessage(string nick, string text)
@@ -55,6 +60,14 @@ namespace Chat
             var message = Instantiate(_message, _rootMessage);
             message.GetComponent<MessageText>().SetMessage(
                 nick, text);
+        }
+
+        public void Clear()
+        {
+            foreach (Transform child in _rootMessage)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }
