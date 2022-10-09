@@ -46,7 +46,7 @@ namespace Chat
         [PunRPC]
         private void SyncMessagesRPC(object container)
         {
-            var messages = (List<ChatMessage>)Packer.
+            var messages = (ChatMessage[])Packer.
                 ByteArrayToObject((byte[])container);
             List<ChatMessage> temp = new();
             temp.AddRange(_messages);
@@ -65,7 +65,8 @@ namespace Chat
             if (PhotonNetwork.IsMasterClient == false)
                 return;
 
-            byte[] container = Packer.ObjectToByteArray((object)_messages);
+            byte[] container = Packer.ObjectToByteArray(
+                (object)_messages.ToArray());
             _view.RPC(nameof(SyncMessagesRPC), player, (object)container);
         }
     }
