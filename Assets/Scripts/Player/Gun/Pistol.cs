@@ -14,7 +14,7 @@ public class Pistol : Gun
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+            if (hit.collider.gameObject.TryGetComponent(out PlayerHealthTest playerHealth))
             {
                 playerHealth.TakeDamage(_damage);
             }

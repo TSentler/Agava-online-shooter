@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PhotonView))]
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthTest : MonoBehaviour
 {
     private PhotonView _view;
     private float _currentHealth = MaxHealth;
