@@ -12,7 +12,7 @@ public class PlayerShoorHandler : MonoBehaviour, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        
+
     }
 
     private void Update()
@@ -21,20 +21,13 @@ public class PlayerShoorHandler : MonoBehaviour, IPunObservable
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                Debug.Log("Fire");
-                if(Physics.Raycast(_camera.transform.position, _camera.transform.forward, out RaycastHit hit, _maxDistance)) 
+                if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out RaycastHit hit, _maxDistance))
                 {
-                    Debug.Log(hit);
                     if (hit.transform.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                     {
-                        Debug.Log("1");
-                        //if (_photonView.IsMine == false)
-                        //{
-                            Debug.Log("2");
-                            playerHealth.ApplyDamage(_damage);
-                        //}
+                        playerHealth.ApplyDamage(_damage);
                     }
-                }               
+                }
             }
         }
     }

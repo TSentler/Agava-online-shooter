@@ -22,12 +22,11 @@ public class PlayerHealth : MonoBehaviour, IPunObservable
         if (_photonView.IsMine == false)
         {
             _health -= damage;
-            Debug.Log(_health);
+        }
 
-            if(_health <= 0)
-            {
-                Destroy(gameObject);
-            }
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
