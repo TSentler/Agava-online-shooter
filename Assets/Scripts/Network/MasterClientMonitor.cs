@@ -1,48 +1,13 @@
 //original script https://pastebin.com/QxavvqRt
 //https://www.youtube.com/watch?v=yrB7Hyh2BE4&t=381s
 
-using System;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Network
 {
-    public class PingSender
-    {
-        public PingSender(float sendPingInterval, PhotonView photonView)
-        {
-            _sendPingInterval = sendPingInterval;
-            _photonView = photonView;
-        }
-        
-        private readonly float _sendPingInterval;
-        private readonly PhotonView _photonView;
-        
-        private float _nextSendPingTime = 0f;
-
-        public event UnityAction<Player, int> OnReceivePing;
-        
-        public void CheckSendPing()
-        {
-            if (Time.unscaledTime < _nextSendPingTime)
-                return;
- 
-            _nextSendPingTime = Time.unscaledTime + _sendPingInterval;
- 
-            _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.All, 
-                PhotonNetwork.LocalPlayer,
-                PhotonNetwork.GetPing());
-        }
-
-        [PunRPC]
-        private void ReceivePingRPC(Player player, int ping)
-        {
-            OnReceivePing?.Invoke(player, ping);
-        }
-    }
-    
+    [RequireComponent(typeof(PingSender))]
     public class MasterClientMonitor : MonoBehaviourPunCallbacks
     {
         private const int _minimumPingDifference = 50;
@@ -60,7 +25,8 @@ namespace Network
         private void Awake()
         {
             _playerPings = new PlayerPingList(_sendPingInterval);
-            _pingSender = new PingSender(_sendPingInterval, photonView);
+            _pingSender = GetComponent<PingSender>();
+            _pingSender.Init(_sendPingInterval);
         }
 
         public override void OnEnable()
@@ -77,12 +43,10 @@ namespace Network
 
         private void Update()
         {
-            _pingSender.CheckSendPing();
             CheckChangeMaster();
             CheckTakeoverTimeout();
         }
- 
-        
+
         private void CheckTakeoverTimeout()
         {
             if (_takeoverRequestTime == -1f)
