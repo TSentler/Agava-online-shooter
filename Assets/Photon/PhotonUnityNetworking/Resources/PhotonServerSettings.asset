@@ -47,6 +47,9 @@ MonoBehaviour:
   - SyncScoreRPC
   - InitRPC
   - SyncMessagesRPC
+  - RPC_MasterClientGranted
+  - RPC_ReceivePing
+  - RPC_RequestMasterClient
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

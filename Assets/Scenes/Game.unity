@@ -1267,6 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9945f17a3ad77df8fb6047e15a49f844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _messages: []
   _chatView: {fileID: 1740060282}
 --- !u!114 &956793413
 MonoBehaviour:
