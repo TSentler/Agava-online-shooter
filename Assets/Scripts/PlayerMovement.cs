@@ -20,13 +20,12 @@ public class PlayerMovement : MonoBehaviour, IPunObservable
     {
         if (_photonViev.IsMine)
         {
-            var direction = new Vector3(
-           Input.GetAxisRaw("Horizontal"),0f,
-           Input.GetAxisRaw("Vertical"));
+            Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"),0f,Input.GetAxisRaw("Vertical"));
+            Vector3 inverseDirection = transform.InverseTransformDirection(direction);
 
             if (direction != Vector3.zero)
             {
-                _characterController.Move(direction * _speed * Time.deltaTime);
+                _characterController.Move(inverseDirection * _speed * Time.deltaTime);
                 _animator.SetBool(RunAnimation, true);
             }
             else
