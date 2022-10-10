@@ -1,50 +1,88 @@
 //original script https://pastebin.com/QxavvqRt
 //https://www.youtube.com/watch?v=yrB7Hyh2BE4&t=381s
 
-using System.Collections.Generic;
+using System;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Network
 {
+    public class PingSender
+    {
+        public PingSender(float sendPingInterval, PhotonView photonView)
+        {
+            _sendPingInterval = sendPingInterval;
+            _photonView = photonView;
+        }
+        
+        private readonly float _sendPingInterval;
+        private readonly PhotonView _photonView;
+        
+        private float _nextSendPingTime = 0f;
+
+        public event UnityAction<Player, int> OnReceivePing;
+        
+        public void CheckSendPing()
+        {
+            if (Time.unscaledTime < _nextSendPingTime)
+                return;
+ 
+            _nextSendPingTime = Time.unscaledTime + _sendPingInterval;
+ 
+            _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.All, 
+                PhotonNetwork.LocalPlayer,
+                PhotonNetwork.GetPing());
+        }
+
+        [PunRPC]
+        private void ReceivePingRPC(Player player, int ping)
+        {
+            OnReceivePing?.Invoke(player, ping);
+        }
+    }
+    
     public class MasterClientMonitor : MonoBehaviourPunCallbacks
     {
-        private const int _highPingTurnoverRequirement = 3;
         private const int _minimumPingDifference = 50;
         private const float _pingCheckInterval = 5f;
         private const float _takeoverRequestTimeout = 3f;
         private const float _sendPingInterval = 5f;
         
-        private List<PlayerPing> _playerPings = new();
         private float _nextCheckChangeMaster = 0f;
         private int _consequtiveHighPingCount = 0;
         private bool _pendingMasterChange = false;
         private float _takeoverRequestTime = -1f;
-        private float _nextSendPingTime = 0f;
- 
+        private PlayerPingList _playerPings;
+        private PingSender _pingSender;
+
+        private void Awake()
+        {
+            _playerPings = new PlayerPingList(_sendPingInterval);
+            _pingSender = new PingSender(_sendPingInterval, photonView);
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            _pingSender.OnReceivePing += _playerPings.ReceivePing;
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            _pingSender.OnReceivePing -= _playerPings.ReceivePing;
+        }
+
         private void Update()
         {
-            CheckSendPing();
+            _pingSender.CheckSendPing();
             CheckChangeMaster();
             CheckTakeoverTimeout();
         }
  
-        public override void OnPlayerLeftRoom(Player otherPlayer)
-        {
-            int index = _playerPings.FindIndex(x => x.Player == otherPlayer);
-            if (index != -1)
-                _playerPings.RemoveAt(index);
-        }
- 
-        public override void OnMasterClientSwitched(Player newMasterClient)
-        {
-            base.OnMasterClientSwitched(newMasterClient);
-            _pendingMasterChange = false;
-            _takeoverRequestTime = -1f;
-            _consequtiveHighPingCount = 0;
-        }
- 
+        
         private void CheckTakeoverTimeout()
         {
             if (_takeoverRequestTime == -1f)
@@ -81,62 +119,24 @@ namespace Network
  
             _nextCheckChangeMaster = Time.time + _pingCheckInterval;
  
-            RemoveNullPlayers();
+            _playerPings.RemoveNullPlayers();
  
-            Player[] players = PhotonNetwork.PlayerList;
-            if (players.Length <= 1)
+            if (PhotonNetwork.PlayerList.Length <= 1 
+                || _playerPings.CheckMyPingIntervalValid() == false)
                 return;
- 
-            int lowestAverageIndex = -1;
-            int lowestAveragePing = -1;
-            int masterPing = -1;
-            int masterIndex = -1;
- 
-            foreach (Player player in players)
-            {
-                int pingsIndex = _playerPings.
-                    FindIndex(x => x.Player == player);
-                if (pingsIndex == -1)
-                    continue;
 
-                var playerPing = _playerPings[pingsIndex];
-                var lastUpdatedPingTimePassed = 
-                    Time.unscaledTime - playerPing.LastUpdatedTime;
-                if (player == PhotonNetwork.LocalPlayer)
-                {
-                    if (lastUpdatedPingTimePassed >= _sendPingInterval * 2)
-                        return;
-                }
+            _playerPings.CalculateLowestAveragePing(
+                out var lowestAveragePlayer, out var lowestAveragePing);
  
-                int averagePing = playerPing.ReturnAveragePing();
-                if (averagePing != -1)
-                {
-                    if (averagePing < lowestAveragePing 
-                        || lowestAverageIndex == -1)
-                    {
-                        lowestAveragePing = averagePing;
-                        lowestAverageIndex = pingsIndex;
-                    }
-                    
-                    if (playerPing.Player.IsMasterClient)
-                    {
-                        masterIndex = pingsIndex;
- 
-                        if (lastUpdatedPingTimePassed >= _sendPingInterval * 2)
-                            masterPing = 999999999;
-                        else
-                            masterPing = averagePing;
-                    }
-                }
-            }
- 
-            if (lowestAverageIndex == -1)
+            if (lowestAveragePlayer == null)
+                return;
+
+            var masterPing = _playerPings.GetMasterPing();
+            
+            if (masterPing == -1)
                 return;
             
-            if (masterIndex == -1)
-                return;
-            
-            if (_playerPings[lowestAverageIndex].Player != PhotonNetwork.LocalPlayer)
+            if (lowestAveragePlayer != PhotonNetwork.LocalPlayer)
                 return;
  
             float masterPingDifference = masterPing - lowestAveragePing;
@@ -148,62 +148,25 @@ namespace Network
             if (_consequtiveHighPingCount >= 3)
             {
                 _takeoverRequestTime = Time.unscaledTime;
-                var lowestAveragePlayer =
-                    _playerPings[lowestAverageIndex].Player;
-                photonView.RPC(nameof(RPC_RequestMasterClient),
+                photonView.RPC(nameof(RequestMasterClientRPC),
                     RpcTarget.MasterClient, lowestAveragePlayer);
             }
         }
- 
-        private void CheckSendPing()
-        {
-            if (Time.unscaledTime < _nextSendPingTime)
-                return;
- 
-            _nextSendPingTime = Time.unscaledTime + _sendPingInterval;
- 
-            photonView.RPC(nameof(RPC_ReceivePing), RpcTarget.All, 
-                PhotonNetwork.LocalPlayer,
-                PhotonNetwork.GetPing());
-        }
- 
+
+
         [PunRPC]
-        private void RPC_ReceivePing(Player player, int ping)
+        private void RequestMasterClientRPC(Player requestor)
         {
-            int index = _playerPings.FindIndex(x => x.Player == player);
-            if (index == -1)
-                _playerPings.Add(new PlayerPing(player, ping));
-            else
-                _playerPings[index].AddPing(ping);
-        }
- 
-        private void RemoveNullPlayers()
-        {
-            for (int i = 0; i < _playerPings.Count; i++)
-            {
-                if (_playerPings[i].Player == null)
-                {
-                    _playerPings.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
- 
-        [PunRPC]
-        private void RPC_RequestMasterClient(Player requestor)
-        {
-            if (_pendingMasterChange)
-                return;
-            
-            if (!PhotonNetwork.IsMasterClient)
+            if (_pendingMasterChange 
+                || PhotonNetwork.IsMasterClient == false)
                 return;
  
             _pendingMasterChange = true;
-            photonView.RPC(nameof(RPC_MasterClientGranted), requestor);
+            photonView.RPC(nameof(MasterClientGrantedRPC), requestor);
         }
  
         [PunRPC]
-        private void RPC_MasterClientGranted()
+        private void MasterClientGrantedRPC()
         {
             SetNewMaster(PhotonNetwork.LocalPlayer);
         }
@@ -216,7 +179,7 @@ namespace Network
         
         private void OnApplicationFocus(bool focus)
         {
-            if (!focus)
+            if (focus == false)
                 LocallyHandOffMasterClient();
         }
  
@@ -229,33 +192,29 @@ namespace Network
             if (PhotonNetwork.PlayerList.Length <= 1)
                 return;
  
-            int otherIndex = -1;
-            int lowestIndex = -1;
-            int lowestPing = -1;
-            for (int i = 0; i < _playerPings.Count; i++)
-            {
-                if (_playerPings[i].Player == PhotonNetwork.LocalPlayer)
-                    continue;
+            _playerPings.RemoveNullPlayers();
+            
+            _playerPings.CalculateLowestAveragePing(out var lowestPlayer, 
+                out var lowestPing, false);
+
+            if (lowestPlayer == null)
+                lowestPlayer = _playerPings.GetFirstAnother();
+            
+            if (lowestPlayer != null)
+                SetNewMaster(lowestPlayer);
+        }
  
-                otherIndex = i;
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        { 
+            _playerPings.Remove(otherPlayer);
+        }
  
-                int average = _playerPings[i].ReturnAveragePing();
-                if (average < lowestPing || lowestIndex == -1)
-                {
-                    lowestIndex = i;
-                    lowestPing = average;
-                }
-            }
- 
-            if (lowestIndex != -1)
-            {
-                SetNewMaster(_playerPings[lowestIndex].Player);
-            }
-            else
-            {
-                if (otherIndex != -1)
-                    SetNewMaster(_playerPings[otherIndex].Player);
-            }
+        public override void OnMasterClientSwitched(Player newMasterClient)
+        {
+            base.OnMasterClientSwitched(newMasterClient);
+            _pendingMasterChange = false;
+            _takeoverRequestTime = -1f;
+            _consequtiveHighPingCount = 0;
         }
     }
 }
