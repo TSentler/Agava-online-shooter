@@ -148,8 +148,10 @@ namespace Network
             if (_consequtiveHighPingCount >= 3)
             {
                 _takeoverRequestTime = Time.unscaledTime;
+                var lowestAveragePlayer =
+                    _playerPings[lowestAverageIndex].Player;
                 photonView.RPC(nameof(RPC_RequestMasterClient),
-                    RpcTarget.MasterClient, _playerPings[lowestAverageIndex].Player);
+                    RpcTarget.MasterClient, lowestAveragePlayer);
             }
         }
  
@@ -161,6 +163,7 @@ namespace Network
             _nextSendPingTime = Time.unscaledTime + _sendPingInterval;
  
             photonView.RPC(nameof(RPC_ReceivePing), RpcTarget.All, 
+                PhotonNetwork.LocalPlayer,
                 PhotonNetwork.GetPing());
         }
  
