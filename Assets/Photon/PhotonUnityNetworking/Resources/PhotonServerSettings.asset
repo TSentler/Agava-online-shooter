@@ -42,6 +42,8 @@ MonoBehaviour:
   - SendMessageRPC
   - SetScoreRPC
   - TakeDamageRPC
+  - SyncMessagesRPC
+  - SyncScoreRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
