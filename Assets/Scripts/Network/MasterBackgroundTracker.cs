@@ -1,4 +1,6 @@
+using System.Collections;
 using Agava.WebUtility;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Network
@@ -6,7 +8,11 @@ namespace Network
     [RequireComponent(typeof(MasterClientMonitor))]
     public class MasterBackgroundTracker : MonoBehaviour
     {
+        private readonly float _repeatRequestDelay = 3f;
+        
+        private bool _inBackground;
         private MasterClientMonitor _monitor;
+        private Coroutine _coroutine;
 
         private void Awake()
         {
@@ -25,20 +31,27 @@ namespace Network
         
         private void OnApplicationPause(bool pause)
         {
-            if (pause == false)
-                return;
             
-            // SwitchBackgroundMaster();
         }
         
         private void OnInBackgroundChange(bool isBack)
         {
-            SwitchBackgroundMaster();
+            _inBackground = isBack;
+            if (_inBackground && _coroutine == null)
+            {
+                _coroutine = StartCoroutine(
+                    SwitchBackgroundMasterCoroutine());
+            }
         }
 
-        private void SwitchBackgroundMaster()
+        private IEnumerator SwitchBackgroundMasterCoroutine()
         {
-            _monitor.LocallyHandOffMasterClient();
+            while (_inBackground && PhotonNetwork.IsMasterClient)
+            {
+                _monitor.LocallyHandOffMasterClient();
+                yield return new WaitForSeconds(_repeatRequestDelay);
+            }
+            _coroutine = null;
         }
     }
 }
