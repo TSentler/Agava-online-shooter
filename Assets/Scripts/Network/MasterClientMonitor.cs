@@ -91,7 +91,7 @@ namespace Network
 
             _playerPings.CalculateLowestAveragePing(
                 out var lowestAveragePlayer, out var lowestAveragePing);
- 
+
             if (lowestAveragePlayer == null)
                 return;
 
@@ -135,19 +135,7 @@ namespace Network
             SetNewMaster(PhotonNetwork.LocalPlayer);
         }
  
-        private void OnApplicationPause(bool pause)
-        {
-            if (pause)
-                LocallyHandOffMasterClient();
-        }
-        
-        private void OnApplicationFocus(bool focus)
-        {
-            if (focus == false)
-                LocallyHandOffMasterClient();
-        }
- 
-        private void LocallyHandOffMasterClient()
+        public void LocallyHandOffMasterClient()
         {
             if (!PhotonNetwork.IsConnected 
                 || !PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient)
