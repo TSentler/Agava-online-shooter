@@ -16,9 +16,9 @@ namespace Network
         private const float _sendPingInterval = 5f;
         
         private float _nextCheckChangeMaster = 0f;
-        private int _consequtiveHighPingCount = 0;
-        private bool _pendingMasterChange = false;
         private float _takeoverRequestTime = -1f;
+        private int _consequtiveHighPingCount = 0;
+        private bool _isPendingMasterChange = false;
         private PlayerPingList _playerPings;
         private PingSender _pingSender;
 
@@ -121,11 +121,11 @@ namespace Network
         [PunRPC]
         private void RequestMasterClientRPC(Player requestor)
         {
-            if (_pendingMasterChange 
+            if (_isPendingMasterChange 
                 || PhotonNetwork.IsMasterClient == false)
                 return;
  
-            _pendingMasterChange = true;
+            _isPendingMasterChange = true;
             photonView.RPC(nameof(MasterClientGrantedRPC), requestor);
         }
  
@@ -164,7 +164,7 @@ namespace Network
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
             base.OnMasterClientSwitched(newMasterClient);
-            _pendingMasterChange = false;
+            _isPendingMasterChange = false;
             _takeoverRequestTime = -1f;
             _consequtiveHighPingCount = 0;
         }
