@@ -35,7 +35,7 @@ public class EnemyMover : MonoBehaviour
 
     private void Die()
     {
-        if (PhotonNetwork.IsMasterClient == false)
+        if (GetComponent<PhotonView>().IsMine == false)
             return;
         
         _stalker.Contact();

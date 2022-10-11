@@ -42,8 +42,16 @@ MonoBehaviour:
   - SendMessageRPC
   - SetScoreRPC
   - TakeDamageRPC
-  - SyncMessagesRPC
+  - DieRPC
+  - SetScoreRPC
+  - SendMessageRPC
+  - SyncScore
   - SyncScoreRPC
+  - InitRPC
+  - SyncMessagesRPC
+  - MasterClientGrantedRPC
+  - ReceivePingRPC
+  - RequestMasterClientRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
