@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class Pistol : Gun
 {
-    [SerializeField] private Camera _camera;
     [SerializeField] private float _damage;
 
-    public override void Shoot()
+    public override void Shoot(Camera camera)
     {
-        Ray ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-        ray.origin = _camera.transform.position;
-
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (AmmoQuanity > 0 && CanShoot)
         {
-            if (hit.collider.gameObject.TryGetComponent(out PlayerHealthTest playerHealth))
+            Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            ray.origin = camera.transform.position;
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                playerHealth.TakeDamage(_damage);
+                if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+                {
+                    playerHealth.ApplyDamage(_damage);
+                }
             }
+            StartCoroutine(CountdownShoot());
+            AmmoQuanity--;
+            Debug.Log(AmmoQuanity);
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        else
         {
-            Shoot();
+            if (AmmoQuanity == 0)
+            {
+                Reload();
+                Debug.Log("Reloading");
+            }
         }
     }
 }

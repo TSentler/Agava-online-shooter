@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 857816581}
   - component: {fileID: 857816580}
   - component: {fileID: 857816579}
+  - component: {fileID: 857816582}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -537,6 +538,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857816577}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &857816582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857816577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81f18825bcb9ac4b9627b23c69e8eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayPerShoot: 0.1
+  DelayReload: 1
+  MaxAmmo: 12
+  _damage: 10
 --- !u!1 &1178717383
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +568,7 @@ GameObject:
   - component: {fileID: 1178717384}
   - component: {fileID: 1178717388}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,11 +664,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178717383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81f18825bcb9ac4b9627b23c69e8eb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f54fa3dbe8da794aa1f8c25fc2a8a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 22848798}
-  _damage: 10
+  _currentGun: {fileID: 857816582}
 --- !u!1 &1217102844
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ namespace Network
 
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel("Game");
+            PhotonNetwork.LoadLevel("Room1");
         }
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
