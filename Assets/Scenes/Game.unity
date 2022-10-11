@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646939867}
   m_HandleRect: {fileID: 646939866}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1646,6 +1646,7 @@ GameObject:
   - component: {fileID: 1409968492}
   - component: {fileID: 1409968493}
   - component: {fileID: 1409968495}
+  - component: {fileID: 1409968496}
   - component: {fileID: 1409968494}
   m_Layer: 0
   m_Name: MasterSwitcher
@@ -1713,6 +1714,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c92906378550453681df47345f7cc97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1409968496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409968491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c667e0dd6da0446c79263858c4f9572f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1480699828
