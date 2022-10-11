@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class MouseLook : MonoBehaviour, IPunObservable
+public class MouseLook : MonoBehaviour
 {
     [SerializeField] private float _mouseSensetivity;
     [SerializeField] private Transform _playerBody;
     [SerializeField] private PhotonView _phoronViev;
 
     private float _xRotation;
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-       
-    }
 
     private void Awake()
     {

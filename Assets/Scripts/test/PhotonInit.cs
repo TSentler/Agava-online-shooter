@@ -13,7 +13,7 @@ public class PhotonInit : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField _inputField;
 
     private string _gameVersion = "1";
-    bool isConnecting;
+    private bool isConnecting;
 
     private void Awake()
     {
