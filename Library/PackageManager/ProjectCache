@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638011886549418591
-    m_Hash: 288431393
+      ticks: 638011900948464941
+    m_Hash: 4081857143
   m_LockFileStatus:
     m_FilePath: D:/Repository/Agava-online-shooter/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638011886549418591
-    m_Hash: 15245155
+      ticks: 638011900948829922
+    m_Hash: 246960987
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,51 @@ m_LocalPackages:
 m_ProjectPath: D:/Repository/Agava-online-shooter/Packages
 m_EditorVersion: 2021.3.11f1 (0a5ca18544bf)
 m_ResolvedPackages:
+- packageId: com.agava.webutility@https://github.com/forcepusher/com.agava.webutility.git
+  testable: 0
+  isDirectDependency: 1
+  version: 2.0.0
+  source: 5
+  resolvedPath: D:\Repository\Agava-online-shooter\Library\PackageCache\com.agava.webutility@dbf49295fd
+  assetPath: Packages/com.agava.webutility
+  name: com.agava.webutility
+  displayName: Web Utility
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: library
+  description: Tools that fix common issues in Unity WebGL export.
+  status: 4
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.17.2
   testable: 0
   isDirectDependency: 1

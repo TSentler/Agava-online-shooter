@@ -803,6 +803,9 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
+    <Reference Include="Agava.WebUtility">
+      <HintPath>Library\ScriptAssemblies\Agava.WebUtility.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
@@ -812,6 +815,14 @@
     <ProjectReference Include="PhotonChat.csproj">
       <Project>{5B375D88-E731-D9B1-2D33-3EB803F79E5D}</Project>
       <Name>PhotonChat</Name>
+    </ProjectReference>
+    <ProjectReference Include="Score.csproj">
+      <Project>{EE2B7B55-2A26-B5AA-8063-6865270E1572}</Project>
+      <Name>Score</Name>
+    </ProjectReference>
+    <ProjectReference Include="Pack.csproj">
+      <Project>{5FF65415-4BFF-F8C6-4C39-13D74BD7EE2C}</Project>
+      <Name>Pack</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
       <Project>{97CAA1B4-62FA-CEF9-C9C8-61C9BD51C064}</Project>
@@ -833,6 +844,10 @@
       <Project>{3EA1D0CD-450B-7834-ECDE-8F6C874FBA71}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
+    <ProjectReference Include="Chat.Network.csproj">
+      <Project>{584623F5-63D6-FFEB-51D1-B75DC3BC6B4D}</Project>
+      <Name>Chat.Network</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.csproj">
       <Project>{3E2CFA20-87AE-AC41-9706-B18305EF9375}</Project>
       <Name>PhotonUnityNetworking</Name>
@@ -840,6 +855,18 @@
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
       <Project>{FC5DFB70-0E26-975B-DBC9-3B1469E70A8E}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
+    </ProjectReference>
+    <ProjectReference Include="Player.csproj">
+      <Project>{A0E756FF-242C-9A36-960C-BDE5A5073C91}</Project>
+      <Name>Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Chat.csproj">
+      <Project>{CFD0ABC8-0B49-A662-A1C9-6C934018EB4C}</Project>
+      <Name>Chat</Name>
+    </ProjectReference>
+    <ProjectReference Include="Network.csproj">
+      <Project>{32D436CB-2966-A3B6-BEBF-58CD6B64600D}</Project>
+      <Name>Network</Name>
     </ProjectReference>
     <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
       <Project>{7CCE4F82-5CB9-0CA7-8BCA-000773071F67}</Project>
