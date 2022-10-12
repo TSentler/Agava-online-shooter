@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour, IPunObservable
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _photonViev.TransferOwnership(PhotonNetwork.LocalPlayer);
     }
 
     private void Update()

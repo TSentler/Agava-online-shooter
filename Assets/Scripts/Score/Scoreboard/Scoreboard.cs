@@ -23,13 +23,15 @@ public class Scoreboard : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if(_photonView == null)
-        {
-            return;
-        }
+        //if(_photonView == null)
+        //{
+        //    return;
+        //}
+
+        //Debug.Log(_photonView.IsMine);
 
         if (_photonView.IsMine)
-        {
+        { 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 if (_panel.activeSelf == false)
@@ -49,7 +51,10 @@ public class Scoreboard : MonoBehaviourPunCallbacks, IPunObservable
     {
         ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
         item.Initialize(player);
-        _playersSocres.Add(player, item);
+        if(_playersSocres.ContainsKey(player) == false)
+        {
+            _playersSocres.Add(player, item);
+        }       
     }
 
     private void DeleteScore(Player player)
@@ -61,6 +66,7 @@ public class Scoreboard : MonoBehaviourPunCallbacks, IPunObservable
     {
         base.OnPlayerEnteredRoom(newPlayer);
         AddScore(newPlayer);
+        //_photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
