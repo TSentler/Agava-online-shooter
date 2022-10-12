@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))] 
+[RequireComponent(typeof(SphereCollider))]
 public class GunSpawner : MonoBehaviour
 {
     [SerializeField] private List<Gun> _guns;
@@ -38,7 +39,7 @@ public class GunSpawner : MonoBehaviour
                 _collider.enabled = false;
                 StartCoroutine(CountdownToSpawn());
             }
-        }      
+        }
     }
 
     private IEnumerator CountdownToSpawn()

@@ -57,14 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Player\Gun\PlayerHand.cs" />
+    <Compile Include="Assets\Scripts\Player\Gun\Rifle.cs" />
+    <Compile Include="Assets\Scripts\Player\Gun\GunSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player\Gun\Gun.cs" />
     <Compile Include="Assets\Scripts\Player\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\Gun\Pistol.cs" />
-    <Compile Include="Assets\Scripts\Player\Gun\PlayerHand.cs" />
-    <Compile Include="Assets\Scripts\Player\Gun\GunSpawner.cs" />
-    <Compile Include="Assets\Scripts\Player\Gun\Gun.cs" />
-    <Compile Include="Assets\Scripts\Player\Gun\Rifle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Player\Player.asmdef" />

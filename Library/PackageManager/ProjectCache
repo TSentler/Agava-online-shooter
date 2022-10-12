@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638011900948464941
-    m_Hash: 4081857143
+      ticks: 638011976324127779
+    m_Hash: 1432383214
   m_LockFileStatus:
     m_FilePath: D:/Repository/Agava-online-shooter/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638011900948829922
-    m_Hash: 246960987
+      ticks: 638011976324132783
+    m_Hash: 2624275186
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:

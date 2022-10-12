@@ -1,8 +1,8 @@
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(PhotonView))]
 public class PlayerHand : MonoBehaviour, IPunObservable
@@ -13,7 +13,7 @@ public class PlayerHand : MonoBehaviour, IPunObservable
     private PhotonView _photonView;
     private Gun _currentGun;
 
-    public event UnityAction<Gun> GunChanged;
+    public event Action<Gun> GunChanged;
 
     private void Awake()
     {
