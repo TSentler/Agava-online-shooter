@@ -11,7 +11,7 @@ namespace Network
 
         [SerializeField] private string _version;
 
-        public event UnityAction OnConnectStart, OnConnectEnd;
+        public event UnityAction OnConnectStart, OnConnectEnd, OnDisconnect;
         
         public string Version => _version;
 
@@ -34,6 +34,14 @@ namespace Network
             Debug.Log("TryConnect");
             OnConnectStart?.Invoke();
             PhotonNetwork.ConnectUsingSettings();
+        }
+
+        public void CreateOrJoin()
+        {
+            if (PhotonNetwork.IsConnectedAndReady)
+            {
+                PhotonNetwork.JoinRandomOrCreateRoom();
+            }
         }
         
         public void CreateRoom(string name)
@@ -59,6 +67,7 @@ namespace Network
         public override void OnDisconnected(DisconnectCause cause)
         {
             Debug.Log("Disconnect");
+            OnDisconnect?.Invoke();
             Connect();
         }
     }
