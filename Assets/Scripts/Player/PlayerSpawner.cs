@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviourPunCallbacks
 {
-    //[SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private GameObject _playerPrefab;
 
     private void Start()
     {
-        PhotonNetwork.Instantiate("Robot Kyle", transform.position,Quaternion.identity,0);
+        PhotonNetwork.Instantiate(_playerPrefab.name, transform.position,Quaternion.identity,0);
     }
 }
