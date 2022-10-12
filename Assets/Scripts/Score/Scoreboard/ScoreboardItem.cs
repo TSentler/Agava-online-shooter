@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreboardItem : MonoBehaviour, IPunObservable
+public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
 {
     [SerializeField] private TMP_Text _nickname;
     [SerializeField] private TMP_Text _death;
@@ -16,8 +16,8 @@ public class ScoreboardItem : MonoBehaviour, IPunObservable
         _nickname.text = player.NickName;
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
        
-    }
+    //}
 }

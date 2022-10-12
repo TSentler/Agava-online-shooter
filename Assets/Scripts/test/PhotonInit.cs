@@ -17,9 +17,7 @@ public class PhotonInit : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        Debug.Log(1);
         PhotonNetwork.AutomaticallySyncScene = true;
-        Debug.Log(2);
         _progressLabel.SetActive(false);
         _controlPanel.SetActive(true);
     }
