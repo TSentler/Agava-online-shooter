@@ -1069,8 +1069,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883229937}
-        m_TargetAssemblyTypeName: ConnectToServer, Assembly-CSharp
+      - m_Target: {fileID: 1883229939}
+        m_TargetAssemblyTypeName: Network.ConnectToServerView, Network
         m_MethodName: JoinRoom
         m_Mode: 1
         m_Arguments:
@@ -2859,8 +2859,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883229937}
-        m_TargetAssemblyTypeName: ConnectToServer, Assembly-CSharp
+      - m_Target: {fileID: 1883229939}
+        m_TargetAssemblyTypeName: Network.ConnectToServerView, Network
         m_MethodName: CreateRoom
         m_Mode: 1
         m_Arguments:
@@ -3841,8 +3841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba31b617366fb71abde9707d2038bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 0.0.5
-  _connectView: {fileID: 1883229939}
+  _version: 0.0.6
 --- !u!114 &1883229938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3871,6 +3870,7 @@ MonoBehaviour:
   _create: {fileID: 906309796}
   _join: {fileID: 1954778543}
   _joinLabel: {fileID: 1067737139}
+  _connectToLobby: {fileID: 1883229938}
 --- !u!1 &1954778541
 GameObject:
   m_ObjectHideFlags: 0
