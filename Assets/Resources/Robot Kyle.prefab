@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1161960026740196118}
   - component: {fileID: 1052214958706588879}
   - component: {fileID: 674907098001831776}
-  - component: {fileID: 706269223002785011}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -136,20 +135,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &706269223002785011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8018758753485099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0f33ca7a692264eb845cbe6a1d42b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerHealth: {fileID: -2751316611523236927}
-  _photonView: {fileID: 5537738615604583279}
 --- !u!1 &938263100429526190
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +145,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8193267100091418093}
   - component: {fileID: 3238635751434101546}
+  - component: {fileID: 8740454395374938900}
   - component: {fileID: 4815289699149990562}
-  - component: {fileID: 3378151786384953876}
+  - component: {fileID: 3487593404735091790}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -197,6 +183,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938263100429526190}
   m_CullTransparentMesh: 1
+--- !u!114 &8740454395374938900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938263100429526190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ead69a441c5084ca9df07f421a523d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4815289699149990562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +284,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3378151786384953876
+--- !u!114 &3487593404735091790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,10 +293,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 938263100429526190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a41b18be659bf1440be821dd60bfe6d4, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _photonViev: {fileID: 5537738615604583279}
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1124337238284362955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +1752,6 @@ GameObject:
   - component: {fileID: 5896622498498545743}
   - component: {fileID: 7015599807556905031}
   - component: {fileID: -2751316611523236927}
-  - component: {fileID: 254806168255996022}
   m_Layer: 0
   m_Name: Robot Kyle
   m_TagString: Untagged
@@ -1810,18 +1816,14 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 2
   observableSearch: 1
   ObservedComponents:
   - {fileID: 3857447110303629592}
   - {fileID: 2970092501173082836}
   - {fileID: 7015599807556905031}
   - {fileID: -2751316611523236927}
-  - {fileID: 254806168255996022}
-  - {fileID: 5447716539562165773}
   - {fileID: 4777043070486823012}
-  - {fileID: 3378151786384953876}
-  - {fileID: 706269223002785011}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1935,22 +1937,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _photonView: {fileID: 5537738615604583279}
---- !u!114 &254806168255996022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926811385654240329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c07d02d47204f947a53bedbb97a288c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 5537738615604583279}
-  _camera: {fileID: 8626187333435406068}
-  _maxDistance: 100
-  _damage: 20
 --- !u!1 &7926811385654240331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,10 +2691,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9150090653136674274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e84230a32d0194495129706c670f6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensetivity: 300
+  _mouseSensetivity: 100
   _playerBody: {fileID: 7926811385654605929}
   _phoronViev: {fileID: 5537738615604583279}
 --- !u!81 &8614249962759582677

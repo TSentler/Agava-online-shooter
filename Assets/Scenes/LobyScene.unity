@@ -228,8 +228,8 @@ GameObject:
   - component: {fileID: 813565515}
   - component: {fileID: 813565518}
   - component: {fileID: 813565517}
-  - component: {fileID: 813565519}
   - component: {fileID: 813565516}
+  - component: {fileID: 813565519}
   m_Layer: 5
   m_Name: PlayerName
   m_TagString: Untagged
@@ -337,19 +337,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 813565519}
-        m_TargetAssemblyTypeName: PlayerNameInputFild, Assembly-CSharp
-        m_MethodName: SetPlayerName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -415,7 +403,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 813565514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f165189b8127f9b44ae88cb8d4e10a32, type: 3}
+  m_Script: {fileID: 11500000, guid: e5a747807e25be37091e7f8d1122c50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &927862776
@@ -848,7 +836,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363551915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7abc2775dd9b5847bc141e9ef5581de, type: 3}
+  m_Script: {fileID: 11500000, guid: d243fccbe136c1a4aad5b6bbeee72302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _controlPanel: {fileID: 1394044875}
