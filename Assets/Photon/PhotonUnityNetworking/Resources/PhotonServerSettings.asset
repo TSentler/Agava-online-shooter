@@ -52,6 +52,8 @@ MonoBehaviour:
   - MasterClientGrantedRPC
   - ReceivePingRPC
   - RequestMasterClientRPC
+  - ApplyDamageRPC
+  - SetNewGunRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
