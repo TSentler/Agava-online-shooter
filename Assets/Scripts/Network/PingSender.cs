@@ -9,13 +9,16 @@ namespace Network
     [RequireComponent(typeof(PhotonView))]
     public class PingSender : MonoBehaviour
     {
-        private float _sendPingInterval;
+        private const float _sendPingInterval = 5f;
+        
         private PhotonView _photonView;
         
         private float _nextSendPingTime = 0f;
 
         public event UnityAction<Player, int> OnReceivePing;
 
+        public float SendPingInterval => _sendPingInterval;
+        
         private void Awake()
         {
             _photonView = GetComponent<PhotonView>();
@@ -48,11 +51,6 @@ namespace Network
             OnReceivePing?.Invoke(player, ping);
         }
         
-        public void Init(float sendPingInterval)
-        {
-            _sendPingInterval = sendPingInterval;
-        }
-
         public void SendPingImmidiate()
         {
             var ping = PhotonNetwork.GetPing();

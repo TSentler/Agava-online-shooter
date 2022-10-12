@@ -14,7 +14,6 @@ namespace Network
         private const int _minimumPingDifference = 50;
         private const float _pingCheckInterval = 5f;
         private const float _takeoverRequestTimeout = 3f;
-        private const float _sendPingInterval = 5f;
         
         private float _nextCheckChangeMaster = 0f;
         private float _takeoverRequestTime = -1f;
@@ -28,9 +27,8 @@ namespace Network
         private void Awake()
         {
             _inRoomCallbacks = new InRoomCallbackListener();
-            _playerPings = new PlayerPingList(_sendPingInterval);
             _pingSender = GetComponent<PingSender>();
-            _pingSender.Init(_sendPingInterval);
+            _playerPings = new PlayerPingList(_pingSender.SendPingInterval);
         }
 
         public void OnEnable()

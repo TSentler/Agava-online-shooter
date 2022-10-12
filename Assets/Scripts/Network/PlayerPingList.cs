@@ -14,9 +14,10 @@ namespace Network
         }
         
         private readonly float _sendPingInterval;
+        private readonly List<PlayerPing> _playerPings = new();
         
-        private List<PlayerPing> _playerPings = new();
-
+        private float _myLastUpdatedTime = -1f;
+        
         public void Remove(Player player)
         {
             int index = _playerPings.FindIndex(x => x.Player == player);
@@ -39,30 +40,36 @@ namespace Network
         public void ReceivePing(Player player, int ping)
         {
             int index = _playerPings.FindIndex(x => x.Player == player);
+            PlayerPing playerPing;
             if (index == -1)
-                _playerPings.Add(new PlayerPing(player, ping));
+            {
+                playerPing = new PlayerPing(player, ping);
+                _playerPings.Add(playerPing);
+            }
             else
-                _playerPings[index].AddPing(ping);
+            {
+                playerPing = _playerPings[index];
+                playerPing.AddPing(ping);
+            }
+
+            if (PhotonNetwork.LocalPlayer == player)
+            {
+                _myLastUpdatedTime = playerPing.LastUpdatedTime;
+            }
         }
         
         public bool CheckMyPingIntervalValid()
         {
-            var player = PhotonNetwork.LocalPlayer;
-            int pingIndex = _playerPings.
-                FindIndex(x => x.Player == player);
-
-            if (pingIndex == -1)
+            if (_myLastUpdatedTime == -1)
                 return false;
             
             var lastPingInterval =
-                Time.unscaledTime - _playerPings[pingIndex].LastUpdatedTime;
+                Time.unscaledTime - _myLastUpdatedTime;
             return lastPingInterval < _sendPingInterval * 2;
-
         }
 
         public int GetMasterPing()
         {
-            var masterPing = -1;
             var player = PhotonNetwork.MasterClient;
             var masterIndex = _playerPings.
                 FindIndex(x => x.Player == player);
@@ -70,13 +77,13 @@ namespace Network
             if (masterIndex == -1)
                 return -1;
             
-            var playerPing = _playerPings[masterIndex];
-            int averagePing = playerPing.ReturnAveragePing();
+            var masterPing = _playerPings[masterIndex];
+            int averagePing = masterPing.ReturnAveragePing();
             if (averagePing == -1)
                 return -1;
             
             var lastPingInterval =
-                Time.unscaledTime - playerPing.LastUpdatedTime;
+                Time.unscaledTime - masterPing.LastUpdatedTime;
             if (lastPingInterval >= _sendPingInterval * 2)
                 return 999999999;
             

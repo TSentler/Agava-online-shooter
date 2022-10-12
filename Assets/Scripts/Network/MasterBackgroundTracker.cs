@@ -25,12 +25,12 @@ namespace Network
 
         private void OnEnable()
         {
-            WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
+            WebApplication.InBackgroundChangeEvent += InBackgroundChangeHandler;
         }
 
         private void OnDisable()
         {
-            WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
+            WebApplication.InBackgroundChangeEvent -= InBackgroundChangeHandler;
         }
         
         private void OnApplicationPause(bool pause)
@@ -40,7 +40,12 @@ namespace Network
 
         private void Update()
         {
-            if (_inBackground 
+            SwitchBackgroundMaster();
+        }
+
+        private void SwitchBackgroundMaster()
+        {
+            if (_inBackground
                 && PhotonNetwork.IsMasterClient && _coroutine == null)
             {
                 _coroutine = StartCoroutine(
@@ -48,9 +53,10 @@ namespace Network
             }
         }
 
-        private void OnInBackgroundChange(bool isBack)
+        private void InBackgroundChangeHandler(bool isBack)
         {
             _inBackground = isBack;
+            SwitchBackgroundMaster();
         }
 
         private IEnumerator SwitchBackgroundMasterCoroutine()
