@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Network
 {
@@ -10,6 +13,8 @@ namespace Network
     {
         private Coroutine _joinLobbyCoroutine;
 
+        public event UnityAction<string[]> OnRoomNamesUpdate;
+        
         private void JoinLobby()
         {
             if (_joinLobbyCoroutine != null)
@@ -38,6 +43,15 @@ namespace Network
         public override void OnLeftLobby()
         {
             Debug.Log("left lobby");
+        }
+
+        public override void OnRoomListUpdate(List<RoomInfo> roomList)
+        {
+            var roomNames = (from room in roomList
+                where room.IsVisible && room.IsOpen
+                orderby room.Name
+                select room.Name).ToArray();
+            OnRoomNamesUpdate?.Invoke(roomNames);
         }
     }
 }

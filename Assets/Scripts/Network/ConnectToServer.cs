@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -14,7 +12,6 @@ namespace Network
         [SerializeField] private string _version;
 
         public event UnityAction OnConnectStart, OnConnectEnd;
-        public event UnityAction<string[]> OnRoomNamesUpdate;
         
         public string Version => _version;
 
@@ -53,16 +50,7 @@ namespace Network
         {
             PhotonNetwork.LoadLevel("Room1");
         }
-
-        public override void OnRoomListUpdate(List<RoomInfo> roomList)
-        {
-            var roomNames = (from room in roomList
-                where room.IsVisible && room.IsOpen
-                orderby room.Name
-                select room.Name).ToArray();
-            OnRoomNamesUpdate?.Invoke(roomNames);
-        }
-
+        
         public override void OnConnectedToMaster()
         {
             OnConnectEnd?.Invoke();

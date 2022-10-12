@@ -15,6 +15,7 @@ namespace Network
         [SerializeField] private TMP_InputField _create;
         [SerializeField] private TMP_Dropdown _join;
         [SerializeField] private TMP_Text _joinLabel;
+        [SerializeField] private ConnectToLobby _connectToLobby;
 
         public string CreateRoomName => _create.text;
 
@@ -35,14 +36,14 @@ namespace Network
         {
             _connectToServer.OnConnectStart += WaitShow;
             _connectToServer.OnConnectEnd += WaitHide;
-            _connectToServer.OnRoomNamesUpdate += RoomUpdate;
+            _connectToLobby.OnRoomNamesUpdate += RoomUpdate;
         }
 
         private void OnDisable()
         {
             _connectToServer.OnConnectStart -= WaitShow;
             _connectToServer.OnConnectEnd -= WaitHide;
-            _connectToServer.OnRoomNamesUpdate -= RoomUpdate;
+            _connectToLobby.OnRoomNamesUpdate -= RoomUpdate;
         }
 
         private void Start()
