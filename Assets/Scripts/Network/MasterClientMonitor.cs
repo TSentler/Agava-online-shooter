@@ -7,8 +7,9 @@ using UnityEngine;
 
 namespace Network
 {
-    [RequireComponent(typeof(PingSender))]
-    public class MasterClientMonitor : MonoBehaviourPunCallbacks
+    [RequireComponent(typeof(PingSender), 
+        typeof(PhotonView))]
+    public class MasterClientMonitor : MonoBehaviour
     {
         private const int _minimumPingDifference = 50;
         private const float _pingCheckInterval = 5f;
@@ -21,23 +22,30 @@ namespace Network
         private bool _isPendingMasterChange = false;
         private PlayerPingList _playerPings;
         private PingSender _pingSender;
-
+        private InRoomCallbackListener _inRoomCallbacks;
+        private PhotonView _photonView;
+        
         private void Awake()
         {
+            _inRoomCallbacks = new InRoomCallbackListener();
             _playerPings = new PlayerPingList(_sendPingInterval);
             _pingSender = GetComponent<PingSender>();
             _pingSender.Init(_sendPingInterval);
         }
 
-        public override void OnEnable()
+        public void OnEnable()
         {
-            base.OnEnable();
+            PhotonNetwork.AddCallbackTarget(_inRoomCallbacks);
+            _inRoomCallbacks.OnPlayerLeft += PlayerLeftRoomHandler;
+            _inRoomCallbacks.OnPlayerLeft += MasterClientSwitchedHandler;
             _pingSender.OnReceivePing += _playerPings.ReceivePing;
         }
 
-        public override void OnDisable()
+        public void OnDisable()
         {
-            base.OnDisable();
+            PhotonNetwork.RemoveCallbackTarget(_inRoomCallbacks);
+            _inRoomCallbacks.OnPlayerLeft -= PlayerLeftRoomHandler;
+            _inRoomCallbacks.OnPlayerLeft -= MasterClientSwitchedHandler;
             _pingSender.OnReceivePing -= _playerPings.ReceivePing;
         }
 
@@ -47,6 +55,18 @@ namespace Network
             CheckTakeoverTimeout();
         }
 
+        private void PlayerLeftRoomHandler(Player otherPlayer)
+        { 
+            _playerPings.Remove(otherPlayer);
+        }
+ 
+        private void MasterClientSwitchedHandler(Player newMasterClient)
+        {
+            _isPendingMasterChange = false;
+            _takeoverRequestTime = -1f;
+            _consequtiveHighPingCount = 0;
+        }
+ 
         private void CheckTakeoverTimeout()
         {
             if (_takeoverRequestTime == -1f)
@@ -112,7 +132,7 @@ namespace Network
             if (_consequtiveHighPingCount >= 3)
             {
                 _takeoverRequestTime = Time.unscaledTime;
-                photonView.RPC(nameof(RequestMasterClientRPC),
+                _photonView.RPC(nameof(RequestMasterClientRPC),
                     RpcTarget.MasterClient, lowestAveragePlayer);
             }
         }
@@ -126,7 +146,7 @@ namespace Network
                 return;
  
             _isPendingMasterChange = true;
-            photonView.RPC(nameof(MasterClientGrantedRPC), requestor);
+            _photonView.RPC(nameof(MasterClientGrantedRPC), requestor);
         }
  
         [PunRPC]
@@ -154,19 +174,6 @@ namespace Network
             
             if (lowestPlayer != null)
                 SetNewMaster(lowestPlayer);
-        }
- 
-        public override void OnPlayerLeftRoom(Player otherPlayer)
-        { 
-            _playerPings.Remove(otherPlayer);
-        }
- 
-        public override void OnMasterClientSwitched(Player newMasterClient)
-        {
-            base.OnMasterClientSwitched(newMasterClient);
-            _isPendingMasterChange = false;
-            _takeoverRequestTime = -1f;
-            _consequtiveHighPingCount = 0;
         }
     }
 }

@@ -31,13 +31,17 @@ namespace Network
             if (Time.unscaledTime < _nextSendPingTime)
                 return;
  
-            _nextSendPingTime = Time.unscaledTime + _sendPingInterval;
- 
+            SetNextPingTime();
             _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.All, 
                 PhotonNetwork.LocalPlayer,
                 PhotonNetwork.GetPing());
         }
-        
+
+        private void SetNextPingTime()
+        {
+            _nextSendPingTime = Time.unscaledTime + _sendPingInterval;
+        }
+
         [PunRPC]
         private void ReceivePingRPC(Player player, int ping)
         {
@@ -48,6 +52,14 @@ namespace Network
         {
             _sendPingInterval = sendPingInterval;
         }
-        
+
+        public void SendPingImmidiate()
+        {
+            var ping = PhotonNetwork.GetPing();
+            SetNextPingTime();
+            OnReceivePing?.Invoke(PhotonNetwork.LocalPlayer, ping);
+            _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.Others, 
+                PhotonNetwork.LocalPlayer, ping);
+        }
     }
 }

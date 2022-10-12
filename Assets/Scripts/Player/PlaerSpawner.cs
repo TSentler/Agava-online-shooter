@@ -1,7 +1,4 @@
 using Photon.Pun;
-using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlaerSpawner : MonoBehaviourPunCallbacks
@@ -17,7 +14,8 @@ public class PlaerSpawner : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.Instantiate("Robot Kyle", transform.position,Quaternion.identity,0);
+        PhotonNetwork.Instantiate(_playerPrefab.name, 
+            transform.position,Quaternion.identity,0);
     }
 
     //private void Awake()
