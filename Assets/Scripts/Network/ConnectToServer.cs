@@ -3,6 +3,7 @@ using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Network
 {
@@ -11,18 +12,21 @@ namespace Network
         private Coroutine _connectCoroutine;
 
         [SerializeField] private string _version;
-        [SerializeField] private ConnectToServerView _connectView;
+
+        public event UnityAction OnConnectStart, OnConnectEnd;
+        public event UnityAction<string[]> OnRoomNamesUpdate;
         
-        private void Start()
+        public string Version => _version;
+
+        private void Awake()
         {
-            SetVersion();
-            Connect();
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.GameVersion = _version;
         }
 
-        private void SetVersion()
+        private void Start()
         {
-            PhotonNetwork.GameVersion = _version;
-            _connectView.SetVersion(_version);
+            Connect();
         }
 
         private void Connect()
@@ -31,29 +35,23 @@ namespace Network
                 return;
 
             Debug.Log("TryConnect");
-            _connectView.WaitShow();
+            OnConnectStart?.Invoke();
             PhotonNetwork.ConnectUsingSettings();
         }
         
-        public void CreateRoom()
+        public void CreateRoom(string name)
         {
-            if (_connectView.CreateRoomName == string.Empty)
-                return;
-            
-            PhotonNetwork.CreateRoom(_connectView.CreateRoomName);
+            PhotonNetwork.CreateRoom(name);
         }
 
-        public void JoinRoom()
+        public void JoinRoom(string name)
         {
-            if (_connectView.JoinRoomName == string.Empty)
-                return;
-            
-            PhotonNetwork.JoinRoom(_connectView.JoinRoomName);
+            PhotonNetwork.JoinRoom(name);
         }
 
         public override void OnJoinedRoom()
         {
-            PhotonNetwork.LoadLevel("Game");
+            PhotonNetwork.LoadLevel("Room1");
         }
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -61,13 +59,13 @@ namespace Network
             var roomNames = (from room in roomList
                 where room.IsVisible && room.IsOpen
                 orderby room.Name
-                select room.Name).ToList();
-            _connectView.RoomUpdate(roomNames);
+                select room.Name).ToArray();
+            OnRoomNamesUpdate?.Invoke(roomNames);
         }
 
         public override void OnConnectedToMaster()
         {
-            _connectView.WaitHide();
+            OnConnectEnd?.Invoke();
         }
 
         public override void OnDisconnected(DisconnectCause cause)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Network.UI;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace Network
 {
     public class ConnectToServerView : MonoBehaviour
     {
+        private ConnectToServer _connectToServer;
+        
         [SerializeField] private GameObject _waitPanel;
         [SerializeField] private TMP_InputField _create;
         [SerializeField] private TMP_Dropdown _join;
@@ -22,37 +25,69 @@ namespace Network
 
         private void Awake()
         {
+            _connectToServer = FindObjectOfType<ConnectToServer>();
             _waitPanel.SetActive(true);
             _create.text = "Room1";
             _join.ClearOptions();
         }
 
-        public void SetVersion(string version)
+        private void OnEnable()
         {
-            FindObjectOfType<VersionText>().SetVersion(version);
+            _connectToServer.OnConnectStart += WaitShow;
+            _connectToServer.OnConnectEnd += WaitHide;
+            _connectToServer.OnRoomNamesUpdate += RoomUpdate;
+        }
+
+        private void OnDisable()
+        {
+            _connectToServer.OnConnectStart -= WaitShow;
+            _connectToServer.OnConnectEnd -= WaitHide;
+            _connectToServer.OnRoomNamesUpdate -= RoomUpdate;
+        }
+
+        private void Start()
+        {
+            FindObjectOfType<VersionText>()?.
+                SetVersion(_connectToServer.Version);
         }
         
-        public void WaitShow()
+        private void WaitShow()
         {
             _waitPanel.SetActive(true);
         }
 
-        public void WaitHide()
+        public void CreateRoom()
+        {
+            if (CreateRoomName == string.Empty)
+                return;
+            
+            _connectToServer.CreateRoom(CreateRoomName);
+        }
+
+        private void WaitHide()
         {
             _waitPanel.SetActive(false);
         }
 
-        public void RoomUpdate(List<string> roomNames)
+        private void RoomUpdate(string[] roomNames)
         {
             _join.ClearOptions();
-            if (roomNames.Count == 0)
+            if (roomNames.Length == 0)
             {
                 _joinLabel.SetText("Search Rooms..");
             }
             else
             {
-                _join.AddOptions(roomNames);
+                _join.AddOptions(roomNames.ToList());
             }
+        }
+        
+        public void JoinRoom()
+        {
+            if (JoinRoomName == string.Empty)
+                return;
+            
+            _connectToServer.JoinRoom(JoinRoomName);
         }
     }
 }
