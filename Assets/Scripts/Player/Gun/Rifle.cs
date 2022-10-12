@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class Rifle : Gun
             {
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
-                    playerHealth.ApplyDamage(_damage);
+                    playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
                 }
             }
             StartCoroutine(CountdownShoot());

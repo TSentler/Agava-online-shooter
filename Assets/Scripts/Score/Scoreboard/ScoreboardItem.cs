@@ -13,7 +13,13 @@ public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
 
     public void Initialize(Player player)
     {
+        if (player == null)
+            return;
+
         _nickname.text = player.NickName;
+        _death.text = player.CustomProperties["Death"].ToString();
+        _kills.text = player.CustomProperties["Kils"].ToString();
+        
     }
 
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
