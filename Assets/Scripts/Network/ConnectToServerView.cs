@@ -46,12 +46,6 @@ namespace Network
             _connectToLobby.OnRoomNamesUpdate -= RoomUpdate;
         }
 
-        private void Start()
-        {
-            FindObjectOfType<VersionText>()?.
-                SetVersion(_connectToServer.Version);
-        }
-        
         private void WaitShow()
         {
             _waitPanel.SetActive(true);

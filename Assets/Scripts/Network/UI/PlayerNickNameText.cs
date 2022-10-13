@@ -7,7 +7,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(TMP_Text), 
     typeof(PhotonView))]
-public class PlayerNickName : MonoBehaviour
+public class PlayerNickNameText : MonoBehaviour
 {
     private PhotonView _view;
     private TMP_Text _text;

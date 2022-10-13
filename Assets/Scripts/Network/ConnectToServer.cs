@@ -9,16 +9,11 @@ namespace Network
     {
         private Coroutine _connectCoroutine;
 
-        [SerializeField] private string _version;
-
         public event UnityAction OnConnectStart, OnConnectEnd, OnDisconnect;
         
-        public string Version => _version;
-
         private void Awake()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.GameVersion = _version;
         }
 
         private void Start()
