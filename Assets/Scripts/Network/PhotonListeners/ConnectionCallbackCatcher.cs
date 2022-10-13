@@ -8,7 +8,7 @@ namespace Network
 {
     public class ConnectionCallbackCatcher : MonoBehaviour
     {
-        private ConnectionCallbackListener _connectionCallbacks;
+        private ConnectionCallbackListener _connectionCallbacks = new();
         
         public event UnityAction OnConnect
         {
@@ -36,11 +36,6 @@ namespace Network
             remove => _connectionCallbacks.OnAuthFail -= value;
         }
         
-        private void Awake()
-        {
-            _connectionCallbacks = new ConnectionCallbackListener();
-        }
-
         private void OnEnable()
         {
             PhotonNetwork.AddCallbackTarget(_connectionCallbacks);

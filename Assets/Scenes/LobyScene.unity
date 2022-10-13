@@ -1013,6 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c667e0dd6da0446c79263858c4f9572f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enteredCallbackCatcher: {fileID: 1485208491}
 --- !u!114 &1270916660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,6 +1266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba31b617366fb71abde9707d2038bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _connectCallback: {fileID: 1485208492}
+  _matchCallback: {fileID: 1485208493}
 --- !u!114 &1363551918
 MonoBehaviour:
   m_ObjectHideFlags: 0

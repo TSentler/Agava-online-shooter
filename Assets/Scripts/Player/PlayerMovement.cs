@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IPunObservable
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private PhotonView _photonViev;
@@ -34,10 +34,5 @@ public class PlayerMovement : MonoBehaviour, IPunObservable
                 _animator.SetBool(RunAnimation, false);
             }
         }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-
     }
 }

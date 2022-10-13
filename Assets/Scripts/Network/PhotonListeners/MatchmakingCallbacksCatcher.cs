@@ -8,7 +8,7 @@ namespace Network
 {
     public class MatchmakingCallbacksCatcher : MonoBehaviour
     {
-        private MatchmakingCallbacksListener _matchCallbacks;
+        private MatchmakingCallbacksListener _matchCallbacks = new();
         
         public event UnityAction<List<FriendInfo>> OnFriendsUpdate
         {
@@ -46,11 +46,6 @@ namespace Network
             remove => _matchCallbacks.OnJoinRandomFail -= value;
         }
         
-        private void Awake()
-        {
-            _matchCallbacks = new MatchmakingCallbacksListener();
-        }
-
         private void OnEnable()
         {
             PhotonNetwork.AddCallbackTarget(_matchCallbacks);

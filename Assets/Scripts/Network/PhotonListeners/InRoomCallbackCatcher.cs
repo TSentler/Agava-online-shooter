@@ -8,7 +8,7 @@ namespace Network
 {
     public class InRoomCallbackCatcher : MonoBehaviour
     {
-        private InRoomCallbackListener _inRoomCallbacks;
+        private InRoomCallbackListener _inRoomCallbacks = new();
         
         public event UnityAction<Player> OnPlayerEnter
         {
@@ -36,11 +36,6 @@ namespace Network
             remove => _inRoomCallbacks.OnRoomPropsUpdate -= value;
         }
         
-        private void Awake()
-        {
-            _inRoomCallbacks = new InRoomCallbackListener();
-        }
-
         private void OnEnable()
         {
             PhotonNetwork.AddCallbackTarget(_inRoomCallbacks);

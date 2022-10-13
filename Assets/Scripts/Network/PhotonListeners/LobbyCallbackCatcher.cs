@@ -8,7 +8,7 @@ namespace Network
 {
     public class LobbyCallbackCatcher : MonoBehaviour
     {
-        private LobbyCallbackListener _lobbyCallbacks;
+        private LobbyCallbackListener _lobbyCallbacks = new();
         
         public event UnityAction OnLobbyJoined
         {
@@ -31,11 +31,6 @@ namespace Network
             remove => _lobbyCallbacks.OnStatsUpdate -= value;
         }
         
-        private void Awake()
-        {
-            _lobbyCallbacks = new LobbyCallbackListener();
-        }
-
         private void OnEnable()
         {
             PhotonNetwork.AddCallbackTarget(_lobbyCallbacks);
