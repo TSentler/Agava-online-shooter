@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using Agava.WebUtility;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace Network
@@ -16,31 +16,35 @@ namespace Network
         private MasterClientMonitor _monitor;
         private PingSender _pingSender;
         private Coroutine _coroutine;
+        private PlayerEnteredRoomCatcher _enteredCatcher;
 
         private void Awake()
         {
+            _enteredCatcher = FindObjectOfType<PlayerEnteredRoomCatcher>();
             _monitor = GetComponent<MasterClientMonitor>();
             _pingSender = GetComponent<PingSender>();
         }
 
         private void OnEnable()
         {
+            _enteredCatcher.OnMasterSwitch += MasterSwitchHandler;
             WebApplication.InBackgroundChangeEvent += InBackgroundChangeHandler;
         }
 
         private void OnDisable()
         {
+            _enteredCatcher.OnMasterSwitch -= MasterSwitchHandler;
             WebApplication.InBackgroundChangeEvent -= InBackgroundChangeHandler;
         }
-        
+
+        private void MasterSwitchHandler(Player player)
+        {
+            SwitchBackgroundMaster();
+        }
+
         private void OnApplicationPause(bool pause)
         {
             
-        }
-
-        private void Update()
-        {
-            SwitchBackgroundMaster();
         }
 
         private void SwitchBackgroundMaster()
