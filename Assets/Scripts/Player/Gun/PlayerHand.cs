@@ -1,11 +1,12 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 [RequireComponent(typeof(PhotonView))]
-public class PlayerHand : MonoBehaviour, IPunObservable
+public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private List<Gun> _guns;
@@ -13,7 +14,9 @@ public class PlayerHand : MonoBehaviour, IPunObservable
     private PhotonView _photonView;
     private Gun _currentGun;
 
-    public event Action<Gun> GunChanged;
+    public List<Gun> Guns => _guns;
+
+    public event Action<int, int> GunChanged;
 
     private void Awake()
     {
@@ -24,7 +27,7 @@ public class PlayerHand : MonoBehaviour, IPunObservable
     {
         _currentGun = _guns[0];
         _currentGun.gameObject.SetActive(true);
-        GunChanged?.Invoke(_currentGun);
+        GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
     }
 
     private void Update()
@@ -40,32 +43,48 @@ public class PlayerHand : MonoBehaviour, IPunObservable
             {
                 _currentGun.Reload();
             }
-        }       
+
+            GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
+        }
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+
+        if (_photonView == false && targetPlayer == _photonView.Owner)
+        {
+            SetNewGun((int)changedProps["GunID"]);
+        }
+    }
+
+    public void SetNewGun(int newGunId)
+    {
+        _currentGun.gameObject.SetActive(false);
+
+        foreach (var gun in _guns)
+        {
+            if (gun.GunID == newGunId)
+            {
+                _currentGun = gun;
+            }
+        }
+
+        _currentGun.gameObject.SetActive(true);
+        GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
+
+        if (_photonView.IsMine)
+        {
+            Hashtable hash = new Hashtable
+            {
+                { "GunID", newGunId }
+            };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
-    }
-
-    public void SetNewGun(Gun newGun)
-    {
-        _photonView.RPC(nameof(SetNewGunRPC), RpcTarget.All, newGun);
-    }
-
-    [PunRPC]
-    private void SetNewGunRPC(Gun newGun)
-    {
-        if (_photonView.IsMine == false)
-        {
-            return;
-        }
-        else
-        {
-            _currentGun.gameObject.SetActive(false);
-            _currentGun = newGun;
-            _currentGun.gameObject.SetActive(true);
-            GunChanged?.Invoke(_currentGun);
-        }
     }
 }

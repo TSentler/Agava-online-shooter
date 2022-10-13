@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\Gun\Pistol.cs" />
+    <Compile Include="Assets\Scripts\Player\Gun\GunView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Player\Player.asmdef" />

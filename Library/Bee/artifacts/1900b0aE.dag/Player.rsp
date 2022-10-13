@@ -351,6 +351,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Player/Gun/Gun.cs"
 "Assets/Scripts/Player/Gun/GunSpawner.cs"
+"Assets/Scripts/Player/Gun/GunView.cs"
 "Assets/Scripts/Player/Gun/Pistol.cs"
 "Assets/Scripts/Player/Gun/PlayerHand.cs"
 "Assets/Scripts/Player/Gun/Rifle.cs"

@@ -3196,9 +3196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc142be1f51f094093d6b607ed17daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayPerShoot: 0
-  DelayReload: 0
-  MaxAmmo: 0
+  _delayPerShoot: 0
+  _delayReload: 0
+  _maxAmmo: 0
+  _id: 1
   _damage: 0
 --- !u!23 &2125579065013424307
 MeshRenderer:
