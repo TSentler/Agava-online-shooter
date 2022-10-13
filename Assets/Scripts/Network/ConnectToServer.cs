@@ -7,7 +7,7 @@ namespace Network
 {
     public class ConnectToServer : MonoBehaviour
     {
-        private readonly string _defaultSceneName = "MoveTemp";
+        private readonly string _defaultSceneName = "Room1";
         
         private Coroutine _connectCoroutine;
         private ConnectionCallbackCatcher _connectCallback;
