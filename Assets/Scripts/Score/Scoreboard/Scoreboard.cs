@@ -13,54 +13,27 @@ public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
 
     private Dictionary<Player, ScoreboardItem> _playersScores = new Dictionary<Player, ScoreboardItem>();
 
-    //private void Update()
-    //{
-    //    //if(_photonView == null)
-    //    //{
-    //    //    return;
-    //    //}
-
-    //    //Debug.Log(_photonView.IsMine);
-
-    //    if (_photonView.IsMine)
-    //    { 
-
-
-    //    }
-    //}
-
+    [PunRPC]
     private void AddScore(Player player)
     {
-        ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
-        item.Initialize(player);
-
         if (_playersScores.ContainsKey(player) == false)
         {
+            ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
+            item.Initialize(player);
             _playersScores.Add(player, item);
         }
-
-        //foreach(var player1 in PhotonNetwork.PlayerList)
-        //{
-        //    Debug.Log(player1);
-        //}
-
-        //foreach(var player2 in _playersScores)
-        //{
-        //    Debug.Log(player2.Key);
-        //    Debug.Log(player2.Value); 
-        //}
     }
 
     private void DeleteScore(Player player)
     {
+        Destroy(_playersScores[player]);
         _playersScores.Remove(player);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        AddScore(newPlayer);
-        //_photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+        _photonView.RPC(nameof(AddScore), RpcTarget.AllBuffered, newPlayer);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -86,7 +59,7 @@ public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            AddScore(player);
+          _photonView.RPC(nameof(AddScore),RpcTarget.AllBuffered, player);
         }
 
         Debug.Log(PhotonNetwork.PlayerList.Length);
@@ -95,17 +68,18 @@ public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
 
     private void ClosePanel()
     {
-        foreach (var scoreItem in _playersScores)
+        _photonView.RPC(nameof(PUN_ClosePanel), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    private void PUN_ClosePanel()
+    {
+        foreach (var scrore in _playersScores)
         {
-            Destroy(scoreItem.Value.gameObject);
+            Destroy(scrore.Value.gameObject);
         }
 
         _playersScores.Clear();
         _panel.SetActive(false);
     }
-
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-
-    //}
 }
