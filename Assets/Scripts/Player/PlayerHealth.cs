@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour, IPunObservable
         _deaths = 0;
         _kills = 0;
         PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
-        PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Kils", _kills } });
+        PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Kills", _kills } });
     }
 
     public void ApplyDamage(float damage, Player player)
@@ -60,8 +60,9 @@ public class PlayerHealth : MonoBehaviour, IPunObservable
             {
                 _deaths++;
                 PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
-                int kills = (int)player.CustomProperties["Kils"];
-                player.SetCustomProperties(new Hashtable() { { "Kils", kills++ } });
+                int kills = (int)player.CustomProperties["Kills"] + 1;
+                Debug.Log(kills);
+                player.SetCustomProperties(new Hashtable() { { "Kills", kills } });
                 PhotonNetwork.Destroy(gameObject);
                 Debug.Log("Устрой дестрой");
             }

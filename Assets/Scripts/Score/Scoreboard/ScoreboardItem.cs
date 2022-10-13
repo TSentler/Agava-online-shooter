@@ -17,8 +17,8 @@ public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
             return;
 
         _nickname.text = player.NickName;
-        _death.text = player.CustomProperties["Death"].ToString();
-        _kills.text = player.CustomProperties["Kils"].ToString();
+        _death.text = "Death " + player.CustomProperties["Death"].ToString();
+        _kills.text = "Kills " + player.CustomProperties["Kills"].ToString();
         
     }
 
