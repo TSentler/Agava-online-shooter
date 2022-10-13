@@ -7,6 +7,7 @@ using UnityEngine;
 public class MatchTimer : MonoBehaviour
 {
     [SerializeField] private float _matchTimeInSeconds;
+    [SerializeField] private MatchEndScoreboard _matchScoreboard;
 
     private TMP_Text _text;
 
@@ -30,8 +31,8 @@ public class MatchTimer : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Matsh is complete");
-        _text.text = 0 + ":" + 00;
+        _matchScoreboard.OpenPanel();
+        _text.text = string.Format("{0:00}:{1:00}", 0, 00);
     }
 
     private void UpdateTimer()

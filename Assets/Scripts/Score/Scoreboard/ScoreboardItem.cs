@@ -21,9 +21,4 @@ public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
         _kills.text = "Kills " + player.CustomProperties["Kills"].ToString();
         
     }
-
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-       
-    //}
 }
