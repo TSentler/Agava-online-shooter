@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Network
 {
-    public class PlayerEnteredRoomCatcher : MonoBehaviour
+    public class InRoomCallbackCatcher : MonoBehaviour
     {
         private InRoomCallbackListener _inRoomCallbacks;
         

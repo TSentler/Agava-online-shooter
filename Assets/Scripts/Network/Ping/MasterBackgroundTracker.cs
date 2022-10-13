@@ -16,24 +16,24 @@ namespace Network
         private MasterClientMonitor _monitor;
         private PingSender _pingSender;
         private Coroutine _coroutine;
-        private PlayerEnteredRoomCatcher _enteredCatcher;
+        private InRoomCallbackCatcher _enteredCallbackCatcher;
 
         private void Awake()
         {
-            _enteredCatcher = FindObjectOfType<PlayerEnteredRoomCatcher>();
+            _enteredCallbackCatcher = FindObjectOfType<InRoomCallbackCatcher>();
             _monitor = GetComponent<MasterClientMonitor>();
             _pingSender = GetComponent<PingSender>();
         }
 
         private void OnEnable()
         {
-            _enteredCatcher.OnMasterSwitch += MasterSwitchHandler;
+            _enteredCallbackCatcher.OnMasterSwitch += MasterSwitchHandler;
             WebApplication.InBackgroundChangeEvent += InBackgroundChangeHandler;
         }
 
         private void OnDisable()
         {
-            _enteredCatcher.OnMasterSwitch -= MasterSwitchHandler;
+            _enteredCallbackCatcher.OnMasterSwitch -= MasterSwitchHandler;
             WebApplication.InBackgroundChangeEvent -= InBackgroundChangeHandler;
         }
 

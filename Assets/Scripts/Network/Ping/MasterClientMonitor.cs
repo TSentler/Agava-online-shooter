@@ -21,27 +21,27 @@ namespace Network
         private bool _isPendingMasterChange = false;
         private PlayerPingList _playerPings;
         private PingSender _pingSender;
-        private PlayerEnteredRoomCatcher _enteredCatcher;
+        private InRoomCallbackCatcher _enteredCallbackCatcher;
         private PhotonView _photonView;
         
         private void Awake()
         {
-            _enteredCatcher = FindObjectOfType<PlayerEnteredRoomCatcher>();
+            _enteredCallbackCatcher = FindObjectOfType<InRoomCallbackCatcher>();
             _pingSender = GetComponent<PingSender>();
             _playerPings = new PlayerPingList(_pingSender.SendPingInterval);
         }
 
         public void OnEnable()
         {
-            _enteredCatcher.OnPlayerLeft += PlayerLeftRoomHandler;
-            _enteredCatcher.OnMasterSwitch += MasterClientSwitchedHandler;
+            _enteredCallbackCatcher.OnPlayerLeft += PlayerLeftRoomHandler;
+            _enteredCallbackCatcher.OnMasterSwitch += MasterClientSwitchedHandler;
             _pingSender.OnReceivePing += _playerPings.ReceivePing;
         }
 
         public void OnDisable()
         {
-            _enteredCatcher.OnPlayerLeft -= PlayerLeftRoomHandler;
-            _enteredCatcher.OnMasterSwitch -= MasterClientSwitchedHandler;
+            _enteredCallbackCatcher.OnPlayerLeft -= PlayerLeftRoomHandler;
+            _enteredCallbackCatcher.OnMasterSwitch -= MasterClientSwitchedHandler;
             _pingSender.OnReceivePing -= _playerPings.ReceivePing;
         }
 

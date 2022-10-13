@@ -7,7 +7,7 @@ namespace Score.Network
     //[RequireComponent(typeof(ScoreCounter))]
     public class ScoreInitializer : MonoBehaviour
     {
-        private PlayerEnteredRoomCatcher _catcher;
+        private InRoomCallbackCatcher _enteredCatcher;
         //private ScoreCounter _counter;
         
         //private void Awake()
