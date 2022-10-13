@@ -1633,6 +1633,7 @@ GameObject:
   - component: {fileID: 1485208492}
   - component: {fileID: 1485208491}
   - component: {fileID: 1485208490}
+  - component: {fileID: 1485208493}
   m_Layer: 0
   m_Name: PhotonCallbacks
   m_TagString: Untagged
@@ -1689,6 +1690,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7bb8abb20c19d8019cd0e7b5013f299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1485208493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485208488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af05b6f0a40aebfaaa105406fb62a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1753749232

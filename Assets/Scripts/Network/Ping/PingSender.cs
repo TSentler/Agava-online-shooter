@@ -35,9 +35,18 @@ namespace Network
                 return;
  
             SetNextPingTime();
-            _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.All, 
-                PhotonNetwork.LocalPlayer,
-                PhotonNetwork.GetPing());
+            
+            var ping = PhotonNetwork.GetPing();
+            if (PhotonNetwork.InRoom)
+            {
+                _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.All,
+                    PhotonNetwork.LocalPlayer,
+                    PhotonNetwork.GetPing());
+            }
+            else
+            {
+                ReceivePingRPC(PhotonNetwork.LocalPlayer, ping);
+            }
         }
 
         private void SetNextPingTime()
@@ -55,7 +64,7 @@ namespace Network
         {
             var ping = PhotonNetwork.GetPing();
             SetNextPingTime();
-            OnReceivePing?.Invoke(PhotonNetwork.LocalPlayer, ping);
+            ReceivePingRPC(PhotonNetwork.LocalPlayer, ping);
             _photonView.RPC(nameof(ReceivePingRPC), RpcTarget.Others, 
                 PhotonNetwork.LocalPlayer, ping);
         }
