@@ -21,40 +21,44 @@ namespace Network
         private bool _isPendingMasterChange = false;
         private PlayerPingList _playerPings;
         private PingSender _pingSender;
-        private InRoomCallbackListener _inRoomCallbacks;
+        private PlayerEnteredRoomCatcher _enteredCatcher;
         private PhotonView _photonView;
         
         private void Awake()
         {
-            _inRoomCallbacks = new InRoomCallbackListener();
+            _enteredCatcher = FindObjectOfType<PlayerEnteredRoomCatcher>();
             _pingSender = GetComponent<PingSender>();
             _playerPings = new PlayerPingList(_pingSender.SendPingInterval);
         }
 
         public void OnEnable()
         {
-            PhotonNetwork.AddCallbackTarget(_inRoomCallbacks);
-            _inRoomCallbacks.OnPlayerLeft += PlayerLeftRoomHandler;
-            _inRoomCallbacks.OnPlayerLeft += MasterClientSwitchedHandler;
+            _enteredCatcher.OnPlayerLeft += PlayerLeftRoomHandler;
+            _enteredCatcher.OnMasterSwitch += MasterClientSwitchedHandler;
             _pingSender.OnReceivePing += _playerPings.ReceivePing;
         }
 
         public void OnDisable()
         {
-            PhotonNetwork.RemoveCallbackTarget(_inRoomCallbacks);
-            _inRoomCallbacks.OnPlayerLeft -= PlayerLeftRoomHandler;
-            _inRoomCallbacks.OnPlayerLeft -= MasterClientSwitchedHandler;
+            _enteredCatcher.OnPlayerLeft -= PlayerLeftRoomHandler;
+            _enteredCatcher.OnMasterSwitch -= MasterClientSwitchedHandler;
             _pingSender.OnReceivePing -= _playerPings.ReceivePing;
         }
 
         private void Update()
         {
+            if (PhotonNetwork.InRoom == false)
+                return;
+            
             CheckChangeMaster();
             CheckTakeoverTimeout();
         }
 
         private void PlayerLeftRoomHandler(Player otherPlayer)
-        { 
+        {
+            if (otherPlayer == PhotonNetwork.LocalPlayer)
+                return;
+            
             _playerPings.Remove(otherPlayer);
         }
  
