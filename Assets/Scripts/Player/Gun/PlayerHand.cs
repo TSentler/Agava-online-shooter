@@ -52,7 +52,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     {
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        if (_photonView == false && targetPlayer == _photonView.Owner)
+        if (changedProps.ContainsKey("GunID") && _photonView.IsMine == false && targetPlayer == _photonView.Owner)
         {
             SetNewGun((int)changedProps["GunID"]);
         }
