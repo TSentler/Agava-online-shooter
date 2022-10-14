@@ -19,6 +19,7 @@ public class Scoreboard : MonoBehaviourPunCallbacks
         _playersScores.Remove(player);
     }
 
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
