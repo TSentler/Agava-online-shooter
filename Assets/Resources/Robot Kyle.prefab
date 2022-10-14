@@ -2482,7 +2482,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7926811385654605929}
   - component: {fileID: 7926811385661495177}
-  - component: {fileID: 5537738615604583279}
   - component: {fileID: 3857447110303629592}
   - component: {fileID: 2970092501173082836}
   - component: {fileID: 5341021899399798420}
@@ -2491,6 +2490,7 @@ GameObject:
   - component: {fileID: -2751316611523236927}
   - component: {fileID: 6293996175980194239}
   - component: {fileID: 1224378625664512931}
+  - component: {fileID: 5537214694185517777}
   m_Layer: 0
   m_Name: Robot Kyle
   m_TagString: Untagged
@@ -2540,33 +2540,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5537738615604583279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926811385654240329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 2
-  observableSearch: 1
-  ObservedComponents:
-  - {fileID: 3857447110303629592}
-  - {fileID: 2970092501173082836}
-  - {fileID: 7015599807556905031}
-  - {fileID: -2751316611523236927}
-  - {fileID: 6293996175980194239}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &3857447110303629592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2661,7 +2634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 12
-  _photonViev: {fileID: 5537738615604583279}
+  _photonViev: {fileID: 5537214694185517777}
   _characterController: {fileID: 5896622498498545743}
 --- !u!114 &-2751316611523236927
 MonoBehaviour:
@@ -2676,7 +2649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _photonView: {fileID: 5537738615604583279}
+  _photonView: {fileID: 5537214694185517777}
 --- !u!114 &6293996175980194239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,7 +2678,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edde46662b33c9a46912322fda2c87ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _photonView: {fileID: 5537738615604583279}
+  _photonView: {fileID: 5537214694185517777}
+--- !u!114 &5537214694185517777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926811385654240329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 3857447110303629592}
+  - {fileID: 2970092501173082836}
+  - {fileID: -2751316611523236927}
+  - {fileID: 6293996175980194239}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7926811385654240331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouseSensetivity: 100
   _playerBody: {fileID: 7926811385654605929}
-  _phoronViev: {fileID: 5537738615604583279}
+  _phoronViev: {fileID: 5537214694185517777}
 --- !u!81 &8614249962759582677
 AudioListener:
   m_ObjectHideFlags: 0

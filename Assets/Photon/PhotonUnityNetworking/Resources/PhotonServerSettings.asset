@@ -57,6 +57,7 @@ MonoBehaviour:
   - AddScore
   - PUN_OpenPanel
   - PUN_ClosePanel
+  - OpenPanelRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

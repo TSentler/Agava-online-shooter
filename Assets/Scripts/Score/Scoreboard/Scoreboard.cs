@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 
-public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
+public class Scoreboard : MonoBehaviourPunCallbacks
 {
     [SerializeField] private ScoreboardItem _scoreItemTemplate;
     [SerializeField] private Transform _container;
@@ -12,17 +12,6 @@ public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
     [SerializeField] private PhotonView _photonView;
 
     private Dictionary<Player, ScoreboardItem> _playersScores = new Dictionary<Player, ScoreboardItem>();
-
-    [PunRPC]
-    private void AddScore(Player player)
-    {
-        if (_playersScores.ContainsKey(player) == false)
-        {
-            ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
-            item.Initialize(player);
-            _playersScores.Add(player, item);
-        }
-    }
 
     private void DeleteScore(Player player)
     {
@@ -33,7 +22,6 @@ public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        _photonView.RPC(nameof(AddScore), RpcTarget.AllBuffered, newPlayer);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -59,7 +47,9 @@ public class Scoreboard : MonoBehaviourPunCallbacks/*, IPunObservable*/
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-          _photonView.RPC(nameof(AddScore),RpcTarget.AllBuffered, player);
+            ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
+            item.Initialize(player);
+            _playersScores.Add(player, item);
         }
 
         Debug.Log(PhotonNetwork.PlayerList.Length);

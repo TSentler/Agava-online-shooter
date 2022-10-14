@@ -16,9 +16,15 @@ public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
         if (player == null)
             return;
 
-        _nickname.text = player.NickName;
-        _death.text = "Death " + player.CustomProperties["Death"].ToString();
-        _kills.text = "Kills " + player.CustomProperties["Kills"].ToString();
-        
+        if(player.CustomProperties.ContainsKey("Death") && player.CustomProperties.ContainsKey("Kills"))
+        {
+            _nickname.text = player.NickName;
+            _death.text = "Death " + player.CustomProperties["Death"].ToString();
+            _kills.text = "Kills " + player.CustomProperties["Kills"].ToString();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }      
     }
 }

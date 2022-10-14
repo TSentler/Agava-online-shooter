@@ -16,11 +16,10 @@ public class MatchEndScoreboard : MonoBehaviour
 
     public void OpenPanel()
     {
-        _photonView.RPC(nameof(PUN_OpenPanel), PhotonNetwork.LocalPlayer);
+        OpenPanelRPC();
     }
 
-    [PunRPC]
-    private void PUN_OpenPanel()
+    private void OpenPanelRPC()
     {
         _matchEndPanel.SetActive(true);
         MatchComplete?.Invoke();
