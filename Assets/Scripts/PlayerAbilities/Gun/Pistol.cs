@@ -1,7 +1,6 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using PlayerAbilities;
+using System;
 using UnityEngine;
 
 public class Pistol : Gun
@@ -10,7 +9,7 @@ public class Pistol : Gun
 
     public override void Shoot(Camera camera)
     {
-        if (AmmoQuanity > 0 && CanShoot)
+        if (_ammoQuanity > 0 && _canShoot)
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
@@ -20,15 +19,16 @@ public class Pistol : Gun
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
                     playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
+                    OnHit();
                 }
             }
+
             StartCoroutine(CountdownShoot());
-            AmmoQuanity--;
-            Debug.Log(AmmoQuanity);
+            _ammoQuanity--;
         }
         else
         {
-            if (AmmoQuanity == 0)
+            if (_ammoQuanity == 0 && _canShoot)
             {
                 Reload();
                 Debug.Log("Reloading");

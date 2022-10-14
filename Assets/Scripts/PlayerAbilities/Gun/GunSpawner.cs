@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))] 
-public class GunSpawner : MonoBehaviour
+[RequireComponent(typeof(SphereCollider))]
+public class GunSpawner : MonoBehaviourPun
 {
     [SerializeField] private List<Gun> _guns;
     [SerializeField] private Transform _showPoint;
@@ -32,13 +33,13 @@ public class GunSpawner : MonoBehaviour
         {
             if (other.TryGetComponent(out PlayerHand playerHand))
             {
-                playerHand.SetNewGun(_newGun);
+                playerHand.SetNewGun(_newGun.GunID);
                 _newGun.gameObject.SetActive(false);
                 _canUse = false;
                 _collider.enabled = false;
                 StartCoroutine(CountdownToSpawn());
             }
-        }      
+        }
     }
 
     private IEnumerator CountdownToSpawn()
