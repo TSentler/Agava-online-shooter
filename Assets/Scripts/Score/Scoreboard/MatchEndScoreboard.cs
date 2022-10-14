@@ -1,7 +1,8 @@
+using Network;
+using Network.UI;
 using Photon.Pun;
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,16 +11,18 @@ public class MatchEndScoreboard : MonoBehaviour
     [SerializeField] private GameObject _matchEndPanel;
     [SerializeField] private Transform _fartherPanel;
     [SerializeField] private ScoreboardItem _scoreTemplate;
-    [SerializeField] private PhotonView _photonView;
+    [SerializeField] private ConnectionCallbackCatcher _destroyGameObjects;
+    [SerializeField] private MasterClientMonitor _masterClientMonitor;
+    [SerializeField] private VersionText _versionText;
 
     public Action MatchComplete;
 
-    public void OpenPanel()
+    private void Awake()
     {
-        OpenPanelRPC();
+        _masterClientMonitor = FindObjectOfType<MasterClientMonitor>();
     }
 
-    private void OpenPanelRPC()
+    public void OpenPanel()
     {
         _matchEndPanel.SetActive(true);
         MatchComplete?.Invoke();
@@ -30,18 +33,19 @@ public class MatchEndScoreboard : MonoBehaviour
             item.Initialize(player);
         }
 
+        Cursor.lockState = CursorLockMode.None;
+        PhotonNetwork.CurrentRoom.IsOpen = false;
     }
 
     public void OnRestartButtonClick()
-    {
-        PhotonNetwork.JoinRandomOrCreateRoom();
+    {      
+        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnExitButtonClick()
     {
+        Destroy(_masterClientMonitor.gameObject);
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);
     }
-
-
 }
