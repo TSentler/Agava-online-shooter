@@ -9,33 +9,12 @@ using UnityEngine.Events;
 
 namespace Network
 {
-    public class ConnectToLobby : MonoBehaviour
+    public class ConnectToLobby : MonoBehaviourPunCallbacks
     {
         private Coroutine _joinLobbyCoroutine;
 
-        private ConnectionCallbackCatcher _connectCatcher;
-        private LobbyCallbackCatcher _lobbyCatcher;
-        
         public event UnityAction<string[]> OnRoomNamesUpdate;
-
-        private void Awake()
-        {
-            _connectCatcher = FindObjectOfType<ConnectionCallbackCatcher>();
-            _lobbyCatcher = FindObjectOfType<LobbyCallbackCatcher>();
-        }
-
-        private void OnEnable()
-        {
-            _connectCatcher.OnConnectToMaster += JoinLobby;
-            _lobbyCatcher.OnRoomsUpdate += RoomNamesUpdate;
-        }
-
-        private void OnDisable()
-        {
-            _connectCatcher.OnConnectToMaster -= JoinLobby;
-            _lobbyCatcher.OnRoomsUpdate -= RoomNamesUpdate;
-        }
-
+        
         private void JoinLobby()
         {
             if (_joinLobbyCoroutine != null)
@@ -56,7 +35,17 @@ namespace Network
             _joinLobbyCoroutine = null;
         }
 
-        private void RoomNamesUpdate(List<RoomInfo> roomList)
+        public override void OnConnectedToMaster()
+        {
+            JoinLobby();
+        }
+
+        public override void OnLeftLobby()
+        {
+            Debug.Log("left lobby");
+        }
+
+        public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
             var roomNames = (from room in roomList
                 where room.IsVisible && room.IsOpen

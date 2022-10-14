@@ -5,29 +5,20 @@ using UnityEngine.Events;
 
 namespace Network
 {
-    public class ConnectToServer : MonoBehaviour
+    public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         private Coroutine _connectCoroutine;
-        private ConnectionCallbackCatcher _connectCallback;
-        
+
+        [SerializeField] private string _version;
+
         public event UnityAction OnConnectStart, OnConnectEnd, OnDisconnect;
         
+        public string Version => _version;
+
         private void Awake()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
-            _connectCallback = FindObjectOfType<ConnectionCallbackCatcher>();
-        }
-
-        private void OnEnable()
-        {
-            _connectCallback.OnConnectToMaster += ConnectedToMasterHandler;
-            _connectCallback.OnDisconnnect += DisconnectHandler;
-        }
-
-        private void OnDisable()
-        {
-            _connectCallback.OnConnectToMaster -= ConnectedToMasterHandler;
-            _connectCallback.OnDisconnnect -= DisconnectHandler;
+            PhotonNetwork.GameVersion = _version;
         }
 
         private void Start()
@@ -45,18 +36,6 @@ namespace Network
             PhotonNetwork.ConnectUsingSettings();
         }
 
-        private void ConnectedToMasterHandler()
-        {
-            OnConnectEnd?.Invoke();
-        }
-
-        private void DisconnectHandler(DisconnectCause cause)
-        {
-            Debug.Log("Disconnect");
-            OnDisconnect?.Invoke();
-            Connect();
-        }
-        
         public void CreateOrJoin()
         {
             if (PhotonNetwork.IsConnectedAndReady)
@@ -73,6 +52,23 @@ namespace Network
         public void JoinRoom(string name)
         {
             PhotonNetwork.JoinRoom(name);
+        }
+
+        public override void OnJoinedRoom()
+        {
+            PhotonNetwork.LoadLevel("Room1");
+        }
+        
+        public override void OnConnectedToMaster()
+        {
+            OnConnectEnd?.Invoke();
+        }
+
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            Debug.Log("Disconnect");
+            OnDisconnect?.Invoke();
+            Connect();
         }
     }
 }

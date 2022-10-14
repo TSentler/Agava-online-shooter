@@ -4,24 +4,69 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 
-public class Scoreboard : MonoBehaviourPunCallbacks
+public class Scoreboard : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private ScoreboardItem _scoreItemTemplate;
     [SerializeField] private Transform _container;
     [SerializeField] private GameObject _panel;
     [SerializeField] private PhotonView _photonView;
 
-    private Dictionary<Player, ScoreboardItem> _playersScores = new Dictionary<Player, ScoreboardItem>();
+    private Dictionary<Player, ScoreboardItem> _playersSocres = new Dictionary<Player, ScoreboardItem>();
+
+    //private void Awake()
+    //{
+    //    foreach (Player player in PhotonNetwork.PlayerList)
+    //    {
+    //        AddScore(player);
+    //    }
+    //}
+
+    private void Update()
+    {
+        //if(_photonView == null)
+        //{
+        //    return;
+        //}
+
+        //Debug.Log(_photonView.IsMine);
+
+        if (_photonView.IsMine)
+        { 
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (_panel.activeSelf == false)
+                {
+                    OpenPanel();
+                }
+                else
+                {
+                    ClosePanel();
+                }
+            }
+
+        }
+    }
+
+    private void AddScore(Player player)
+    {
+        ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
+        item.Initialize(player);
+        if(_playersSocres.ContainsKey(player) == false)
+        {
+            _playersSocres.Add(player, item);
+        }       
+    }
 
     private void DeleteScore(Player player)
     {
-        Destroy(_playersScores[player]);
-        _playersScores.Remove(player);
+        _playersSocres.Remove(player);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
+        AddScore(newPlayer);
+        //_photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -30,46 +75,29 @@ public class Scoreboard : MonoBehaviourPunCallbacks
         DeleteScore(otherPlayer);
     }
 
-    public void OnTabButoonClicked()
-    {
-        if (_panel.activeSelf == false)
-        {
-            OpenPanel();
-        }
-        else
-        {
-            ClosePanel();
-        }
-
-    }
-
     private void OpenPanel()
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
-            item.Initialize(player);
-            _playersScores.Add(player, item);
+            AddScore(player);
         }
 
-        Debug.Log(PhotonNetwork.PlayerList.Length);
         _panel.SetActive(true);
     }
 
     private void ClosePanel()
     {
-        _photonView.RPC(nameof(PUN_ClosePanel), RpcTarget.AllBuffered);
-    }
-
-    [PunRPC]
-    private void PUN_ClosePanel()
-    {
-        foreach (var scrore in _playersScores)
+        foreach (var scoreItem in _playersSocres)
         {
-            Destroy(scrore.Value.gameObject);
+            Destroy(scoreItem.Value.gameObject);
         }
 
-        _playersScores.Clear();
+        _playersSocres.Clear();
         _panel.SetActive(false);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+       
     }
 }

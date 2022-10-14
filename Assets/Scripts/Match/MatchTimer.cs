@@ -7,10 +7,8 @@ using UnityEngine;
 public class MatchTimer : MonoBehaviour
 {
     [SerializeField] private float _matchTimeInSeconds;
-    [SerializeField] private MatchEndScoreboard _matchScoreboard;
 
     private TMP_Text _text;
-    private bool _isTimerStop = false;
 
     private void Awake()
     {
@@ -19,11 +17,6 @@ public class MatchTimer : MonoBehaviour
 
     private void Update()
     {
-        if(_isTimerStop == true)
-        {
-            return;
-        }
-
         if(_matchTimeInSeconds > 0)
         {
             _matchTimeInSeconds -= Time.deltaTime;
@@ -37,9 +30,8 @@ public class MatchTimer : MonoBehaviour
 
     private void GameOver()
     {
-        _matchScoreboard.OpenPanel();
-        _text.text = string.Format("{0:00}:{1:00}", 0, 00);
-        _isTimerStop = true;
+        Debug.Log("Matsh is complete");
+        _text.text = 0 + ":" + 00;
     }
 
     private void UpdateTimer()
