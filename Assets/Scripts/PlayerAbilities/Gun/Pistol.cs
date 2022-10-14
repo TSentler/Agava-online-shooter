@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerAbilities;
 using UnityEngine;
 
 public class Pistol : Gun

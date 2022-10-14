@@ -7,11 +7,8 @@ namespace Network
 {
     public class ConnectToServer : MonoBehaviour
     {
-        private readonly string _defaultSceneName = "Room1";
-        
         private Coroutine _connectCoroutine;
         private ConnectionCallbackCatcher _connectCallback;
-        private MatchmakingCallbacksCatcher _matchCallback;
         
         public event UnityAction OnConnectStart, OnConnectEnd, OnDisconnect;
         
@@ -19,21 +16,18 @@ namespace Network
         {
             PhotonNetwork.AutomaticallySyncScene = true;
             _connectCallback = FindObjectOfType<ConnectionCallbackCatcher>();
-            _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
         }
 
         private void OnEnable()
         {
             _connectCallback.OnConnectToMaster += ConnectedToMasterHandler;
             _connectCallback.OnDisconnnect += DisconnectHandler;
-            _matchCallback.OnJoinRoom += JoinRoomHandler;
         }
 
         private void OnDisable()
         {
             _connectCallback.OnConnectToMaster -= ConnectedToMasterHandler;
             _connectCallback.OnDisconnnect -= DisconnectHandler;
-            _matchCallback.OnJoinRoom -= JoinRoomHandler;
         }
 
         private void Start()
@@ -61,11 +55,6 @@ namespace Network
             Debug.Log("Disconnect");
             OnDisconnect?.Invoke();
             Connect();
-        }
-        
-        private void JoinRoomHandler()
-        {
-            PhotonNetwork.LoadLevel(_defaultSceneName);
         }
         
         public void CreateOrJoin()
