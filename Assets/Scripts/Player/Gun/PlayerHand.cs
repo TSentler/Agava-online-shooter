@@ -8,6 +8,8 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 [RequireComponent(typeof(PhotonView))]
 public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
 {
+    private readonly string _gunIDName = "GunID";
+        
     [SerializeField] private Camera _camera;
     [SerializeField] private List<Gun> _guns;
 
@@ -17,6 +19,18 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     public List<Gun> Guns => _guns;
 
     public event Action<int, int> GunChanged;
+
+    private void InitializePlayersGuns()
+    {
+        if (_photonView.IsMine)
+            return;
+        
+        var ownerProps = _photonView.Owner.CustomProperties;
+        if (ownerProps.ContainsKey(_gunIDName))
+        {
+            SetNewGun((int)ownerProps[_gunIDName]);
+        }
+    }
 
     private void Awake()
     {
@@ -28,6 +42,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         _currentGun = _guns[0];
         _currentGun.gameObject.SetActive(true);
         GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
+        InitializePlayersGuns();
     }
 
     private void Update()
@@ -52,9 +67,9 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     {
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        if (changedProps.ContainsKey("GunID") && _photonView.IsMine == false && targetPlayer == _photonView.Owner)
+        if (changedProps.ContainsKey(_gunIDName) && _photonView.IsMine == false && targetPlayer == _photonView.Owner)
         {
-            SetNewGun((int)changedProps["GunID"]);
+            SetNewGun((int)changedProps[_gunIDName]);
         }
     }
 
@@ -77,7 +92,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         {
             Hashtable hash = new Hashtable
             {
-                { "GunID", newGunId }
+                { _gunIDName, newGunId }
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
         }
