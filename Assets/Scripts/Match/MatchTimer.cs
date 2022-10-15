@@ -1,53 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TMP_Text))]
-public class MatchTimer : MonoBehaviour
+namespace Match
 {
-    [SerializeField] private float _matchTimeInSeconds;
-    [SerializeField] private MatchEndScoreboard _matchScoreboard;
-
-    private TMP_Text _text;
-    private bool _isTimerStop = false;
-
-    private void Awake()
+    [RequireComponent(typeof(TMP_Text))]
+    public class MatchTimer : MonoBehaviour
     {
-        _text = GetComponent<TMP_Text>();
-    }
+        private readonly string _pattern = "{0:00}:{1:00}";
+        
+        private TMP_Text _text;
+        private bool _isTimerStop = false;
 
-    private void Update()
-    {
-        if(_isTimerStop == true)
+        [SerializeField] private float _matchTimeInSeconds;
+        [SerializeField] private MatchEndScoreboard _matchScoreboard;
+        [SerializeField] private TimeSyncronizer _syncronizer;
+
+        private void Awake()
         {
-            return;
+            _text = GetComponent<TMP_Text>();
         }
 
-        if(_matchTimeInSeconds > 0)
+        private void Update()
         {
-            _matchTimeInSeconds -= Time.deltaTime;
-            UpdateTimer();
+            if(_isTimerStop == true)
+            {
+                return;
+            }
+
+            if(_matchTimeInSeconds > 0)
+            {
+                _matchTimeInSeconds -= Time.deltaTime;
+                UpdateTimer();
+            }
+            else
+            {
+                GameOver();
+            }
         }
-        else
+
+        private void GameOver()
         {
-            GameOver();
+            _matchScoreboard.OpenPanel();
+            _text.text = string.Format(_pattern, 0, 00);
+            _isTimerStop = true;
         }
-    }
 
-    private void GameOver()
-    {
-        _matchScoreboard.OpenPanel();
-        _text.text = string.Format("{0:00}:{1:00}", 0, 00);
-        _isTimerStop = true;
-    }
+        private void UpdateTimer()
+        {
+            int minutes = Mathf.FloorToInt(_matchTimeInSeconds / 60);
+            int seconds = Mathf.FloorToInt(_matchTimeInSeconds % 60);
 
-    private void UpdateTimer()
-    {
-        int minutes = Mathf.FloorToInt(_matchTimeInSeconds / 60);
-        int seconds = Mathf.FloorToInt(_matchTimeInSeconds % 60);
-
-        _text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
+            _text.text = string.Format(_pattern, minutes, seconds);
+        }
     }
 }
