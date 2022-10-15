@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LobyScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Room1.unity
     guid: 6deebac274461ad49b033331f3834796
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RoomCorridor.unity
     guid: 5741b0a31ade4f54d84d1b1f4094eb2d
+  - enabled: 1
+    path: Assets/Scenes/GameMapScene.unity
+    guid: 503ef68b5abdaa14b98fae2b49229aca
   m_configObjects: {}
