@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Match
         
         private TMP_Text _text;
         private bool _isTimerStop = false;
+        private float _currentTime;
 
         [SerializeField] private float _matchTimeInSeconds;
         [SerializeField] private MatchEndScoreboard _matchScoreboard;
@@ -19,6 +21,26 @@ namespace Match
         private void Awake()
         {
             _text = GetComponent<TMP_Text>();
+            _currentTime = _matchTimeInSeconds;
+            if (_syncronizer.IsReady)
+            {
+                _currentTime = _matchTimeInSeconds - _syncronizer.GetTimePassed();
+            }
+        }
+
+        private void OnEnable()
+        {
+            _syncronizer.OnTimerSync += TimerSyncHandler;
+        }
+
+        private void OnDisable()
+        {
+            _syncronizer.OnTimerSync -= TimerSyncHandler;
+        }
+
+        private void TimerSyncHandler(float passed)
+        {
+            _currentTime = _matchTimeInSeconds - passed;
         }
 
         private void Update()
@@ -28,9 +50,9 @@ namespace Match
                 return;
             }
 
-            if(_matchTimeInSeconds > 0)
+            if(_currentTime > 0)
             {
-                _matchTimeInSeconds -= Time.deltaTime;
+                _currentTime -= Time.deltaTime;
                 UpdateTimer();
             }
             else
@@ -48,8 +70,8 @@ namespace Match
 
         private void UpdateTimer()
         {
-            int minutes = Mathf.FloorToInt(_matchTimeInSeconds / 60);
-            int seconds = Mathf.FloorToInt(_matchTimeInSeconds % 60);
+            int minutes = Mathf.FloorToInt(_currentTime / 60);
+            int seconds = Mathf.FloorToInt(_currentTime % 60);
 
             _text.text = string.Format(_pattern, minutes, seconds);
         }
