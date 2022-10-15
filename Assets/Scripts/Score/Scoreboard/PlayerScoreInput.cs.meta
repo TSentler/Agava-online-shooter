@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Score/Scoreboard/PlayerScoreInput.cs.meta
+guid: edde46662b33c9a46912322fda2c87ee
+========
+guid: 9a362e123a7e85de68219c0ca4adbc62
+>>>>>>>> dev:Assets/Scripts/Network/PlayerNickNameInput.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
