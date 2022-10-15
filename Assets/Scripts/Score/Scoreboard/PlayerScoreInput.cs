@@ -19,12 +19,12 @@ public class PlayerScoreInput : MonoBehaviour
 
     private void OnEnable()
     {
-        _matchEndScoreboard.OnMatchComplete += OnMatchEnd;
+        _matchEndScoreboard.MatchComplete += OnMatchEnd;
     }
 
     private void OnDisable()
     {
-        _matchEndScoreboard.OnMatchComplete -= OnMatchEnd;
+        _matchEndScoreboard.MatchComplete -= OnMatchEnd;
     }
 
     private void Update()
