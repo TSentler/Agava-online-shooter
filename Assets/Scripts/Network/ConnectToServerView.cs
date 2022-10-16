@@ -51,14 +51,6 @@ namespace Network
             _waitPanel.SetActive(true);
         }
 
-        public void CreateRoom()
-        {
-            if (CreateRoomName == string.Empty)
-                return;
-            
-            _connectToServer.CreateRoom(CreateRoomName);
-        }
-
         private void WaitHide()
         {
             _waitPanel.SetActive(false);
@@ -75,14 +67,6 @@ namespace Network
             {
                 _join.AddOptions(roomNames.ToList());
             }
-        }
-        
-        public void JoinRoom()
-        {
-            if (JoinRoomName == string.Empty)
-                return;
-            
-            _connectToServer.JoinRoom(JoinRoomName);
         }
     }
 }

@@ -9,7 +9,8 @@ namespace PlayerAbilities
 
         private void Start()
         {
-            PhotonNetwork.Instantiate(_playerPrefab.name, transform.position,Quaternion.identity,0);
+            PhotonNetwork.Instantiate(_playerPrefab.name, transform.position,
+                Quaternion.identity, 0);
         }
     }
 }

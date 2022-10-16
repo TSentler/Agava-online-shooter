@@ -1576,9 +1576,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1363551917}
-        m_TargetAssemblyTypeName: Network.ConnectToServer, Network
-        m_MethodName: CreateOrJoin
+      - m_Target: {fileID: 1906580642}
+        m_TargetAssemblyTypeName: Levels.LevelLoader, Assembly-CSharp
+        m_MethodName: CreateOrJoinByLevelName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1868,7 +1868,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 18
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1995,6 +1995,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880116029}
   m_CullTransparentMesh: 1
+--- !u!114 &1906580642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 232012871910015206, guid: aa6c3bd48a4c33b2891bf1cf01c80b7e, type: 3}
+  m_PrefabInstance: {fileID: 232012872455432159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b8fbaa461b78575b4342e5147efe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1921600466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +2093,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 30.35
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
