@@ -18,24 +18,24 @@ namespace PlayerAbilities
             Spawn();
         }
 
-        public void SpawnPlayer(GameObject player)
+        public void SpawnPlayer(GameObject player, PhotonView photonView)
         {
-            StartCoroutine(SpawnWithCooldown(player));
+            StartCoroutine(SpawnWithCooldown(player, photonView));
         }
 
-        private IEnumerator SpawnWithCooldown(GameObject player)
+        private IEnumerator SpawnWithCooldown(GameObject player, PhotonView photonView)
         {
             yield return new WaitForSeconds(_cooldown);
 
-            Spawn(player);
+            Spawn(player,photonView);
         }
 
-        private void Spawn(GameObject player)
+        private void Spawn(GameObject player, PhotonView photonView)
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
             player.transform.position = _spawnPoints[spawnId].position;
             this.player = player;
-            _photonView.RPC(nameof(EnablePlayerRPC), RpcTarget.AllBuffered);
+            photonView.RPC("EnablePlayerRPC", RpcTarget.AllBuffered);
         }
 
         private void Spawn()
@@ -44,11 +44,6 @@ namespace PlayerAbilities
             PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
         }
 
-        [PunRPC]
-        private void EnablePlayerRPC()
-        {
-            player.SetActive(true);
-            player = null;
-        }
+      
     }
 }
