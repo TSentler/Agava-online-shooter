@@ -9,7 +9,6 @@ namespace PlayerAbilities
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private float _cooldown;
-        [SerializeField] private PhotonView _photonView;
 
         private void Start()
         {
@@ -31,7 +30,7 @@ namespace PlayerAbilities
         private void Spawn()
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
-            PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0, new object[] { _photonView.ViewID });
+            PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
         }
     }
 }
