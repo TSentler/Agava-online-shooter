@@ -51,8 +51,8 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -62,7 +62,7 @@ ModelImporter:
       events: []
       transformMask: []
       maskType: 3
-      maskSource: {instanceID: 0}
+      maskSource: {fileID: 31900000, guid: 812c5b29d92c9e34db09c3841db93f2c, type: 2}
       additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
