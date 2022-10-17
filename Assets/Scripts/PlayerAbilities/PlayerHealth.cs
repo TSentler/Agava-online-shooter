@@ -67,12 +67,16 @@ namespace PlayerAbilities
                     int kills = (int)player.CustomProperties["Kills"] + 1;
                     Debug.Log(kills);
                     player.SetCustomProperties(new Hashtable() { { "Kills", kills } });
-                    _spawner.SpawnPlayer();
-                    //gameObject.SetActive(false);
-                    PhotonNetwork.Destroy(gameObject);
-                    Debug.Log("Устрой дестрой");
+                    _spawner.SpawnPlayer(gameObject);
+                    _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
                 }
             }
+        }
+
+        [PunRPC]
+        private void DisableObjectRPC()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
