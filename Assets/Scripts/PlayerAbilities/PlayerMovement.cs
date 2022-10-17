@@ -8,7 +8,9 @@ namespace PlayerAbilities
         typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour 
     {
-        private const string RunAnimation = "IsRun";
+        private readonly string _isRunName = "IsRun",
+            _inputForwardName = "InputForward",
+            _inpurRightName = "InputRight";
     
         private Animator _animator;
         private PhotonView _photonView;
@@ -33,13 +35,15 @@ namespace PlayerAbilities
             var distance = direction * _speed * Time.deltaTime;
             _characterController.Move(distance);
             var isRun = direction != Vector3.zero;
-            _animator.SetBool(RunAnimation, isRun);
+            _animator.SetBool(_isRunName, isRun);
         }
 
         private Vector3 GetDirection()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
+            _animator.SetFloat(_inputForwardName, verticalInput);
+            _animator.SetFloat(_inpurRightName, horizontalInput);
 
             Vector3 moveDirectionForward = transform.forward * verticalInput;
             Vector3 moveDirectionSide = transform.right * horizontalInput;
