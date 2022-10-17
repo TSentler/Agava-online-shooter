@@ -1,6 +1,7 @@
 using System;
 using Network;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace Levels
@@ -9,6 +10,7 @@ namespace Levels
     {
         Room1, RoomCorridor, GameMapScene
     }
+    
     public class LevelLoader : MonoBehaviour
     {
         private MatchmakingCallbacksCatcher _matchCallback;
@@ -22,17 +24,41 @@ namespace Levels
 
         private void OnEnable()
         {
-            _matchCallback.OnJoinRoom += JoinRoomHandler;
+            _matchCallback.OnCreateRoom += CreateRoomHandler;
         }
 
         private void OnDisable()
         {
-            _matchCallback.OnJoinRoom += JoinRoomHandler;
+            _matchCallback.OnCreateRoom += CreateRoomHandler;
         }
 
-        private void JoinRoomHandler()
+        private void CreateRoomHandler()
         {
             PhotonNetwork.LoadLevel(_levelName.ToString());
+        }
+        
+        public void CreateOrJoinRandom()
+        {
+            if (PhotonNetwork.IsConnectedAndReady)
+            {
+                PhotonNetwork.JoinRandomOrCreateRoom();
+            }
+        }
+
+        public void CreateOrJoinByLevelName()
+        {
+            PhotonNetwork.JoinOrCreateRoom(
+                _levelName.ToString(), null, null);
+        }
+
+        public void CreateRoom(string name)
+        {
+            PhotonNetwork.CreateRoom(name);
+        }
+
+        public void JoinRoom(string name)
+        {
+            PhotonNetwork.JoinRoom(name);
         }
     }
 }

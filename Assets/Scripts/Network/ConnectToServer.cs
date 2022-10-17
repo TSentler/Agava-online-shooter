@@ -56,23 +56,5 @@ namespace Network
             OnDisconnect?.Invoke();
             Connect();
         }
-        
-        public void CreateOrJoin()
-        {
-            if (PhotonNetwork.IsConnectedAndReady)
-            {
-                PhotonNetwork.JoinRandomOrCreateRoom();
-            }
-        }
-        
-        public void CreateRoom(string name)
-        {
-            PhotonNetwork.CreateRoom(name);
-        }
-
-        public void JoinRoom(string name)
-        {
-            PhotonNetwork.JoinRoom(name);
-        }
     }
 }
