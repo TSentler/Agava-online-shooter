@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
+using System.Linq;
 
 public class Scoreboard : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,7 @@ public class Scoreboard : MonoBehaviourPunCallbacks
     [SerializeField] private PhotonView _photonView;
 
     private Dictionary<Player, ScoreboardItem> _playersScores = new Dictionary<Player, ScoreboardItem>();
+    private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
 
     private void DeleteScore(Player player)
     {
@@ -47,22 +49,23 @@ public class Scoreboard : MonoBehaviourPunCallbacks
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
-            item.Initialize(player);
-            _playersScores.Add(player, item);
+            _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
         }
 
-        Debug.Log(PhotonNetwork.PlayerList.Length);
+        var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
+
+        foreach(var score in scoreSort)
+        {
+            ScoreboardItem item = Instantiate(_scoreItemTemplate, _container);
+            item.Initialize(score.Key);
+            _playersScores.Add(score.Key, item);
+        }
+
+        _sortedScores.Clear();
         _panel.SetActive(true);
     }
 
     private void ClosePanel()
-    {
-        _photonView.RPC(nameof(PUN_ClosePanel), RpcTarget.AllBuffered);
-    }
-
-    [PunRPC]
-    private void PUN_ClosePanel()
     {
         foreach (var scrore in _playersScores)
         {

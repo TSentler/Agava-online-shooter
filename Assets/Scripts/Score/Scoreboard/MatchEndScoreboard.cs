@@ -1,7 +1,10 @@
 using Network;
 using Network.UI;
 using Photon.Pun;
+using Photon.Realtime;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -12,6 +15,8 @@ public class MatchEndScoreboard : MonoBehaviour
     [SerializeField] private Transform _fartherPanel;
     [SerializeField] private ScoreboardItem _scoreTemplate;
     [SerializeField] private MasterClientMonitor _masterClientMonitor;
+
+    private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
 
     public Action MatchComplete;
 
@@ -27,8 +32,17 @@ public class MatchEndScoreboard : MonoBehaviour
 
         foreach (var player in PhotonNetwork.PlayerList)
         {
+            _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
+            //ScoreboardItem item = Instantiate(_scoreTemplate, _fartherPanel);
+            //item.Initialize(player);
+        }
+
+        var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
+
+        foreach (var score in scoreSort)
+        {
             ScoreboardItem item = Instantiate(_scoreTemplate, _fartherPanel);
-            item.Initialize(player);
+            item.Initialize(score.Key);
         }
 
         Cursor.lockState = CursorLockMode.None;
