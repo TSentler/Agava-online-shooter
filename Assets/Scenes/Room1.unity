@@ -2222,7 +2222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.246, y: 0.113000005}
   m_AnchorMax: {x: 0.762484, y: 0.91322273}
-  m_AnchoredPosition: {x: -0.49996185, y: 0.18326187}
+  m_AnchoredPosition: {x: -0.49995422, y: 0.18325806}
   m_SizeDelta: {x: 1.4344025, y: 1.6334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339092519
@@ -4868,7 +4868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.418, y: 0.933}
   m_AnchorMax: {x: 0.5824897, y: 1}
-  m_AnchoredPosition: {x: -0.5000305, y: -0.2210083}
+  m_AnchoredPosition: {x: -0.5000305, y: -0.22094727}
   m_SizeDelta: {x: 0.8541, y: 0.44179916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698298656
@@ -11020,6 +11020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Buildings_Block_1x1_01P
       objectReference: {fileID: 0}
+    - target: {fileID: 1570628789228942, guid: baebdd3b26f756b4c8f1b2d2efe1cf42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4883762814713038, guid: baebdd3b26f756b4c8f1b2d2efe1cf42, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11499,7 +11503,7 @@ MonoBehaviour:
   _guns:
   - {fileID: 1818218866}
   _showPoint: {fileID: 769438586}
-  _timerToSpawn: 10
+  _timerToSpawn: 30
 --- !u!135 &1748089162
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11522,7 +11526,7 @@ BoxCollider:
   m_GameObject: {fileID: 1748089160}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -11533,7 +11537,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748089160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -11584,7 +11588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748089160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 615.9, y: 0.372, z: 43.6}
+  m_LocalPosition: {x: 625.294, y: 0.614, z: -1.239}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
