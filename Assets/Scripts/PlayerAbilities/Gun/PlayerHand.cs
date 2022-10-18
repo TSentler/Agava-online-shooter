@@ -49,7 +49,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (_photonView.IsMine)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 _currentGun.Shoot(_camera);
             }
