@@ -2532,9 +2532,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47613a14a59c51735a67cd34acdbdbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _target: {fileID: 4293400744924587772}
   _aim: {fileID: 4686838738266558756}
   _weight: 1
+  _angleLimit: 0
   _humanBones:
   - _bone: 7
     _weight: 0.499
@@ -2546,7 +2548,6 @@ MonoBehaviour:
     _weight: 1
   - _bone: 11
     _weight: 0
-  _angleLimit: 0
 --- !u!114 &3389891058885670733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,15 +2576,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47613a14a59c51735a67cd34acdbdbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _target: {fileID: 4293400744924587772}
   _aim: {fileID: 4686838739370544142}
   _weight: 1
+  _angleLimit: 0
   _humanBones:
   - _bone: 9
     _weight: 0.07
   - _bone: 10
     _weight: 0.023
-  _angleLimit: 0
 --- !u!114 &2970092501173082836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,7 +3271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouseSensetivity: 100
   _playerBody: {fileID: 7926811385654605929}
-  _phoronViev: {fileID: 5537214694185517777}
+  _photonView: {fileID: 0}
 --- !u!81 &8614249962759582677
 AudioListener:
   m_ObjectHideFlags: 0

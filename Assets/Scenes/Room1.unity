@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10683,7 +10683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0c30f0bbc9b6a4aa3ec78416a8ef09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 7926811385654240329, guid: 58b0d8c977a52de43b6a5154890caf72, type: 3}
+  _playerPrefab: {fileID: 7926811385654240329, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
   _spawnPoints:
   - {fileID: 894012224}
   - {fileID: 1613374176}
@@ -13997,6 +13997,10 @@ PrefabInstance:
     - target: {fileID: 7926811385654605929, guid: 58b0d8c977a52de43b6a5154890caf72, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173070946487019343, guid: 58b0d8c977a52de43b6a5154890caf72, type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58b0d8c977a52de43b6a5154890caf72, type: 3}
