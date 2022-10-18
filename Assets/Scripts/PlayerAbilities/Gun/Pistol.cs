@@ -35,8 +35,11 @@ public class Pistol : Gun
             {
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
-                    playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
-                    OnHit();
+                    if(playerHealth.PhotonView.IsMine == false)
+                    {
+                        playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
+                        OnHit();
+                    }                 
                 }
             }
 
