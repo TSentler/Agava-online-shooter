@@ -1,3 +1,4 @@
+using Photon.Pun;
 using PlayerAbilities;
 using System;
 using System.Collections;
@@ -10,6 +11,9 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private protected int _maxAmmo;
     [SerializeField] private protected int _id;
     [SerializeField] protected MouseLook MouseLook;
+    [SerializeField] protected AudioSource ShootSound;
+    [SerializeField] protected PhotonView PhotonView;
+    [SerializeField] protected Camera Camera;
 
     private protected int _ammoQuanity;
     private protected bool _canShoot = true;

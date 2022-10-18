@@ -11,10 +11,25 @@ public class Rifle : Gun
     [SerializeField] private ParticleSystem _shootParticle;
     [SerializeField] private float _recoilForce;
 
+    private void FixedUpdate()
+    {
+        if (PhotonView.IsMine)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                Shoot(Camera);
+            }
+        }
+    }
+
     public override void Shoot(Camera camera)
     {
         _shootParticle.Play();
         MouseLook.Shoot(_recoilForce);
+        if(ShootSound.isPlaying == false)
+        {
+            ShootSound.Play();
+        }       
 
         if (_ammoQuanity > 0 && _canShoot)
         {

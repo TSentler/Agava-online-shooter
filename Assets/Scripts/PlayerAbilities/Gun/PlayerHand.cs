@@ -50,20 +50,20 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (_photonView.IsMine)
         {
-            if(_currentGun is Rifle)
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    _currentGun.Shoot(_camera);
-                }
-            }
-            else if(_currentGun is Pistol)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    _currentGun.Shoot(_camera);
-                }
-            }
+            //if(_currentGun is Rifle)
+            //{
+                //if (Input.GetMouseButton(0))
+                //{
+                //    _currentGun.Shoot(_camera);
+                //}
+            //}
+            //else if(_currentGun is Pistol)
+            //{
+            //    if (Input.GetMouseButtonDown(0))
+            //    {
+            //        _currentGun.Shoot(_camera);
+            //    }
+            //}
            
 
             if (Input.GetKeyDown(KeyCode.R))

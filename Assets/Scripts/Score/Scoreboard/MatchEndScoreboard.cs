@@ -33,8 +33,6 @@ public class MatchEndScoreboard : MonoBehaviour
         foreach (var player in PhotonNetwork.PlayerList)
         {
             _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
-            //ScoreboardItem item = Instantiate(_scoreTemplate, _fartherPanel);
-            //item.Initialize(player);
         }
 
         var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
