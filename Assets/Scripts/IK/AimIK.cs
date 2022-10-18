@@ -11,25 +11,23 @@ public class HumanBone
     public float Weight => _weight;
 }
 
-[RequireComponent(typeof(Animator))]
 public class AimIK : MonoBehaviour
 {
     private float _iterations = 10f;
     private Transform[] _boneTransforms;
 
+    [SerializeField] private Animator _animator;
     [SerializeField] private Transform _target, _aim;
     [Range(0f,1f), SerializeField] private float _weight = 1f;
-    [SerializeField] private HumanBone[] _humanBones;
-
     [SerializeField] private float _angleLimit = 60f;
+    [SerializeField] private HumanBone[] _humanBones;
 
     private void Start()
     {
-        Animator animator = GetComponent<Animator>();
         _boneTransforms = new Transform[_humanBones.Length];
         for (int i = 0; i < _boneTransforms.Length; i++)
         {
-            _boneTransforms[i] = animator.GetBoneTransform(
+            _boneTransforms[i] = _animator.GetBoneTransform(
                 _humanBones[i].Bone);
         }
     }
