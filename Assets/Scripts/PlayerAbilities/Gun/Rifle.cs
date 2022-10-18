@@ -9,10 +9,12 @@ public class Rifle : Gun
 {
     [SerializeField] private float _damage;
     [SerializeField] private ParticleSystem _shootParticle;
+    [SerializeField] private float _recoilForce;
 
     public override void Shoot(Camera camera)
     {
         _shootParticle.Play();
+        MouseLook.Shoot(_recoilForce);
 
         if (_ammoQuanity > 0 && _canShoot)
         {
