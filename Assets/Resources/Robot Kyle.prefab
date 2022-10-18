@@ -2285,7 +2285,7 @@ MonoBehaviour:
     Name: Aim
   - Type: 4
     SynchronizeType: 0
-    Name: IsRiffle
+    Name: IsRifle
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
