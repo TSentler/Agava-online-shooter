@@ -1277,6 +1277,7 @@ GameObject:
   - component: {fileID: 5769570461929580650}
   - component: {fileID: 5769570461929580651}
   - component: {fileID: 4391770532931410501}
+  - component: {fileID: 8717959275081263759}
   - component: {fileID: 5769570461929580660}
   m_Layer: 0
   m_Name: AnimationPreseters
@@ -1327,6 +1328,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7926811385661495177}
+--- !u!114 &8717959275081263759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769570461929580649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5095717df16e81a418f14f93b46c230f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7926811385661495177}
+  _playerHand: {fileID: 6293996175980194239}
 --- !u!114 &5769570461929580660
 MonoBehaviour:
   m_ObjectHideFlags: 0

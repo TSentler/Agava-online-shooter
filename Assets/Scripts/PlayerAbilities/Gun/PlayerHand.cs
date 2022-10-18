@@ -15,8 +15,9 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
 
     private PhotonView _photonView;
     private Gun _currentGun;
-
+    
     public List<Gun> Guns => _guns;
+    public int CurrentGunId => _currentGun.GunID;
 
     public event Action<int, int> GunChanged;
 
