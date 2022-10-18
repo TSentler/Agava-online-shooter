@@ -178,6 +178,9 @@ GameObject:
   - component: {fileID: 1434967795738213991}
   - component: {fileID: 7010119427126354313}
   - component: {fileID: 4287688855794036566}
+  - component: {fileID: 6253211760978591474}
+  - component: {fileID: 1505393906803427882}
+  - component: {fileID: 881337773486486564}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -270,8 +273,50 @@ MonoBehaviour:
   _delayReload: 3
   _maxAmmo: 30
   _id: 1
+  MouseLook: {fileID: 0}
   _damage: 25
   _shootParticle: {fileID: 8628655397621975261}
+--- !u!114 &6253211760978591474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661725807252065663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fba2dcffd41d4f4c90a42526ba00649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 1505393906803427882}
+--- !u!114 &1505393906803427882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661725807252065663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7663498789c0dd545986a9983011c556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _offset: {x: 0, y: 0, z: 0}
+--- !u!114 &881337773486486564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661725807252065663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fcc0d1d560cba46a90df309b798398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!1 &7780794092134275094
 GameObject:
   m_ObjectHideFlags: 0
