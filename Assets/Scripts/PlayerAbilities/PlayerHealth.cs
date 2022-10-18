@@ -82,6 +82,7 @@ namespace PlayerAbilities
         public void EnablePlayerRPC()
         {
             gameObject.SetActive(true);
+            _currentHealth = _maxHealth;
         }
     }
 }
