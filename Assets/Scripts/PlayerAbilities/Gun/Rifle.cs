@@ -9,7 +9,8 @@ public class Rifle : Gun
 {
     [SerializeField] private float _damage;
     [SerializeField] private ParticleSystem _shootParticle;
-    [SerializeField] private float _recoilForce;
+    [SerializeField] private float _recoilForceX;
+    [SerializeField] private float _recoilForceY;
 
     private void FixedUpdate()
     {
@@ -23,15 +24,12 @@ public class Rifle : Gun
     }
 
     public override void Shoot(Camera camera)
-    {   
+    {
         if (_ammoQuanity > 0 && _canShoot)
         {
             _shootParticle.Play();
-            MouseLook.Shoot(_recoilForce);
-            if (ShootSound.isPlaying == false)
-            {
-                ShootSound.Play();
-            }
+            MouseLook.Shoot(_recoilForceX, _recoilForceY);
+            ShootSound.Play();
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
