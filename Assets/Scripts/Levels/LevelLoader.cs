@@ -8,7 +8,7 @@ namespace Levels
 {
     public enum LevelNames
     {
-        Room1, RoomCorridor
+        Room1, RoomCorridor, GameMapScene
     }
     
     public class LevelLoader : MonoBehaviour

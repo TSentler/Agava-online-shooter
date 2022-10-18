@@ -5,11 +5,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
-{
+public class ScoreboardItem : MonoBehaviour 
+{ 
     [SerializeField] private TMP_Text _nickname;
     [SerializeField] private TMP_Text _death;
     [SerializeField] private TMP_Text _kills;
+
+    private int _killsCount;
+
+    public int KillsCount => _killsCount;
 
     public void Initialize(Player player)
     {
@@ -20,7 +24,8 @@ public class ScoreboardItem : MonoBehaviour/*, IPunObservable*/
         {
             _nickname.text = player.NickName;
             _death.text = "Death " + player.CustomProperties["Death"].ToString();
-            _kills.text = "Kills " + player.CustomProperties["Kills"].ToString();
+            _killsCount = (int)player.CustomProperties["Kills"];
+            _kills.text = "Kills " + _killsCount;
         }
         else
         {

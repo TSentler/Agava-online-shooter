@@ -6,9 +6,12 @@ using UnityEngine;
 public class Pistol : Gun
 {
     [SerializeField] private float _damage;
+    [SerializeField] private ParticleSystem _shootParticle;
 
     public override void Shoot(Camera camera)
     {
+        _shootParticle.Play();
+
         if (_ammoQuanity > 0 && _canShoot)
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));

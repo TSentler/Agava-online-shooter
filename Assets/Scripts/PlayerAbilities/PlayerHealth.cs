@@ -14,6 +14,7 @@ namespace PlayerAbilities
 
         private int _kills;
         private int _deaths;
+        private PlayerSpawner _spawner;
 
         public int Deaths => _deaths;
         private int Kills => _kills;
@@ -32,6 +33,7 @@ namespace PlayerAbilities
             _kills = 0;
             PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Kills", _kills } });
+            _spawner = FindObjectOfType<PlayerSpawner>();
         }
 
         public void ApplyDamage(float damage, Player player)
@@ -65,10 +67,22 @@ namespace PlayerAbilities
                     int kills = (int)player.CustomProperties["Kills"] + 1;
                     Debug.Log(kills);
                     player.SetCustomProperties(new Hashtable() { { "Kills", kills } });
-                    PhotonNetwork.Destroy(gameObject);
-                    Debug.Log("Устрой дестрой");
+                    _spawner.SpawnPlayer(gameObject, _photonView);
+                    _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
                 }
             }
+        }
+
+        [PunRPC]
+        private void DisableObjectRPC()
+        {
+            gameObject.SetActive(false);
+        }
+
+        [PunRPC]
+        public void EnablePlayerRPC()
+        {
+            gameObject.SetActive(true);
         }
     }
 }
