@@ -13,8 +13,6 @@ namespace PlayerAbilities
         [SerializeField] private Transform _playerBody;
         [SerializeField] private PhotonView _photonView;
 
-        private bool _isShoot = false;
-
         public event UnityAction<float> OnLookChange;
 
         private void Awake()
@@ -33,37 +31,29 @@ namespace PlayerAbilities
             {
                 var sensetivityFactor = _mouseSensetivity * Time.deltaTime;
                 float mouseX = Input.GetAxis("Mouse X") * sensetivityFactor;
-                float mouseY;
-                if (_isShoot == true)
+                float mouseY = Input.GetAxis("Mouse Y") * sensetivityFactor;
+
+                if (mouseX != 0 || mouseY !=0)
                 {
-                    mouseY = 0.01f;
-                }
-                else
-                {
-                    mouseY = Input.GetAxis("Mouse Y") * sensetivityFactor;
-                }
-
-
-                _xRotation -= mouseY;
-                _xRotation = Mathf.Clamp(_xRotation, -80, 80);
-
-                transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
-
-                _playerBody.Rotate(Vector3.up * mouseX);
-                OnLookChange?.Invoke(_xRotation);
+                    MouseMove(mouseX, mouseY);
+                }                
             }
         }
 
-        public void Shoot(Vector3 recoilForce)
+        public void Shoot(float rifleRecoil)
         {
-            _isShoot = true;
-            StartCoroutine(CantShootWithDelay());
+            MouseMove(0, rifleRecoil);
         }
 
-        private IEnumerator CantShootWithDelay()
+        private void MouseMove(float mouseX,float mouseY)
         {
-            yield return new WaitForSeconds(1f);
-            _isShoot = false;
+            _xRotation -= mouseY;
+            _xRotation = Mathf.Clamp(_xRotation, -80, 80);
+
+            transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
+
+            _playerBody.Rotate(Vector3.up * mouseX);
+            OnLookChange?.Invoke(_xRotation);
         }
     }
 }

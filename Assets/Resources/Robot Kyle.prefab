@@ -2268,6 +2268,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 0
     Name: Aim
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsRiffle
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2794,6 +2797,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5447716539562165773}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _recoilForce
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce.x
       value: 1
       objectReference: {fileID: 0}
@@ -2846,6 +2853,10 @@ PrefabInstance:
       propertyPath: MouseLook
       value: 
       objectReference: {fileID: 5447716539562165773}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _recoilForce
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6661725807252065663, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: m_Name
       value: Rifle
