@@ -23,16 +23,16 @@ public class Rifle : Gun
     }
 
     public override void Shoot(Camera camera)
-    {
-        _shootParticle.Play();
-        MouseLook.Shoot(_recoilForce);
-        if(ShootSound.isPlaying == false)
-        {
-            ShootSound.Play();
-        }       
-
+    {   
         if (_ammoQuanity > 0 && _canShoot)
         {
+            _shootParticle.Play();
+            MouseLook.Shoot(_recoilForce);
+            if (ShootSound.isPlaying == false)
+            {
+                ShootSound.Play();
+            }
+
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
 

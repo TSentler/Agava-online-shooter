@@ -3012,7 +3012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensetivity: 100
+  _mouseSensetivity: 50
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
 --- !u!81 &8614249962759582677
@@ -3163,7 +3163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _delayPerShoot
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce.x
@@ -3232,7 +3232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _delayPerShoot
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6661725807252065663, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: m_Name
