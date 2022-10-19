@@ -275,9 +275,14 @@ MonoBehaviour:
   _id: 1
   MouseLook: {fileID: 0}
   ShootSound: {fileID: 8628655397643762177}
+  PhotonView: {fileID: 0}
+  Camera: {fileID: 0}
   _damage: 25
   _shootParticle: {fileID: 8628655397621975261}
-  _recoilForce: 0
+  _recoilForceXMax: 0.3
+  _recoilForceYMax: 0.4
+  _recoilForceXMin: -0.3
+  _recoilForceYMin: 0.2
 --- !u!114 &6253211760978591474
 MonoBehaviour:
   m_ObjectHideFlags: 0

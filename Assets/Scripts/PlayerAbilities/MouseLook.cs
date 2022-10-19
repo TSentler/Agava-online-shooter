@@ -40,11 +40,11 @@ namespace PlayerAbilities
             }
         }
 
-        public void Shoot(float rifleRecoilX, float rifleRecoilY)
+        public void Shoot(float rifleRecoilXMin,float rifleRecoilYMin,float rifleRecoilXMax, float rifleRecoilYMax)
         {
             var sensetivityFactor = _mouseSensetivity * Time.deltaTime;
-            float mouseX = Random.Range(0.2f, rifleRecoilX) * sensetivityFactor;
-            float mouseY = Random.Range(0.3f, rifleRecoilY) * sensetivityFactor;
+            float mouseX = Random.Range(rifleRecoilXMax, rifleRecoilXMax) * sensetivityFactor;
+            float mouseY = Random.Range(rifleRecoilYMin, rifleRecoilYMax) * sensetivityFactor;
             MouseMove(mouseX, mouseY);
         }
 

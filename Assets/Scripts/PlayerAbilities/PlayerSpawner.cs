@@ -9,9 +9,6 @@ namespace PlayerAbilities
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private float _cooldown;
-        [SerializeField] private PhotonView _photonView;
-
-        private GameObject player;
 
         private void Start()
         {
@@ -34,7 +31,6 @@ namespace PlayerAbilities
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
             player.transform.position = _spawnPoints[spawnId].position;
-            this.player = player;
             photonView.RPC("EnablePlayerRPC", RpcTarget.AllBuffered);
         }
 
@@ -43,7 +39,5 @@ namespace PlayerAbilities
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
             PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
         }
-
-      
     }
 }
