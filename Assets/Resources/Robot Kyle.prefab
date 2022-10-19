@@ -1539,6 +1539,7 @@ GameObject:
   - component: {fileID: 5769570461929580650}
   - component: {fileID: 5769570461929580651}
   - component: {fileID: 4391770532931410501}
+  - component: {fileID: 7153070083620742640}
   - component: {fileID: 8717959275081263759}
   - component: {fileID: 5769570461929580660}
   m_Layer: 0
@@ -1590,6 +1591,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7926811385661495177}
+--- !u!114 &7153070083620742640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769570461929580649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f5f7ebec427d746b7517a97ea0a3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7926811385661495177}
+  _jump: {fileID: 3767252098253925617}
 --- !u!114 &8717959275081263759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2409,6 +2424,7 @@ GameObject:
   - component: {fileID: 5341021899399798420}
   - component: {fileID: 5896622498498545743}
   - component: {fileID: 7015599807556905031}
+  - component: {fileID: 3767252098253925617}
   - component: {fileID: -2751316611523236927}
   - component: {fileID: 6293996175980194239}
   - component: {fileID: 1224378625664512931}
@@ -2511,6 +2527,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 12
+--- !u!114 &3767252098253925617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926811385654240329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0051cb1e53382ff47bb2c7d46e003cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gravity: -0.8
+  _jumpSpeed: 15
 --- !u!114 &-2751316611523236927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,6 +2654,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: IsRifle
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsAir
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

@@ -759,25 +759,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4123060437320824320, guid: cc6aaa486b609cd41ace5da07e735e6a, type: 3}
   m_PrefabInstance: {fileID: 224698199}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &228741971 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7926811385654240329, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-  m_PrefabInstance: {fileID: 1292113025}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &228741984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228741971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0051cb1e53382ff47bb2c7d46e003cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravity: -0.8
-  _jumpSpeed: 15
 --- !u!1 &315774030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,6 +2838,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4442677503806368, guid: 7cba3508c71084d4d877dd172c76a321, type: 3}
   m_PrefabInstance: {fileID: 1245191488}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1261107054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1298564101098286733, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298564101098286733, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537214694185517777, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951247189429996054, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654240329, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_Name
+      value: Robot Kyle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 621.0293
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.099999666
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.371913
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926811385654605929, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
 --- !u!1 &1261359453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,79 +3070,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4483658618797090, guid: f750d5f061e724f4c827ab6b376e2550, type: 3}
   m_PrefabInstance: {fileID: 1290113858}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1292113025
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1298564101098286733, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298564101098286733, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537214694185517777, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: sceneViewId
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6951247189429996054, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: sceneViewId
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654240329, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_Name
-      value: Robot Kyle TempJump
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 621.0293
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.099999666
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.371913
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926811385654605929, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9591e87f38d6ff043b13a34027928424, type: 3}
 --- !u!1 &1316725101
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,7 +4092,6 @@ MonoBehaviour:
   _playerPrefab: {fileID: 7926811385654240329, guid: 58b0d8c977a52de43b6a5154890caf72, type: 3}
   _spawnPoints: []
   _cooldown: 0
-  _photonView: {fileID: 0}
 --- !u!4 &1682034947
 Transform:
   m_ObjectHideFlags: 0
@@ -5517,8 +5497,10 @@ MonoBehaviour:
   Camera: {fileID: 0}
   _damage: 0
   _shootParticle: {fileID: 0}
-  _recoilForceX: 0
-  _recoilForceY: 0
+  _recoilForceXMax: 0
+  _recoilForceYMax: 0
+  _recoilForceXMin: 0
+  _recoilForceYMin: 0
 --- !u!23 &2125579065013424307
 MeshRenderer:
   m_ObjectHideFlags: 0
