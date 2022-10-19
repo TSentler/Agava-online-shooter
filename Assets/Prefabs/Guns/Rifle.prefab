@@ -281,8 +281,8 @@ MonoBehaviour:
   _shootParticle: {fileID: 8628655397621975261}
   _recoilForceXMax: 0.3
   _recoilForceYMax: 0.6
-  _recoilForceXMin: -0.3
-  _recoilForceYMin: 0.4
+  _recoilForceXMin: -0.4
+  _recoilForceYMin: 0.5
 --- !u!114 &6253211760978591474
 MonoBehaviour:
   m_ObjectHideFlags: 0
