@@ -25,7 +25,6 @@ namespace Levels
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
             _roomOptions = new RoomOptions();
             _roomOptions.MaxPlayers = _maxPlayersCount;
-            _roomOptions.CleanupCacheOnLeave = true;
         }
 
         private void OnEnable()
