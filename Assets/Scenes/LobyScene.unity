@@ -2812,7 +2812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 232012871910015206, guid: aa6c3bd48a4c33b2891bf1cf01c80b7e, type: 3}
       propertyPath: _maxPlayersCount
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 232012871910015207, guid: aa6c3bd48a4c33b2891bf1cf01c80b7e, type: 3}
       propertyPath: m_RootOrder

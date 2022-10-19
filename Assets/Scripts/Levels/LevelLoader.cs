@@ -17,10 +17,14 @@ namespace Levels
         [SerializeField] private byte _maxPlayersCount;
 
         private MatchmakingCallbacksCatcher _matchCallback;
-        
+        private RoomOptions _roomOptions;
+
+
         private void Awake()
         {
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
+            _roomOptions = new RoomOptions();
+            _roomOptions.MaxPlayers = _maxPlayersCount;
         }
 
         private void OnEnable()
@@ -35,10 +39,7 @@ namespace Levels
 
         private void CreateRoomHandler()
         {
-            RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = _maxPlayersCount;
-            CreateOrJoinByLevelName(roomOptions);
-            //PhotonNetwork.LoadLevel(_levelName.ToString());
+            PhotonNetwork.LoadLevel(_levelName.ToString());
         }
         
         public void CreateOrJoinRandom()
@@ -49,10 +50,10 @@ namespace Levels
             }
         }
 
-        public void CreateOrJoinByLevelName(RoomOptions roomOptions)
+        public void CreateOrJoinByLevelName()
         {
             PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), roomOptions, null);
+                _levelName.ToString(), _roomOptions, null);
         }
 
         public void CreateRoom(string name)
