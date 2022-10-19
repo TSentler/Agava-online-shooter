@@ -8,14 +8,15 @@ namespace Levels
 {
     public enum LevelNames
     {
-        Room1, RoomCorridor, GameMapScene
+        Room1, RoomCorridor, GameMapScene, LargeLevelScene
     }
     
     public class LevelLoader : MonoBehaviour
     {
-        private MatchmakingCallbacksCatcher _matchCallback;
-
         [SerializeField] private LevelNames _levelName;
+        [SerializeField] private byte _maxPlayersCount;
+
+        private MatchmakingCallbacksCatcher _matchCallback;
         
         private void Awake()
         {
@@ -34,7 +35,10 @@ namespace Levels
 
         private void CreateRoomHandler()
         {
-            PhotonNetwork.LoadLevel(_levelName.ToString());
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.MaxPlayers = _maxPlayersCount;
+            CreateOrJoinByLevelName(roomOptions);
+            //PhotonNetwork.LoadLevel(_levelName.ToString());
         }
         
         public void CreateOrJoinRandom()
@@ -45,10 +49,10 @@ namespace Levels
             }
         }
 
-        public void CreateOrJoinByLevelName()
+        public void CreateOrJoinByLevelName(RoomOptions roomOptions)
         {
             PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), null, null);
+                _levelName.ToString(), roomOptions, null);
         }
 
         public void CreateRoom(string name)
