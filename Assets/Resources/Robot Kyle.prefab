@@ -245,8 +245,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2148679848634825569}
+  - component: {fileID: 1357233888927676749}
   m_Layer: 5
-  m_Name: Group_Player_Info
+  m_Name: PlayerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,6 +274,21 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: -0.1550293}
   m_SizeDelta: {x: -3.1240234, y: -0.5999756}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1357233888927676749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976864219982382322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d44bc41fa7a5a74097744b61b9360ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealth: {fileID: -2751316611523236927}
+  _slider: {fileID: 7394797581818694469}
+  _photonView: {fileID: 5537214694185517777}
 --- !u!1 &1052759915948278453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,6 +2640,7 @@ MonoBehaviour:
   - {fileID: 6293996175980194239}
   - {fileID: 4234827552636008570}
   - {fileID: 1444142722729072756}
+  - {fileID: 1357233888927676749}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2656,7 +2673,7 @@ MonoBehaviour:
     Name: IsRifle
   - Type: 4
     SynchronizeType: 0
-    Name: IsAir
+    Name: IsGround
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -3187,10 +3204,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5447716539562165773}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
-      propertyPath: PhotonView
-      value: 
-      objectReference: {fileID: 5537214694185517777}
-    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce
       value: 0.5
       objectReference: {fileID: 0}
@@ -3263,10 +3276,6 @@ PrefabInstance:
       propertyPath: MouseLook
       value: 
       objectReference: {fileID: 5447716539562165773}
-    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
-      propertyPath: PhotonView
-      value: 
-      objectReference: {fileID: 5537214694185517777}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForce
       value: 0.3

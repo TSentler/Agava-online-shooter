@@ -4,12 +4,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(PhotonView))]
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] private protected float _delayPerShoot;
     [SerializeField] private protected float _delayReload;
     [SerializeField] private protected int _maxAmmo;
-    [SerializeField] private protected int _id;
+    [SerializeField] protected int Id;
+    [SerializeField] protected GameObject BulletHoleTemplate;
     [SerializeField] protected MouseLook MouseLook;
     [SerializeField] protected AudioSource ShootSound;
     [SerializeField] protected PhotonView PhotonView;
@@ -18,9 +20,13 @@ public abstract class Gun : MonoBehaviour
     private protected int _ammoQuanity;
     private protected bool _canShoot = true;
 
+    private const float _radiusSphereCollider = 0.3f;
+    private const float _timeToDestroyBullet = 2f;
+    private const float _stepToSpawnPosition = 0.001f;
+
     public int MaxAmmo => _maxAmmo;
     public int AmmoQuanity => _ammoQuanity;
-    public int GunID => _id;
+    public int GunID => Id;
 
     public event Action Hit;
 
@@ -55,5 +61,20 @@ public abstract class Gun : MonoBehaviour
         yield return new WaitForSeconds(_delayReload);
         _canShoot = true;
         _ammoQuanity = _maxAmmo;
+    }
+
+    [PunRPC]
+    private protected void ShootRpc(Vector3 hitPosition, Vector3 hitNormal)
+    {
+        Collider[] colliders = Physics.OverlapSphere(hitPosition, _radiusSphereCollider);
+
+        Quaternion rotation = Quaternion.LookRotation(hitNormal, Vector3.up) * BulletHoleTemplate.transform.rotation;
+
+        if (colliders.Length != 0)
+        {
+            var bulletHole = Instantiate(BulletHoleTemplate, hitPosition + hitNormal * _stepToSpawnPosition, rotation);
+            bulletHole.transform.SetParent(colliders[0].transform);
+            Destroy(bulletHole, _timeToDestroyBullet);
+        }
     }
 }

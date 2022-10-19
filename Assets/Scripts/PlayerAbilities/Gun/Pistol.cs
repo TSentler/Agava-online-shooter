@@ -36,6 +36,8 @@ public class Pistol : Gun
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
+
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
                     if(playerHealth.PhotonView.IsMine == false)

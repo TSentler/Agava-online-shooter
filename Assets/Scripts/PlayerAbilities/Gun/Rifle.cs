@@ -16,13 +16,16 @@ public class Rifle : Gun
 
     private void FixedUpdate()
     {
-        if (PhotonView.IsMine)
+        if(PhotonView != null)
         {
-            if (Input.GetMouseButton(0))
+            if (PhotonView.IsMine)
             {
-                Shoot(Camera);
+                if (Input.GetMouseButton(0))
+                {
+                    Shoot(Camera);
+                }
             }
-        }
+        }       
     }
 
     public override void Shoot(Camera camera)
@@ -38,6 +41,8 @@ public class Rifle : Gun
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
+
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
                     if (playerHealth.PhotonView.IsMine == false)
