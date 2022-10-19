@@ -25,6 +25,7 @@ namespace Levels
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
             _roomOptions = new RoomOptions();
             _roomOptions.MaxPlayers = _maxPlayersCount;
+            PhotonNetwork.AutomaticallySyncScene = true;
         }
 
         private void OnEnable()

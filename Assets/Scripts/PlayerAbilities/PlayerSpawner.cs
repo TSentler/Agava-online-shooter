@@ -1,4 +1,6 @@
 using Photon.Pun;
+using Photon.Realtime;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -29,15 +31,35 @@ namespace PlayerAbilities
 
         private void Spawn(GameObject player, PhotonView photonView)
         {
-            int spawnId = Random.Range(0, _spawnPoints.Length - 1);
+            int spawnId = UnityEngine.Random.Range(0, _spawnPoints.Length - 1);
             player.transform.position = _spawnPoints[spawnId].position;
             photonView.RPC("EnablePlayerRPC", RpcTarget.AllBuffered);
         }
 
         private void Spawn()
         {
-            int spawnId = Random.Range(0, _spawnPoints.Length - 1);
-            PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
+            int spawnId = UnityEngine.Random.Range(0, _spawnPoints.Length - 1);
+            var spawnPlayer = PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
+           
         }
+
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            base.OnPlayerLeftRoom(otherPlayer);
+            PhotonNetwork.DestroyPlayerObjects(otherPlayer);
+        }
+
+        public override void OnLeftRoom()
+        {
+            base.OnLeftRoom();
+            Debug.Log(222222);
+        }
+
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            base.OnDisconnected(cause);
+        }
+
+        //public override void OnPhotonPlayer
     }
 }
