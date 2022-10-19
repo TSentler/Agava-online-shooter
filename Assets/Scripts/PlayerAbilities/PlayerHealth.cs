@@ -9,18 +9,17 @@ namespace PlayerAbilities
 {
     public class PlayerHealth : MonoBehaviour, IPunObservable
     {
-        [SerializeField] private float _health;
+        [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
 
         private int _kills;
         private int _deaths;
+        private float _currentHealth;
         private PlayerSpawner _spawner;
 
-        public int Deaths => _deaths;
-        private int Kills => _kills;
-        public float Health => _health;
+        public PhotonView PhotonView => _photonView;
 
-        public UnityAction<float> ChangeHealth;
+        public UnityAction<float, float> ChangeHealth;
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -34,6 +33,8 @@ namespace PlayerAbilities
             PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
+            _currentHealth = _maxHealth;
+            ChangeHealth?.Invoke(_currentHealth, _maxHealth);
         }
 
         public void ApplyDamage(float damage, Player player)
@@ -57,10 +58,10 @@ namespace PlayerAbilities
 
             if (_photonView.IsMine)
             {
-                _health -= damage;
-                ChangeHealth?.Invoke(_health);
+                _currentHealth -= damage;
+                ChangeHealth?.Invoke(_currentHealth, _maxHealth);
 
-                if (_health <= 0)
+                if (_currentHealth <= 0)
                 {
                     _deaths++;
                     PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
@@ -83,6 +84,7 @@ namespace PlayerAbilities
         public void EnablePlayerRPC()
         {
             gameObject.SetActive(true);
+            _currentHealth = _maxHealth;
         }
     }
 }

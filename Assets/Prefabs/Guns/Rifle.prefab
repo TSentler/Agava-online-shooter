@@ -274,8 +274,10 @@ MonoBehaviour:
   _maxAmmo: 30
   _id: 1
   MouseLook: {fileID: 0}
+  ShootSound: {fileID: 8628655397643762177}
   _damage: 25
   _shootParticle: {fileID: 8628655397621975261}
+  _recoilForce: 0
 --- !u!114 &6253211760978591474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +457,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8247018, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19801142, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -497,5 +503,10 @@ ParticleSystem:
 --- !u!4 &8628655397641339117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 437254, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+  m_PrefabInstance: {fileID: 8628655397641514219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8628655397643762177 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8247018, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
   m_PrefabInstance: {fileID: 8628655397641514219}
   m_PrefabAsset: {fileID: 0}

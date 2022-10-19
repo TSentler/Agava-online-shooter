@@ -7,15 +7,28 @@ public class Pistol : Gun
 {
     [SerializeField] private float _damage;
     [SerializeField] private ParticleSystem _shootParticle;
-    [SerializeField] private float _recoilForce;
+    [SerializeField] private float _recoilForceX;
+    [SerializeField] private float _recoilForceY;
+
+    private void Update()
+    {
+        if (PhotonView.IsMine)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot(Camera);
+            }
+        }
+    }
 
     public override void Shoot(Camera camera)
     {
-        _shootParticle.Play();
-        MouseLook.Shoot(_recoilForce);
-
         if (_ammoQuanity > 0 && _canShoot)
         {
+            _shootParticle.Play();
+            MouseLook.Shoot(_recoilForceX, _recoilForceY);
+            ShootSound.Play();
+
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
 
@@ -23,8 +36,11 @@ public class Pistol : Gun
             {
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
-                    playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
-                    OnHit();
+                    if(playerHealth.PhotonView.IsMine == false)
+                    {
+                        playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
+                        OnHit();
+                    }                 
                 }
             }
 
