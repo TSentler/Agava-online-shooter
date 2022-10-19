@@ -5420,9 +5420,13 @@ MonoBehaviour:
   _maxAmmo: 0
   _id: 0
   MouseLook: {fileID: 0}
+  ShootSound: {fileID: 0}
+  PhotonView: {fileID: 0}
+  Camera: {fileID: 0}
   _damage: 0
   _shootParticle: {fileID: 0}
-  _recoilForce: 0
+  _recoilForceX: 0
+  _recoilForceY: 0
 --- !u!23 &2125579065013424307
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5472,13 +5476,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1298564101098286733, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298564101098286733, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5537214694185517777, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
       propertyPath: sceneViewId
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6951247189429996054, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
       propertyPath: sceneViewId
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7926811385654240329, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
       propertyPath: m_Name
