@@ -10,6 +10,7 @@ namespace PlayerAbilities
         private float _xRotation;
 
         [SerializeField] private float _mouseSensetivity;
+        [SerializeField] private Camera _camera;
         [SerializeField] private Transform _playerBody;
         [SerializeField] private PhotonView _photonView;
 
@@ -21,7 +22,7 @@ namespace PlayerAbilities
 
             if (_photonView.IsMine == false)
             {
-                gameObject.SetActive(false);
+                _camera.gameObject.SetActive(false);
             }
         }
 

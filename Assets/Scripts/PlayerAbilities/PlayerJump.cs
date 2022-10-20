@@ -38,8 +38,8 @@ namespace PlayerAbilities
             if (IsGround)
             {
                 GroundedNowCheck();
-                _character.stepOffset = _stepOffset;
                 _ySpeed = 0f;
+                _character.stepOffset = _stepOffset;
                 if (Input.GetButtonDown("Jump"))
                 {
                     _ySpeed = _jumpSpeed;

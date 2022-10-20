@@ -1,23 +1,23 @@
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PlayerAbilities
 {
     [RequireComponent(typeof(PhotonView),
-        typeof(Animator),
         typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour 
     {
-        private Animator _animator;
         private PhotonView _photonView;
-        private CharacterController _characterController;
+        private CharacterController _character;
 
         [SerializeField] private float _speed;
 
+        public event UnityAction<Vector3> DirectionChanged;
+        
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
-            _characterController = GetComponent<CharacterController>();
+            _character = GetComponent<CharacterController>();
             _photonView = GetComponent<PhotonView>();
             _photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
         }
@@ -26,19 +26,27 @@ namespace PlayerAbilities
         {
             if (_photonView.IsMine == false)
                 return;
-            
-            var direction = GetDirection();
-            var distance = direction * _speed * Time.deltaTime;
-            _characterController.Move(distance);
+
+            var inputDirection = GetInputDirection();
+            var moveDirection = GetMoveDirection(inputDirection);
+            var distance = moveDirection * _speed;
+            _character.SimpleMove(distance);
+            DirectionChanged?.Invoke(inputDirection);
         }
 
-        private Vector3 GetDirection()
+        private Vector3 GetInputDirection()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            Vector3 moveDirectionForward = transform.forward * verticalInput;
-            Vector3 moveDirectionSide = transform.right * horizontalInput;
+            return Vector3.right * horizontalInput + 
+                   Vector3.forward * verticalInput;
+        }
+        
+        private Vector3 GetMoveDirection(Vector3 inputDirection)
+        {
+            Vector3 moveDirectionForward = transform.forward * inputDirection.z;
+            Vector3 moveDirectionSide = transform.right * inputDirection.x;
 
             return (moveDirectionForward + moveDirectionSide).normalized;
         }
