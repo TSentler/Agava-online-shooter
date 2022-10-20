@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerScoreInput : MonoBehaviour
 {
     [SerializeField] private PhotonView _photonView;
+    [SerializeField] private GameObject _playerHealth;
 
     private MatchEndScoreboard _matchEndScoreboard;
     private Scoreboard _scoreboard;
@@ -41,5 +42,6 @@ public class PlayerScoreInput : MonoBehaviour
     private void OnMatchEnd()
     {
         GetComponent<PlayerScoreInput>().enabled = false;
+        _playerHealth.SetActive(false);
     }
 }

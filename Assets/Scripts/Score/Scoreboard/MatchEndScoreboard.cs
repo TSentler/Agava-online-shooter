@@ -49,13 +49,15 @@ public class MatchEndScoreboard : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
-        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Restart");
+        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);   
     }
 
     public void OnExitButtonClick()
     {
+        Debug.Log("Exit");
         Destroy(_masterClientMonitor.gameObject);
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);       
     }
 }
