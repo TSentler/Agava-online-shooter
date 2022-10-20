@@ -40,9 +40,7 @@ public class Rifle : Gun
             ray.origin = camera.transform.position;
 
             if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
-
+            {            
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
                     if (playerHealth.PhotonView.IsMine == false)
@@ -51,7 +49,12 @@ public class Rifle : Gun
                         OnHit();
                     }
                 }
+                else
+                {
+                    PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
+                }
             }
+
             StartCoroutine(CountdownShoot());
             _ammoQuanity--;
         }

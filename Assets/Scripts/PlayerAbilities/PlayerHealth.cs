@@ -53,7 +53,7 @@ namespace PlayerAbilities
         {
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
-            
+            _damagebleHit.gameObject.SetActive(false);
         }
 
         public void ApplyDamage(float damage, Player player)

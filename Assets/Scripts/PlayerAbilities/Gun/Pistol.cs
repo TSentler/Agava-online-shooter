@@ -35,9 +35,7 @@ public class Pistol : Gun
             ray.origin = camera.transform.position;
 
             if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
-
+            {                
                 if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 {
                     if(playerHealth.PhotonView.IsMine == false)
@@ -45,6 +43,10 @@ public class Pistol : Gun
                         playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
                         OnHit();
                     }                 
+                }
+                else
+                {
+                    PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
                 }
             }
 
