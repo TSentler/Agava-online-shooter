@@ -11125,6 +11125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1978608455121702401, guid: 088d4952eca7623439aad183827195c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374949119785585001, guid: 088d4952eca7623439aad183827195c3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11173,7 +11177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunSpawner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3751982740553231229, guid: 088d4952eca7623439aad183827195c3, type: 3}
+    - {fileID: 3228702344943736179, guid: 088d4952eca7623439aad183827195c3, type: 3}
+    - {fileID: 8516972456482725797, guid: 088d4952eca7623439aad183827195c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 088d4952eca7623439aad183827195c3, type: 3}
 --- !u!1001 &1524207029
 PrefabInstance:

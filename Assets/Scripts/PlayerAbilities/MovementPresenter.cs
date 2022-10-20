@@ -10,13 +10,22 @@ namespace PlayerAbilities
             _rightName = Animator.StringToHash("InputRight");
 
         [SerializeField] private Animator _animator;
+        [SerializeField] private PlayerMovement _movement;
 
-        private void Update()
+        private void OnEnable()
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            _animator.SetFloat(_forwardName, verticalInput);
-            _animator.SetFloat(_rightName, horizontalInput);
+            _movement.DirectionChanged += OnDirectionChange;
+        }
+
+        private void OnDisable()
+        {
+            _movement.DirectionChanged -= OnDirectionChange;
+        }
+
+        private void OnDirectionChange(Vector3 direction)
+        {
+            _animator.SetFloat(_forwardName, direction.z);
+            _animator.SetFloat(_rightName, direction.x);
         }
     }
 }

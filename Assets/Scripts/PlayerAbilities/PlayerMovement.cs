@@ -1,22 +1,22 @@
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PlayerAbilities
 {
     [RequireComponent(typeof(PhotonView),
-        typeof(Animator),
         typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour 
     {
-        private Animator _animator;
         private PhotonView _photonView;
         private CharacterController _characterController;
 
         [SerializeField] private float _speed;
 
+        public event UnityAction<Vector3> DirectionChanged;
+        
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
             _characterController = GetComponent<CharacterController>();
             _photonView = GetComponent<PhotonView>();
             _photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
@@ -30,6 +30,7 @@ namespace PlayerAbilities
             var direction = GetDirection();
             var distance = direction * _speed * Time.deltaTime;
             _characterController.Move(distance);
+            DirectionChanged?.Invoke(direction);
         }
 
         private Vector3 GetDirection()

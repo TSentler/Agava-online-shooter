@@ -1,4 +1,5 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
 
 [Serializable]
@@ -11,10 +12,12 @@ public class HumanBone
     public float Weight => _weight;
 }
 
+[RequireComponent(typeof(PhotonView))]
 public class AimIK : MonoBehaviour
 {
     private float _iterations = 10f;
     private Transform[] _boneTransforms;
+    private PhotonView _photonView;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _target, _aim;
@@ -48,6 +51,12 @@ public class AimIK : MonoBehaviour
     }
 
     private void LateUpdate()
+    {
+        RotateBones();
+    }
+    
+    
+    private void RotateBones()
     {
         var targetPosition = GetTargetPosition();
         for (int i = 0; i < _iterations; i++)
