@@ -39,8 +39,7 @@ namespace PlayerAbilities
         private void Spawn()
         {
             int spawnId = UnityEngine.Random.Range(0, _spawnPoints.Length - 1);
-            var spawnPlayer = PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
-           
+            var spawnPlayer = PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);         
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -54,12 +53,5 @@ namespace PlayerAbilities
             base.OnLeftRoom();
             Debug.Log(222222);
         }
-
-        public override void OnDisconnected(DisconnectCause cause)
-        {
-            base.OnDisconnected(cause);
-        }
-
-        //public override void OnPhotonPlayer
     }
 }
