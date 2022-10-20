@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 6253211760978591474}
   - component: {fileID: 1505393906803427882}
   - component: {fileID: 881337773486486564}
+  - component: {fileID: 7776387471629809854}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -272,10 +273,11 @@ MonoBehaviour:
   _delayPerShoot: 0.1
   _delayReload: 3
   _maxAmmo: 30
-  _id: 1
+  Id: 1
+  BulletHoleTemplate: {fileID: 6764196036257495169, guid: e49f9a5e36d92aa45951f7e28cbca2d8, type: 3}
   MouseLook: {fileID: 0}
   ShootSound: {fileID: 8628655397643762177}
-  PhotonView: {fileID: 0}
+  PhotonView: {fileID: 7776387471629809854}
   Camera: {fileID: 0}
   _damage: 25
   _shootParticle: {fileID: 8628655397621975261}
@@ -324,6 +326,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _offset: {x: 0, y: 0, z: 0}
+--- !u!114 &7776387471629809854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661725807252065663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7780794092134275094
 GameObject:
   m_ObjectHideFlags: 0
