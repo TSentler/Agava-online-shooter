@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
@@ -11,6 +12,7 @@ namespace PlayerAbilities
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
+        [SerializeField] private DamagebleHit _hitEffect;
 
         private int _kills;
         private int _deaths;
@@ -40,9 +42,10 @@ namespace PlayerAbilities
         {
             _deaths = 0;
             _kills = 0;
-            PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
-            PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Kills", _kills } });
+            PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
+            PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
+            _hitEffect = FindObjectOfType<DamagebleHit>();
         }
 
         private void OnEnable()
@@ -78,11 +81,12 @@ namespace PlayerAbilities
                 if (_currentHealth <= 0)
                 {
                     _deaths++;
-                    PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
+                    PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
                     int kills = (int)player.CustomProperties["Kills"] + 1;
                     Debug.Log(kills);
-                    player.SetCustomProperties(new Hashtable() { { "Kills", kills } });
+                    player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
                     _spawner.SpawnPlayer(this);
+                    _hitEffect.gameObject.SetActive(true);
                 }
             }
         }
@@ -97,6 +101,12 @@ namespace PlayerAbilities
         private void EnableObjectRPC()
         {
             gameObject.SetActive(true);
+        }
+
+        private IEnumerator DamageEffectDissableWithCooldown()
+        {
+            yield return new WaitForSeconds(1f);
+            _hitEffect.gameObject.SetActive(false);
         }
     }
 }
