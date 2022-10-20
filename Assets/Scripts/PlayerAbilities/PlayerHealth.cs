@@ -26,6 +26,16 @@ namespace PlayerAbilities
 
         }
 
+        public void EnableObject()
+        {
+            _photonView.RPC(nameof(EnableObjectRPC), RpcTarget.AllBuffered);
+        }
+        
+        public void DisableObject()
+        {
+            _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
+        }
+
         private void Awake()
         {
             _deaths = 0;
@@ -33,6 +43,10 @@ namespace PlayerAbilities
             PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
+        }
+
+        private void OnEnable()
+        {
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
         }
@@ -68,8 +82,7 @@ namespace PlayerAbilities
                     int kills = (int)player.CustomProperties["Kills"] + 1;
                     Debug.Log(kills);
                     player.SetCustomProperties(new Hashtable() { { "Kills", kills } });
-                    _spawner.SpawnPlayer(gameObject, _photonView);
-                    _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
+                    _spawner.SpawnPlayer(this);
                 }
             }
         }
@@ -81,10 +94,9 @@ namespace PlayerAbilities
         }
 
         [PunRPC]
-        public void EnablePlayerRPC()
+        private void EnableObjectRPC()
         {
             gameObject.SetActive(true);
-            _currentHealth = _maxHealth;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PlayerAbilities
 {
-    public class PlayerSpawner : MonoBehaviourPunCallbacks
+    public class PlayerSpawner : MonoBehaviour
     {
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform[] _spawnPoints;
@@ -15,29 +15,31 @@ namespace PlayerAbilities
             Spawn();
         }
 
-        public void SpawnPlayer(GameObject player, PhotonView photonView)
+        public void SpawnPlayer(PlayerHealth player)
         {
-            StartCoroutine(SpawnWithCooldown(player, photonView));
+            player.DisableObject();
+            StartCoroutine(SpawnWithCooldown(player));
         }
 
-        private IEnumerator SpawnWithCooldown(GameObject player, PhotonView photonView)
+        private IEnumerator SpawnWithCooldown(PlayerHealth player)
         {
             yield return new WaitForSeconds(_cooldown);
 
-            Spawn(player,photonView);
+            Spawn(player);
         }
 
-        private void Spawn(GameObject player, PhotonView photonView)
+        private void Spawn(PlayerHealth player)
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
             player.transform.position = _spawnPoints[spawnId].position;
-            photonView.RPC("EnablePlayerRPC", RpcTarget.AllBuffered);
+            player.EnableObject();
         }
 
         private void Spawn()
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
-            PhotonNetwork.Instantiate(_playerPrefab.name, _spawnPoints[spawnId].position, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(_playerPrefab.name, 
+                _spawnPoints[spawnId].position, Quaternion.identity, 0);
         }
     }
 }

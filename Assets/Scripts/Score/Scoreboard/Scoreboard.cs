@@ -17,8 +17,11 @@ public class Scoreboard : MonoBehaviourPunCallbacks
 
     private void DeleteScore(Player player)
     {
-        Destroy(_playersScores[player]);
-        _playersScores.Remove(player);
+        if (_playersScores.ContainsKey(player))
+        {
+            Destroy(_playersScores[player]);
+            _playersScores.Remove(player);
+        }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

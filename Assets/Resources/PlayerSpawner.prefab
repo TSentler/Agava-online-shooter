@@ -148,7 +148,6 @@ MonoBehaviour:
   - {fileID: 1310459651031804858}
   - {fileID: 1310459651684713739}
   _cooldown: 3
-  _photonView: {fileID: 0}
 --- !u!1 &1310459652501921236
 GameObject:
   m_ObjectHideFlags: 0

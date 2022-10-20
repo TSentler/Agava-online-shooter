@@ -1,4 +1,3 @@
-using System;
 using Network;
 using Photon.Pun;
 using Photon.Realtime;
@@ -19,12 +18,12 @@ namespace Levels
         private MatchmakingCallbacksCatcher _matchCallback;
         private RoomOptions _roomOptions;
 
-
         private void Awake()
         {
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
             _roomOptions = new RoomOptions();
             _roomOptions.MaxPlayers = _maxPlayersCount;
+            _roomOptions.CleanupCacheOnLeave = true;
         }
 
         private void OnEnable()
@@ -53,7 +52,7 @@ namespace Levels
         public void CreateOrJoinByLevelName()
         {
             PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), _roomOptions, null);
+                _levelName.ToString(), null, TypedLobby.Default);
         }
 
         public void CreateRoom(string name)
