@@ -43,19 +43,17 @@ public class MatchEndScoreboard : MonoBehaviour
             item.Initialize(score.Key);
         }
 
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         PhotonNetwork.CurrentRoom.IsOpen = false;
     }
 
     public void OnRestartButtonClick()
     {
-        Debug.Log("Restart");
         PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);   
     }
 
     public void OnExitButtonClick()
     {
-        Debug.Log("Exit");
         Destroy(_masterClientMonitor.gameObject);
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);       

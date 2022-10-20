@@ -13550,6 +13550,7 @@ GameObject:
   - component: {fileID: 1948885934}
   - component: {fileID: 1948885933}
   - component: {fileID: 1948885932}
+  - component: {fileID: 1948885935}
   m_Layer: 5
   m_Name: LeaveRoom
   m_TagString: Untagged
@@ -13622,9 +13623,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MatchMaiking, Assembly-CSharp
-        m_MethodName: OnLeaveButtonClick
+      - m_Target: {fileID: 1213080524}
+        m_TargetAssemblyTypeName: MatchEndScoreboard, Score
+        m_MethodName: OnExitButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13672,6 +13673,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948885930}
   m_CullTransparentMesh: 1
+--- !u!114 &1948885935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948885930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf09f2dc5f56a7b4fa583f6d77bc4dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1964933771
 PrefabInstance:
   m_ObjectHideFlags: 0
