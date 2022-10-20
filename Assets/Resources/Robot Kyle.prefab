@@ -1558,6 +1558,7 @@ GameObject:
   - component: {fileID: 7153070083620742640}
   - component: {fileID: 8717959275081263759}
   - component: {fileID: 5769570461929580660}
+  - component: {fileID: 638247422090261933}
   m_Layer: 0
   m_Name: AnimationPreseters
   m_TagString: Untagged
@@ -1607,6 +1608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7926811385661495177}
+  _movement: {fileID: 7015599807556905031}
 --- !u!114 &7153070083620742640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1665,28 @@ MonoBehaviour:
     _weight: 0
   - _bone: 11
     _weight: 0
+--- !u!114 &638247422090261933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769570461929580649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5769570462044029524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _photonView: {fileID: 5537214694185517777}
+  _damagebleHit: {fileID: 0}
 --- !u!114 &6293996175980194239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,6 +3088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseSensetivity: 50
+  _camera: {fileID: 8626187333435406068}
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
 --- !u!81 &8614249962759582677
@@ -3277,6 +3303,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5447716539562165773}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: PhotonView
+      value: 
+      objectReference: {fileID: 6685545792480748572}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForce
       value: 0.3
       objectReference: {fileID: 0}
@@ -3362,3 +3392,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8557972948085238072, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
   m_PrefabInstance: {fileID: 4067976722115134384}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6685545792480748572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7256300915141322668, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+  m_PrefabInstance: {fileID: 4067976722115134384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7050,6 +7050,7 @@ GameObject:
   - component: {fileID: 962601185}
   - component: {fileID: 962601187}
   - component: {fileID: 962601186}
+  - component: {fileID: 962601188}
   m_Layer: 5
   m_Name: Damagable
   m_TagString: Untagged
@@ -7115,6 +7116,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962601184}
   m_CullTransparentMesh: 1
+--- !u!114 &962601188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962601184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726b27b3d18da6d478d7c0440ede818b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1003663052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9961,6 +9974,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4963943503134346, guid: c779e092331d4e64bbb3f86815f17dab, type: 3}
   m_PrefabInstance: {fileID: 1359824486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1378872514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1978608455121702401, guid: 088d4952eca7623439aad183827195c3, type: 3}
+  m_PrefabInstance: {fileID: 1509911052}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc142be1f51f094093d6b607ed17daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1386539751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11250,9 +11274,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2374949119785585006, guid: 088d4952eca7623439aad183827195c3, type: 3}
+      propertyPath: _guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1378872514}
     - target: {fileID: 2374949119785585007, guid: 088d4952eca7623439aad183827195c3, type: 3}
       propertyPath: m_Name
       value: GunSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412979926550108649, guid: 088d4952eca7623439aad183827195c3, type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3751982740553231229, guid: 088d4952eca7623439aad183827195c3, type: 3}

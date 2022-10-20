@@ -12,7 +12,7 @@ namespace PlayerAbilities
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
-        [SerializeField] private DamagebleHit _hitEffect;
+        [SerializeField] private DamagebleHit _damagebleHit;
 
         private int _kills;
         private int _deaths;
@@ -32,7 +32,7 @@ namespace PlayerAbilities
         {
             _photonView.RPC(nameof(EnableObjectRPC), RpcTarget.AllBuffered);
         }
-        
+
         public void DisableObject()
         {
             _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
@@ -45,18 +45,20 @@ namespace PlayerAbilities
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
-            _hitEffect = FindObjectOfType<DamagebleHit>();
+            _damagebleHit = FindObjectOfType<DamagebleHit>();
+            _damagebleHit.gameObject.SetActive(false);
         }
 
         private void OnEnable()
         {
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
+            
         }
 
         public void ApplyDamage(float damage, Player player)
         {
-            object[] rpcParametrs = new object[2] { damage, player};
+            object[] rpcParametrs = new object[2] { damage, player };
             _photonView.RPC(nameof(ApplyDamageRPC), RpcTarget.All, rpcParametrs);
         }
 
@@ -77,6 +79,8 @@ namespace PlayerAbilities
             {
                 _currentHealth -= damage;
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
+                _damagebleHit.gameObject.SetActive(true);
+                StartCoroutine(DestroyEffectWithDelay());
 
                 if (_currentHealth <= 0)
                 {
@@ -85,8 +89,7 @@ namespace PlayerAbilities
                     int kills = (int)player.CustomProperties["Kills"] + 1;
                     Debug.Log(kills);
                     player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
-                    _spawner.SpawnPlayer(this);
-                    _hitEffect.gameObject.SetActive(true);
+                    _spawner.SpawnPlayer(this);                  
                 }
             }
         }
@@ -103,10 +106,10 @@ namespace PlayerAbilities
             gameObject.SetActive(true);
         }
 
-        private IEnumerator DamageEffectDissableWithCooldown()
+        private IEnumerator DestroyEffectWithDelay()
         {
             yield return new WaitForSeconds(1f);
-            _hitEffect.gameObject.SetActive(false);
+            _damagebleHit.gameObject.SetActive(false);
         }
     }
 }

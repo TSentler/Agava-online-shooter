@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(PhotonView))]
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] private protected float _delayPerShoot;

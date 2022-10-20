@@ -38,7 +38,7 @@ namespace PlayerAbilities
         private void Spawn()
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
-            PhotonNetwork.Instantiate(_playerPrefab.name, 
+            PhotonNetwork.Instantiate(_playerPrefab.name,
                 _spawnPoints[spawnId].position, Quaternion.identity, 0);
         }
     }

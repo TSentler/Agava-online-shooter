@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 6253211760978591474}
   - component: {fileID: 1505393906803427882}
   - component: {fileID: 881337773486486564}
-  - component: {fileID: 7776387471629809854}
+  - component: {fileID: 7256300915141322668}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -277,7 +277,7 @@ MonoBehaviour:
   BulletHoleTemplate: {fileID: 6764196036257495169, guid: e49f9a5e36d92aa45951f7e28cbca2d8, type: 3}
   MouseLook: {fileID: 0}
   ShootSound: {fileID: 8628655397643762177}
-  PhotonView: {fileID: 7776387471629809854}
+  PhotonView: {fileID: 7256300915141322668}
   Camera: {fileID: 0}
   _damage: 25
   _shootParticle: {fileID: 8628655397621975261}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _offset: {x: 0, y: 0, z: 0}
---- !u!114 &7776387471629809854
+--- !u!114 &7256300915141322668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
