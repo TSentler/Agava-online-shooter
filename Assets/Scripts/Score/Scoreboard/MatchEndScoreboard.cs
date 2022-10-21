@@ -43,7 +43,7 @@ public class MatchEndScoreboard : MonoBehaviour
             item.Initialize(score.Key);
         }
 
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         PhotonNetwork.CurrentRoom.IsOpen = false;
     }
 

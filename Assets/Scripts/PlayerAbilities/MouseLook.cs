@@ -18,7 +18,7 @@ namespace PlayerAbilities
 
         private void Awake()
         {
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
 
             if (_photonView.IsMine == false)
             {
