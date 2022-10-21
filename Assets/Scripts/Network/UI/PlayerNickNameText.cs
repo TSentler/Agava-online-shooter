@@ -23,6 +23,7 @@ public class PlayerNickNameText : MonoBehaviour
         if (_view.IsMine)
         {
             _text.text = PhotonNetwork.NickName;
+            gameObject.SetActive(false);
         }
         else
         {
