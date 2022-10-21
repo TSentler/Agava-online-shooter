@@ -1,6 +1,7 @@
 using Network;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Levels
@@ -9,8 +10,8 @@ namespace Levels
     {
         Room1, RoomCorridor, GameMapScene, LargeLevelScene
     }
-    
-    public class LevelLoader : MonoBehaviour
+
+    public class LevelLoader : MonoBehaviour, IMatchmakingCallbacks
     {
         [SerializeField] private LevelNames _levelName;
         [SerializeField] private byte _maxPlayersCount;
@@ -40,7 +41,7 @@ namespace Levels
         {
             PhotonNetwork.LoadLevel(_levelName.ToString());
         }
-        
+
         public void CreateOrJoinRandom()
         {
             if (PhotonNetwork.IsConnectedAndReady)
@@ -51,8 +52,7 @@ namespace Levels
 
         public void CreateOrJoinByLevelName()
         {
-            PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), null, TypedLobby.Default);
+            PhotonNetwork.JoinOrCreateRoom(_levelName.ToString(),_roomOptions,TypedLobby.Default);
         }
 
         public void CreateRoom(string name)
@@ -63,6 +63,43 @@ namespace Levels
         public void JoinRoom(string name)
         {
             PhotonNetwork.JoinRoom(name);
+        }
+
+        public void OnFriendListUpdate(List<FriendInfo> friendList)
+        {
+           
+        }
+
+        public void OnCreatedRoom()
+        {
+            Debug.Log("Created");
+        }
+
+        public void OnCreateRoomFailed(short returnCode, string message)
+        {
+            Debug.Log("Create Room failed");
+        }
+
+        public void OnJoinedRoom()
+        {
+            Debug.Log("Join Room");
+        }
+
+        public void OnJoinRoomFailed(short returnCode, string message)
+        {
+            PhotonNetwork.CreateRoom(_levelName.ToString(), _roomOptions);
+            Debug.Log(1);
+        }
+
+        public void OnJoinRandomFailed(short returnCode, string message)
+        {
+            PhotonNetwork.CreateRoom(_levelName.ToString(), _roomOptions);
+            Debug.Log(2);
+        }
+
+        public void OnLeftRoom()
+        {
+            Debug.Log("Lefr room");
         }
     }
 }

@@ -45,6 +45,7 @@ public class MatchEndScoreboard : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
     }
 
     public void OnRestartButtonClick()
