@@ -752,6 +752,51 @@ Transform:
   m_Father: {fileID: 5013480299283339086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2321580658741460710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4039599939020958733}
+  - component: {fileID: 5628754549762367574}
+  m_Layer: 0
+  m_Name: GroundPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4039599939020958733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2321580658741460710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7926811385654605929}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5628754549762367574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2321580658741460710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1283fe2dbc90fb2ccba44a09a68dd282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0.1
 --- !u!1 &2355069837208666073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1283fe2dbc90fb2ccba44a09a68dd282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 0.05
 --- !u!1 &5769570462315930504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,6 +2652,7 @@ Transform:
   - {fileID: 1593247643816053345}
   - {fileID: 1143966568020449929}
   - {fileID: 4117185112715284222}
+  - {fileID: 4039599939020958733}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2657,7 +2704,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.06, z: 0}
@@ -2676,6 +2723,11 @@ MonoBehaviour:
   _speed: 12
   _jumpSpeed: 18
   _gravityFactor: 10
+  _groundOverlspRadius: 0.15
+  _groundPoint: {fileID: 4039599939020958733}
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &-2751316611523236927
 MonoBehaviour:
   m_ObjectHideFlags: 0

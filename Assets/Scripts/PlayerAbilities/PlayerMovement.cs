@@ -6,11 +6,15 @@ namespace PlayerAbilities
 {
     [RequireComponent(typeof(PhotonView),
         typeof(CharacterController))]
-    public class PlayerMovement : MonoBehaviour 
+    public class PlayerMovement : MonoBehaviour
     {
+        
         [SerializeField] private float _speed;
-        [SerializeField] private float _jumpSpeed = 18f, _gravityFactor = 1f;
-
+        [SerializeField] private float _jumpSpeed = 18f, _gravityFactor = 1f,
+            _groundOverlspRadius = 0.1f;
+        [SerializeField] private Transform _groundPoint;
+        [SerializeField] private LayerMask _groundMask;
+        
         private PhotonView _photonView;
         private CharacterController _character;
         private Vector3 _moveDirection;
@@ -20,8 +24,17 @@ namespace PlayerAbilities
         public event UnityAction<Vector3> DirectionChanged;
         public event UnityAction Grounded, Jumped;
 
-        public bool IsGround => _character.isGrounded;
-        
+        public bool IsGround
+        {
+            get
+            {
+                var hitColliders = new Collider[1];
+                hitColliders = Physics.OverlapSphere(_groundPoint.position, 
+                    _groundOverlspRadius, _groundMask);
+                return hitColliders.Length > 0;
+            }
+        }
+
         private void Awake()
         {
             _character = GetComponent<CharacterController>();
