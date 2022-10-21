@@ -2845,6 +2845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 638247422090261933, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1298564101098286733, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2853,9 +2857,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2964680509318473520, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5537214694185517777, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
       propertyPath: sceneViewId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685545792480748572, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
+      propertyPath: sceneViewId
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6951247189429996054, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
       propertyPath: sceneViewId
@@ -5490,7 +5502,8 @@ MonoBehaviour:
   _delayPerShoot: 0
   _delayReload: 0
   _maxAmmo: 0
-  _id: 0
+  Id: 0
+  BulletHoleTemplate: {fileID: 0}
   MouseLook: {fileID: 0}
   ShootSound: {fileID: 0}
   PhotonView: {fileID: 0}

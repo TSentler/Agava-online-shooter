@@ -8,12 +8,19 @@ namespace PlayerAbilities
         typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour 
     {
+        [SerializeField] private float _speed;
+        [SerializeField] private float _jumpSpeed = 18f, _gravityFactor = 1f;
+
         private PhotonView _photonView;
         private CharacterController _character;
-
-        [SerializeField] private float _speed;
-
+        private Vector3 _moveDirection;
+        private float _ySpeed;
+        private bool _isGrounded;
+        
         public event UnityAction<Vector3> DirectionChanged;
+        public event UnityAction Grounded, Jumped;
+
+        public bool IsGround => _character.isGrounded;
         
         private void Awake()
         {
@@ -26,13 +33,36 @@ namespace PlayerAbilities
         {
             if (_photonView.IsMine == false)
                 return;
-
+            
             var inputDirection = GetInputDirection();
-            var moveDirection = GetMoveDirection(inputDirection);
-            var distance = moveDirection * _speed;
-            _character.SimpleMove(distance);
+            _moveDirection = GetMoveDirection(inputDirection);
+            var distance = _moveDirection * _speed;
+            distance += Vector3.up * CalculateYSpeed();
+            _character.Move(distance * Time.deltaTime);
+            _ySpeed = _character.velocity.y;
             DirectionChanged?.Invoke(inputDirection);
         }
+        
+        private float CalculateYSpeed()
+        {
+            if (IsGround)
+            {
+                GroundedNowCheck();
+                if (Input.GetButtonDown("Jump"))
+                {
+                    _ySpeed = _jumpSpeed;
+                }
+            }
+            else
+            {
+                JumpedNowCheck();
+            }
+            
+            _ySpeed += _gravityFactor * Physics.gravity.y * Time.deltaTime;
+
+            return _ySpeed;
+        }
+
 
         private Vector3 GetInputDirection()
         {
@@ -50,5 +80,24 @@ namespace PlayerAbilities
 
             return (moveDirectionForward + moveDirectionSide).normalized;
         }
+        
+        private void JumpedNowCheck()
+        {
+            if (_isGrounded)
+            {
+                _isGrounded = false;
+                Jumped?.Invoke();
+            }
+        }
+
+        private void GroundedNowCheck()
+        {
+            if (_isGrounded == false)
+            {
+                _isGrounded = true;
+                Grounded?.Invoke();
+            }
+        }
+        
     }
 }
