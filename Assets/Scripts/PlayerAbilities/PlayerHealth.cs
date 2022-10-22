@@ -45,7 +45,7 @@ namespace PlayerAbilities
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
-            _damagebleHit = FindObjectOfType<DamagebleHit>();
+            _damagebleHit = FindObjectOfType<DamagebleHit>(true);
             _damagebleHit.gameObject.SetActive(false);
         }
 

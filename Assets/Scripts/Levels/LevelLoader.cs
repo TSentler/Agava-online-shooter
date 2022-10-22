@@ -33,7 +33,7 @@ namespace Levels
 
         private void OnDisable()
         {
-            _matchCallback.OnCreateRoom += CreateRoomHandler;
+            _matchCallback.OnCreateRoom -= CreateRoomHandler;
         }
 
         private void CreateRoomHandler()
@@ -52,7 +52,7 @@ namespace Levels
         public void CreateOrJoinByLevelName()
         {
             PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), null, TypedLobby.Default);
+                _levelName.ToString(), _roomOptions, TypedLobby.Default);
         }
 
         public void CreateRoom(string name)
