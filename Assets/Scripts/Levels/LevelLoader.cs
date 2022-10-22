@@ -1,6 +1,7 @@
 using Network;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using UnityEngine;
 
 namespace Levels
@@ -29,6 +30,13 @@ namespace Levels
         private void OnEnable()
         {
             _matchCallback.OnCreateRoom += CreateRoomHandler;
+            _matchCallback.OnJoinRandomFail += OnJoinRoomFailed;
+        }
+
+        private void OnJoinRoomFailed(short arg0, string arg1)
+        {
+            CreateRoom(_levelName.ToString());
+            CreateRoomHandler();
         }
 
         private void OnDisable()
@@ -57,7 +65,7 @@ namespace Levels
 
         public void CreateRoom(string name)
         {
-            PhotonNetwork.CreateRoom(name);
+            PhotonNetwork.CreateRoom(name, _roomOptions);
         }
 
         public void JoinRoom(string name)

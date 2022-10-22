@@ -9101,7 +9101,6 @@ MonoBehaviour:
   _matchEndPanel: {fileID: 1704374366}
   _fartherPanel: {fileID: 1704374364}
   _scoreTemplate: {fileID: 8942237104176839078, guid: e969c7fbcb91fe745a82d024af7c1c9b, type: 3}
-  _masterClientMonitor: {fileID: 0}
 --- !u!114 &1213080525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11843,7 +11842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb84bf68fd480b54d963e4d69fe6eb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _matchTimeInSeconds: 15
+  _matchTimeInSeconds: 180
   _matchScoreboard: {fileID: 1213080524}
   _syncronizer: {fileID: 255094713}
 --- !u!222 &1495870613
