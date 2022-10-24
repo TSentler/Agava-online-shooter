@@ -39,7 +39,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         _photonView = GetComponent<PhotonView>();
     }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         for (int i = 1; i < _guns.Count; i++)
         {
@@ -47,7 +47,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
         for (int i = 1; i < _guns.Count; i++)
         {
@@ -69,10 +69,10 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         {
             //if(_currentGun is Rifle)
             //{
-                //if (Input.GetMouseButton(0))
-                //{
-                //    _currentGun.Shoot(_camera);
-                //}
+            //if (Input.GetMouseButton(0))
+            //{
+            //    _currentGun.Shoot(_camera);
+            //}
             //}
             //else if(_currentGun is Pistol)
             //{
@@ -81,7 +81,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
             //        _currentGun.Shoot(_camera);
             //    }
             //}
-           
+
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -127,9 +127,15 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    public void EquipDefaultGun()
+    [PunRPC]
+    private void EquipDefaultGunRPC()
     {
         SetNewGun(0);
+    }
+
+    public void EquipDefaultGun()
+    {      
+        _photonView.RPC(nameof(EquipDefaultGunRPC), RpcTarget.All);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
