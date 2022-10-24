@@ -39,6 +39,22 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         _photonView = GetComponent<PhotonView>();
     }
 
+    private void OnEnable()
+    {
+        for (int i = 1; i < _guns.Count; i++)
+        {
+            _guns[i].EmptyAmmo += EquipDefaultGun;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 1; i < _guns.Count; i++)
+        {
+            _guns[i].EmptyAmmo -= EquipDefaultGun;
+        }
+    }
+
     private void Start()
     {
         _currentGun = _guns[0];

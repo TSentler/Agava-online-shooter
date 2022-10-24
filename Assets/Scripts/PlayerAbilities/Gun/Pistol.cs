@@ -55,7 +55,7 @@ public class Pistol : Gun
         }
         else
         {
-            if (_ammoQuanity == 0 && _canShoot)
+            if (_ammoQuanity == 0)
             {
                 Reload();
                 Debug.Log("Reloading");
