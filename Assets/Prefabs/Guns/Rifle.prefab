@@ -281,10 +281,10 @@ MonoBehaviour:
   Camera: {fileID: 0}
   _damage: 25
   _shootParticle: {fileID: 8628655397621975261}
-  _recoilForceXMax: 0.3
-  _recoilForceYMax: 0.6
-  _recoilForceXMin: -0.4
-  _recoilForceYMin: 0.5
+  _recoilForceXMax: 0.9
+  _recoilForceYMax: 1.8
+  _recoilForceXMin: -0.9
+  _recoilForceYMin: 2.5
 --- !u!114 &6253211760978591474
 MonoBehaviour:
   m_ObjectHideFlags: 0
