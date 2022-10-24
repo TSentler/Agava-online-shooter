@@ -13,6 +13,7 @@ namespace PlayerAbilities
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private DamagebleHit _damagebleHit;
+        [SerializeField] private PlayerHand _playerHand;
 
         private int _kills;
         private int _deaths;
@@ -89,7 +90,8 @@ namespace PlayerAbilities
                     int kills = (int)player.CustomProperties["Kills"] + 1;
                     Debug.Log(kills);
                     player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
-                    _spawner.SpawnPlayer(this);                  
+                    _spawner.SpawnPlayer(this);
+                    _playerHand.EquipDefaultGun();
                 }
             }
         }

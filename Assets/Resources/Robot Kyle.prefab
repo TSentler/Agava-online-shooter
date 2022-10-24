@@ -2819,6 +2819,7 @@ MonoBehaviour:
   _maxHealth: 100
   _photonView: {fileID: 5537214694185517777}
   _damagebleHit: {fileID: 0}
+  _playerHand: {fileID: 6293996175980194239}
 --- !u!114 &6293996175980194239
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using PlayerAbilities;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -108,6 +109,11 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
         }
+    }
+
+    public void EquipDefaultGun()
+    {
+        SetNewGun(0);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
