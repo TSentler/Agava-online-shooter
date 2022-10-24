@@ -14,17 +14,26 @@ namespace Levels
     public class LevelLoader : MonoBehaviour
     {
         [SerializeField] private LevelNames _levelName;
-        [SerializeField] private byte _maxPlayersCount;
+
+        private byte _maxPlayersSmallMap = 5;
+        private byte _maxPlayersLargeMap = 10;
 
         private MatchmakingCallbacksCatcher _matchCallback;
-        private RoomOptions _roomOptions;
+        private RoomOptions _smallRoomOptions;
+        private RoomOptions _largeRoomOptions;
+
+        private RoomOptions _currentRoomOptions;
 
         private void Awake()
         {
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
-            _roomOptions = new RoomOptions();
-            _roomOptions.MaxPlayers = _maxPlayersCount;
-            _roomOptions.CleanupCacheOnLeave = true;
+            _smallRoomOptions = new RoomOptions();
+            _smallRoomOptions.MaxPlayers = _maxPlayersSmallMap;
+            _smallRoomOptions.CleanupCacheOnLeave = true;
+
+            _largeRoomOptions = new RoomOptions();
+            _largeRoomOptions.MaxPlayers = _maxPlayersLargeMap;
+            _largeRoomOptions.CleanupCacheOnLeave = true;
         }
 
         private void OnEnable()
@@ -60,12 +69,28 @@ namespace Levels
         public void CreateOrJoinByLevelName()
         {
             PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), _roomOptions, TypedLobby.Default);
+                _levelName.ToString(), _smallRoomOptions, TypedLobby.Default);
+        }
+
+        public void CreateOrJoinSmallMap()
+        {
+            _levelName = LevelNames.Room1;
+            _currentRoomOptions = _smallRoomOptions;
+            PhotonNetwork.JoinOrCreateRoom(
+                LevelNames.Room1.ToString(), _smallRoomOptions, TypedLobby.Default);
+        }
+
+        public void CreateOrJoinLargeMap()
+        {
+            _levelName = LevelNames.LargeLevelScene;
+            _currentRoomOptions = _largeRoomOptions;
+            PhotonNetwork.JoinOrCreateRoom(
+                LevelNames.LargeLevelScene.ToString(), _largeRoomOptions, TypedLobby.Default);
         }
 
         public void CreateRoom(string name)
         {
-            PhotonNetwork.CreateRoom(name, _roomOptions);
+            PhotonNetwork.CreateRoom(name, _currentRoomOptions);
         }
 
         public void JoinRoom(string name)
