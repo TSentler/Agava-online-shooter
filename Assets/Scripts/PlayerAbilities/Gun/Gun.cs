@@ -3,6 +3,7 @@ using PlayerAbilities;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Gun : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public abstract class Gun : MonoBehaviour
     public int GunID => Id;
 
     public event Action Hit;
+    public event UnityAction EmptyAmmo;
 
     public abstract void Shoot(Camera camera);
 
@@ -45,6 +47,11 @@ public abstract class Gun : MonoBehaviour
     private protected void OnHit()
     {
         Hit?.Invoke();
+    }
+
+    private protected void OnEmptyAmmo()
+    {
+        EmptyAmmo?.Invoke();
     }
 
     private protected IEnumerator CountdownShoot()

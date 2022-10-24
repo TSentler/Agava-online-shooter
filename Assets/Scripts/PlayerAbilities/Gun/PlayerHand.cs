@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using PlayerAbilities;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,22 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     private void Awake()
     {
         _photonView = GetComponent<PhotonView>();
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 1; i < _guns.Count; i++)
+        {
+            _guns[i].EmptyAmmo += EquipDefaultGun;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 1; i < _guns.Count; i++)
+        {
+            _guns[i].EmptyAmmo -= EquipDefaultGun;
+        }
     }
 
     private void Start()
@@ -108,6 +125,11 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
         }
+    }
+
+    public void EquipDefaultGun()
+    {
+        SetNewGun(0);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
