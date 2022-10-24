@@ -2972,6 +2972,7 @@ MonoBehaviour:
   _maxHealth: 100
   _photonView: {fileID: 5537214694185517777}
   _damagebleHit: {fileID: 0}
+  _playerHand: {fileID: 6293996175980194239}
 --- !u!114 &6293996175980194239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3798,6 +3799,10 @@ PrefabInstance:
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForce
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _maxAmmoCount
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForceX
