@@ -28,7 +28,7 @@ namespace Network
             }
         }
         
-        public int LayermaskToLayer(LayerMask layerMask) 
+        private int LayermaskToLayer(LayerMask layerMask) 
         {
             int layerNumber = 0;
             int layer = layerMask.value;
