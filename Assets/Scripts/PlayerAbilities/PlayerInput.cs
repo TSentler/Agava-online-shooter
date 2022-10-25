@@ -1,18 +1,19 @@
+using CharacterInput;
 using Photon.Pun;
 using UnityEngine;
 
 namespace PlayerAbilities
 {
-    [RequireComponent(typeof(PhotonView),
-        typeof(PlayerMovement))]
-    public class PlayerInput : MonoBehaviour
+    [RequireComponent(typeof(PhotonView))]
+    public class PlayerInput : MonoBehaviour, ICharacterInputSource
     {
         private PhotonView _photonView;
-        private PlayerMovement _movement;
+        
+        public Vector2 MovementInput { get; private set; }
+        public bool IsJumpInput { get; private set; }
 
         private void Awake()
         {
-            _movement = GetComponent<PlayerMovement>();
             _photonView = GetComponent<PhotonView>();
             _photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
         }
@@ -22,18 +23,17 @@ namespace PlayerAbilities
             if (_photonView.IsMine == false)
                 return;
             
-            var isJump = Input.GetButtonDown("Jump");
-            var inputDirection = GetInputDirection();
-            _movement.Move(inputDirection, isJump);
+            IsJumpInput = Input.GetButtonDown("Jump");
+            MovementInput = GetInputDirection();
         }
         
-        private Vector3 GetInputDirection()
+        private Vector2 GetInputDirection()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            return Vector3.right * horizontalInput + 
-                   Vector3.forward * verticalInput;
+            return Vector2.right * horizontalInput + 
+                   Vector2.up * verticalInput;
         }
     }
 }

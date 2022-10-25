@@ -2,21 +2,22 @@ using System;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using Score;
 
 namespace Match
 {
     [RequireComponent(typeof(TMP_Text))]
     public class MatchTimer : MonoBehaviour
     {
-        private readonly string _pattern = "{0:00}:{1:00}";
-        
-        private TMP_Text _text;
-        private bool _isTimerStop = false;
-        private float _currentTime;
-
         [SerializeField] private float _matchTimeInSeconds;
         [SerializeField] private MatchEndScoreboard _matchScoreboard;
         [SerializeField] private TimeSyncronizer _syncronizer;
+
+        private readonly string _pattern = "{0:00}:{1:00}";
+
+        private TMP_Text _text;
+        private bool _isTimerStop = false;
+        private float _currentTime;
 
         private void Awake()
         {

@@ -17,11 +17,50 @@ public class Rifle : Gun
     [SerializeField] private int _maxAmmoCount;
 
     private int _maxAmmoQuanity;
+    private float _accumulatedTime;
+    private float _fireaInterval;
 
     private void Start()
     {
         _ammoQuanity = _maxAmmo;
         _maxAmmoQuanity = _maxAmmoCount;
+    }
+
+    private void Update()
+    {
+        _accumulatedTime += Time.deltaTime;
+
+        if (_canShoot == true)
+            return;
+
+        _fireaInterval += Time.deltaTime;
+
+        if(_fireaInterval >= _delayPerShoot)
+        {
+            _canShoot = true;
+            _fireaInterval = 0;
+        }
+        //if(_canShoot == false)
+        //{
+        //    _accumalatedTime -= Time.deltaTime;
+        //    Debug.Log(_accumalatedTime);
+        //}
+
+        //if(_accumalatedTime <= _delayPerShoot)
+        //{
+        //    _canShoot = true;
+        //}
+        //_accumulatedTime += Time.deltaTime;
+
+        //if(_accumulatedTime > _fireaInterval)
+        //{
+        //    _accumulatedTime -= _delayPerShoot;
+        //    Debug.Log(_accumulatedTime);
+        //}
+        //else
+        //{
+        //    _canShoot = true;
+        //}
     }
 
     private void FixedUpdate()
@@ -40,8 +79,11 @@ public class Rifle : Gun
 
     public override void Shoot(Camera camera)
     {
+        Debug.Log(_canShoot);
         if (_ammoQuanity > 0 && _canShoot)
         {
+            _canShoot = false;
+            //_fireaInterval = _accumulatedTime += _delayPerShoot;
             _shootParticle.Play();
             MouseLook.Shoot(_recoilForceXMin, _recoilForceYMin, _recoilForceXMax, _recoilForceYMax);
             ShootSound.Play();
@@ -74,7 +116,7 @@ public class Rifle : Gun
                 }
             }
 
-            StartCoroutine(CountdownShoot());
+            //StartCoroutine(CountdownShoot());
             _ammoQuanity--;
             _maxAmmoQuanity--;
 

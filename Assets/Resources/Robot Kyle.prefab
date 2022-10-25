@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensetivity: 3000
+  _mouseSensetivity: 200
   _shootSensetivity: 100
   _camera: {fileID: 8626187333435406068}
   _playerBody: {fileID: 7926811385654605929}
@@ -3113,6 +3113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bf413f90aa12944ba86077e57d2d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputSourceBehaviour: {fileID: 7588953111737158721}
   _speed: 12
   _jumpSpeed: 18
   _gravityFactor: 10
@@ -3891,6 +3892,22 @@ PrefabInstance:
       propertyPath: _recoilForce.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _recoilForceXMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _recoilForceXMin
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _recoilForceYMax
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _recoilForceYMin
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2244365934257393504, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _target
       value: 
@@ -3979,6 +3996,22 @@ PrefabInstance:
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _delayPerShoot
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _recoilForceXMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _recoilForceXMin
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _recoilForceYMax
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _recoilForceYMin
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6661725807252065663, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: m_Name

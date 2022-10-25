@@ -1,3 +1,5 @@
+using System;
+using CharacterInput;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +8,7 @@ namespace PlayerAbilities
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed = 18f, 
             _gravityFactor = 1f,
@@ -13,6 +16,7 @@ namespace PlayerAbilities
         [SerializeField] private Transform _groundPoint;
         [SerializeField] private LayerMask _groundMask;
         
+        private ICharacterInputSource _inputSource;
         private CharacterController _character;
         private Vector3 _moveDirection;
         private float _ySpeed;
@@ -31,8 +35,32 @@ namespace PlayerAbilities
                 return hitColliders.Length > 0;
             }
         }
+
+        private void OnValidate()
+        {
+            if (_inputSourceBehaviour 
+                && !(_inputSourceBehaviour is ICharacterInputSource))
+            {
+                Debug.LogError(nameof(_inputSourceBehaviour) + " needs to implement " + nameof(ICharacterInputSource));
+                _inputSourceBehaviour = null;
+            }
+        } 
         
-        public void Move(Vector3 inputDirection, bool isJump)
+        private void Awake()
+        {
+            _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+            _character = GetComponent<CharacterController>();
+        }
+
+        private void Update()
+        {
+            var inputDirection = new Vector3(_inputSource.MovementInput.x, 
+                0f, _inputSource.MovementInput.y);
+            var isJump = _inputSource.IsJumpInput;
+            Move(inputDirection, isJump);
+        }
+
+        private void Move(Vector3 inputDirection, bool isJump)
         {
             _moveDirection = GetMoveDirection(inputDirection);
             var distance = _moveDirection * _speed;
@@ -42,11 +70,6 @@ namespace PlayerAbilities
             DirectionChanged?.Invoke(inputDirection);
         }
         
-        private void Awake()
-        {
-            _character = GetComponent<CharacterController>();
-        }
-
         private float CalculateYSpeed(bool isJump)
         {
             if (IsGround)

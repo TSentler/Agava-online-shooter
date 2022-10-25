@@ -55,12 +55,12 @@ public abstract class Gun : MonoBehaviour
         EmptyAmmo?.Invoke();
     }
 
-    private protected IEnumerator CountdownShoot()
-    {
-        _canShoot = false;
-        yield return new WaitForSeconds(_delayPerShoot);
-        _canShoot = true;
-    }
+    //private protected IEnumerator CountdownShoot()
+    //{
+    //    _canShoot = false;
+    //    yield return new WaitForSeconds(_delayPerShoot);
+    //    _canShoot = true;
+    //}
 
     private IEnumerator RestoreAmmo()
     {

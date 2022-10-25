@@ -8,13 +8,12 @@ namespace Levels
 {
     public enum LevelNames
     {
-        Room1, RoomCorridor, GameMapScene, LargeLevelScene
+        Room1, RoomCorridor, GameMapScene, LargeLevelScene, Room1BotTest
     }
     
     public class LevelLoader : MonoBehaviour
     {
-        [SerializeField] private LevelNames _levelName;
-
+        private LevelNames _levelName;
         private byte _maxPlayersSmallMap = 5;
         private byte _maxPlayersLargeMap = 10;
 
@@ -71,23 +70,30 @@ namespace Levels
             PhotonNetwork.JoinOrCreateRoom(
                 _levelName.ToString(), _smallRoomOptions, TypedLobby.Default);
         }
+        
+        public void CreateOrJoinBotMap()
+        {
+            CreateOrJoinMap(LevelNames.Room1BotTest, _smallRoomOptions);
+        }
 
         public void CreateOrJoinSmallMap()
         {
-            _levelName = LevelNames.Room1;
-            _currentRoomOptions = _smallRoomOptions;
-            PhotonNetwork.JoinOrCreateRoom(
-                LevelNames.Room1.ToString(), _smallRoomOptions, TypedLobby.Default);
+            CreateOrJoinMap(LevelNames.Room1, _smallRoomOptions);
         }
 
         public void CreateOrJoinLargeMap()
         {
-            _levelName = LevelNames.LargeLevelScene;
-            _currentRoomOptions = _largeRoomOptions;
-            PhotonNetwork.JoinOrCreateRoom(
-                LevelNames.LargeLevelScene.ToString(), _largeRoomOptions, TypedLobby.Default);
+            CreateOrJoinMap(LevelNames.LargeLevelScene, _largeRoomOptions);
         }
 
+        private void CreateOrJoinMap(LevelNames levelName, RoomOptions options)
+        {
+            _levelName = levelName;
+            _currentRoomOptions = options;
+            PhotonNetwork.JoinOrCreateRoom(
+                _levelName.ToString(), options, TypedLobby.Default);
+        }
+        
         public void CreateRoom(string name)
         {
             PhotonNetwork.CreateRoom(name, _currentRoomOptions);
