@@ -1,5 +1,6 @@
 using System;
 using CharacterInput;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,7 @@ namespace PlayerAbilities
         [SerializeField] private LayerMask _groundMask;
         
         private ICharacterInputSource _inputSource;
+        private PhotonView _photonView;
         private CharacterController _character;
         private Vector3 _moveDirection;
         private float _ySpeed;
@@ -50,10 +52,14 @@ namespace PlayerAbilities
         {
             _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
             _character = GetComponent<CharacterController>();
+            _photonView = GetComponent<PhotonView>();
         }
 
         private void Update()
         {
+            if (_photonView.IsMine == false)
+                return;
+            
             var inputDirection = new Vector3(_inputSource.MovementInput.x, 
                 0f, _inputSource.MovementInput.y);
             var isJump = _inputSource.IsJumpInput;
