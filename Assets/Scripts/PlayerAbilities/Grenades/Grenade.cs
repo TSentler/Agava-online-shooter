@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 namespace PlayerAbilities
 {
@@ -12,6 +13,9 @@ namespace PlayerAbilities
         [SerializeField] private float _throwUpForce;
         [SerializeField] private float _explouseCooldown;
         [SerializeField] private int _explouseDamage;
+        [SerializeField] private ParticleSystem _particle;
+        [SerializeField] private AudioSource _explousSound;
+        [SerializeField] private MeshRenderer[] _renderers;
 
         private Rigidbody _rigidbody;
         private bool _isEplouseCooldownStart;
@@ -41,11 +45,23 @@ namespace PlayerAbilities
         private void Explouse()
         {
             _isEplouseCooldownStart = false;
+            _particle.Play();
+            _explousSound.Play();
+
             foreach(var player in _players)
             {
                 player.ApplyDamage(_explouseDamage, PhotonNetwork.LocalPlayer);
             }
 
+            foreach (var renderer in _renderers)
+                renderer.enabled = false;
+
+            StartCoroutine(DestroyWihDelay());
+        }
+
+        private IEnumerator DestroyWihDelay()
+        {
+            yield return new WaitForSeconds(0.5f);
             PhotonNetwork.Destroy(gameObject);
         }
 

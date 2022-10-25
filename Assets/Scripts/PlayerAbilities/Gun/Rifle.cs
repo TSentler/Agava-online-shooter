@@ -40,27 +40,6 @@ public class Rifle : Gun
             _canShoot = true;
             _fireaInterval = 0;
         }
-        //if(_canShoot == false)
-        //{
-        //    _accumalatedTime -= Time.deltaTime;
-        //    Debug.Log(_accumalatedTime);
-        //}
-
-        //if(_accumalatedTime <= _delayPerShoot)
-        //{
-        //    _canShoot = true;
-        //}
-        //_accumulatedTime += Time.deltaTime;
-
-        //if(_accumulatedTime > _fireaInterval)
-        //{
-        //    _accumulatedTime -= _delayPerShoot;
-        //    Debug.Log(_accumulatedTime);
-        //}
-        //else
-        //{
-        //    _canShoot = true;
-        //}
     }
 
     private void FixedUpdate()
@@ -82,7 +61,6 @@ public class Rifle : Gun
         if (_ammoQuanity > 0 && _canShoot)
         {
             _canShoot = false;
-            //_fireaInterval = _accumulatedTime += _delayPerShoot;
             _shootParticle.Play();
             MouseLook.Shoot(_recoilForceXMin, _recoilForceYMin, _recoilForceXMax, _recoilForceYMax);
             ShootSound.Play();
