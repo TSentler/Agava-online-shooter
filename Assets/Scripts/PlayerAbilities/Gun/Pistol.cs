@@ -53,8 +53,6 @@ public class Pistol : Gun
                     if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false)
                     {
                         PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
-
-                        break;
                     }
                 }
             }
