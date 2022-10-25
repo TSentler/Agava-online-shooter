@@ -11845,6 +11845,7 @@ MonoBehaviour:
   _matchTimeInSeconds: 180
   _matchScoreboard: {fileID: 1213080524}
   _syncronizer: {fileID: 255094713}
+  _matchEndScoreboard: {fileID: 1213080524}
 --- !u!222 &1495870613
 CanvasRenderer:
   m_ObjectHideFlags: 0
