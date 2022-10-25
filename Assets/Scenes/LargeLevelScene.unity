@@ -11845,7 +11845,6 @@ MonoBehaviour:
   _matchTimeInSeconds: 180
   _matchScoreboard: {fileID: 1213080524}
   _syncronizer: {fileID: 255094713}
-  _matchEndScoreboard: {fileID: 1213080524}
 --- !u!222 &1495870613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11990,6 +11989,10 @@ PrefabInstance:
     - target: {fileID: 2374949119785585007, guid: 088d4952eca7623439aad183827195c3, type: 3}
       propertyPath: m_Name
       value: GunSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695843746961385929, guid: 088d4952eca7623439aad183827195c3, type: 3}
+      propertyPath: sceneViewId
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 4919633492847560443, guid: 088d4952eca7623439aad183827195c3, type: 3}
       propertyPath: sceneViewId

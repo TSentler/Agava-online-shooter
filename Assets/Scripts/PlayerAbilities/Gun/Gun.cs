@@ -20,6 +20,7 @@ public abstract class Gun : MonoBehaviour
 
     private protected int _ammoQuanity;
     private protected bool _canShoot = true;
+    private protected float MinDistanceHit = 1000f;
 
     private const float _radiusSphereCollider = 0.3f;
     private const float _timeToDestroyBullet = 2f;

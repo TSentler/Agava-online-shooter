@@ -36,27 +36,39 @@ public class Pistol : Gun
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
 
-            foreach (var hit in hits)
+            RaycastHit minDistanceHit = new RaycastHit
             {
-                if (hit.collider.gameObject.TryGetComponent(out HitDetector hitDetector))
+                distance = MinDistanceHit
+            };
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
                     if (hitDetector.PhotonView.IsMine == false)
                     {
                         hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
                         OnHit();
                     }
-
                     break;
                 }
                 else
                 {
-                    if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false)
+                    for (int j = 0; j < hits.Length; j++)
                     {
-                        PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
+                        if (hits[j].distance < minDistanceHit.distance)
+                        {
+                            minDistanceHit = hits[j];
+                        }
+                    }
+
+                    if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false)
+                    {
+                        PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
                     }
                 }
             }
-
+            
             //StartCoroutine(CountdownShoot());
             _ammoQuanity--;
         }
@@ -65,7 +77,6 @@ public class Pistol : Gun
             if (_ammoQuanity == 0)
             {
                 Reload();
-                Debug.Log("Reloading");
             }
         }
     }
