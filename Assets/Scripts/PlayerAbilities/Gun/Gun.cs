@@ -11,6 +11,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private protected float _delayReload;
     [SerializeField] private protected int _maxAmmo;
     [SerializeField] protected int Id;
+    [SerializeField] protected LayerMask LayerToDetect;
     [SerializeField] protected GameObject BulletHoleTemplate;
     [SerializeField] protected MouseLook MouseLook;
     [SerializeField] protected AudioSource ShootSound;

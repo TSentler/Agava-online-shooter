@@ -34,19 +34,28 @@ public class Pistol : Gun
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {                
-                if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
-                    if(playerHealth.PhotonView.IsMine == false)
+                    if (hitDetector.PhotonView.IsMine == false)
                     {
-                        playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
+                        hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
                         OnHit();
-                    }                 
+                    }
+
+                    break;
                 }
                 else
                 {
-                    PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
+                    if (hit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false)
+                    {
+                        PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, hit.point, hit.normal);
+
+                        break;
+                    }
                 }
             }
 
