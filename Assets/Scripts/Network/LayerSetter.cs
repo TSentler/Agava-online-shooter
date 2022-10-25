@@ -8,6 +8,7 @@ namespace Network
     public class LayerSetter : MonoBehaviour
     {
         [SerializeField] private LayerMask _mineLayer;
+        [SerializeField] private GameObject[] _settable;
         
         private PhotonView _photonView;
         
@@ -18,12 +19,9 @@ namespace Network
             if (_photonView.IsMine)
             {
                 var layer = LayermaskToLayer(_mineLayer); 
-                gameObject.layer = layer;
-                var childs = gameObject.
-                    GetComponentsInChildren<Transform>(includeInactive: true);
-                foreach (var child in childs)
+                foreach (var child in _settable)
                 {
-                    child.gameObject.layer = layer;
+                    child.layer = layer;
                 }
             }
         }

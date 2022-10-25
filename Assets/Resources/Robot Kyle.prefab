@@ -3278,6 +3278,10 @@ MonoBehaviour:
   _mineLayer:
     serializedVersion: 2
     m_Bits: 128
+  _settable:
+  - {fileID: 731025509192488930}
+  - {fileID: 9119947970029963174}
+  - {fileID: 8496915630714598775}
 --- !u!114 &5537214694185517777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3851,7 +3855,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 375
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
