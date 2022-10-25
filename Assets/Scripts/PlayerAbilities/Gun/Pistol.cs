@@ -50,7 +50,7 @@ public class Pistol : Gun
                 }
             }
 
-            StartCoroutine(CountdownShoot());
+            //StartCoroutine(CountdownShoot());
             _ammoQuanity--;
         }
         else

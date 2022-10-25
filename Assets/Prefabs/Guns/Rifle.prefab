@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc142be1f51f094093d6b607ed17daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayPerShoot: 0.1
+  _delayPerShoot: 10000
   _delayReload: 3
   _maxAmmo: 30
   Id: 1
@@ -285,6 +285,7 @@ MonoBehaviour:
   _recoilForceYMax: 1.8
   _recoilForceXMin: -0.9
   _recoilForceYMin: 2.5
+  _maxAmmoCount: 0
 --- !u!114 &6253211760978591474
 MonoBehaviour:
   m_ObjectHideFlags: 0
