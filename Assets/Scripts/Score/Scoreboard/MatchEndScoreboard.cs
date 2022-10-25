@@ -9,67 +9,73 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class MatchEndScoreboard : MonoBehaviour
+namespace Score
 {
-    [SerializeField] private GameObject _matchEndPanel;
-    [SerializeField] private Transform _fartherPanel;
-    [SerializeField] private ScoreboardItem _scoreTemplate;
-
-    private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
-    private MatchmakingCallbacksCatcher _matchCallbacks;
-    
-    public Action MatchComplete;
-    
-    public void OpenPanel()
+    public class MatchEndScoreboard : MonoBehaviour
     {
-        _matchEndPanel.SetActive(true);
-        MatchComplete?.Invoke();
+        [SerializeField] private GameObject _matchEndPanel;
+        [SerializeField] private Transform _fartherPanel;
+        [SerializeField] private ScoreboardItem _scoreTemplate;
 
-        foreach (var player in PhotonNetwork.PlayerList)
+        private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
+        private MatchmakingCallbacksCatcher _matchCallbacks;
+
+        public Action MatchComplete;
+
+        private void Awake()
         {
-            _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
+            _matchCallbacks = FindObjectOfType<MatchmakingCallbacksCatcher>();
         }
 
-        var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
-
-        foreach (var score in scoreSort)
+        private void OnEnable()
         {
-            ScoreboardItem item = Instantiate(_scoreTemplate, _fartherPanel);
-            item.Initialize(score.Key);
+            _matchCallbacks.OnRoomLeft += RoomLeftHandler;
+            _matchEndPanel.SetActive(false);
         }
 
-        Cursor.lockState = CursorLockMode.None;
-        PhotonNetwork.CurrentRoom.IsOpen = false;
-        PhotonNetwork.CurrentRoom.IsVisible = false;
-    }
+        private void OnDisable()
+        {
+            _matchCallbacks.OnRoomLeft -= RoomLeftHandler;
+        }
 
-    public void OnRestartButtonClick()
-    {
-        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);   
-    }
+        public void OpenPanel()
+        {
+            _matchEndPanel.SetActive(true);
+            MatchComplete?.Invoke();
 
-    public void OnExitButtonClick()
-    {
-        PhotonNetwork.LeaveRoom();
-    }
+            foreach (var player in PhotonNetwork.PlayerList)
+            {
+                _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
+            }
 
-    private void Awake()
-    {
-        _matchCallbacks = FindObjectOfType<MatchmakingCallbacksCatcher>();
-    }
+            var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
 
-    private void OnEnable()
-    {
-        _matchCallbacks.OnRoomLeft += RoomLeftHandler;
-    }
+            foreach (var score in scoreSort)
+            {
+                ScoreboardItem item = Instantiate(_scoreTemplate, _fartherPanel);
+                item.Initialize(score.Key);
+            }
 
-    private void OnDisable()
-    {
-        _matchCallbacks.OnRoomLeft -= RoomLeftHandler;
-    }
+            Cursor.lockState = CursorLockMode.None;
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+        }
 
-    private void RoomLeftHandler()
-    {
-        PhotonNetwork.LoadLevel(0);
+        public void OnRestartButtonClick()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void OnExitButtonClick()
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+
+        private void RoomLeftHandler()
+        {
+            PhotonNetwork.LoadLevel(0);
+        }
     }
 }
