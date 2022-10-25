@@ -31,7 +31,7 @@ namespace PlayerAbilities
         {
             if (_photonView.IsMine)
             {
-                var sensetivityFactor = _mouseSensetivity * Time.deltaTime / PhotonNetwork.GetPing();
+                var sensetivityFactor = _mouseSensetivity * Time.deltaTime;
                 float mouseX = Input.GetAxis("Mouse X") * sensetivityFactor;
                 float mouseY = Input.GetAxis("Mouse Y") * sensetivityFactor;
 
@@ -44,7 +44,7 @@ namespace PlayerAbilities
 
         public void Shoot(float rifleRecoilXMin,float rifleRecoilYMin,float rifleRecoilXMax, float rifleRecoilYMax)
         {
-            var sensetivityFactor = _shootSensetivity * Time.deltaTime / PhotonNetwork.GetPing();
+            var sensetivityFactor = (_shootSensetivity * Time.deltaTime) / PhotonNetwork.GetPing();
             float mouseX = Random.Range(rifleRecoilXMin, rifleRecoilXMax) * sensetivityFactor;
             float mouseY = Random.Range(rifleRecoilYMin, rifleRecoilYMax) * sensetivityFactor;
         
