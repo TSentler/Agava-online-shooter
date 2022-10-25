@@ -3113,6 +3113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bf413f90aa12944ba86077e57d2d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputSourceBehaviour: {fileID: 7588953111737158721}
   _speed: 12
   _jumpSpeed: 18
   _gravityFactor: 10
