@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(SphereCollider),typeof(PhotonView))]
 public class GunSpawner : MonoBehaviourPun
 {
     [SerializeField] private List<Gun> _guns;
@@ -14,12 +14,14 @@ public class GunSpawner : MonoBehaviourPun
     private Gun _newGun;
     private Vector3 _rotation = new Vector3(0, 20, 0);
     private bool _canUse = true;
+    private PhotonView _photonView;
 
     private void Start()
     {
         _newGun = _guns[GetRandomIndex()];
         _newGun.gameObject.SetActive(true);
         _collider = GetComponent<SphereCollider>();
+        _photonView = GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -34,12 +36,18 @@ public class GunSpawner : MonoBehaviourPun
             if (other.TryGetComponent(out PlayerHand playerHand))
             {
                 playerHand.SetNewGun(_newGun.GunID);
-                _newGun.gameObject.SetActive(false);
-                _canUse = false;
-                _collider.enabled = false;
-                StartCoroutine(CountdownToSpawn());
+                _photonView.RPC(nameof(DisableWeapon), RpcTarget.All);
             }
         }
+    }
+
+    [PunRPC]
+    private void DisableWeapon()
+    {
+        _newGun.gameObject.SetActive(false);
+        _canUse = false;
+        _collider.enabled = false;
+        StartCoroutine(CountdownToSpawn());
     }
 
     private IEnumerator CountdownToSpawn()
