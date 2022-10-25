@@ -1,21 +1,18 @@
-using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace PlayerAbilities
 {
-    [RequireComponent(typeof(PhotonView),
-        typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
-        
         [SerializeField] private float _speed;
-        [SerializeField] private float _jumpSpeed = 18f, _gravityFactor = 1f,
+        [SerializeField] private float _jumpSpeed = 18f, 
+            _gravityFactor = 1f,
             _groundOverlspRadius = 0.1f;
         [SerializeField] private Transform _groundPoint;
         [SerializeField] private LayerMask _groundMask;
         
-        private PhotonView _photonView;
         private CharacterController _character;
         private Vector3 _moveDirection;
         private float _ySpeed;
@@ -34,34 +31,28 @@ namespace PlayerAbilities
                 return hitColliders.Length > 0;
             }
         }
-
-        private void Awake()
+        
+        public void Move(Vector3 inputDirection, bool isJump)
         {
-            _character = GetComponent<CharacterController>();
-            _photonView = GetComponent<PhotonView>();
-            _photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
-        }
-
-        private void Update()
-        {
-            if (_photonView.IsMine == false)
-                return;
-            
-            var inputDirection = GetInputDirection();
             _moveDirection = GetMoveDirection(inputDirection);
             var distance = _moveDirection * _speed;
-            distance += Vector3.up * CalculateYSpeed();
+            distance += Vector3.up * CalculateYSpeed(isJump);
             _character.Move(distance * Time.deltaTime);
             _ySpeed = _character.velocity.y;
             DirectionChanged?.Invoke(inputDirection);
         }
         
-        private float CalculateYSpeed()
+        private void Awake()
+        {
+            _character = GetComponent<CharacterController>();
+        }
+
+        private float CalculateYSpeed(bool isJump)
         {
             if (IsGround)
             {
                 GroundedNowCheck();
-                if (Input.GetButtonDown("Jump"))
+                if (isJump)
                 {
                     _ySpeed = _jumpSpeed;
                 }
@@ -76,16 +67,6 @@ namespace PlayerAbilities
             return _ySpeed;
         }
 
-
-        private Vector3 GetInputDirection()
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-
-            return Vector3.right * horizontalInput + 
-                   Vector3.forward * verticalInput;
-        }
-        
         private Vector3 GetMoveDirection(Vector3 inputDirection)
         {
             Vector3 moveDirectionForward = transform.forward * inputDirection.z;
