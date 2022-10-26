@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 195026343860482641}
   - component: {fileID: 3172395968311471702}
   - component: {fileID: 6619081724575694907}
+  - component: {fileID: 5549026052157426733}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -142,6 +143,7 @@ MonoBehaviour:
   - {fileID: 6224488748144517718}
   - {fileID: 1260768236522649725}
   - {fileID: 8367490837462804766}
+  _photonView: {fileID: 3172395968311471702}
 --- !u!114 &3172395968311471702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +162,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 5549026052157426733}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -174,10 +177,26 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 200
+  m_Radius: 500
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5549026052157426733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4959650558869855933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &2825084487488373838
 PrefabInstance:
   m_ObjectHideFlags: 0

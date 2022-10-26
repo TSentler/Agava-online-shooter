@@ -16,6 +16,7 @@ namespace PlayerAbilities
         [SerializeField] private ParticleSystem _particle;
         [SerializeField] private AudioSource _explousSound;
         [SerializeField] private MeshRenderer[] _renderers;
+        [SerializeField] private PhotonView _photonView;
 
         private Rigidbody _rigidbody;
         private bool _isEplouseCooldownStart;
@@ -45,18 +46,24 @@ namespace PlayerAbilities
         private void Explouse()
         {
             _isEplouseCooldownStart = false;
-            _particle.Play();
-            _explousSound.Play();
+            _photonView.RPC(nameof(EnableEffectRPC), RpcTarget.All);
 
             foreach(var player in _players)
             {
                 player.ApplyDamage(_explouseDamage, PhotonNetwork.LocalPlayer);
             }
 
+            StartCoroutine(DestroyWihDelay());
+        }
+
+        [PunRPC]
+        private void EnableEffectRPC()
+        {
+            _particle.Play();
+            _explousSound.Play();
+
             foreach (var renderer in _renderers)
                 renderer.enabled = false;
-
-            StartCoroutine(DestroyWihDelay());
         }
 
         private IEnumerator DestroyWihDelay()
