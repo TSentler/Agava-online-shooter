@@ -59,7 +59,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     {
         _currentGun = _guns[0];
         _currentGun.gameObject.SetActive(true);
-        GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
+        GunChanged?.Invoke(_currentGun.AmmoQuanityGun, _currentGun.MaxAmmoGun);
         InitializePlayersGuns();
     }
 
@@ -88,7 +88,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
                 _currentGun.Reload();
             }
 
-            GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
+            GunChanged?.Invoke(_currentGun.AmmoQuanityGun, _currentGun.MaxAmmoGun);
         }
     }
 
@@ -115,7 +115,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         _currentGun.gameObject.SetActive(true);
-        GunChanged?.Invoke(_currentGun.AmmoQuanity, _currentGun.MaxAmmo);
+        GunChanged?.Invoke(_currentGun.AmmoQuanityGun, _currentGun.MaxAmmoGun);
 
         if (_photonView.IsMine)
         {
