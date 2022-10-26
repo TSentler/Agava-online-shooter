@@ -78,7 +78,7 @@ namespace Levels
 
         public void CreateOrJoinSmallMap()
         {
-            CreateOrJoinMap(LevelNames.CandyScene_night, _smallRoomOptions);
+            CreateOrJoinMap(LevelNames.Room1, _smallRoomOptions);
         }
 
         public void CreateOrJoinLargeMap()
