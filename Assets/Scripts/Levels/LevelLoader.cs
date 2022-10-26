@@ -8,7 +8,7 @@ namespace Levels
 {
     public enum LevelNames
     {
-        Room1, RoomCorridor, GameMapScene, LargeLevelScene, Room1BotTest
+        Room1, RoomCorridor, GameMapScene, LargeLevelScene, Room1BotTest, CandyScene_night
     }
     
     public class LevelLoader : MonoBehaviour
@@ -78,7 +78,7 @@ namespace Levels
 
         public void CreateOrJoinSmallMap()
         {
-            CreateOrJoinMap(LevelNames.Room1, _smallRoomOptions);
+            CreateOrJoinMap(LevelNames.CandyScene_night, _smallRoomOptions);
         }
 
         public void CreateOrJoinLargeMap()
