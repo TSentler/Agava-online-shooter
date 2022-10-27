@@ -6,7 +6,8 @@ using UnityEngine.Events;
 
 namespace PlayerAbilities
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController),
+        typeof(GroundChecker))]
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
@@ -20,22 +21,9 @@ namespace PlayerAbilities
         private ICharacterInputSource _inputSource;
         private PhotonView _photonView;
         private CharacterController _character;
+        private GroundChecker _groundChecker;
         private Vector3 _moveDirection;
         private float _ySpeed;
-        private bool _isGrounded;
-        
-        public event UnityAction Grounded, Jumped;
-
-        public bool IsGround
-        {
-            get
-            {
-                var hitColliders = new Collider[1];
-                hitColliders = Physics.OverlapSphere(_groundPoint.position, 
-                    _groundOverlapRadius, _groundMask);
-                return hitColliders.Length > 0;
-            }
-        }
 
         private void OnValidate()
         {
@@ -52,6 +40,7 @@ namespace PlayerAbilities
             _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
             _character = GetComponent<CharacterController>();
             _photonView = GetComponent<PhotonView>();
+            _groundChecker = GetComponent<GroundChecker>();
         }
 
         private void Update()
@@ -76,17 +65,9 @@ namespace PlayerAbilities
         
         private float CalculateYSpeed(bool isJump)
         {
-            if (IsGround)
+            if (_groundChecker.IsGround && isJump)
             {
-                GroundedNowCheck();
-                if (isJump)
-                {
-                    _ySpeed = _jumpSpeed;
-                }
-            }
-            else
-            {
-                JumpedNowCheck();
+                _ySpeed = _jumpSpeed;
             }
             
             _ySpeed += _gravityFactor * Physics.gravity.y * Time.deltaTime;
@@ -101,24 +82,5 @@ namespace PlayerAbilities
 
             return (moveDirectionForward + moveDirectionSide).normalized;
         }
-        
-        private void JumpedNowCheck()
-        {
-            if (_isGrounded)
-            {
-                _isGrounded = false;
-                Jumped?.Invoke();
-            }
-        }
-
-        private void GroundedNowCheck()
-        {
-            if (_isGrounded == false)
-            {
-                _isGrounded = true;
-                Grounded?.Invoke();
-            }
-        }
-        
     }
 }
