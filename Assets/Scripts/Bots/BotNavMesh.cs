@@ -1,3 +1,4 @@
+using System;
 using CharacterInput;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,13 @@ namespace Bots
             _targets = FindObjectsOfType<NavTargetPoint>();
         }
 
+        private void Update()
+        {
+            var rightInput = GetInputByAxis(transform.right);
+            var forwardInput = GetInputByAxis(transform.forward);
+            MovementInput = new Vector2(rightInput, forwardInput);
+        }
+
         public void GoDestination()
         {
             _agent.destination = TargetPosition;
@@ -40,6 +48,12 @@ namespace Bots
             {
                 _currentTarget = Random.Range(0, _targets.Length);
             }
+        }
+
+        private float GetInputByAxis(Vector3 axis)
+        {
+            var input = Vector3.Dot(_agent.velocity, axis);
+            return Mathf.Clamp(input, -1f, 1f);
         }
     }
 }

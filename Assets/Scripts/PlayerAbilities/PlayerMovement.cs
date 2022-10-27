@@ -11,12 +11,9 @@ namespace PlayerAbilities
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
-        [SerializeField] private float _speed;
-        [SerializeField] private float _jumpSpeed = 18f, 
-            _gravityFactor = 1f,
-            _groundOverlapRadius = 0.1f;
-        [SerializeField] private Transform _groundPoint;
-        [SerializeField] private LayerMask _groundMask;
+        [SerializeField] private float _speed,
+            _jumpSpeed = 18f,
+            _gravityFactor = 1f;
         
         private ICharacterInputSource _inputSource;
         private PhotonView _photonView;
