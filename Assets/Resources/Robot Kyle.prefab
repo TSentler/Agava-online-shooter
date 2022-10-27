@@ -4008,6 +4008,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8626187333435406068}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: Damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: MaxAmmo
       value: 12
       objectReference: {fileID: 0}
@@ -4032,6 +4036,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: ShootParticle
+      value: 
+      objectReference: {fileID: 4007550603658638138}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForceX
       value: 0.7
       objectReference: {fileID: 0}
@@ -4054,6 +4062,22 @@ PrefabInstance:
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: RecoilForceXMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: RecoilForceXMin
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: RecoilForceYMax
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: RecoilForceYMin
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForceXMax
@@ -4137,6 +4161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81f18825bcb9ac4b9627b23c69e8eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &4007550603658638138 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3843509030677619690, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+  m_PrefabInstance: {fileID: 201339352464363728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &4007550603670208998 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3843509030699422006, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
@@ -4169,6 +4198,10 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 8626187333435406068}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: Damage
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: MaxAmmo
       value: 30
@@ -4206,6 +4239,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: ShootParticle
+      value: 
+      objectReference: {fileID: 5749829092685433709}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _maxAmmoCount
       value: 90
       objectReference: {fileID: 0}
@@ -4220,6 +4257,22 @@ PrefabInstance:
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _delayPerShoot
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: RecoilForceXMax
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: RecoilForceXMin
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: RecoilForceYMax
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: RecoilForceYMin
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForceXMax
@@ -4349,6 +4402,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8557972948085238072, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
   m_PrefabInstance: {fileID: 4067976722115134384}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &5749829092685433709 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8628655397621975261, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+  m_PrefabInstance: {fileID: 4067976722115134384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &5749829092705515953 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8628655397643762177, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
@@ -4387,13 +4445,65 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8626187333435406068}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: Damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _spread
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: MouseLook
+      value: 
+      objectReference: {fileID: 5788905161855361682}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: PhotonView
       value: 
       objectReference: {fileID: 1928559040321103050}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: ShootSound
+      value: 
+      objectReference: {fileID: 1644377022750838855}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _mouseLook
       value: 
       objectReference: {fileID: 5788905161855361682}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: ShootParticle
+      value: 
+      objectReference: {fileID: 1644377022731068059}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: RecoilForceXMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: RecoilForceXMin
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: RecoilForceYMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: RecoilForceYMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _verticalSpread
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _horizontalSpread
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: LayerToDetect.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _coutOfShardsInOneBullet
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5914726035967182871, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _target
       value: 
@@ -4428,15 +4538,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403756024422902066, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7403756024422902066, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7403756024422902066, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7403756024422902066, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4501,6 +4611,16 @@ GameObject:
 --- !u!4 &1080610042545230083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7403756024422902066, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+  m_PrefabInstance: {fileID: 7512133899917621297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1644377022731068059 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9120481713295809194, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+  m_PrefabInstance: {fileID: 7512133899917621297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1644377022750838855 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9120481713273874550, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
   m_PrefabInstance: {fileID: 7512133899917621297}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1928559040321103050 stripped
@@ -4640,6 +4760,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8626187333435406068}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: Damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: MouseLook
+      value: 
+      objectReference: {fileID: 5788905161855361682}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: ShootSound
+      value: 
+      objectReference: {fileID: 6536585655518450330}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: _mouseLook
       value: 
       objectReference: {fileID: 5788905161855361682}
@@ -4650,6 +4782,30 @@ PrefabInstance:
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: DelayPerShoot
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: ShootParticle
+      value: 
+      objectReference: {fileID: 6536585655504642118}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: RecoilForceXMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: RecoilForceXMin
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: RecoilForceYMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: RecoilForceYMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: LayerToDetect.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
@@ -4687,6 +4843,16 @@ GameObject:
 --- !u!1 &5465906653544540840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2471626348703339400, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+  m_PrefabInstance: {fileID: 7608328225642658080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6536585655504642118 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3684129421721508198, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+  m_PrefabInstance: {fileID: 7608328225642658080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6536585655518450330 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3684129421735062458, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
   m_PrefabInstance: {fileID: 7608328225642658080}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7152751902177157180 stripped

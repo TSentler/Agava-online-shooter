@@ -14,17 +14,17 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected PhotonView PhotonView;
     [SerializeField] protected Camera Camera;
     [SerializeField] protected int MaxAmmoCount;
+    [SerializeField] protected ParticleSystem ShootParticle;
+    [SerializeField] protected AudioSource ShootSound;
+    [SerializeField] protected MouseLook MouseLook;
+    [SerializeField] protected float Damage;
+    [SerializeField] protected float RecoilForceXMax;
+    [SerializeField] protected float RecoilForceYMax;
+    [SerializeField] protected float RecoilForceXMin;
+    [SerializeField] protected float RecoilForceYMin;
+    [SerializeField] protected LayerMask LayerToDetect;
 
-    [SerializeField] private float _damage;
-    [SerializeField] private float _recoilForceXMax;
-    [SerializeField] private float _recoilForceYMax;
-    [SerializeField] private float _recoilForceXMin;
-    [SerializeField] private float _recoilForceYMin;
     [SerializeField] private GameObject _bulletHoleTemplate;
-    [SerializeField] private MouseLook _mouseLook;
-    [SerializeField] private AudioSource _shootSound;
-    [SerializeField] private LayerMask _layerToDetect;
-    [SerializeField] private ParticleSystem _shootParticle;
 
     private protected int AmmoQuanity;
     private protected bool CanShoot = true;
@@ -54,18 +54,18 @@ public abstract class Gun : MonoBehaviour
             StartCoroutine(RestoreAmmo());
     }
 
-    private protected void Shoot(Camera camera)
+    protected virtual void Shoot(Camera camera)
     {
         if (AmmoQuanity > 0 && CanShoot)
         {
-            _shootParticle.Play();
-            _mouseLook.Shoot(_recoilForceXMin, _recoilForceYMin, _recoilForceXMax, _recoilForceYMax);
-            _shootSound.Play();
+            ShootParticle.Play();
+            
+            ShootSound.Play();
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
 
-            RaycastHit[] hits = Physics.RaycastAll(ray, _layerToDetect);
+            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
 
             RaycastHit minDistanceHit = new RaycastHit
             {
@@ -78,7 +78,7 @@ public abstract class Gun : MonoBehaviour
                 {
                     if (hitDetector.PhotonView.IsMine == false)
                     {
-                        hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
+                        hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
                         OnHit();
                     }
                     break;
@@ -102,12 +102,14 @@ public abstract class Gun : MonoBehaviour
             if (MaxAmmoQuanity != 0)
                 MaxAmmoQuanity--;
 
+            MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax);
         }
         else
         {
             if (AmmoQuanity == 0)
                 Reload();
         }
+        
     }
 
     private protected void OnHit()
