@@ -3,19 +3,12 @@ using UnityEngine;
 
 public class Rifle : Gun
 {
-    private float _accumulatedTime;
+    [field:SerializeField] public float SlowIgnore { get; private set; }
+
     private float _fireaInterval;
 
     private void Update()
     {
-        _accumulatedTime += Time.deltaTime;
-
-        if (CanShoot == true)
-        {
-            CanShoot = false;
-            return;
-        }
-
         _fireaInterval += Time.deltaTime;
 
         if (_fireaInterval >= DelayPerShoot)
@@ -34,6 +27,7 @@ public class Rifle : Gun
                 if (Input.GetMouseButton(0))
                 {
                     Shoot(Camera);
+                    CanShoot = false;
 
                     if (MaxAmmoQuanity <= 0)
                     {

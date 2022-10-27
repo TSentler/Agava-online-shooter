@@ -9,21 +9,21 @@ namespace PlayerAbilities
             _isGroundName = Animator.StringToHash("IsGround");
 
         [SerializeField] private Animator _animator;
-        [SerializeField] private PlayerMovement _movement;
+        [SerializeField] private GroundChecker _groundChecker;
 
         private void OnEnable()
         {
-            _movement.Grounded += OnGround;
-            _movement.Jumped += OnMovement;
+            _groundChecker.Grounded += OnGround;
+            _groundChecker.Jumped += OnGroundChecker;
         }
 
         private void OnDisable()
         {
-            _movement.Grounded -= OnGround;
-            _movement.Jumped -= OnMovement;
+            _groundChecker.Grounded -= OnGround;
+            _groundChecker.Jumped -= OnGroundChecker;
         }
 
-        private void OnMovement()
+        private void OnGroundChecker()
         {
             _animator.SetBool(_isGroundName, false);
         }
