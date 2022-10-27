@@ -23,7 +23,9 @@ namespace PlayerAbilities.Gun
 
         private void GunChangedHandler(int quantity, int max)
         {
-            _animator.SetBool(_isRifleName, _playerHand.CurrentGunId == 1);
+            var isRifle = _playerHand.CurrentGunId > 0;
+            _animator.SetBool(_isRifleName, isRifle);
+
         }
     }
 }
