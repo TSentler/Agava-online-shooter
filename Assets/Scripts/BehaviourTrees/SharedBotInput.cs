@@ -1,7 +1,8 @@
 using System;
 using BehaviorDesigner.Runtime;
+using Bots;
 
-namespace Bots
+namespace BehaviourTrees
 {
     [Serializable]
     public class SharedBotInput : SharedVariable<BotInput>

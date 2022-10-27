@@ -13,7 +13,7 @@ namespace PlayerAbilities
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed = 18f, 
             _gravityFactor = 1f,
-            _groundOverlspRadius = 0.1f;
+            _groundOverlapRadius = 0.1f;
         [SerializeField] private Transform _groundPoint;
         [SerializeField] private LayerMask _groundMask;
         
@@ -24,7 +24,6 @@ namespace PlayerAbilities
         private float _ySpeed;
         private bool _isGrounded;
         
-        public event UnityAction<Vector3> DirectionChanged;
         public event UnityAction Grounded, Jumped;
 
         public bool IsGround
@@ -33,7 +32,7 @@ namespace PlayerAbilities
             {
                 var hitColliders = new Collider[1];
                 hitColliders = Physics.OverlapSphere(_groundPoint.position, 
-                    _groundOverlspRadius, _groundMask);
+                    _groundOverlapRadius, _groundMask);
                 return hitColliders.Length > 0;
             }
         }
@@ -73,7 +72,6 @@ namespace PlayerAbilities
             distance += Vector3.up * CalculateYSpeed(isJump);
             _character.Move(distance * Time.deltaTime);
             _ySpeed = _character.velocity.y;
-            DirectionChanged?.Invoke(inputDirection);
         }
         
         private float CalculateYSpeed(bool isJump)

@@ -1,16 +1,16 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using UnityEngine;
 
-namespace Bots
+namespace BehaviourTrees
 {
-    public class SetMovementInput : Action 
+    public class SetRandomDirection : Action
     {
-        public SharedBotInput SelfBotInput;
         public SharedVector2 Direction;
 
         public override TaskStatus OnUpdate()
         {
-            SelfBotInput.Value.MovementInput = Direction.Value;
+            Direction.Value = Random.insideUnitCircle.normalized;
             return TaskStatus.Success;
         }
     }

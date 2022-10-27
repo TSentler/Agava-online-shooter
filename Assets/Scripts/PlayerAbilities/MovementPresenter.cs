@@ -1,4 +1,5 @@
 using System;
+using CharacterInput;
 using UnityEngine;
 
 namespace PlayerAbilities
@@ -9,22 +10,34 @@ namespace PlayerAbilities
             _forwardName = Animator.StringToHash("InputForward"),
             _rightName = Animator.StringToHash("InputRight");
 
+        [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private Animator _animator;
-        [SerializeField] private PlayerMovement _movement;
 
-        private void OnEnable()
+        private ICharacterInputSource _inputSource;
+        
+        private void OnValidate()
         {
-            _movement.DirectionChanged += OnDirectionChange;
+            if (_inputSourceBehaviour 
+                && !(_inputSourceBehaviour is ICharacterInputSource))
+            {
+                Debug.LogError(nameof(_inputSourceBehaviour) + " needs to implement " + nameof(ICharacterInputSource));
+                _inputSourceBehaviour = null;
+            }
         }
 
-        private void OnDisable()
+        private void Awake()
         {
-            _movement.DirectionChanged -= OnDirectionChange;
+            _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
         }
 
-        private void OnDirectionChange(Vector3 direction)
+        private void Update()
         {
-            _animator.SetFloat(_forwardName, direction.z);
+            UpdateDirection(_inputSource.MovementInput);
+        }
+
+        private void UpdateDirection(Vector2 direction)
+        {
+            _animator.SetFloat(_forwardName, direction.y);
             _animator.SetFloat(_rightName, direction.x);
         }
     }
