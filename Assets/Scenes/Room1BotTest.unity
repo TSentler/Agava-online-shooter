@@ -3819,7 +3819,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &501077780
 Transform:
   m_ObjectHideFlags: 0
@@ -6126,7 +6126,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &859517624
 Transform:
   m_ObjectHideFlags: 0
@@ -11623,7 +11623,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1605579596
 Transform:
   m_ObjectHideFlags: 0
@@ -15295,7 +15295,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2067436329
 Transform:
   m_ObjectHideFlags: 0
@@ -15874,7 +15874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e8fb5bcde2e4d49b70c5426814aeab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 7926811385654240329, guid: 07c91d31472c2d34babf267ab92a47b9, type: 3}
+  _playerPrefab: {fileID: 7926811385654240329, guid: d32bb5a571eb48048960cc3d4e492ada, type: 3}
   _spawnPoints:
   - {fileID: 871003138}
 --- !u!1 &1477372229245630099
