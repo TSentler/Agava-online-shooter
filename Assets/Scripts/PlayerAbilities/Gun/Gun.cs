@@ -16,7 +16,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected int MaxAmmo;
     [SerializeField] protected int Id;
     [SerializeField] protected PhotonView PhotonView;
-    [SerializeField] protected PlayerPhotonView PlayerPhotonView;
+    [SerializeField] protected PlayerInfo _playerInfo;
     [SerializeField] protected Camera Camera;
     [SerializeField] protected int MaxAmmoCount;
 

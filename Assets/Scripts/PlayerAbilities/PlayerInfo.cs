@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PlayerAbilities
 {
     [RequireComponent(typeof(PhotonView))]
-    public class PlayerPhotonView : MonoBehaviour
+    public class PlayerInfo : MonoBehaviour
     {
         [SerializeField] private bool _isBot;
         [SerializeField] private PhotonView _photonView;

@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: -2751316611523236927}
-  _playerPhotonView: {fileID: 5343965922192989534}
+  _playerInfo: {fileID: 5343965922192989534}
 --- !u!1 &733332460700605642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: -2751316611523236927}
-  _playerPhotonView: {fileID: 5343965922192989534}
+  _playerInfo: {fileID: 5343965922192989534}
 --- !u!1 &7790142387872623436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,6 +4024,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 5343965922192989534}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _shootSound
       value: 
       objectReference: {fileID: 4007550603670208998}
@@ -4193,6 +4197,10 @@ PrefabInstance:
       propertyPath: DelayReload
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 5343965922192989534}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _shootSound
       value: 
@@ -4470,6 +4478,10 @@ PrefabInstance:
       propertyPath: DelayReload
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 5343965922192989534}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: DelayPerShoot
       value: 1.5

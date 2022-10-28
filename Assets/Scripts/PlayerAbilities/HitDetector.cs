@@ -7,10 +7,10 @@ public abstract class HitDetector : MonoBehaviour
 {
     [SerializeField] protected PlayerHealth PlayerHealth;
 
-    [SerializeField] private PlayerPhotonView _playerPhotonView;
+    [SerializeField] private PlayerInfo _playerInfo;
 
-    public bool IsMine => _playerPhotonView.IsMine;
-    public bool IsBot => _playerPhotonView.IsBot;
+    public bool IsMine => _playerInfo.IsMine;
+    public bool IsBot => _playerInfo.IsBot;
 
     public abstract void DetectHit(float damage, Player player);
 }

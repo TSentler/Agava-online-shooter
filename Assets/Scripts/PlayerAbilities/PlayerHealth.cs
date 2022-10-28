@@ -18,7 +18,7 @@ namespace PlayerAbilities
         private int _deaths;
         private float _currentHealth;
         private PlayerSpawner _spawner;
-        private PlayerPhotonView _playerPhotonView;
+        private PlayerInfo _playerInfo;
 
         public UnityAction<float, float> ChangeHealth;
 
@@ -46,7 +46,7 @@ namespace PlayerAbilities
             _spawner = FindObjectOfType<PlayerSpawner>();
             _damagebleHit = FindObjectOfType<DamagebleHit>(true);
             _damagebleHit.gameObject.SetActive(false);
-            _playerPhotonView = GetComponent<PlayerPhotonView>();
+            _playerInfo = GetComponent<PlayerInfo>();
         }
 
         private void OnEnable()
@@ -79,7 +79,7 @@ namespace PlayerAbilities
             {
                 _currentHealth -= damage;
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
-                if (_playerPhotonView.IsBot == false)
+                if (_playerInfo.IsBot == false)
                 {
                     _damagebleHit.gameObject.SetActive(true);
                     StartCoroutine(DestroyEffectWithDelay());
@@ -88,7 +88,7 @@ namespace PlayerAbilities
                 if (_currentHealth <= 0)
                 {
                     _deaths++;
-                    if (_playerPhotonView.IsBot == false)
+                    if (_playerInfo.IsBot == false)
                     {
                         PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
                         int kills = (int)player.CustomProperties["Kills"] + 1;

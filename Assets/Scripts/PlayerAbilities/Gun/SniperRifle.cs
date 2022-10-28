@@ -8,7 +8,7 @@ public class SniperRifle : Gun
 
     private void Update()
     {
-        if (PhotonView.IsMine && PlayerPhotonView.IsBot == false)
+        if (PhotonView.IsMine && _playerInfo.IsBot == false)
         {
             if (Input.GetMouseButtonDown(0))
             {
