@@ -2302,7 +2302,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906580642}
         m_TargetAssemblyTypeName: Levels.LevelLoader, Assembly-CSharp
-        m_MethodName: CreateOrJoinBotMap
+        m_MethodName: CreateOrJoinSmallMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
