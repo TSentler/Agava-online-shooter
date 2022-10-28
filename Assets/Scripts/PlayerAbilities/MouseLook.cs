@@ -44,10 +44,10 @@ namespace PlayerAbilities
 
         public void Shoot(float rifleRecoilXMin,float rifleRecoilYMin,float rifleRecoilXMax, float rifleRecoilYMax)
         {
-            var sensetivityFactor = (_shootSensetivity * Time.deltaTime) / PhotonNetwork.GetPing();
-            float mouseX = Random.Range(rifleRecoilXMin, rifleRecoilXMax) * sensetivityFactor;
-            float mouseY = Random.Range(rifleRecoilYMin, rifleRecoilYMax) * sensetivityFactor;
-        
+            //var sensetivityFactor = (_shootSensetivity * Time.deltaTime) / PhotonNetwork.GetPing();
+            float mouseX = Random.Range(rifleRecoilXMin, rifleRecoilXMax) /** sensetivityFactor*/;
+            float mouseY = Random.Range(rifleRecoilYMin, rifleRecoilYMax) /** sensetivityFactor*/;
+
             MouseMove(mouseX, mouseY);
         }
 
