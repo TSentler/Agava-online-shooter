@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Rifle : Gun
 {
-    [field:SerializeField] public float SlowIgnore { get; private set; }
-
     private float _fireaInterval;
 
     private void Update()

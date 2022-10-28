@@ -25,6 +25,8 @@ namespace Score
         private void Awake()
         {
             _matchCallbacks = FindObjectOfType<MatchmakingCallbacksCatcher>();
+            PhotonNetwork.CurrentRoom.IsOpen = true;
+            PhotonNetwork.CurrentRoom.IsVisible = true;
         }
 
         private void OnEnable()
