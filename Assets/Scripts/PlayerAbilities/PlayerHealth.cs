@@ -66,6 +66,7 @@ namespace PlayerAbilities
         [PunRPC]
         private void ApplyDamageRPC(float damage, Player player)
         {
+            Debug.Log(gameObject.name);
             if (_photonView.IsMine == false)
             {
                 return;
@@ -78,6 +79,7 @@ namespace PlayerAbilities
 
             if (_photonView.IsMine)
             {
+                Debug.Log("!" + gameObject.name);
                 _currentHealth -= damage;
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
                 _damagebleHit.gameObject.SetActive(true);

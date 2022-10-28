@@ -2,6 +2,7 @@ using Photon.Pun;
 using PlayerAbilities;
 using System;
 using System.Collections;
+using PlayerAbilities.Bots;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -76,7 +77,10 @@ public abstract class Gun : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
-                    if (hitDetector.PhotonView.IsMine == false)
+                    var isBot = hitDetector.PhotonView.gameObject
+                        .TryGetComponent(out BotPlayer bot);
+                    Debug.Log(isBot);
+                    if (hitDetector.PhotonView.IsMine == false || isBot)
                     {
                         hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
                         OnHit();

@@ -3214,11 +3214,6 @@ MonoBehaviour:
   _speed: 12
   _jumpSpeed: 18
   _gravityFactor: 10
-  _groundOverlapRadius: 0.1
-  _groundPoint: {fileID: 4039599939020958733}
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &-2751316611523236927
 MonoBehaviour:
   m_ObjectHideFlags: 0
