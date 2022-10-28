@@ -14,7 +14,7 @@ public class Shotgun : Gun
 
     private void Update()
     {
-        if (PhotonView.IsMine)
+        if (PhotonView.IsMine && _playerInfo.IsBot == false)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -72,7 +72,7 @@ public class Shotgun : Gun
                 {
                     if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                     {
-                        if (hitDetector.PhotonView.IsMine == false)
+                        if (hitDetector.IsMine == false || hitDetector.IsBot)
                         {
                             hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
                             OnHit();

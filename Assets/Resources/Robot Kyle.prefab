@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: -2751316611523236927}
-  _photonView: {fileID: 5537214694185517777}
+  _playerInfo: {fileID: 1228789576761653420}
 --- !u!1 &733332460700605642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,8 +2344,8 @@ GameObject:
   - component: {fileID: 4391770532931410501}
   - component: {fileID: 7153070083620742640}
   - component: {fileID: 8717959275081263759}
+  - component: {fileID: 1671936356364261117}
   - component: {fileID: 5769570461929580660}
-  - component: {fileID: 638247422090261933}
   m_Layer: 0
   m_Name: AnimationPreseters
   m_TagString: Untagged
@@ -2424,6 +2424,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 7926811385661495177}
   _playerHand: {fileID: 6293996175980194239}
+--- !u!114 &1671936356364261117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769570461929580649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767db0091a8fbf41b7e83c9a44c1ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aimIK: {fileID: 5769570461929580660}
+  _animator: {fileID: 7926811385661495177}
 --- !u!114 &5769570461929580660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2452,28 +2466,6 @@ MonoBehaviour:
     _weight: 0
   - _bone: 11
     _weight: 0
---- !u!114 &638247422090261933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5769570461929580649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &5769570462044029524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,7 +3034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: -2751316611523236927}
-  _photonView: {fileID: 5537214694185517777}
+  _playerInfo: {fileID: 1228789576761653420}
 --- !u!1 &7790142387872623436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,6 +3086,7 @@ GameObject:
   - component: {fileID: 1224378625664512931}
   - component: {fileID: 893164139646970583}
   - component: {fileID: 4294300332522861659}
+  - component: {fileID: 1228789576761653420}
   - component: {fileID: 5537214694185517777}
   - component: {fileID: 4234827552636008570}
   - component: {fileID: 1444142722729072756}
@@ -3215,11 +3208,6 @@ MonoBehaviour:
   _speed: 12
   _jumpSpeed: 18
   _gravityFactor: 10
-  _groundOverlapRadius: 0.1
-  _groundPoint: {fileID: 4039599939020958733}
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &-2751316611523236927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3330,6 +3318,20 @@ MonoBehaviour:
   - {fileID: 199867840677515922}
   - {fileID: 5986609441988288462}
   - {fileID: 8293681879673814572}
+--- !u!114 &1228789576761653420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926811385654240329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e47cebe519ac7458c13d5a145294cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isBot: 0
+  _photonView: {fileID: 5537214694185517777}
 --- !u!114 &5537214694185517777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,6 +3390,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: IsGround
+  - Type: 9
+    SynchronizeType: 0
+    Name: Throw
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -3428,6 +3433,7 @@ MonoBehaviour:
   _camera: {fileID: 8626187333435406068}
   _spawnPoint: {fileID: 5493155187359600162}
   _photonView: {fileID: 5537214694185517777}
+  _animator: {fileID: 7926811385661495177}
 --- !u!1 &8225444847238415359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,6 +4034,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 1228789576761653420}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _shootSound
       value: 
       objectReference: {fileID: 4007550603670208998}
@@ -4222,6 +4232,10 @@ PrefabInstance:
       propertyPath: DelayReload
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 1228789576761653420}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _shootSound
       value: 
@@ -4468,6 +4482,10 @@ PrefabInstance:
       propertyPath: _mouseLook
       value: 
       objectReference: {fileID: 5788905161855361682}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 1228789576761653420}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: ShootParticle
       value: 
@@ -4783,6 +4801,10 @@ PrefabInstance:
       propertyPath: DelayReload
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 1228789576761653420}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: DelayPerShoot
       value: 1.5
