@@ -17,12 +17,18 @@ public class AimIK : MonoBehaviour
     private float _iterations = 10f;
     private Transform[] _boneTransforms;
 
-    [SerializeField] private PhotonView _photonView;
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _target, _aim;
     [Range(0f,1f), SerializeField] private float _weight = 1f;
     [SerializeField] private float _angleLimit = 60f;
     [SerializeField] private HumanBone[] _humanBones;
+
+    private float _oldWeight;
+
+    private void Awake()
+    {
+        _oldWeight = _weight;
+    }
 
     private void Start()
     {
@@ -34,6 +40,16 @@ public class AimIK : MonoBehaviour
         }
     }
 
+    public void WeightOff()
+    {
+        _weight = 0f;
+    }
+
+    public void WeightReset()
+    {
+        _weight = _oldWeight;
+    }
+    
     private Vector3 GetTargetPosition()
     {
         var targetDirection = _target.position - _aim.position;
