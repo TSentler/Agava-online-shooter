@@ -22,7 +22,7 @@ public class Rifle : Gun
     {
         if (PhotonView != null)
         {
-            if (PhotonView.IsMine)
+            if (PhotonView.IsMine && PlayerPhotonView.IsBot == false)
             {
                 if (Input.GetMouseButton(0))
                 {

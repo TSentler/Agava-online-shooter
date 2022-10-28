@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: -2751316611523236927}
-  _photonView: {fileID: 5537214694185517777}
+  _playerPhotonView: {fileID: 5343965922192989534}
 --- !u!1 &733332460700605642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47613a14a59c51735a67cd34acdbdbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _photonView: {fileID: 5537214694185517777}
   _animator: {fileID: 7926811385661495177}
   _target: {fileID: 5769570462044029525}
   _aim: {fileID: 5769570462315930505}
@@ -3041,7 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: -2751316611523236927}
-  _photonView: {fileID: 5537214694185517777}
+  _playerPhotonView: {fileID: 5343965922192989534}
 --- !u!1 &7790142387872623436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,6 +3094,7 @@ GameObject:
   - component: {fileID: 1224378625664512931}
   - component: {fileID: 893164139646970583}
   - component: {fileID: 4294300332522861659}
+  - component: {fileID: 5343965922192989534}
   - component: {fileID: 5537214694185517777}
   - component: {fileID: 4234827552636008570}
   - component: {fileID: 1444142722729072756}
@@ -3314,6 +3316,20 @@ MonoBehaviour:
   - {fileID: 5465906653544540840}
   - {fileID: 8117065582538732459}
   - {fileID: 3773720178483574315}
+--- !u!114 &5343965922192989534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926811385654240329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e47cebe519ac7458c13d5a145294cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isBot: 0
+  _photonView: {fileID: 5537214694185517777}
 --- !u!114 &5537214694185517777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4040,6 +4056,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: PlayerPhotonView
+      value: 
+      objectReference: {fileID: 5343965922192989534}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForceXMax
       value: 2
       objectReference: {fileID: 0}
@@ -4205,6 +4225,10 @@ PrefabInstance:
       propertyPath: _delayPerShoot
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: PlayerPhotonView
+      value: 
+      objectReference: {fileID: 5343965922192989534}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForceXMax
       value: 1
@@ -4450,6 +4474,10 @@ PrefabInstance:
       propertyPath: DelayPerShoot
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: PlayerPhotonView
+      value: 
+      objectReference: {fileID: 5343965922192989534}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
 --- !u!1 &3146594148124354340 stripped

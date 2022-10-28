@@ -2,17 +2,21 @@ using Photon.Pun;
 using PlayerAbilities;
 using System;
 using System.Collections;
-using PlayerAbilities.Bots;
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class Gun : MonoBehaviour
 {
+    private const float _radiusSphereCollider = 0.3f;
+    private const float _timeToDestroyBullet = 2f;
+    private const float _stepToSpawnPosition = 0.001f;
+
     [SerializeField] protected float DelayPerShoot;
     [SerializeField] protected float DelayReload;
     [SerializeField] protected int MaxAmmo;
     [SerializeField] protected int Id;
     [SerializeField] protected PhotonView PhotonView;
+    [SerializeField] protected PlayerPhotonView PlayerPhotonView;
     [SerializeField] protected Camera Camera;
     [SerializeField] protected int MaxAmmoCount;
 
@@ -31,11 +35,7 @@ public abstract class Gun : MonoBehaviour
     private protected bool CanShoot = true;
     private protected float MinDistanceHit = 1000f;
     private protected int MaxAmmoQuanity;
-
-    private const float _radiusSphereCollider = 0.3f;
-    private const float _timeToDestroyBullet = 2f;
-    private const float _stepToSpawnPosition = 0.001f;
-
+    
     public int MaxAmmoGun => MaxAmmo;
     public int AmmoQuanityGun => AmmoQuanity;
     public int GunID => Id;
@@ -77,10 +77,7 @@ public abstract class Gun : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
-                    var isBot = hitDetector.PhotonView.gameObject
-                        .TryGetComponent(out BotPlayer bot);
-                    Debug.Log(isBot);
-                    if (hitDetector.PhotonView.IsMine == false || isBot)
+                    if (hitDetector.IsMine == false || hitDetector.IsBot)
                     {
                         hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
                         OnHit();

@@ -12,13 +12,12 @@ public class HumanBone
     public float Weight => _weight;
 }
 
-[RequireComponent(typeof(PhotonView))]
 public class AimIK : MonoBehaviour
 {
     private float _iterations = 10f;
     private Transform[] _boneTransforms;
-    private PhotonView _photonView;
 
+    [SerializeField] private PhotonView _photonView;
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _target, _aim;
     [Range(0f,1f), SerializeField] private float _weight = 1f;

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -19,8 +18,7 @@ namespace PlayerAbilities
         private int _deaths;
         private float _currentHealth;
         private PlayerSpawner _spawner;
-
-        public PhotonView PhotonView => _photonView;
+        private PlayerPhotonView _playerPhotonView;
 
         public UnityAction<float, float> ChangeHealth;
 
@@ -48,6 +46,7 @@ namespace PlayerAbilities
             _spawner = FindObjectOfType<PlayerSpawner>();
             _damagebleHit = FindObjectOfType<DamagebleHit>(true);
             _damagebleHit.gameObject.SetActive(false);
+            _playerPhotonView = GetComponent<PlayerPhotonView>();
         }
 
         private void OnEnable()
@@ -66,7 +65,6 @@ namespace PlayerAbilities
         [PunRPC]
         private void ApplyDamageRPC(float damage, Player player)
         {
-            Debug.Log(gameObject.name);
             if (_photonView.IsMine == false)
             {
                 return;
@@ -79,19 +77,24 @@ namespace PlayerAbilities
 
             if (_photonView.IsMine)
             {
-                Debug.Log("!" + gameObject.name);
                 _currentHealth -= damage;
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
-                _damagebleHit.gameObject.SetActive(true);
-                StartCoroutine(DestroyEffectWithDelay());
-
+                if (_playerPhotonView.IsBot == false)
+                {
+                    _damagebleHit.gameObject.SetActive(true);
+                    StartCoroutine(DestroyEffectWithDelay());
+                }
+                
                 if (_currentHealth <= 0)
                 {
                     _deaths++;
-                    PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
-                    int kills = (int)player.CustomProperties["Kills"] + 1;
-                    Debug.Log(kills);
-                    player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
+                    if (_playerPhotonView.IsBot == false)
+                    {
+                        PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
+                        int kills = (int)player.CustomProperties["Kills"] + 1;
+                        Debug.Log(kills);
+                        player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
+                    }
                     _spawner.SpawnPlayer(this);
                     _playerHand.EquipDefaultGun();
                 }

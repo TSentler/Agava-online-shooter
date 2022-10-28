@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SniperRifle : Gun
 {
-    private float _fireaInterval;
+    private float _fireInterval;
 
     private void Update()
     {
-        if (PhotonView.IsMine)
+        if (PhotonView.IsMine && PlayerPhotonView.IsBot == false)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -25,12 +25,12 @@ public class SniperRifle : Gun
             }            
         }
 
-        _fireaInterval += Time.deltaTime;
+        _fireInterval += Time.deltaTime;
 
-        if (_fireaInterval >= DelayPerShoot)
+        if (_fireInterval >= DelayPerShoot)
         {
             CanShoot = true;
-            _fireaInterval = 0;
+            _fireInterval = 0;
         }
     }
 }
