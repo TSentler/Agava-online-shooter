@@ -117,7 +117,7 @@ namespace Levels
                 }
             }
 
-            return "Room" + Random.Range(0, 1000).ToString();
+            return "Room" + Random.Range(0, 1000).ToString() + PhotonNetwork.NickName;
         }
 
         public void CreateRoom(string name)
