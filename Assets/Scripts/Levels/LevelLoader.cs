@@ -2,7 +2,10 @@ using Network;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Levels
 {
@@ -10,7 +13,7 @@ namespace Levels
     {
         Room1, RoomCorridor, GameMapScene, LargeLevelScene, Room1BotTest, CandyScene_night
     }
-    
+
     public class LevelLoader : MonoBehaviour
     {
         private LevelNames _levelName;
@@ -18,14 +21,18 @@ namespace Levels
         private byte _maxPlayersLargeMap = 10;
 
         private MatchmakingCallbacksCatcher _matchCallback;
+        private LobbyCallbackCatcher _lobbyCalback;
         private RoomOptions _smallRoomOptions;
         private RoomOptions _largeRoomOptions;
 
         private RoomOptions _currentRoomOptions;
+        private List<RoomInfo> _roomInfos = new List<RoomInfo>();
+
 
         private void Awake()
         {
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
+            _lobbyCalback = FindObjectOfType<LobbyCallbackCatcher>();
             _smallRoomOptions = new RoomOptions();
             _smallRoomOptions.MaxPlayers = _maxPlayersSmallMap;
             _smallRoomOptions.CleanupCacheOnLeave = true;
@@ -39,6 +46,7 @@ namespace Levels
         {
             _matchCallback.OnCreateRoom += CreateRoomHandler;
             _matchCallback.OnJoinRandomFail += OnJoinRoomFailed;
+            _lobbyCalback.OnRoomsUpdate += RoomListUpdate;
         }
 
         private void OnJoinRoomFailed(short arg0, string arg1)
@@ -50,13 +58,14 @@ namespace Levels
         private void OnDisable()
         {
             _matchCallback.OnCreateRoom -= CreateRoomHandler;
+            _lobbyCalback.OnRoomsUpdate -= RoomListUpdate;
         }
 
         private void CreateRoomHandler()
         {
             PhotonNetwork.LoadLevel(_levelName.ToString());
         }
-        
+
         public void CreateOrJoinRandom()
         {
             if (PhotonNetwork.IsConnectedAndReady)
@@ -70,7 +79,7 @@ namespace Levels
             PhotonNetwork.JoinOrCreateRoom(
                 _levelName.ToString(), _smallRoomOptions, TypedLobby.Default);
         }
-        
+
         public void CreateOrJoinBotMap()
         {
             CreateOrJoinMap(LevelNames.Room1BotTest, _smallRoomOptions);
@@ -78,6 +87,7 @@ namespace Levels
 
         public void CreateOrJoinSmallMap()
         {
+
             CreateOrJoinMap(LevelNames.Room1, _smallRoomOptions);
         }
 
@@ -91,9 +101,25 @@ namespace Levels
             _levelName = levelName;
             _currentRoomOptions = options;
             PhotonNetwork.JoinOrCreateRoom(
-                _levelName.ToString(), options, TypedLobby.Default);
+                GetOrCreateRoomName(options), options, TypedLobby.Default);
         }
-        
+
+        private string GetOrCreateRoomName(RoomOptions roomOptions)
+        {
+            if (_roomInfos.Count != 0)
+            {               
+                for (int i = 0; i < _roomInfos.Count; i++)
+                {
+                    if (_roomInfos[i].PlayerCount < roomOptions.MaxPlayers)
+                    {
+                        return _roomInfos[i].Name;
+                    }
+                }
+            }
+
+            return "Room" + Random.Range(0, 1000).ToString();
+        }
+
         public void CreateRoom(string name)
         {
             PhotonNetwork.CreateRoom(name, _currentRoomOptions);
@@ -102,6 +128,17 @@ namespace Levels
         public void JoinRoom(string name)
         {
             PhotonNetwork.JoinRoom(name);
+        }
+
+        public void RoomListUpdate(List<RoomInfo> roomInfos)
+        {
+            _roomInfos.Clear();
+            _roomInfos = roomInfos;
+
+            for (int i = 0; i < _roomInfos.Count; i++)
+            {
+                Debug.Log(_roomInfos[i].Name);
+            }
         }
     }
 }

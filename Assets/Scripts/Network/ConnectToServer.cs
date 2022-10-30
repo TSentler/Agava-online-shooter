@@ -47,6 +47,7 @@ namespace Network
 
         private void ConnectedToMasterHandler()
         {
+            PhotonNetwork.JoinLobby();
             OnConnectEnd?.Invoke();
         }
 
