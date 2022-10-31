@@ -11,7 +11,8 @@ namespace Bots
         private NavMeshAgent _agent;
         private NavTargetPoint[] _targets;
         private int _currentTarget;
-
+        private bool _isStop;
+        
         public Vector2 MovementInput { get; private set; }
         public bool IsJumpInput { get; private set; }
         
@@ -33,12 +34,17 @@ namespace Bots
 
         public void GoDestination()
         {
+            _isStop = false;
             _agent.destination = TargetPosition;
         }
 
         public void Stop()
         {
+            if (_isStop)
+                return;
+            
             _agent.destination = transform.position;
+            _isStop = true;
         }
 
         public void NextTarget()

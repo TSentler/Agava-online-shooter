@@ -3091,7 +3091,7 @@ GameObject:
   - component: {fileID: 4234827552636008570}
   - component: {fileID: 1444142722729072756}
   - component: {fileID: 5526599788851391837}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Robot Kyle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
