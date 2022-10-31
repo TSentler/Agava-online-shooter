@@ -28,6 +28,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected float RecoilForceXMin;
     [SerializeField] protected float RecoilForceYMin;
     [SerializeField] protected LayerMask LayerToDetect;
+    [SerializeField] protected float RecoilMagnitude;
 
     [SerializeField] private GameObject _bulletHoleTemplate;
 
@@ -103,7 +104,7 @@ public abstract class Gun : MonoBehaviour
             if (MaxAmmoQuanity != 0)
                 MaxAmmoQuanity--;
 
-            MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax);
+            MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax, RecoilMagnitude, DelayPerShoot);
         }
         else
         {
