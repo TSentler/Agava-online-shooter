@@ -2160,6 +2160,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7593135972504170424}
+  - {fileID: 7890902795562438138}
   m_Father: {fileID: 7926811385654605929}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2180,6 +2181,8 @@ MonoBehaviour:
   _camera: {fileID: 8626187333435406068}
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
+  _weapon: {fileID: 5769570462044029525}
+  _weaponCamera: {fileID: 3640459193643689302}
 --- !u!114 &5917582119930069936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2701,6 +2704,90 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6391056847739148598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7890902795562438138}
+  - component: {fileID: 3640459193643689302}
+  - component: {fileID: 4459341317836571670}
+  m_Layer: 0
+  m_Name: Camera (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7890902795562438138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391056847739148598}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 625488436024648450}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &3640459193643689302
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391056847739148598}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.05
+  far clip plane: 2000
+  field of view: 70
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 375
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &4459341317836571670
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391056847739148598}
+  m_Enabled: 1
 --- !u!1 &6496338184682560371
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,6 +4177,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: RecoilMagnitude
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForceXMax
       value: 2
       objectReference: {fileID: 0}
@@ -4104,6 +4195,10 @@ PrefabInstance:
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForceYMin
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _recoilMagnitude
+      value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _bulletHoleTemplate
@@ -4250,7 +4345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: DelayPerShoot
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: ShootParticle
@@ -4282,11 +4377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: RecoilForceYMax
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: RecoilForceYMin
-      value: 0.05
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: RecoilMagnitude
+      value: 0.00002
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForceXMax
@@ -4303,6 +4402,10 @@ PrefabInstance:
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForceYMin
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _recoilMagnitude
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _bulletHoleTemplate
@@ -4507,8 +4610,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: RecoilMagnitude
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _verticalSpread
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _recoilMagnitude
+      value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _heightMultiplier
@@ -4828,6 +4939,14 @@ PrefabInstance:
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: RecoilForceYMin
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: RecoilMagnitude
+      value: 0.0002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _recoilMagnitude
+      value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: LayerToDetect.m_Bits

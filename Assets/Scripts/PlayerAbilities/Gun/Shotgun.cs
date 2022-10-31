@@ -94,7 +94,7 @@ public class Shotgun : Gun
                 }
             }
 
-            MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax);
+            MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax,RecoilMagnitude, DelayPerShoot);
             AmmoQuanity--;
 
             if (MaxAmmoQuanity != 0)
