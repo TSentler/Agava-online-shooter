@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace PlayerAbilities
 {
@@ -17,6 +18,8 @@ namespace PlayerAbilities
 
         private float _xRotation;
         private Vector3 _deltaPosition;
+        private Slider _slieder;
+        private MouseSensitivityChange _mouseSensitivityChange;
 
         public event UnityAction<float> OnLookChange;
 
@@ -28,6 +31,19 @@ namespace PlayerAbilities
             {
                 _camera.gameObject.SetActive(false);
             }
+
+            _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
+            _slieder = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
+        }
+
+        private void OnEnable()
+        {
+            _slieder.onValueChanged.AddListener(ChangeSensetivity);
+        }
+
+        private void OnDisable()
+        {
+            _slieder.onValueChanged.RemoveListener(ChangeSensetivity);
         }
 
         private void Update()
@@ -97,6 +113,11 @@ namespace PlayerAbilities
                 yield return 0;
             }
             transform.position = orignalPosition;
+        }
+
+        private void ChangeSensetivity(float value)
+        {
+            _mouseSensetivity = _slieder.value;
         }
     }
 }

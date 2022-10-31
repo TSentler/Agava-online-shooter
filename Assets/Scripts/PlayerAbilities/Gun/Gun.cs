@@ -31,6 +31,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected float RecoilMagnitude;
 
     [SerializeField] private GameObject _bulletHoleTemplate;
+    [SerializeField] private GameObject _bulletParticle;
+    [SerializeField] private float _bulletForce;
 
     private protected int AmmoQuanity;
     private protected bool CanShoot = true;
@@ -61,11 +63,13 @@ public abstract class Gun : MonoBehaviour
         if (AmmoQuanity > 0 && CanShoot)
         {
             ShootParticle.Play();
-            
-            ShootSound.Play();
+            ShootSound.Play();      
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
+            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, transform.position, Quaternion.identity);
+            bulletParticle.GetComponent<Rigidbody>().AddForce(transform.position + ray.origin * _bulletForce);
+            bulletParticle.transform.LookAt(ray.origin);
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
 
