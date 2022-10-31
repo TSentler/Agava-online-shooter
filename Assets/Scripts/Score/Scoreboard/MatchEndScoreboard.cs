@@ -59,8 +59,8 @@ namespace Score
             }
 
             Cursor.lockState = CursorLockMode.None;
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.CurrentRoom.IsOpen = true;
+            PhotonNetwork.CurrentRoom.IsVisible = true;
         }
 
         public void OnRestartButtonClick()
