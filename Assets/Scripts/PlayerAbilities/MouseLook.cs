@@ -18,6 +18,8 @@ namespace PlayerAbilities
         private float _xRotation;
         private Vector3 _deltaPosition;
 
+        public float XRotation => _xRotation;
+        
         public event UnityAction<float> OnLookChange;
 
         private void Awake()
@@ -68,7 +70,7 @@ namespace PlayerAbilities
             _weapon.position -= deltaPosition;
         }
 
-        private void MouseMove(float mouseX,float mouseY)
+        public void MouseMove(float mouseX,float mouseY)
         {
             _xRotation -= mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -80, 80);

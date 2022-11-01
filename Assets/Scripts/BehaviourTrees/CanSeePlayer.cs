@@ -13,90 +13,104 @@ namespace BehaviourTrees
     public class CanSeePlayer : Conditional
     {
         [UnityEngine.Tooltip("The LayerMask of the objects that we are searching for")]
-        public LayerMask objectLayerMask;
+        public LayerMask ObjectLayerMask;
         [UnityEngine.Tooltip("If using the object layer mask, specifies the maximum number of colliders that the physics cast can collide with")]
-        public int maxCollisionCount = 100;
+        public int MaxCollisionCount = 100;
         [UnityEngine.Tooltip("The LayerMask of the objects to ignore when performing the line of sight check")]
-        public LayerMask ignoreLayerMask;
+        public LayerMask IgnoreLayerMask;
         [UnityEngine.Tooltip("The field of view angle of the agent (in degrees)")]
-        public SharedFloat fieldOfViewAngle = 90;
+        public SharedFloat FieldOfViewAngle = 90;
         [UnityEngine.Tooltip("The distance that the agent can see")]
-        public SharedFloat viewDistance = 1000;
+        public SharedFloat ViewDistance = 1000;
         [UnityEngine.Tooltip("The raycast offset relative to the pivot position")]
-        public SharedVector3 offset;
+        public SharedVector3 Offset;
         [UnityEngine.Tooltip("The target raycast offset relative to the pivot position")]
-        public SharedVector3 targetOffset;
+        public SharedVector3 TargetOffset;
         [UnityEngine.Tooltip("The object that is within sight")]
-        public SharedGameObject returnedObject;
+        public SharedGameObject ReturnedObject;
 
-        private GameObject[] agentColliderGameObjects;
-        private int[] originalColliderLayer;
-        private Collider[] overlapColliders;
-        private int ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
+        private GameObject[] _agentColliderGameObjects;
+        private int[] _originalColliderLayer;
+        private Collider[] _overlapColliders;
+        private int _ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
 
-        // Returns success if an object was found otherwise failure
         public override TaskStatus OnUpdate()
         {
-            GameObject playerInSight = null;
-            overlapColliders = new Collider[maxCollisionCount];
+            _overlapColliders = new Collider[MaxCollisionCount];
             
-            var hitCount = Physics.OverlapSphereNonAlloc(
-                transform.TransformPoint(offset.Value), viewDistance.Value, 
-                overlapColliders, objectLayerMask, QueryTriggerInteraction.Ignore);
-            
-            if (hitCount > 0) {
-#if UNITY_EDITOR
-                if (hitCount == overlapColliders.Length) {
-                    Debug.LogWarning("Warning: The hit count is equal to the max collider array size. This will cause objects to be missed. Consider increasing the max collision count size.");
-                }
-#endif
-                float minAngle = Mathf.Infinity;
-                for (int i = 0; i < hitCount; ++i)
-                {
-                    var target = overlapColliders[i].transform;
-                    if (target.TryGetComponent(out PlayerInfo playerInfo) == false)
-                        continue;
-                    
-                    var direction = target.TransformPoint(targetOffset.Value) 
-                                    - transform.TransformPoint(offset.Value);
-                    float angle = Vector3.Angle(direction, transform.forward);
-                    if (angle > fieldOfViewAngle.Value / 2)
-                        continue;
-                    
-                    Debug.Log(target.gameObject.name);
-                    Debug.Log(angle);
-                    if (angle < minAngle) {
-                        minAngle = angle;
-                        playerInSight = target.gameObject;
-                    }
-                }
-            }
-            
-            if (playerInSight != null)
+            ReturnedObject.Value = FindPlayerInSight();
+            if (ReturnedObject.Value != null)
             {
-                returnedObject = playerInSight;
+                Debug.Log(ReturnedObject.Value.name);
                 return TaskStatus.Success;
             }
             
             return TaskStatus.Failure;
         }
 
+        private GameObject FindPlayerInSight()
+        {
+            GameObject playerInSight = null;
+            var hitCount = Physics.OverlapSphereNonAlloc(
+                transform.TransformPoint(Offset.Value), ViewDistance.Value,
+                _overlapColliders, ObjectLayerMask, QueryTriggerInteraction.Ignore);
+
+            if (hitCount > 0)
+            {
+#if UNITY_EDITOR
+                if (hitCount == _overlapColliders.Length)
+                {
+                    Debug.LogWarning(
+                        "Warning: The hit count is equal to the max collider array size. This will cause objects to be missed. Consider increasing the max collision count size.");
+                }
+#endif
+                float minAngle = Mathf.Infinity;
+                for (int i = 0; i < hitCount; ++i)
+                {
+                    var target = _overlapColliders[i].transform;
+                    
+                    if (target.TryGetComponent(out PlayerInfo playerInfo) == false)
+                        continue;
+
+                    var angle = CalculateAngle(target);
+                    if (angle > FieldOfViewAngle.Value / 2)
+                        continue;
+
+                    if (angle < minAngle)
+                    {
+                        minAngle = angle;
+                        playerInSight = target.gameObject;
+                    }
+                }
+            }
+
+            return playerInSight;
+        }
+
+        private float CalculateAngle(Transform target)
+        {
+            var direction = target.TransformPoint(TargetOffset.Value)
+                            - transform.TransformPoint(Offset.Value);
+            float angle = Vector3.Angle(direction, transform.forward);
+            return angle;
+        }
+
         // Reset the public variables
         public override void OnReset()
         {
-            fieldOfViewAngle = 90;
-            viewDistance = 1000;
-            offset = Vector3.zero;
-            targetOffset = Vector3.zero;
-            ignoreLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+            FieldOfViewAngle = 90;
+            ViewDistance = 1000;
+            Offset = Vector3.zero;
+            TargetOffset = Vector3.zero;
+            IgnoreLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
         }
 
         // Draw the line of sight representation within the scene window
         public override void OnDrawGizmos()
         {
-            MovementUtility.DrawLineOfSight(Owner.transform, offset.Value, 
-                fieldOfViewAngle.Value, 0f, 
-                viewDistance.Value, false);
+            MovementUtility.DrawLineOfSight(Owner.transform, Offset.Value, 
+                FieldOfViewAngle.Value, 0f, 
+                ViewDistance.Value, false);
         }
 
         public override void OnBehaviorComplete()
