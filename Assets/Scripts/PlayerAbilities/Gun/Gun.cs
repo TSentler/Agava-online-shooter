@@ -38,7 +38,7 @@ public abstract class Gun : MonoBehaviour
     private protected bool CanShoot = true;
     private protected float MinDistanceHit = 1000f;
     private protected int MaxAmmoQuanity;
-    
+
     public int MaxAmmoGun => MaxAmmo;
     public int AmmoQuanityGun => AmmoQuanity;
     public int GunID => Id;
@@ -63,7 +63,7 @@ public abstract class Gun : MonoBehaviour
         if (AmmoQuanity > 0 && CanShoot)
         {
             ShootParticle.Play();
-            ShootSound.Play();      
+            ShootSound.Play();
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
@@ -97,7 +97,7 @@ public abstract class Gun : MonoBehaviour
                             minDistanceHit = hits[j];
                     }
 
-                    if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false && 
+                    if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false &&
                         minDistanceHit.collider.gameObject.TryGetComponent(out HitDetector hit) == false)
                         PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
                 }
@@ -115,7 +115,7 @@ public abstract class Gun : MonoBehaviour
             if (AmmoQuanity == 0)
                 Reload();
         }
-        
+
     }
 
     private protected void OnHit()
@@ -133,13 +133,11 @@ public abstract class Gun : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(hitPosition, _radiusSphereCollider);
 
-        Quaternion rotation = Quaternion.LookRotation(hitNormal/*, Vector3.up*/) /** _bulletHoleTemplate.transform.rotation*/;
+        Quaternion rotation = Quaternion.LookRotation(hitNormal);
 
         if (colliders.Length != 0)
         {
-            /*var bulletHole = */Instantiate(_bulletHoleTemplate, hitPosition + hitNormal * _stepToSpawnPosition, rotation);
-            //bulletHole.transform.SetParent(colliders[0].transform);
-            //Destroy(bulletHole, _timeToDestroyBullet);
+            Instantiate(_bulletHoleTemplate, hitPosition + hitNormal * _stepToSpawnPosition, rotation);
         }
     }
 
