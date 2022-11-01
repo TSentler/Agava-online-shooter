@@ -2721,7 +2721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7890902795562438138
 Transform:
   m_ObjectHideFlags: 0
@@ -2744,7 +2744,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6391056847739148598}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -3406,6 +3406,7 @@ MonoBehaviour:
   - {fileID: 199867840677515922}
   - {fileID: 5986609441988288462}
   - {fileID: 8293681879673814572}
+  - {fileID: 6391056847739148598}
 --- !u!114 &1228789576761653420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4225,7 +4226,7 @@ PrefabInstance:
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _bulletHoleTemplate
       value: 
-      objectReference: {fileID: 6764196036257495169, guid: e49f9a5e36d92aa45951f7e28cbca2d8, type: 3}
+      objectReference: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: LayerToDetect.m_Bits
       value: 256
@@ -4440,7 +4441,7 @@ PrefabInstance:
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _bulletHoleTemplate
       value: 
-      objectReference: {fileID: 6764196036257495169, guid: e49f9a5e36d92aa45951f7e28cbca2d8, type: 3}
+      objectReference: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: LayerToDetect.m_Bits
       value: 256
@@ -4667,6 +4668,10 @@ PrefabInstance:
       propertyPath: _horizontalSpread
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _bulletHoleTemplate
+      value: 
+      objectReference: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: LayerToDetect.m_Bits
       value: 256
@@ -4994,6 +4999,10 @@ PrefabInstance:
       propertyPath: _recoilMagnitude
       value: 0.0002
       objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _bulletHoleTemplate
+      value: 
+      objectReference: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: LayerToDetect.m_Bits
       value: 256

@@ -30,7 +30,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected LayerMask LayerToDetect;
     [SerializeField] protected float RecoilMagnitude;
 
-    [SerializeField] private GameObject _bulletHoleTemplate;
+    [SerializeField] private ParticleSystem _bulletHoleTemplate;
     [SerializeField] private GameObject _bulletParticle;
     [SerializeField] private float _bulletForce;
 
@@ -133,13 +133,13 @@ public abstract class Gun : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(hitPosition, _radiusSphereCollider);
 
-        Quaternion rotation = Quaternion.LookRotation(hitNormal, Vector3.up) * _bulletHoleTemplate.transform.rotation;
+        Quaternion rotation = Quaternion.LookRotation(hitNormal/*, Vector3.up*/) /** _bulletHoleTemplate.transform.rotation*/;
 
         if (colliders.Length != 0)
         {
-            var bulletHole = Instantiate(_bulletHoleTemplate, hitPosition + hitNormal * _stepToSpawnPosition, rotation);
-            bulletHole.transform.SetParent(colliders[0].transform);
-            Destroy(bulletHole, _timeToDestroyBullet);
+            /*var bulletHole = */Instantiate(_bulletHoleTemplate, hitPosition + hitNormal * _stepToSpawnPosition, rotation);
+            //bulletHole.transform.SetParent(colliders[0].transform);
+            //Destroy(bulletHole, _timeToDestroyBullet);
         }
     }
 
