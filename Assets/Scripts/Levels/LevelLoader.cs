@@ -36,7 +36,7 @@ namespace Levels
             _smallRoomOptions = new RoomOptions();
             _smallRoomOptions.MaxPlayers = _maxPlayersSmallMap;
             _smallRoomOptions.CleanupCacheOnLeave = true;
-
+            
             _largeRoomOptions = new RoomOptions();
             _largeRoomOptions.MaxPlayers = _maxPlayersLargeMap;
             _largeRoomOptions.CleanupCacheOnLeave = true;
@@ -100,12 +100,14 @@ namespace Levels
         {
             _levelName = levelName;
             _currentRoomOptions = options;
+            options.
             PhotonNetwork.JoinOrCreateRoom(
                 GetOrCreateRoomName(options), options, TypedLobby.Default);
         }
 
         private string GetOrCreateRoomName(RoomOptions roomOptions)
         {
+            return "RoomTS" + Random.Range(0, 1000).ToString() + PhotonNetwork.NickName;
             if (_roomInfos.Count != 0)
             {               
                 for (int i = 0; i < _roomInfos.Count; i++)

@@ -16,7 +16,7 @@ namespace Bots
         private NavTargetPoint[] _targets;
         private float _tempAngularSpeed;
         private int _currentTarget;
-        private bool _isStop, _isAim;
+        private bool _isStop;
 
         public Vector2 MovementInput { get; private set; }
         public bool IsJumpInput { get; private set; }
@@ -67,17 +67,11 @@ namespace Bots
             lookDirectionXZ.y = 0f;
             VerticalAim(lookDirectionXZ, lookDirection);
             HorizontalAim(lookDirectionXZ);
-            _isAim = true;
         }
 
         public void ResetVerticalAim()
         {
-            if (_isAim)
-            {
-                VerticalAim(transform.forward,
-                    transform.forward);
-                _isAim = false;
-            }
+            VerticalAim(transform.forward, transform.forward);
         }
 
         private void VerticalAim(Vector3 lookDirectionXZ, Vector3 lookDirection)
