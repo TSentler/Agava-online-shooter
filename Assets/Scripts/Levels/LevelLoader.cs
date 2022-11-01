@@ -16,6 +16,8 @@ namespace Levels
 
     public class LevelLoader : MonoBehaviour
     {
+        private const string SceneName = "SceneName";
+
         private LevelNames _levelName;
         private byte _maxPlayersSmallMap = 5;
         private byte _maxPlayersLargeMap = 10;
@@ -28,7 +30,6 @@ namespace Levels
         private RoomOptions _currentRoomOptions;
         private List<RoomInfo> _roomInfos = new List<RoomInfo>();
 
-
         private void Awake()
         {
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
@@ -36,10 +37,16 @@ namespace Levels
             _smallRoomOptions = new RoomOptions();
             _smallRoomOptions.MaxPlayers = _maxPlayersSmallMap;
             _smallRoomOptions.CleanupCacheOnLeave = true;
-            
+            _smallRoomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+            _smallRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneName.ToString() };
+            _smallRoomOptions.CustomRoomProperties.Add(SceneName, LevelNames.Room1.ToString());
+
             _largeRoomOptions = new RoomOptions();
             _largeRoomOptions.MaxPlayers = _maxPlayersLargeMap;
             _largeRoomOptions.CleanupCacheOnLeave = true;
+            _largeRoomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+            _largeRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneName.ToString() };
+            _largeRoomOptions.CustomRoomProperties.Add(SceneName, LevelNames.LargeLevelScene.ToString());
         }
 
         private void OnEnable()
@@ -100,18 +107,24 @@ namespace Levels
         {
             _levelName = levelName;
             _currentRoomOptions = options;
-            options.
+            Debug.Log(options.CustomRoomProperties.ContainsKey(SceneName));
             PhotonNetwork.JoinOrCreateRoom(
-                GetOrCreateRoomName(options), options, TypedLobby.Default);
+                GetOrCreateRoomName(options, levelName), options, TypedLobby.Default);
         }
 
-        private string GetOrCreateRoomName(RoomOptions roomOptions)
+        private string GetOrCreateRoomName(RoomOptions roomOptions, LevelNames levelName)
         {
-            return "RoomTS" + Random.Range(0, 1000).ToString() + PhotonNetwork.NickName;
             if (_roomInfos.Count != 0)
-            {               
+            {
                 for (int i = 0; i < _roomInfos.Count; i++)
                 {
+                    Debug.Log(_roomInfos[i].CustomProperties.ContainsKey(SceneName) == false);
+                    if (_roomInfos[i].CustomProperties.ContainsKey(SceneName) == false 
+                        || levelName.ToString() != _roomInfos[i].CustomProperties[SceneName].ToString())
+                    {
+                        continue;
+                    }
+
                     if (_roomInfos[i].PlayerCount < roomOptions.MaxPlayers)
                     {
                         return _roomInfos[i].Name;
@@ -139,7 +152,7 @@ namespace Levels
 
             for (int i = 0; i < _roomInfos.Count; i++)
             {
-                Debug.Log(_roomInfos[i].Name);
+                Debug.Log(roomInfos[i].CustomProperties[SceneName].ToString());
             }
         }
     }
