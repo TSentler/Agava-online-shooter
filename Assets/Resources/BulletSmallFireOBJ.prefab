@@ -45,7 +45,7 @@ SphereCollider:
   m_GameObject: {fileID: 128572}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
@@ -77,11 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd27932048c3254597a02078fa2cb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactParticle: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
-  projectileParticle: {fileID: 193226, guid: ed28e53c93fc7d2449d7c68bb8409223, type: 3}
-  muzzleParticle: {fileID: 152484, guid: 23fc589b73077394db72d954703e8d1c, type: 3}
+  _impactParticle: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+  _projectileParticle: {fileID: 193226, guid: ed28e53c93fc7d2449d7c68bb8409223, type: 3}
+  _muzzleParticle: {fileID: 152484, guid: 23fc589b73077394db72d954703e8d1c, type: 3}
   colliderRadius: 0.1
   collideOffset: 0
+  _bulletHoleTemplate: {fileID: 9154229115824779020, guid: 337754bb80f2ab0409a6b19475efbf8c, type: 3}
 --- !u!114 &6540149264420612551
 MonoBehaviour:
   m_ObjectHideFlags: 0

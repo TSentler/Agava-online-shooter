@@ -14,7 +14,6 @@ namespace PlayerAbilities
         [SerializeField] private Transform _playerBody;
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private Transform _weapon;
-        [SerializeField] private Camera _weaponCamera;
 
         private float _xRotation;
         private Vector3 _deltaPosition;

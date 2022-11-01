@@ -33,6 +33,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private ParticleSystem _bulletHoleTemplate;
     [SerializeField] private GameObject _bulletParticle;
     [SerializeField] private float _bulletForce;
+    [SerializeField] private Transform _bulletSpawnPosition;
 
     private protected int AmmoQuanity;
     private protected bool CanShoot = true;
@@ -67,7 +68,7 @@ public abstract class Gun : MonoBehaviour
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
-            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, transform.position, Quaternion.identity);
+            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
             bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
             bulletParticle.transform.LookAt(ray.origin);
 
@@ -97,9 +98,9 @@ public abstract class Gun : MonoBehaviour
                             minDistanceHit = hits[j];
                     }
 
-                    if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false &&
-                        minDistanceHit.collider.gameObject.TryGetComponent(out HitDetector hit) == false)
-                        PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
+                    //if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false &&
+                    //    minDistanceHit.collider.gameObject.TryGetComponent(out HitDetector hit) == false)
+                    //    PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
                 }
             }
 

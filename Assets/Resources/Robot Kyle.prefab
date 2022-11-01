@@ -1354,7 +1354,7 @@ GameObject:
   - component: {fileID: 1297534867490476232}
   m_Layer: 7
   m_Name: CameraHands
-  m_TagString: MainCamera
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1399,13 +1399,13 @@ Camera:
     height: 1
   near clip plane: 0.05
   far clip plane: 2000
-  field of view: 70
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2160,7 +2160,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7593135972504170424}
-  - {fileID: 7890902795562438138}
   m_Father: {fileID: 7926811385654605929}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2182,7 +2181,6 @@ MonoBehaviour:
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
   _weapon: {fileID: 5769570462044029525}
-  _weaponCamera: {fileID: 3640459193643689302}
 --- !u!114 &5917582119930069936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2217,7 +2215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4966983651773055133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
@@ -2704,90 +2702,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &6391056847739148598
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7890902795562438138}
-  - component: {fileID: 3640459193643689302}
-  - component: {fileID: 4459341317836571670}
-  m_Layer: 7
-  m_Name: Camera (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7890902795562438138
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6391056847739148598}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 625488436024648450}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &3640459193643689302
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6391056847739148598}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.05
-  far clip plane: 2000
-  field of view: 70
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 375
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &4459341317836571670
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6391056847739148598}
-  m_Enabled: 1
 --- !u!1 &6496338184682560371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3406,7 +3320,6 @@ MonoBehaviour:
   - {fileID: 199867840677515922}
   - {fileID: 5986609441988288462}
   - {fileID: 8293681879673814572}
-  - {fileID: 6391056847739148598}
 --- !u!114 &1228789576761653420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4012,7 +3925,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 375
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4145,7 +4058,7 @@ PrefabInstance:
       objectReference: {fileID: 4007550603670208998}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _bulletForce
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce
@@ -4232,6 +4145,10 @@ PrefabInstance:
       value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _bulletSpawnPosition
+      value: 
+      objectReference: {fileID: 4007550603672763146}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _layerToDetect.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -4299,6 +4216,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 3843509030699422006, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
   m_PrefabInstance: {fileID: 201339352464363728}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4007550603672763146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3843509030695939034, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+  m_PrefabInstance: {fileID: 201339352464363728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4067976722115134384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4364,7 +4286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _bulletForce
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForce
@@ -4446,6 +4368,10 @@ PrefabInstance:
       propertyPath: LayerToDetect.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _bulletSpawnPosition
+      value: 
+      objectReference: {fileID: 5749829092699554653}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _layerToDetect.m_Bits
       value: 256
@@ -4553,6 +4479,11 @@ Transform:
 --- !u!198 &5749829092685433709 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8628655397621975261, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+  m_PrefabInstance: {fileID: 4067976722115134384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5749829092699554653 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8628655397641339117, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
   m_PrefabInstance: {fileID: 4067976722115134384}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &5749829092705515953 stripped
@@ -5077,7 +5008,7 @@ PrefabInstance:
       objectReference: {fileID: 1228789576761653420}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: _bulletForce
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: DelayPerShoot
@@ -5123,6 +5054,10 @@ PrefabInstance:
       propertyPath: LayerToDetect.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _bulletSpawnPosition
+      value: 
+      objectReference: {fileID: 6536585655524010102}
     - target: {fileID: 6645456571634057468, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -5177,6 +5112,11 @@ ParticleSystem:
 --- !u!82 &6536585655518450330 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3684129421735062458, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+  m_PrefabInstance: {fileID: 7608328225642658080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6536585655524010102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3684129421740872022, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
   m_PrefabInstance: {fileID: 7608328225642658080}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7152751902177157180 stripped
