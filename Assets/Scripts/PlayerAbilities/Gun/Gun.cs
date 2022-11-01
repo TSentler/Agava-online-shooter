@@ -68,7 +68,7 @@ public abstract class Gun : MonoBehaviour
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
             GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, transform.position, Quaternion.identity);
-            bulletParticle.GetComponent<Rigidbody>().AddForce(transform.position + ray.origin * _bulletForce);
+            bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
             bulletParticle.transform.LookAt(ray.origin);
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
