@@ -10,7 +10,7 @@ namespace EpicToonFX
         public GameObject[] projectiles;
         [Header("Missile spawns at attached game object")]
         public Transform spawnPosition;
-        [HideInInspector]
+        //[HideInInspector]
         public int currentProjectile = 0;
         public float speed = 500;
 

@@ -2176,7 +2176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensetivity: 200
+  _mouseSensetivity: 25
   _shootSensetivity: 100
   _camera: {fileID: 8626187333435406068}
   _playerBody: {fileID: 7926811385654605929}
@@ -3178,6 +3178,7 @@ GameObject:
   - component: {fileID: 4234827552636008570}
   - component: {fileID: 1444142722729072756}
   - component: {fileID: 5526599788851391837}
+  - component: {fileID: 9017436198434652240}
   m_Layer: 7
   m_Name: Robot Kyle
   m_TagString: Untagged
@@ -3292,9 +3293,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputSourceBehaviour: {fileID: 7588953111737158721}
-  _speed: 12
+  _speed: 8
   _jumpSpeed: 18
-  _gravityFactor: 10
+  _gravityFactor: 6
 --- !u!114 &-2751316611523236927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3521,6 +3522,19 @@ MonoBehaviour:
   _spawnPoint: {fileID: 5493155187359600162}
   _photonView: {fileID: 5537214694185517777}
   _animator: {fileID: 7926811385661495177}
+--- !u!114 &9017436198434652240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926811385654240329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98c62b4ba3913c4694b47cdb5f5892a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photonView: {fileID: 5537214694185517777}
 --- !u!1 &8225444847238415359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,6 +4143,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4007550603670208998}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _bulletForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce
       value: 0.5
       objectReference: {fileID: 0}
@@ -4180,6 +4198,10 @@ PrefabInstance:
       propertyPath: RecoilMagnitude
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _bulletParticle
+      value: 
+      objectReference: {fileID: 128572, guid: b3fb452af82745648b2fca2061635a1b, type: 3}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForceXMax
       value: 2
@@ -4340,6 +4362,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _bulletForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForce
       value: 0.3
       objectReference: {fileID: 0}
@@ -4387,6 +4413,10 @@ PrefabInstance:
       propertyPath: RecoilMagnitude
       value: 0.00002
       objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _bulletParticle
+      value: 
+      objectReference: {fileID: 128572, guid: b3fb452af82745648b2fca2061635a1b, type: 3}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForceXMax
       value: 1
@@ -4590,6 +4620,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1228789576761653420}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _bulletForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: ShootParticle
       value: 
       objectReference: {fileID: 1644377022731068059}
@@ -4613,6 +4647,10 @@ PrefabInstance:
       propertyPath: RecoilMagnitude
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _bulletParticle
+      value: 
+      objectReference: {fileID: 128572, guid: b3fb452af82745648b2fca2061635a1b, type: 3}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _verticalSpread
       value: 5
@@ -4917,6 +4955,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1228789576761653420}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _bulletForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: DelayPerShoot
       value: 1.5
       objectReference: {fileID: 0}
@@ -4944,6 +4986,10 @@ PrefabInstance:
       propertyPath: RecoilMagnitude
       value: 0.0002
       objectReference: {fileID: 0}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _bulletParticle
+      value: 
+      objectReference: {fileID: 128572, guid: b3fb452af82745648b2fca2061635a1b, type: 3}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: _recoilMagnitude
       value: 0.0002
