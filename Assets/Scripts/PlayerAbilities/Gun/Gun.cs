@@ -15,7 +15,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected float DelayReload;
     [SerializeField] protected int MaxAmmo;
     [SerializeField] protected int Id;
-    [SerializeField] protected PhotonView PhotonView;
+    [SerializeField] protected PhotonView PhotonViewComponent;
     [SerializeField] protected PlayerInfo _playerInfo;
     [SerializeField] protected Camera Camera;
     [SerializeField] protected int MaxAmmoCount;
@@ -63,7 +63,7 @@ public abstract class Gun : MonoBehaviour
     {
         if (AmmoQuanity > 0 && CanShoot)
         {
-            ShootParticle.Play();
+            PhotonViewComponent.RPC(nameof(PlayEffects), RpcTarget.All);
             ShootSound.Play();
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
@@ -117,6 +117,12 @@ public abstract class Gun : MonoBehaviour
                 Reload();
         }
 
+    }
+
+    [PunRPC]
+    protected void PlayEffects()
+    {
+        ShootParticle.Play();
     }
 
     private protected void OnHit()

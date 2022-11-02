@@ -14,7 +14,7 @@ public class Shotgun : Gun
 
     private void Update()
     {
-        if (PhotonView.IsMine && _playerInfo.IsBot == false)
+        if (PhotonViewComponent.IsMine && _playerInfo.IsBot == false)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -89,7 +89,7 @@ public class Shotgun : Gun
 
                         if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false &&
                             minDistanceHit.collider.gameObject.TryGetComponent(out HitDetector hit) == false)
-                            PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
+                            PhotonViewComponent.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
                     }
                 }
             }

@@ -4137,6 +4137,10 @@ PrefabInstance:
       value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: PhotonViewComponent
+      value: 
+      objectReference: {fileID: 2964680509318473520}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _bulletHoleTemplate
       value: 
       objectReference: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
@@ -4204,6 +4208,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c81f18825bcb9ac4b9627b23c69e8eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2964680509318473520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3165999907148511200, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+  m_PrefabInstance: {fileID: 201339352464363728}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657641695164528597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!198 &4007550603658638138 stripped
@@ -4360,6 +4375,10 @@ PrefabInstance:
       propertyPath: _recoilMagnitude
       value: 0.002
       objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: PhotonViewComponent
+      value: 
+      objectReference: {fileID: 6685545792480748572}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _bulletHoleTemplate
       value: 
@@ -4599,6 +4618,10 @@ PrefabInstance:
       propertyPath: _horizontalSpread
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: PhotonViewComponent
+      value: 
+      objectReference: {fileID: 1928559040321103050}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _bulletHoleTemplate
       value: 
@@ -5047,6 +5070,10 @@ PrefabInstance:
       value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: PhotonViewComponent
+      value: 
+      objectReference: {fileID: 834412668784651852}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: _bulletHoleTemplate
       value: 
       objectReference: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
@@ -5068,6 +5095,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+--- !u!114 &834412668784651852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7062308128925980524, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+  m_PrefabInstance: {fileID: 7608328225642658080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7152751902177157180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3146594148124354340 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4772905764430044676, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}

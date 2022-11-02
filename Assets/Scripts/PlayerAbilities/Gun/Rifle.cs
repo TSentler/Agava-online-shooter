@@ -18,9 +18,9 @@ public class Rifle : Gun
 
     private void FixedUpdate()
     {
-        if (PhotonView != null)
+        if (PhotonViewComponent != null)
         {
-            if (PhotonView.IsMine && _playerInfo.IsBot == false)
+            if (PhotonViewComponent.IsMine && _playerInfo.IsBot == false)
             {
                 if (Input.GetMouseButton(0))
                 {
