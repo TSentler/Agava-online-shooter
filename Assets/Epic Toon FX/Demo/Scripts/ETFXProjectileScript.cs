@@ -13,14 +13,17 @@ public class ETFXProjectileScript : MonoBehaviour
     [SerializeField] private float collideOffset = 0.15f;
     [SerializeField] private GameObject _bulletHoleTemplate;
 
+    private PhotonView _photonView;
+
     private void Start()
     {
-        _projectileParticle = Instantiate(_projectileParticle, transform.position, transform.rotation) as GameObject;
+        _projectileParticle = PhotonNetwork.Instantiate(_projectileParticle.name, transform.position, transform.rotation) as GameObject;
         _projectileParticle.transform.parent = transform;
+
         if (_muzzleParticle)
         {
-            _muzzleParticle = Instantiate(_muzzleParticle, transform.position, transform.rotation) as GameObject;
-            Destroy(_muzzleParticle, 1.5f); // 2nd parameter is lifetime of effect in seconds
+            _muzzleParticle = PhotonNetwork.Instantiate(_muzzleParticle.name, transform.position, transform.rotation) as GameObject;
+           PhotonNetwork.Destroy(_muzzleParticle/*, 1.5f*/); // 2nd parameter is lifetime of effect in seconds
         }
     }
 
@@ -50,7 +53,7 @@ public class ETFXProjectileScript : MonoBehaviour
         {
             transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
 
-            GameObject impactP = Instantiate(_impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
+            GameObject impactP = PhotonNetwork.Instantiate(_impactParticle.name, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
             PhotonNetwork.Instantiate(_bulletHoleTemplate.name, transform.position, Quaternion.LookRotation(hit.normal));
             ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
                                                                                  //Component at [0] is that of the parent i.e. this object (if there is any)

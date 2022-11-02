@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 11464288}
   - component: {fileID: 6540149264420612551}
   - component: {fileID: 6080223490799911295}
+  - component: {fileID: -5329168142222337410}
   m_Layer: 0
   m_Name: BulletSmallFireOBJ
   m_TagString: Missile
@@ -77,9 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd27932048c3254597a02078fa2cb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impactParticle: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
-  _projectileParticle: {fileID: 193226, guid: ed28e53c93fc7d2449d7c68bb8409223, type: 3}
-  _muzzleParticle: {fileID: 152484, guid: 23fc589b73077394db72d954703e8d1c, type: 3}
+  _impactParticle: {fileID: 195742, guid: 98040ebf151c19a4b927aef87ee3d8fa, type: 3}
+  _projectileParticle: {fileID: 193226, guid: 48d4f03e8ce5533438cdab9c7169d027, type: 3}
+  _muzzleParticle: {fileID: 152484, guid: ecc3d5a0335913345aa3aa4dd2bef3a7, type: 3}
   colliderRadius: 0.1
   collideOffset: 0
   _bulletHoleTemplate: {fileID: 9154229115824779020, guid: 337754bb80f2ab0409a6b19475efbf8c, type: 3}
@@ -103,6 +104,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6080223490799911295}
+  - {fileID: -5329168142222337410}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -122,3 +124,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-5329168142222337410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
