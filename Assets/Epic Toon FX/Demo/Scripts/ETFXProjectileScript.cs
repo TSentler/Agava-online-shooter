@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Photon.Pun;
+using PlayerAbilities;
 
 public class ETFXProjectileScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ETFXProjectileScript : MonoBehaviour
     [Range(0f, 1f)] // This is an offset that moves the impact effect slightly away from the point of impact to reduce clipping of the impact effect
     [SerializeField] private float collideOffset = 0.15f;
     [SerializeField] private GameObject _bulletHoleTemplate;
+    [SerializeField] private GameObject _hitInPlayerEffect;
 
     private PhotonView _photonView;
 
@@ -52,9 +54,20 @@ public class ETFXProjectileScript : MonoBehaviour
         if (Physics.SphereCast(transform.position, radius, direction, out hit, detectionDistance)) // Checks if collision will happen
         {
             transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
+            GameObject impactParticle = null;
 
-            GameObject impactP = PhotonNetwork.Instantiate(_impactParticle.name, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
-            PhotonNetwork.Instantiate(_bulletHoleTemplate.name, transform.position, Quaternion.LookRotation(hit.normal));
+            if (hit.collider.gameObject.GetComponent<PlayerHealth>() || hit.collider.gameObject.GetComponent<HitDetector>())
+            {
+                Instantiate(_hitInPlayerEffect, transform.position, Quaternion.LookRotation(hit.normal));
+                Debug.Log(1);
+            }
+            else
+            {
+                impactParticle = PhotonNetwork.Instantiate(_impactParticle.name, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
+                PhotonNetwork.Instantiate(_bulletHoleTemplate.name, transform.position, Quaternion.LookRotation(hit.normal));
+                Debug.Log(2);
+            }
+                 
             ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
                                                                                  //Component at [0] is that of the parent i.e. this object (if there is any)
             for (int i = 1; i < trails.Length; i++) // Loop to cycle through found particle systems
@@ -69,7 +82,12 @@ public class ETFXProjectileScript : MonoBehaviour
             }
 
             Destroy(_projectileParticle, 3f); // Removes particle effect after delay
-            Destroy(impactP, 3.5f); // Removes impact effect after delay
+
+            if(impactParticle != null)
+            {
+                Destroy(impactParticle, 3.5f); // Removes impact effect after delay
+            }
+           
             PhotonNetwork.Destroy(gameObject); // Removes the projectile
         }
     }

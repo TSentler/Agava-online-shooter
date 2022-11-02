@@ -84,6 +84,7 @@ MonoBehaviour:
   colliderRadius: 0.1
   collideOffset: 0
   _bulletHoleTemplate: {fileID: 9154229115824779020, guid: 337754bb80f2ab0409a6b19475efbf8c, type: 3}
+  _hitInPlayerEffect: {fileID: 9154229115824779020, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
 --- !u!114 &6540149264420612551
 MonoBehaviour:
   m_ObjectHideFlags: 0
