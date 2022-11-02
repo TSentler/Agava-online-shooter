@@ -15,14 +15,14 @@ namespace Bots
         private NavMeshAgent _agent;
         private NavTargetPoint[] _targets;
         private float _tempAngularSpeed;
-        private int _currentTarget;
+        private int _currentTargetPoint;
         private bool _isStop;
 
         public Vector2 MovementInput { get; private set; }
         public bool IsJumpInput { get; private set; }
         
-        private Vector3 TargetPosition =>
-            _targets[_currentTarget].transform.position;
+        private Vector3 TargetPointPosition =>
+            _targets[_currentTargetPoint].transform.position;
             
         private void Awake()
         {
@@ -42,10 +42,11 @@ namespace Bots
         {
             if (_isStop)
             {
-                _agent.angularSpeed = _tempAngularSpeed;
+                // ReturnAgentRotate();
             }
             _isStop = false;
-            _agent.destination = TargetPosition;
+            _agent.isStopped = false;
+            _agent.destination = TargetPointPosition;
         }
 
         public void Stop()
@@ -54,9 +55,19 @@ namespace Bots
                 return;
             
             _agent.destination = transform.position;
-            _tempAngularSpeed = _agent.angularSpeed;
-            _agent.angularSpeed = 0f;
+            _agent.isStopped = true;
+            StopAgentRotate();
             _isStop = true;
+        }
+
+        public void StopAgentRotate()
+        {
+            _agent.angularSpeed = 0f;
+        }
+        
+        public void ResetAgentRotate()
+        {
+            _agent.angularSpeed = _tempAngularSpeed;
         }
 
         public void Aim(GameObject target)
@@ -67,6 +78,7 @@ namespace Bots
             lookDirectionXZ.y = 0f;
             VerticalAim(lookDirectionXZ, lookDirection);
             HorizontalAim(lookDirectionXZ);
+            StopAgentRotate();
         }
 
         public void ResetVerticalAim()
@@ -99,13 +111,18 @@ namespace Bots
 
         public void NextTarget()
         {
-            var oldTarget = _currentTarget;
-            while (_targets.Length > 1 && oldTarget == _currentTarget)
+            var oldTarget = _currentTargetPoint;
+            while (_targets.Length > 1 && oldTarget == _currentTargetPoint)
             {
-                _currentTarget = Random.Range(0, _targets.Length);
+                _currentTargetPoint = Random.Range(0, _targets.Length);
             }
         }
 
+        public void SetDestinationTarget()
+        {
+            
+        }
+        
         private float GetInputByAxis(Vector3 axis)
         {
             var input = Vector3.Dot(_agent.velocity, axis);
