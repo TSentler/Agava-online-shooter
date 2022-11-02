@@ -4058,7 +4058,7 @@ PrefabInstance:
       objectReference: {fileID: 4007550603670208998}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _bulletForce
-      value: 2500
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _recoilForce
@@ -4156,6 +4156,22 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 5769570462315930505}
+    - target: {fileID: 3843509030677577332, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3843509030677577332, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3843509030677577332, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3843509030677606932, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3843509030696000738, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -4164,9 +4180,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3843509030696221506, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3843509030696241688, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3843509030696241688, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
@@ -4286,7 +4310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _bulletForce
-      value: 2500
+      value: 7000
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _recoilForce
