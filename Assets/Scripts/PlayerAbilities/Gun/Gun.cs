@@ -1,7 +1,6 @@
 using Photon.Pun;
 using PlayerAbilities;
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +9,7 @@ public abstract class Gun : MonoBehaviour
     private const float _radiusSphereCollider = 0.3f;
     private const float _timeToDestroyBullet = 2f;
     private const float _stepToSpawnPosition = 0.001f;
+    private const float _bulletTravelTime = 0.05f;
 
     [SerializeField] protected float DelayPerShoot;
     [SerializeField] protected float DelayReload;
@@ -36,9 +36,12 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private Transform _bulletSpawnPosition;
 
     private protected int AmmoQuanity;
-    private protected bool CanShoot = true;
-    private protected float MinDistanceHit = 1000f;
     private protected int MaxAmmoQuanity;
+    private protected float MinDistanceHit = 1000f;
+    private protected bool CanShoot = true;
+    private protected bool NeedReload = false;
+
+    private float _remainingReloadTime;
 
     public int MaxAmmoGun => MaxAmmo;
     public int AmmoQuanityGun => AmmoQuanity;
@@ -51,12 +54,25 @@ public abstract class Gun : MonoBehaviour
     {
         AmmoQuanity = MaxAmmo;
         MaxAmmoQuanity = MaxAmmoCount;
+        _remainingReloadTime = DelayReload;
     }
 
     public void Reload()
     {
-        if (AmmoQuanity < MaxAmmoGun)
-            StartCoroutine(RestoreAmmo());
+        if (AmmoQuanity < MaxAmmo)
+        {
+            NeedReload = true;
+            CanShoot = false;
+            _remainingReloadTime -= Time.deltaTime;
+
+            if (_remainingReloadTime <= 0)
+            {
+                CanShoot = true;
+                NeedReload = false;
+                AmmoQuanity = MaxAmmo;
+                _remainingReloadTime = DelayReload;
+            }
+        }
     }
 
     protected virtual void Shoot(Camera camera)
@@ -68,9 +84,6 @@ public abstract class Gun : MonoBehaviour
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
-            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
-            bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
-            bulletParticle.transform.LookAt(ray.origin);
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
 
@@ -104,6 +117,12 @@ public abstract class Gun : MonoBehaviour
                 }
             }
 
+            _bulletForce = (minDistanceHit.distance / _bulletTravelTime) / _bulletTravelTime;
+
+            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
+            bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
+            bulletParticle.transform.LookAt(ray.origin);
+            Debug.Log(minDistanceHit.distance);
             AmmoQuanity--;
 
             if (MaxAmmoQuanity != 0)
@@ -114,9 +133,10 @@ public abstract class Gun : MonoBehaviour
         else
         {
             if (AmmoQuanity == 0)
+            {
                 Reload();
+            }
         }
-
     }
 
     [PunRPC]
@@ -148,11 +168,11 @@ public abstract class Gun : MonoBehaviour
         }
     }
 
-    private IEnumerator RestoreAmmo()
-    {
-        CanShoot = false;
-        yield return new WaitForSeconds(DelayReload);
-        CanShoot = true;
-        AmmoQuanity = MaxAmmo;
-    }
+    //private IEnumerator RestoreAmmo()
+    //{
+    //    CanShoot = false;
+    //    yield return new WaitForSeconds(DelayReload);
+    //    CanShoot = true;
+    //    AmmoQuanity = MaxAmmo;
+    //}
 }

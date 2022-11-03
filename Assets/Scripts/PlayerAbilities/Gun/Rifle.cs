@@ -35,6 +35,11 @@ public class Rifle : Gun
                         OnEmptyAmmo();
                     }
                 }
+
+                if (NeedReload)
+                {
+                    Reload();
+                }
             }
         }
     }

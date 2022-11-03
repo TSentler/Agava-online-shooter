@@ -9,7 +9,14 @@ public class Pistol : Gun
         if (PhotonViewComponent.IsMine && _playerInfo.IsBot == false)
         {
             if (Input.GetMouseButtonDown(0))
+            {
                 Shoot(Camera);
+            }
+
+            if (NeedReload)
+            {
+                Reload();
+            }
         }
     }
 }
