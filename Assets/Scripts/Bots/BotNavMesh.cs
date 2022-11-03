@@ -11,6 +11,7 @@ namespace Bots
     {
         [SerializeField] private MouseLook _mouseLook;
         [Min(0f), SerializeField] private float _aimSpeed = 5f;
+        [SerializeField] private PlayerHand _playerHand;
         
         private NavMeshAgent _agent;
         private NavTargetPoint[] _targets;
@@ -20,7 +21,9 @@ namespace Bots
 
         public Vector2 MovementInput { get; private set; }
         public bool IsJumpInput { get; private set; }
-        
+        public bool IsLeftMouseButtonDown { get; private set; }
+        public bool IsLeftMouseButton { get; private set; }
+
         private Vector3 TargetPointPosition =>
             _targets[_currentTargetPoint].transform.position;
             
@@ -121,6 +124,12 @@ namespace Bots
         public void SetDestinationTarget()
         {
             
+        }
+
+        public void Shoot(Vector3 direction)
+        {
+            var ray = new Ray(transform.position, direction);
+            _playerHand.CurentGun.Shoot(ray, transform);
         }
         
         private float GetInputByAxis(Vector3 axis)

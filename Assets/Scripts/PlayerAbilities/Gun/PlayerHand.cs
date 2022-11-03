@@ -19,6 +19,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
 
     public List<Gun> Guns => _guns;
     public int CurrentGunId => _currentGun.GunID;
+    public Gun CurentGun => _currentGun;
 
     public event Action<int, int> GunChanged;
 
