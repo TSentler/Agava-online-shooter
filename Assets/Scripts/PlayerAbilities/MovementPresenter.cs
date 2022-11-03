@@ -1,5 +1,6 @@
 using System;
 using CharacterInput;
+using Photon.Pun;
 using UnityEngine;
 
 namespace PlayerAbilities
@@ -12,6 +13,7 @@ namespace PlayerAbilities
 
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private Animator _animator;
+        [SerializeField] private PlayerInfo _playerInfo;
 
         private ICharacterInputSource _inputSource;
         
@@ -32,6 +34,9 @@ namespace PlayerAbilities
 
         private void Update()
         {
+            if (_playerInfo.IsMine == false)
+                return;
+
             UpdateDirection(_inputSource.MovementInput);
         }
 

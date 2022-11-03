@@ -2180,7 +2180,6 @@ MonoBehaviour:
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
   _weapon: {fileID: 0}
-  _weaponCamera: {fileID: 0}
 --- !u!114 &5917582119930069936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,6 +2396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputSourceBehaviour: {fileID: 5902124552604073713}
   _animator: {fileID: 7926811385661495177}
+  _playerInfo: {fileID: 5280421789201178618}
 --- !u!114 &7153070083620742640
 MonoBehaviour:
   m_ObjectHideFlags: 0

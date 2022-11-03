@@ -2397,6 +2397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputSourceBehaviour: {fileID: 7588953111737158721}
   _animator: {fileID: 7926811385661495177}
+  _playerInfo: {fileID: 1228789576761653420}
 --- !u!114 &7153070083620742640
 MonoBehaviour:
   m_ObjectHideFlags: 0
