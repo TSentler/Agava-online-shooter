@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime.Tasks.Movement;
@@ -26,6 +27,7 @@ namespace BehaviourTrees
         public SharedVector3 Offset;
         [UnityEngine.Tooltip("The target raycast offset relative to the pivot position")]
         public SharedVector3 TargetOffset;
+        public SharedBool IsRaycast = true;
         [UnityEngine.Tooltip("The object that is within sight")]
         public SharedGameObject ReturnedObject;
 
@@ -51,8 +53,9 @@ namespace BehaviourTrees
         private GameObject FindPlayerInSight()
         {
             GameObject playerInSight = null;
-            var hitCount = Physics.OverlapSphereNonAlloc(
-                transform.TransformPoint(Offset.Value), ViewDistance.Value,
+            var startPoint = transform.TransformPoint(Offset.Value);
+            List<GameObject> playersInSector = new();
+            var hitCount = Physics.OverlapSphereNonAlloc(startPoint, ViewDistance.Value,
                 _overlapColliders, ObjectLayerMask, QueryTriggerInteraction.Ignore);
 
             if (hitCount > 0)
@@ -76,7 +79,11 @@ namespace BehaviourTrees
                     if (angle > FieldOfViewAngle.Value / 2)
                         continue;
 
-                    if (angle < minAngle)
+                    var endPoint = target.TransformPoint(TargetOffset.Value);
+                    bool isWithinSight = IsRaycast.Value == false ||
+                        WithinSight(startPoint, endPoint, target.gameObject, 
+                            IgnoreLayerMask, true);
+                    if (isWithinSight && angle < minAngle)
                     {
                         minAngle = angle;
                         playerInSight = target.gameObject;
@@ -87,6 +94,40 @@ namespace BehaviourTrees
             return playerInSight;
         }
 
+        private bool WithinSight(Vector3 startPosition, Vector3 endPosition,
+            GameObject targetObject, int ignoreLayerMask, bool drawDebugRay)
+        {
+            if (targetObject == null || targetObject.activeSelf == false)
+                return false;
+
+            var hitTransform = LineOfSight(startPosition, endPosition, 
+                ignoreLayerMask);
+            if (hitTransform == null 
+                || MovementUtility.IsAncestor(targetObject.transform, hitTransform))
+            {
+                return true;
+            }
+            
+#if UNITY_EDITOR
+            if (drawDebugRay) {
+                Debug.DrawLine(startPosition, endPosition, Color.red);
+            }
+#endif
+            return false;
+        }
+
+        private Transform LineOfSight(Vector3 startPositiont, Vector3 endPosition, 
+            int ignoreLayerMask)
+        {
+            Transform hitTransform = null;
+            if (Physics.Linecast(startPositiont, endPosition, out var hit, 
+                    ~ignoreLayerMask, QueryTriggerInteraction.Ignore)) 
+            {
+                hitTransform = hit.transform;
+            }
+            return hitTransform;
+        }
+        
         private float CalculateAngle(Transform target)
         {
             var direction = target.TransformPoint(TargetOffset.Value)
@@ -103,6 +144,7 @@ namespace BehaviourTrees
             Offset = Vector3.zero;
             TargetOffset = Vector3.zero;
             IgnoreLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+            IsRaycast = true;
         }
 
         // Draw the line of sight representation within the scene window
@@ -118,4 +160,5 @@ namespace BehaviourTrees
             MovementUtility.ClearCache();
         }
     }
+    
 }
