@@ -15,7 +15,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected float DelayReload;
     [SerializeField] protected int MaxAmmo;
     [SerializeField] protected int Id;
-    [SerializeField] protected PhotonView PhotonView;
+    [SerializeField] protected PhotonView PhotonViewComponent;
     [SerializeField] protected PlayerInfo _playerInfo;
     [SerializeField] protected Camera Camera;
     [SerializeField] protected int MaxAmmoCount;
@@ -33,6 +33,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private ParticleSystem _bulletHoleTemplate;
     [SerializeField] private GameObject _bulletParticle;
     [SerializeField] private float _bulletForce;
+    [SerializeField] private Transform _bulletSpawnPosition;
 
     private protected int AmmoQuanity;
     private protected bool CanShoot = true;
@@ -62,13 +63,13 @@ public abstract class Gun : MonoBehaviour
     {
         if (AmmoQuanity > 0 && CanShoot)
         {
-            ShootParticle.Play();
+            PhotonViewComponent.RPC(nameof(PlayEffects), RpcTarget.All);
             ShootSound.Play();
 
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             ray.origin = camera.transform.position;
-            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, transform.position, Quaternion.identity);
-            bulletParticle.GetComponent<Rigidbody>().AddForce(transform.position + ray.origin * _bulletForce);
+            GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
+            bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
             bulletParticle.transform.LookAt(ray.origin);
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
@@ -97,9 +98,9 @@ public abstract class Gun : MonoBehaviour
                             minDistanceHit = hits[j];
                     }
 
-                    if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false &&
-                        minDistanceHit.collider.gameObject.TryGetComponent(out HitDetector hit) == false)
-                        PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
+                    //if (minDistanceHit.collider.gameObject.TryGetComponent(out PlayerHealth playerHealth) == false &&
+                    //    minDistanceHit.collider.gameObject.TryGetComponent(out HitDetector hit) == false)
+                    //    PhotonView.RPC(nameof(ShootRpc), RpcTarget.All, minDistanceHit.point, minDistanceHit.normal);
                 }
             }
 
@@ -116,6 +117,12 @@ public abstract class Gun : MonoBehaviour
                 Reload();
         }
 
+    }
+
+    [PunRPC]
+    protected void PlayEffects()
+    {
+        ShootParticle.Play();
     }
 
     private protected void OnHit()
