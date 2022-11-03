@@ -1,7 +1,5 @@
 using Photon.Pun;
 using PlayerAbilities;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shotgun : Gun
@@ -40,7 +38,7 @@ public class Shotgun : Gun
         }
     }
 
-    protected override void Shoot(Camera camera)
+    public override void Shoot(Ray ray, Transform originTransform)
     {
         if (AmmoQuanity > 0 && CanShoot)
         {
@@ -49,10 +47,8 @@ public class Shotgun : Gun
 
             for (var y = 0; y < _coutOfShardsInOneBullet; y++)
             {
-                Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-                Vector3 spreadVector = camera.transform.position + (Random.insideUnitSphere * _spread);
-                ray.origin = (camera.transform.position + spreadVector);
-
+                Vector3 spreadVector = originTransform.position + Random.insideUnitSphere * _spread;
+                ray.origin = originTransform.position + spreadVector;
 
                 //float angle = y * (_spread / (_coutOfShardsInOneBullet - 1));
                 //Vector3 direction = Quaternion.AngleAxis(angle + (180 - (_spread / 2)), transform.up) * new Vector3(0, 0, -360);

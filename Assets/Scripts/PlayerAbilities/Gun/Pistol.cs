@@ -12,11 +12,10 @@ public class Pistol : Gun
             {
                 Shoot(Camera);
             }
-
-            if (NeedReload)
-            {
-                Reload();
-            }
+        }
+        if (NeedReload)
+        {
+            Reload();
         }
     }
 }

@@ -75,15 +75,20 @@ public abstract class Gun : MonoBehaviour
         }
     }
 
-    protected virtual void Shoot(Camera camera)
+    protected void Shoot(Camera camera)
+    {
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+        ray.origin = camera.transform.position;
+        Shoot(ray, camera.transform);
+    }
+    
+    public virtual void Shoot(Ray ray, Transform originTransform)
     {
         if (AmmoQuanity > 0 && CanShoot)
         {
             PhotonViewComponent.RPC(nameof(PlayEffects), RpcTarget.All);
             ShootSound.Play();
 
-            Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            ray.origin = camera.transform.position;
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
 
@@ -120,7 +125,7 @@ public abstract class Gun : MonoBehaviour
             _bulletForce = (minDistanceHit.distance / _bulletTravelTime) / _bulletTravelTime;
 
             GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
-            bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
+            bulletParticle.GetComponent<Rigidbody>().AddForce(originTransform.forward * _bulletForce);
             bulletParticle.transform.LookAt(ray.origin);
             Debug.Log(minDistanceHit.distance);
             AmmoQuanity--;
