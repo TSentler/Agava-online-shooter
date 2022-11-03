@@ -10,13 +10,13 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
 {
     private readonly string _gunIDName = "GunID";
-        
+
     [SerializeField] private Camera _camera;
     [SerializeField] private List<Gun> _guns;
 
     private PhotonView _photonView;
     private Gun _currentGun;
-    
+
     public List<Gun> Guns => _guns;
     public int CurrentGunId => _currentGun.GunID;
 
@@ -26,7 +26,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (_photonView.IsMine)
             return;
-        
+
         var ownerProps = _photonView.Owner.CustomProperties;
         if (ownerProps.ContainsKey(_gunIDName))
         {
@@ -69,10 +69,6 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
         {
             //if(_currentGun is Rifle)
             //{
-            //if (Input.GetMouseButton(0))
-            //{
-            //    _currentGun.Shoot(_camera);
-            //}
             //}
             //else if(_currentGun is Pistol)
             //{
@@ -134,7 +130,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     public void EquipDefaultGun()
-    {      
+    {
         _photonView.RPC(nameof(EquipDefaultGunRPC), RpcTarget.All);
     }
 
