@@ -26,7 +26,7 @@ public class GunView : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerHand.GunChanged += OnGunChanged;
+        _playerHand.UpdateAmmo += OnGunChanged;
 
         for (int i = 0; i < _playerHand.Guns.Count; i++)
         {
@@ -36,7 +36,7 @@ public class GunView : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerHand.GunChanged -= OnGunChanged;
+        _playerHand.UpdateAmmo -= OnGunChanged;
 
         for (int i = 0; i < _playerHand.Guns.Count; i++)
         {

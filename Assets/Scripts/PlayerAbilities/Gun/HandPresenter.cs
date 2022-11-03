@@ -13,12 +13,12 @@ namespace PlayerAbilities.Gun
 
         private void OnEnable()
         {
-            _playerHand.GunChanged += GunChangedHandler;
+            _playerHand.UpdateAmmo += GunChangedHandler;
         }
 
         private void OnDisable()
         {
-            _playerHand.GunChanged -= GunChangedHandler;
+            _playerHand.UpdateAmmo -= GunChangedHandler;
         }
 
         private void GunChangedHandler(int quantity, int max)

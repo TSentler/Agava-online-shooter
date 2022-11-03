@@ -49,12 +49,14 @@ public abstract class Gun : MonoBehaviour
 
     public event Action Hit;
     public event UnityAction EmptyAmmo;
+    public event UnityAction<int, int> AmmoCountChange;
 
     private void Start()
     {
         AmmoQuanity = MaxAmmo;
         MaxAmmoQuanity = MaxAmmoCount;
         _remainingReloadTime = DelayReload;
+        AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
     }
 
     public void Reload()
@@ -69,8 +71,18 @@ public abstract class Gun : MonoBehaviour
             {
                 CanShoot = true;
                 NeedReload = false;
-                AmmoQuanity = MaxAmmo;
+
+                if (MaxAmmoQuanity <= MaxAmmo && MaxAmmoCount != 0)
+                {
+                    AmmoQuanity = MaxAmmoQuanity;
+                }
+                else
+                {
+                    AmmoQuanity = MaxAmmo;
+                }
+
                 _remainingReloadTime = DelayReload;
+                AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
             }
         }
     }
@@ -122,13 +134,13 @@ public abstract class Gun : MonoBehaviour
             GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
             bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
             bulletParticle.transform.LookAt(ray.origin);
-            Debug.Log(minDistanceHit.distance);
             AmmoQuanity--;
 
             if (MaxAmmoQuanity != 0)
                 MaxAmmoQuanity--;
 
             MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax, RecoilMagnitude, DelayPerShoot);
+            AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
         }
         else
         {
