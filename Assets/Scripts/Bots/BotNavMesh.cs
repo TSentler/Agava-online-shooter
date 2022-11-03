@@ -126,10 +126,13 @@ namespace Bots
             
         }
 
-        public void Shoot(Vector3 direction)
+        public void Shoot(Transform target)
         {
+            // target.GetComponent<PlayerInfo>();
+            var direction = target.position - transform.position;
+            var gun = _playerHand.CurentGun;
             var ray = new Ray(transform.position, direction);
-            _playerHand.CurentGun.Shoot(ray, transform);
+            gun.Shoot(ray, transform);
         }
         
         private float GetInputByAxis(Vector3 axis)

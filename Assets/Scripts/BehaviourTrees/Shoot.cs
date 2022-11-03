@@ -1,6 +1,5 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-using UnityEngine;
 
 namespace BehaviourTrees
 {
@@ -9,8 +8,6 @@ namespace BehaviourTrees
     {
         public SharedBotNavMesh SelfBotNavMesh;
         public SharedGameObject Target;
-        public SharedVector3 Offset;
-        public SharedVector3 TargetOffset;
 
         public override TaskStatus OnUpdate()
         {
@@ -19,11 +16,7 @@ namespace BehaviourTrees
                 return TaskStatus.Failure;
             }
 
-            var startPoint = transform.TransformPoint(Offset.Value);
-            var endPoint =
-                Target.Value.transform.TransformPoint(TargetOffset.Value);
-            var direction = endPoint - startPoint;
-            SelfBotNavMesh.Value.Shoot(direction);
+            SelfBotNavMesh.Value.Shoot(Target.Value.transform);
             return TaskStatus.Success;
         }
     }
