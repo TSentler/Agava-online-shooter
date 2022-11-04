@@ -55,7 +55,7 @@ public class Scoreboard : MonoBehaviourPunCallbacks
             _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
         }
 
-        var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
+        var scoreSort = _sortedScores.OrderByDescending(x => x.Value).ThenBy(y => y.Key.CustomProperties["Death"]);
 
         foreach(var score in scoreSort)
         {
