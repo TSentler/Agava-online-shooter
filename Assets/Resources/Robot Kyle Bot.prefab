@@ -3094,6 +3094,7 @@ GameObject:
   - component: {fileID: 6799963045250450372}
   - component: {fileID: 380201270662068934}
   - component: {fileID: -1186638329438493774}
+  - component: {fileID: 3152218241729445503}
   m_Layer: 7
   m_Name: Robot Kyle Bot
   m_TagString: Untagged
@@ -3473,6 +3474,20 @@ MonoBehaviour:
       Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
+--- !u!136 &3152218241729445503
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926811385654240329}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!1 &8225444847238415359
 GameObject:
   m_ObjectHideFlags: 0
