@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 19880796}
   - component: {fileID: 19901012}
   - component: {fileID: -7221140753352666601}
-  - component: {fileID: -5399087058788267640}
   m_Layer: 0
   m_Name: BulletMuzzleFire
   m_TagString: Untagged
@@ -4868,26 +4867,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -5399087058788267640}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-5399087058788267640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152484}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &171576
 GameObject:
   m_ObjectHideFlags: 0
