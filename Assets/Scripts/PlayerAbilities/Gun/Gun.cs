@@ -113,11 +113,15 @@ public abstract class Gun : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
-                    if (hitDetector.IsMine == false || hitDetector.IsBot)
+
+                    if (hitDetector.IsMine && hitDetector.IsSameRootTransform(
+                            _playerInfo.transform))
                     {
-                        hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
-                        OnHit();
+                        continue;
                     }
+                    
+                    hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
+                    OnHit();
                     break;
                 }
                 else

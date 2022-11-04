@@ -13,4 +13,9 @@ public abstract class HitDetector : MonoBehaviour
     public bool IsBot => _playerInfo.IsBot;
 
     public abstract void DetectHit(float damage, Player player);
+
+    public bool IsSameRootTransform(Transform otherRootTransform)
+    {
+        return otherRootTransform.Equals(_playerInfo.transform);
+    }
 }
