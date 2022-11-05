@@ -5,6 +5,7 @@ using UnityEngine;
 public class SniperRifle : Gun
 {
     private float _fireInterval;
+    private float _nextShootTime;
 
     private void Update()
     {
@@ -22,15 +23,18 @@ public class SniperRifle : Gun
                     CanShoot = true;
                     OnEmptyAmmo();
                 }
-            }            
+            }
         }
+
+        if (CanShoot == true)
+            return;
 
         _fireInterval += Time.deltaTime;
 
-        if (_fireInterval >= DelayPerShoot)
+        if (_fireInterval >= _nextShootTime)
         {
             CanShoot = true;
-            _fireInterval = 0;
+            //_fireaInterval = 0;
         }
     }
 }

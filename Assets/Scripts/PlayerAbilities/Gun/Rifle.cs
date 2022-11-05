@@ -4,15 +4,19 @@ using UnityEngine;
 public class Rifle : Gun
 {
     private float _fireaInterval;
+    private float _nextShootTime;
 
     private void Update()
     {
+        if (CanShoot == true)
+            return;
+
         _fireaInterval += Time.deltaTime;
 
-        if (_fireaInterval >= DelayPerShoot)
+        if (_fireaInterval >= _nextShootTime)
         {
             CanShoot = true;
-            _fireaInterval = 0;
+            //_fireaInterval = 0;
         }
     }
 
@@ -20,22 +24,27 @@ public class Rifle : Gun
     {
         if (PhotonViewComponent != null)
         {
-            if (PhotonViewComponent.IsMine && _playerInfo.IsBot == false && CanShoot == true)
+            if (PhotonViewComponent.IsMine && _playerInfo.IsBot == false)
             {
-                if (Input.GetMouseButton(0))
+                if(CanShoot == true)
                 {
-                    Shoot(Camera);
-                    CanShoot = false;
-
-                    if (MaxAmmoQuanity <= 0)
+                    if (Input.GetMouseButton(0))
                     {
-                        AmmoQuanity = MaxAmmo;
-                        MaxAmmoQuanity = MaxAmmoCount;
-                        CanShoot = true;
-                        OnEmptyAmmo();
+                        Shoot(Camera);
+                        CanShoot = false;
+                        _nextShootTime = Time.time + DelayPerShoot;
+                        _fireaInterval = Time.time;
+
+                        if (MaxAmmoQuanity <= 0)
+                        {
+                            AmmoQuanity = MaxAmmo;
+                            MaxAmmoQuanity = MaxAmmoCount;
+                            CanShoot = true;
+                            OnEmptyAmmo();
+                        }
                     }
                 }
-
+                
                 if (NeedReload)
                 {
                     Reload();

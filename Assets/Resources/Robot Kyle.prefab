@@ -4066,6 +4066,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: DelayPerShoot
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: ShootParticle
       value: 
       objectReference: {fileID: 4007550603658638138}
