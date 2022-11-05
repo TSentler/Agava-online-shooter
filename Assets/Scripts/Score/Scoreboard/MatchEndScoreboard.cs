@@ -55,13 +55,16 @@ namespace Score
 
             if(_currentTime <= 0)
             {
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    PhotonNetwork.AutomaticallySyncScene = true;
-                    PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-                    PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
-                    _isTimerStope = false;
-                }
+                _textTimer.text = "Reloud level";
+                PhotonNetwork.AutomaticallySyncScene = true;
+
+                //if (PhotonNetwork.IsMasterClient)
+                //{             
+                    PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);                
+                //}
+
+                PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+                _isTimerStope = false;
             }
         }
 
