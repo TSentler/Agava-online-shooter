@@ -90,9 +90,9 @@ namespace PlayerAbilities
                     _deaths++;
                     if (_playerInfo.IsBot == false)
                     {
-                        PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
+                        int deathes = (int)player.CustomProperties["Death"] + 1;
+                        PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", deathes } });
                         int kills = (int)player.CustomProperties["Kills"] + 1;
-                        Debug.Log(kills);
                         player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
                     }
                     _spawner.SpawnPlayer(this);

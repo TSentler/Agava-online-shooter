@@ -5,6 +5,7 @@ using Photon.Realtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -16,9 +17,13 @@ namespace Score
         [SerializeField] private GameObject _matchEndPanel;
         [SerializeField] private Transform _fartherPanel;
         [SerializeField] private ScoreboardItem _scoreTemplate;
+        [SerializeField] private TMP_Text _textTimer;
+        [SerializeField] private float _maxTime;
 
         private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
         private MatchmakingCallbacksCatcher _matchCallbacks;
+        private bool _isTimerStope = false;    
+        private float _currentTime;
 
         public Action MatchComplete;
 
@@ -40,6 +45,29 @@ namespace Score
             _matchCallbacks.OnRoomLeft -= RoomLeftHandler;
         }
 
+        private void Update()
+        {
+            if (_isTimerStope == false)
+                return;
+
+            _currentTime -= Time.deltaTime;
+            _textTimer.text = "Reloud level in " + _currentTime.ToString("0") + " seconds";
+
+            if(_currentTime <= 0)
+            {
+                _textTimer.text = "Reloud level";
+                PhotonNetwork.AutomaticallySyncScene = true;
+
+                //if (PhotonNetwork.IsMasterClient)
+                //{             
+                    PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);                
+                //}
+
+                PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+                _isTimerStope = false;
+            }
+        }
+
         public void OpenPanel()
         {
             _matchEndPanel.SetActive(true);
@@ -50,7 +78,7 @@ namespace Score
                 _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
             }
 
-            var scoreSort = _sortedScores.OrderByDescending(x => x.Value);
+            var scoreSort = _sortedScores.OrderByDescending(x => x.Value).ThenBy(y => y.Key.CustomProperties["Death"]);
 
             foreach (var score in scoreSort)
             {
@@ -61,6 +89,8 @@ namespace Score
             Cursor.lockState = CursorLockMode.None;
             PhotonNetwork.CurrentRoom.IsOpen = true;
             PhotonNetwork.CurrentRoom.IsVisible = true;
+            _isTimerStope = true;
+            _currentTime = _maxTime;
         }
 
         public void OnRestartButtonClick()

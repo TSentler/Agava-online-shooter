@@ -25,6 +25,11 @@ namespace PlayerAbilities
             _currentGrenade = _maxGrenades;
         }
 
+        private void OnEnable()
+        {
+            _currentGrenade = _maxGrenades;
+        }
+
         private void Update()
         {
             if (_photonView.IsMine)

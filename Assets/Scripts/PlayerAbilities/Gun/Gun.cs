@@ -34,6 +34,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private GameObject _bulletParticle;
     [SerializeField] private float _bulletForce;
     [SerializeField] private Transform _bulletSpawnPosition;
+    [SerializeField] private LayerMask _ignoredLayers;
 
     private protected int AmmoQuanity;
     private protected int MaxAmmoQuanity;
@@ -102,7 +103,7 @@ public abstract class Gun : MonoBehaviour
             ShootSound.Play();
 
 
-            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
+            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect, ~_ignoredLayers);
 
             RaycastHit minDistanceHit = new RaycastHit
             {
@@ -113,11 +114,15 @@ public abstract class Gun : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
-                    if (hitDetector.IsMine == false || hitDetector.IsBot)
+
+                    if (hitDetector.IsMine && hitDetector.IsSameRootTransform(
+                            _playerInfo.transform))
                     {
-                        hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
-                        OnHit();
+                        continue;
                     }
+                    
+                    hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
+                    OnHit();
                     break;
                 }
                 else
