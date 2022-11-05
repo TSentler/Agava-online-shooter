@@ -25,8 +25,10 @@ public class ETFXProjectileScript : MonoBehaviour
         if (_muzzleParticle)
         {
             _muzzleParticle = PhotonNetwork.Instantiate(_muzzleParticle.name, transform.position, transform.rotation) as GameObject;
-           PhotonNetwork.Destroy(_muzzleParticle/*, 1.5f*/); // 2nd parameter is lifetime of effect in seconds
+           PhotonNetwork.Destroy(_muzzleParticle); // 2nd parameter is lifetime of effect in seconds
         }
+
+        StartCoroutine(DestroyWithDelay());
     }
 
     private void FixedUpdate()
@@ -53,6 +55,9 @@ public class ETFXProjectileScript : MonoBehaviour
 
         if (Physics.SphereCast(transform.position, radius, direction, out hit, detectionDistance)) // Checks if collision will happen
         {
+            if (hit.collider.gameObject.GetComponent<Grenade>())
+                return;
+
             transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
             GameObject impactParticle = null;
 
@@ -90,5 +95,11 @@ public class ETFXProjectileScript : MonoBehaviour
            
             PhotonNetwork.Destroy(gameObject); // Removes the projectile
         }
+    }
+
+    private IEnumerator DestroyWithDelay()
+    {
+        yield return new WaitForSeconds(30f);
+        PhotonNetwork.Destroy(gameObject);
     }
 }

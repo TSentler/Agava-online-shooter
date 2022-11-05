@@ -34,6 +34,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private GameObject _bulletParticle;
     [SerializeField] private float _bulletForce;
     [SerializeField] private Transform _bulletSpawnPosition;
+    [SerializeField] private LayerMask _ignoredLayers;
 
     private protected int AmmoQuanity;
     private protected int MaxAmmoQuanity;
@@ -102,7 +103,7 @@ public abstract class Gun : MonoBehaviour
             ShootSound.Play();
 
 
-            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
+            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect, ~_ignoredLayers);
 
             RaycastHit minDistanceHit = new RaycastHit
             {

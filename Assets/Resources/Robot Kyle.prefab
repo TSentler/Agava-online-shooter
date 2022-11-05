@@ -4154,6 +4154,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4007550603672763146}
     - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
+      propertyPath: _ignoredLayers.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187338553878416402, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
       propertyPath: _layerToDetect.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -4609,6 +4613,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5749829092699554653}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
+      propertyPath: _ignoredLayers.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _layerToDetect.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -4862,6 +4870,10 @@ PrefabInstance:
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: LayerToDetect.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
+      propertyPath: _ignoredLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1085349085227609422, guid: 3d6f7a12af480fa4f898e11f4c486e5b, type: 3}
       propertyPath: _coutOfShardsInOneBullet
@@ -5350,6 +5362,10 @@ PrefabInstance:
       propertyPath: _bulletSpawnPosition
       value: 
       objectReference: {fileID: 6536585655524010102}
+    - target: {fileID: 6347670533056536158, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
+      propertyPath: _ignoredLayers.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6645456571634057468, guid: ecbd9cdd7cf8cc44cb2aa020eddee9b8, type: 3}
       propertyPath: m_Layer
       value: 7
