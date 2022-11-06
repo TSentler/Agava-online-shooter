@@ -68,6 +68,8 @@ MonoBehaviour:
   - EnableEffectRPC
   - InstantiateParticle
   - PlayEffects
+  - DisableGun
+  - EnableGun
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
