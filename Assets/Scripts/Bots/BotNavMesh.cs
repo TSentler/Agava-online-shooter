@@ -31,6 +31,7 @@ namespace Bots
             _agent = GetComponent<NavMeshAgent>();
             _targets = FindObjectsOfType<NavTargetPoint>();
             _tempAngularSpeed = _agent.angularSpeed;
+            // _agent.desiredVelocity
         }
 
         private void Update()

@@ -30,6 +30,7 @@ namespace BehaviourTrees
         public SharedBool IsRaycast = true;
         [UnityEngine.Tooltip("The object that is within sight")]
         public SharedGameObject ReturnedObject;
+        public SharedBool InSight;
 
         private GameObject[] _agentColliderGameObjects;
         private int[] _originalColliderLayer;
@@ -43,9 +44,11 @@ namespace BehaviourTrees
             ReturnedObject.Value = FindPlayerInSight();
             if (ReturnedObject.Value != null)
             {
+                InSight.Value = true;
                 return TaskStatus.Success;
             }
-            
+
+            InSight.Value = false;
             return TaskStatus.Failure;
         }
 
