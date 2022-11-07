@@ -14352,7 +14352,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1310459652431949320, guid: b2f3e585c4a8f654890607f513fcc115, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1310459652431949320, guid: b2f3e585c4a8f654890607f513fcc115, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14435,7 +14435,7 @@ Transform:
   - {fileID: 1477372231134473804}
   - {fileID: 871003138}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1477372229181080912
 MonoBehaviour:
@@ -14449,9 +14449,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e8fb5bcde2e4d49b70c5426814aeab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 7926811385654240329, guid: a821b2783dea9a84fb3a4bb96d3a744b, type: 3}
+  _playerPrefab: {fileID: 7926811385654240329, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
   _spawnPoints:
   - {fileID: 871003138}
+  _isBot: 0
 --- !u!1 &1477372229245630099
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,16 @@ namespace PlayerAbilities
         public bool IsBot => _isBot;
         public string NickName => GetNickName();
 
+        public void ToBot()
+        {
+            _isBot = true;
+        }
+
+        public void ToPlayer()
+        {
+            _isBot = false;
+        }
+        
         private string GetNickName()
         {
             if (IsBot)
