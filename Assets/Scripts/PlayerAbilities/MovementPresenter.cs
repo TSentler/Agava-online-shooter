@@ -11,6 +11,9 @@ namespace PlayerAbilities
             _forwardName = Animator.StringToHash("InputForward"),
             _rightName = Animator.StringToHash("InputRight");
 
+        private const string ForwardName = "InputForward";
+        private const string RightName = "InputRight";
+
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerInfo _playerInfo;
@@ -42,8 +45,9 @@ namespace PlayerAbilities
 
         private void UpdateDirection(Vector2 direction)
         {
-            _animator.SetFloat(_forwardName, direction.y);
-            _animator.SetFloat(_rightName, direction.x);
+            Debug.Log(direction);
+            _animator.SetFloat(ForwardName, direction.y);
+            _animator.SetFloat(RightName, direction.x);
         }
     }
 }
