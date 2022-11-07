@@ -3163,7 +3163,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 2
+  m_StepOffset: 0.2
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.06, z: 0}
@@ -4534,7 +4534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: DelayPerShoot
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4287688855794036566, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: ShootParticle

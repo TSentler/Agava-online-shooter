@@ -23,6 +23,7 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     public Gun CurentGun => _currentGun;
 
     public event UnityAction<int, int> UpdateAmmo;
+    public event UnityAction ChangeGun;
 
     private void InitializePlayersGuns()
     {
@@ -104,7 +105,8 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     public void SetNewGun(int newGunId)
     {
         _currentGun.AmmoCountChange -= OnUpdateAmmo;
-        _currentGun.gameObject.SetActive(false);
+        //_currentGun.gameObject.SetActive(false);      
+        _photonView.RPC(nameof(DisableGun), RpcTarget.All);
 
         foreach (var gun in _guns)
         {
@@ -112,10 +114,12 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
             {
                 _currentGun = gun;
                 _currentGun.AmmoCountChange += OnUpdateAmmo;
+                ChangeGun?.Invoke();
             }
         }
 
-        _currentGun.gameObject.SetActive(true);
+        _photonView.RPC(nameof(EnableGun), RpcTarget.All);
+        //_currentGun.gameObject.SetActive(true);
         //UpdateAmmo?.Invoke(_currentGun.AmmoQuanityGun, _currentGun.MaxAmmoGun);
 
         if (_photonView.IsMine)
@@ -142,6 +146,18 @@ public class PlayerHand : MonoBehaviourPunCallbacks, IPunObservable
     private void EquipDefaultGunRPC()
     {
         SetNewGun(0);
+    }
+
+    [PunRPC]
+    private void EnableGun()
+    {
+        _currentGun.gameObject.SetActive(true);
+    }
+
+    [PunRPC]
+    private void DisableGun()
+    {
+        _currentGun.gameObject.SetActive(false);
     }
 
     private void OnUpdateAmmo(int ammoQuanityGun, int maxAmmoGun)

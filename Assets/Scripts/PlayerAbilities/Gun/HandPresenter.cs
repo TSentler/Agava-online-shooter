@@ -13,19 +13,25 @@ namespace PlayerAbilities.Gun
 
         private void OnEnable()
         {
-            _playerHand.UpdateAmmo += GunChangedHandler;
+            _playerHand.ChangeGun += OnGunChanged;
         }
 
         private void OnDisable()
         {
-            _playerHand.UpdateAmmo -= GunChangedHandler;
+            _playerHand.ChangeGun -= OnGunChanged;
         }
 
-        private void GunChangedHandler(int quantity, int max)
+        //private void GunChangedHandler(int quantity, int max)
+        //{
+        //    var isRifle = _playerHand.CurrentGunId > 0;
+        //    _animator.SetBool(_isRifleName, isRifle);
+        //}
+
+        private void OnGunChanged()
         {
+            Debug.Log(_playerHand.CurrentGunId);
             var isRifle = _playerHand.CurrentGunId > 0;
             _animator.SetBool(_isRifleName, isRifle);
-
         }
     }
 }

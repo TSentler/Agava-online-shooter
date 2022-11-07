@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room1BotTest.unity
     guid: 80bbdf6c933558e458529d234b7acb64
+  - enabled: 1
+    path: Assets/Scenes/SmallMapCity.unity
+    guid: 7e27fca70369f8d4799662401af090c1
   m_configObjects: {}
