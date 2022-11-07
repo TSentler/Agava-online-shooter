@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 451858}
   - component: {fileID: 3321098}
   - component: {fileID: 2343282}
-  - component: {fileID: 64200068796743118}
-  - component: {fileID: 64526230041215666}
   m_Layer: 0
   m_Name: SM_Bld_Roof_Access_01
   m_TagString: Untagged
@@ -85,31 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64200068796743118
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43160724726929318, guid: 469e38b8efc09a84a9ed5a4b455d7f1e, type: 2}
---- !u!64 &64526230041215666
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43859301078971766, guid: 469e38b8efc09a84a9ed5a4b455d7f1e, type: 2}
