@@ -29290,6 +29290,7 @@ GameObject:
   - component: {fileID: 1093988617}
   - component: {fileID: 1093988616}
   - component: {fileID: 1093988615}
+  - component: {fileID: 1093988620}
   m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
@@ -29377,6 +29378,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 63, y: 100, z: 2.637352}
   m_Center: {x: 0, y: 48.57202, z: -31.185871}
+--- !u!114 &1093988620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093988613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e11f75bf2d0e54e868255071b253c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1094198142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48849,6 +48862,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 413058, guid: ae7b8255185ace64ca379cb1ca3b24e6, type: 3}
   m_PrefabInstance: {fileID: 1871782820}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1874278975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 182348, guid: a2d22ce70dfdb254e9cf1a761853209a, type: 3}
+  m_PrefabInstance: {fileID: 1648293101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1874278976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874278975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.875484, y: 8.999998, z: 5.4972506}
+  m_Center: {x: -7.7973194, y: 4.499999, z: -2.3975444}
 --- !u!1001 &1875619513
 PrefabInstance:
   m_ObjectHideFlags: 0
