@@ -43,7 +43,6 @@ namespace BehaviourTrees
             ReturnedObject.Value = FindPlayerInSight();
             if (ReturnedObject.Value != null)
             {
-                Debug.Log(ReturnedObject.Value.name);
                 return TaskStatus.Success;
             }
             

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3172395968311471702}
   - component: {fileID: 6619081724575694907}
   - component: {fileID: 5549026052157426733}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 11
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7856478212343548253
 Rigidbody:
@@ -260,6 +260,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5544991475737362361, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -5310991530101490637, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -267,6 +271,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
       propertyPath: m_Name
       value: grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411231278145283812, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2676773925120559672, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5993160578132634960, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -280,6 +296,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 540a38f53dc0b624b829006d1655d6e7, type: 2}
+    - target: {fileID: 8966661196768226323, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01bc6869f3ebe9e4b9417764065026d1, type: 3}
 --- !u!23 &1260768236522649725 stripped
@@ -314,9 +334,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2913382696203088976}
     m_Modifications:
+    - target: {fileID: 130078, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 137632, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 138878, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 156992, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 161142, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
       propertyPath: m_Name
       value: GrenadeExplosionFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 404992, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
       propertyPath: m_RootOrder
@@ -417,6 +461,10 @@ PrefabInstance:
     - target: {fileID: 19987050, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075936047718304, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 82007018935423512, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
       propertyPath: m_PlayOnAwake

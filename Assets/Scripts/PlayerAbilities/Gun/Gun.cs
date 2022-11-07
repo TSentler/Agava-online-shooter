@@ -34,6 +34,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private GameObject _bulletParticle;
     [SerializeField] private float _bulletForce;
     [SerializeField] private Transform _bulletSpawnPosition;
+    [SerializeField] private LayerMask _ignoredLayers;
 
     private protected int AmmoQuanity;
     private protected int MaxAmmoQuanity;
@@ -49,12 +50,14 @@ public abstract class Gun : MonoBehaviour
 
     public event Action Hit;
     public event UnityAction EmptyAmmo;
+    public event UnityAction<int, int> AmmoCountChange;
 
     private void Start()
     {
         AmmoQuanity = MaxAmmo;
         MaxAmmoQuanity = MaxAmmoCount;
         _remainingReloadTime = DelayReload;
+        AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
     }
 
     public void Reload()
@@ -69,23 +72,38 @@ public abstract class Gun : MonoBehaviour
             {
                 CanShoot = true;
                 NeedReload = false;
-                AmmoQuanity = MaxAmmo;
+
+                if (MaxAmmoQuanity <= MaxAmmo && MaxAmmoCount != 0)
+                {
+                    AmmoQuanity = MaxAmmoQuanity;
+                }
+                else
+                {
+                    AmmoQuanity = MaxAmmo;
+                }
+
                 _remainingReloadTime = DelayReload;
+                AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
             }
         }
     }
 
-    protected virtual void Shoot(Camera camera)
+    protected void Shoot(Camera camera)
+    {
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+        ray.origin = camera.transform.position;
+        Shoot(ray, camera.transform);
+    }
+    
+    public virtual void Shoot(Ray ray, Transform originTransform)
     {
         if (AmmoQuanity > 0 && CanShoot)
         {
             PhotonViewComponent.RPC(nameof(PlayEffects), RpcTarget.All);
             ShootSound.Play();
 
-            Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            ray.origin = camera.transform.position;
 
-            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect);
+            RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect, ~_ignoredLayers);
 
             RaycastHit minDistanceHit = new RaycastHit
             {
@@ -96,11 +114,15 @@ public abstract class Gun : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.TryGetComponent(out HitDetector hitDetector))
                 {
-                    if (hitDetector.IsMine == false || hitDetector.IsBot)
+
+                    if (hitDetector.IsMine && hitDetector.IsSameRootTransform(
+                            _playerInfo.transform))
                     {
-                        hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
-                        OnHit();
+                        continue;
                     }
+                    
+                    hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
+                    OnHit();
                     break;
                 }
                 else
@@ -120,15 +142,15 @@ public abstract class Gun : MonoBehaviour
             _bulletForce = (minDistanceHit.distance / _bulletTravelTime) / _bulletTravelTime;
 
             GameObject bulletParticle = PhotonNetwork.Instantiate(_bulletParticle.name, _bulletSpawnPosition.position, Quaternion.identity);
-            bulletParticle.GetComponent<Rigidbody>().AddForce(camera.transform.forward * _bulletForce);
+            bulletParticle.GetComponent<Rigidbody>().AddForce(originTransform.forward * _bulletForce);
             bulletParticle.transform.LookAt(ray.origin);
-            Debug.Log(minDistanceHit.distance);
             AmmoQuanity--;
 
             if (MaxAmmoQuanity != 0)
                 MaxAmmoQuanity--;
 
             MouseLook.Shoot(RecoilForceXMin, RecoilForceYMin, RecoilForceXMax, RecoilForceYMax, RecoilMagnitude, DelayPerShoot);
+            AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
         }
         else
         {

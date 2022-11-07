@@ -16,7 +16,7 @@ namespace Levels
 
     public class LevelLoader : MonoBehaviour
     {
-        private const string SceneName = "SceneName";
+        private const string SceneNameKey = "SceneName";
 
         private LevelNames _levelName;
         private byte _maxPlayersSmallMap = 5;
@@ -24,6 +24,7 @@ namespace Levels
 
         private MatchmakingCallbacksCatcher _matchCallback;
         private LobbyCallbackCatcher _lobbyCalback;
+        private RoomOptions _botRoomOptions;
         private RoomOptions _smallRoomOptions;
         private RoomOptions _largeRoomOptions;
 
@@ -34,19 +35,26 @@ namespace Levels
         {
             _matchCallback = FindObjectOfType<MatchmakingCallbacksCatcher>();
             _lobbyCalback = FindObjectOfType<LobbyCallbackCatcher>();
+            _botRoomOptions = new RoomOptions();
+            _botRoomOptions.MaxPlayers = _maxPlayersSmallMap;
+            _botRoomOptions.CleanupCacheOnLeave = true;
+            _botRoomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+            _botRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneNameKey.ToString() };
+            _botRoomOptions.CustomRoomProperties.Add(SceneNameKey, LevelNames.Room1BotTest.ToString());
+
             _smallRoomOptions = new RoomOptions();
             _smallRoomOptions.MaxPlayers = _maxPlayersSmallMap;
             _smallRoomOptions.CleanupCacheOnLeave = true;
             _smallRoomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
-            _smallRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneName.ToString() };
-            _smallRoomOptions.CustomRoomProperties.Add(SceneName, LevelNames.Room1.ToString());
+            _smallRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneNameKey.ToString() };
+            _smallRoomOptions.CustomRoomProperties.Add(SceneNameKey, LevelNames.Room1.ToString());
 
             _largeRoomOptions = new RoomOptions();
             _largeRoomOptions.MaxPlayers = _maxPlayersLargeMap;
             _largeRoomOptions.CleanupCacheOnLeave = true;
             _largeRoomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
-            _largeRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneName.ToString() };
-            _largeRoomOptions.CustomRoomProperties.Add(SceneName, LevelNames.LargeLevelScene.ToString());
+            _largeRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneNameKey.ToString() };
+            _largeRoomOptions.CustomRoomProperties.Add(SceneNameKey, LevelNames.LargeLevelScene.ToString());
         }
 
         private void OnEnable()
@@ -89,7 +97,7 @@ namespace Levels
 
         public void CreateOrJoinBotMap()
         {
-            CreateOrJoinMap(LevelNames.Room1BotTest, _smallRoomOptions);
+            CreateOrJoinMap(LevelNames.Room1BotTest, _botRoomOptions);
         }
 
         public void CreateOrJoinSmallMap()
@@ -107,7 +115,7 @@ namespace Levels
         {
             _levelName = levelName;
             _currentRoomOptions = options;
-            Debug.Log(options.CustomRoomProperties.ContainsKey(SceneName));
+            Debug.Log(options.CustomRoomProperties.ContainsKey(SceneNameKey));
             PhotonNetwork.JoinOrCreateRoom(
                 GetOrCreateRoomName(options, levelName), options, TypedLobby.Default);
         }
@@ -118,9 +126,9 @@ namespace Levels
             {
                 for (int i = 0; i < _roomInfos.Count; i++)
                 {
-                    Debug.Log(_roomInfos[i].CustomProperties.ContainsKey(SceneName) == false);
-                    if (_roomInfos[i].CustomProperties.ContainsKey(SceneName) == false 
-                        || levelName.ToString() != _roomInfos[i].CustomProperties[SceneName].ToString())
+                    Debug.Log(_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false);
+                    if (_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false 
+                        || levelName.ToString() != _roomInfos[i].CustomProperties[SceneNameKey].ToString())
                     {
                         continue;
                     }
@@ -157,7 +165,7 @@ namespace Levels
 
             for (int i = 0; i < _roomInfos.Count; i++)
             {
-                Debug.Log(roomInfos[i].CustomProperties[SceneName].ToString());
+                Debug.Log(roomInfos[i].CustomProperties[SceneNameKey].ToString());
             }
         }
     }
