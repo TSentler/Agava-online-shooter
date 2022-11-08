@@ -13,8 +13,9 @@ namespace Bots
         [Min(0f), SerializeField] private float _aimSpeed = 5f;
         [SerializeField] private PlayerHand _playerHand;
         [SerializeField] private float _angleShootSpread = -20f;
+        [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private Transform _root;
         
-        private NavMeshAgent _agent;
         private NavTargetPoint[] _targets;
         private float _tempAngularSpeed;
         private int _currentTargetPoint;
@@ -28,7 +29,6 @@ namespace Bots
             
         private void Awake()
         {
-            _agent = GetComponent<NavMeshAgent>();
             _targets = FindObjectsOfType<NavTargetPoint>();
             _tempAngularSpeed = _agent.angularSpeed;
             // _agent.desiredVelocity
@@ -76,7 +76,7 @@ namespace Bots
         public void Aim(GameObject target)
         {
             var lookDirection = target.transform.position - 
-                                transform.position;
+                                _root.position;
             var lookDirectionXZ = lookDirection;
             lookDirectionXZ.y = 0f;
             VerticalAim(lookDirectionXZ, lookDirection);
@@ -86,21 +86,21 @@ namespace Bots
 
         public void ResetVerticalAim()
         {
-            VerticalAim(transform.forward, transform.forward);
+            VerticalAim(_root.forward, _root.forward);
         }
 
         private void VerticalAim(Vector3 lookDirectionXZ, Vector3 lookDirection)
         {
             var currentYDirection =
-                Quaternion.AngleAxis(_mouseLook.XRotation, transform.right)
+                Quaternion.AngleAxis(_mouseLook.XRotation, _root.right)
                 * lookDirectionXZ;
             var yRotation = Vector3.SignedAngle(currentYDirection,
-                lookDirection, transform.right);
+                lookDirection, _root.right);
             // Debug.DrawRay(transform.position, currentYDirection, Color.blue);
             // Debug.DrawRay(transform.position, lookDirection, Color.green);
             // Debug.DrawRay(transform.position, lookDirectionXZ, Color.red);
             var yAngle = Vector3.SignedAngle(lookDirectionXZ,
-                lookDirection, transform.right);
+                lookDirection, _root.right);
             yRotation = Mathf.Lerp(0f, yRotation, _aimSpeed * Time.deltaTime);
             _mouseLook.MouseMove(0f, -yRotation);
         }
@@ -108,7 +108,7 @@ namespace Bots
         private void HorizontalAim(Vector3 lookDirectionXZ)
         {
             var lookRotation = Quaternion.LookRotation(lookDirectionXZ);
-            transform.rotation = Quaternion.Slerp(transform.rotation,
+            _root.rotation = Quaternion.Slerp(_root.rotation,
                 lookRotation, _aimSpeed * Time.deltaTime);
         }
 

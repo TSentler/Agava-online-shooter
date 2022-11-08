@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace PlayerAbilities
 {
-    [RequireComponent(typeof(PhotonView))]
+    [RequireComponent(typeof(PlayerInfo))]
     public class PlayerInput : MonoBehaviour, ICharacterInputSource
     {
-        private PhotonView _photonView;
+        private PlayerInfo _playerInfo;
         
         public Vector2 MovementInput { get; private set; }
         public bool IsJumpInput { get; private set; }
 
         private void Awake()
         {
-            _photonView = GetComponent<PhotonView>();
-            _photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+            _playerInfo = GetComponent<PlayerInfo>();
+            _playerInfo.PhotonView.TransferOwnership(PhotonNetwork.LocalPlayer);
         }
 
         private void Update()
         {
-            if (_photonView.IsMine == false)
+            if (_playerInfo.IsMine == false || _playerInfo.IsBot)
                 return;
             
             IsJumpInput = Input.GetButtonDown("Jump");

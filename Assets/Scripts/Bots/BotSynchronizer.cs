@@ -7,24 +7,15 @@ using UnityEngine.AI;
 
 namespace Bots
 {
-    [RequireComponent(typeof(PlayerInfo), 
-        typeof(NavMeshAgent), 
-        typeof(BehaviorTree))]
     public class BotSynchronizer : MonoBehaviour
     {
-        private NavMeshAgent _agent;
-        private BehaviorTree _behavior;
-        private PlayerInfo _playerInfo;
+        [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private PlayerInfo _playerInfo;
+        [SerializeField] private BehaviorTree _behavior;
 
         private void Awake()
         {
-            _playerInfo = GetComponent<PlayerInfo>();
-            _behavior = GetComponent<BehaviorTree>();
-            _agent = GetComponent<NavMeshAgent>();
-            if (_playerInfo.IsBot == false)
-                return;
-            
-            if (_playerInfo.IsMine == false)
+            if (_playerInfo.IsBot && _playerInfo.IsMine == false)
             {
                 _agent.enabled = false;
                 _behavior.enabled = false;

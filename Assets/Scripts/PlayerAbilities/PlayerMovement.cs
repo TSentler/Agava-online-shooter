@@ -7,7 +7,8 @@ using UnityEngine.Events;
 namespace PlayerAbilities
 {
     [RequireComponent(typeof(CharacterController),
-        typeof(GroundChecker))]
+        typeof(GroundChecker),
+        typeof(PlayerInfo))]
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
@@ -16,7 +17,7 @@ namespace PlayerAbilities
             _gravityFactor = 1f;
         
         private ICharacterInputSource _inputSource;
-        private PhotonView _photonView;
+        private PlayerInfo _playerInfo;
         private CharacterController _character;
         private GroundChecker _groundChecker;
         private Vector3 _moveDirection;
@@ -36,13 +37,13 @@ namespace PlayerAbilities
         {
             _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
             _character = GetComponent<CharacterController>();
-            _photonView = GetComponent<PhotonView>();
+            _playerInfo = GetComponent<PlayerInfo>();
             _groundChecker = GetComponent<GroundChecker>();
         }
 
         private void Update()
         {
-            if (_photonView.IsMine == false)
+            if (_playerInfo.IsMine == false || _playerInfo.IsBot)
                 return;
             
             var inputDirection = new Vector3(_inputSource.MovementInput.x, 

@@ -1,6 +1,4 @@
-using System;
 using CharacterInput;
-using Photon.Pun;
 using UnityEngine;
 
 namespace PlayerAbilities
@@ -27,9 +25,17 @@ namespace PlayerAbilities
             }
         }
 
+        public void Initialize(ICharacterInputSource inputSource)
+        {
+            _inputSource = inputSource;
+        }
+        
         private void Awake()
         {
-            _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+            if (_inputSource == null)
+            {
+                _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+            }
         }
 
         private void Update()

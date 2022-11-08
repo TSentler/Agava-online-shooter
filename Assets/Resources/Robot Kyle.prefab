@@ -32,7 +32,7 @@ Transform:
   - {fileID: 9102370263928987576}
   - {fileID: 4665576992236182292}
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8018758753485099
 GameObject:
@@ -250,7 +250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1465160311447711448
 SkinnedMeshRenderer:
@@ -399,7 +399,7 @@ Transform:
   - {fileID: 7496379404679166598}
   - {fileID: 1080610042545230083}
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941891771382181310
 GameObject:
@@ -627,7 +627,7 @@ RectTransform:
   m_Children:
   - {fileID: 1161960026740196118}
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -995,7 +995,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2132479365486942229
 GameObject:
@@ -1091,7 +1091,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5628754549762367574
 MonoBehaviour:
@@ -1485,7 +1485,7 @@ RectTransform:
   - {fileID: 2528125675867086081}
   - {fileID: 4824236701644583078}
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2161,7 +2161,7 @@ Transform:
   m_Children:
   - {fileID: 7593135972504170424}
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5788905161855361682
 MonoBehaviour:
@@ -2348,7 +2348,7 @@ GameObject:
   - component: {fileID: 1671936356364261117}
   - component: {fileID: 5769570461929580660}
   m_Layer: 7
-  m_Name: AnimationPreseters
+  m_Name: AnimationPresenters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2367,7 +2367,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5769570461929580651
 MonoBehaviour:
@@ -2703,6 +2703,72 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6252856440243047810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8364879822703087307}
+  - component: {fileID: 1303857999589789690}
+  - component: {fileID: 1055481008330563794}
+  m_Layer: 7
+  m_Name: Bot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8364879822703087307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252856440243047810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7926811385654605929}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303857999589789690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252856440243047810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6448c1c529c9c4841847331cda4f07c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 3946544924353421128}
+  _playerInfo: {fileID: 1228789576761653420}
+  _behavior: {fileID: 4820662887568432031}
+--- !u!114 &1055481008330563794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252856440243047810}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3918ae97e2660864b840ee19a6ef26c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mouseLook: {fileID: 5788905161855361682}
+  _aimSpeed: 5
+  _playerHand: {fileID: 6293996175980194239}
+  _angleShootSpread: 20
+  _agent: {fileID: 3946544924353421128}
+  _root: {fileID: 7926811385654605929}
 --- !u!1 &6496338184682560371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,7 +2835,7 @@ RectTransform:
   - {fileID: 2946031107658844515}
   - {fileID: 4434204295575054641}
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3098,9 +3164,7 @@ GameObject:
   - component: {fileID: 4737109014414487661}
   - component: {fileID: 2665457723004009067}
   - component: {fileID: 3946544924353421128}
-  - component: {fileID: 6259532746357384900}
-  - component: {fileID: 4056424839748905810}
-  - component: {fileID: 1129548985744566865}
+  - component: {fileID: 4820662887568432031}
   m_Layer: 7
   m_Name: Robot Kyle
   m_TagString: Untagged
@@ -3120,6 +3184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8364879822703087307}
   - {fileID: 5769570461929580650}
   - {fileID: 4260918894266300848}
   - {fileID: 8050664985105929954}
@@ -3151,9 +3216,9 @@ MonoBehaviour:
   _characterController: {fileID: 5896622498498545743}
   _botCollider: {fileID: 2665457723004009067}
   _navMeshAgent: {fileID: 3946544924353421128}
-  _botNavMesh: {fileID: 4056424839748905810}
-  _botSynchronizer: {fileID: 1129548985744566865}
+  _botNavMesh: {fileID: 1055481008330563794}
   _mouseLook: {fileID: 5788905161855361682}
+  _movementPresenter: {fileID: 4391770532931410501}
   _hide:
   - {fileID: 9150090653136674274}
   - {fileID: 1124337238284362955}
@@ -3162,7 +3227,7 @@ MonoBehaviour:
   _onConvertToBot:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6259532746357384900}
+      - m_Target: {fileID: 4820662887568432031}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -3540,7 +3605,7 @@ NavMeshAgent:
   m_BaseOffset: -0.05
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6259532746357384900
+--- !u!114 &4820662887568432031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3591,48 +3656,20 @@ MonoBehaviour:
         startIndex: 
         dataPosition: 
         unityObjects:
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
-        - {fileID: 4056424839748905810}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
+        - {fileID: 1055481008330563794}
         byteData: 
         byteDataArray: 
       Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
---- !u!114 &4056424839748905810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926811385654240329}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3918ae97e2660864b840ee19a6ef26c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mouseLook: {fileID: 5788905161855361682}
-  _aimSpeed: 5
-  _playerHand: {fileID: 6293996175980194239}
-  _angleShootSpread: 20
---- !u!114 &1129548985744566865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926811385654240329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6448c1c529c9c4841847331cda4f07c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8225444847238415359
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,7 +3796,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3604166139462593342
 SkinnedMeshRenderer:
@@ -3942,7 +3979,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926811385654605929}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9078432271811163845
 MonoBehaviour:
