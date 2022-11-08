@@ -84,9 +84,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c97d950a02f1ae4aaeae4f4e80c77a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowPoint: {fileID: 5742209603450912045}
-  TimerToSpawn: 20
   _healValue: 30
+  _showPoint: {fileID: 5742209603450912045}
+  _timerToSpawn: 20
 --- !u!114 &5742209602631971925
 MonoBehaviour:
   m_ObjectHideFlags: 0
