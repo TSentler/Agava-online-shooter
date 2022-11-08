@@ -11,7 +11,7 @@ namespace Levels
 {
     public enum LevelNames
     {
-        Room1, RoomCorridor, GameMapScene, LargeLevelScene, Room1BotTest, CandyScene_night
+        Room1, RoomCorridor, GameMapScene, LargeLevelScene, Room1BotTest, CandyScene_night, SmallMapCity
     }
 
     public class LevelLoader : MonoBehaviour
@@ -141,6 +141,11 @@ namespace Levels
             }
 
             return "Room" + Random.Range(0, 1000).ToString() + PhotonNetwork.NickName;
+        }
+
+        public void CreateOrJoinTestLargeMap()
+        {
+            CreateOrJoinMap(LevelNames.SmallMapCity, _largeRoomOptions);
         }
 
         public void CreateRoom(string name)

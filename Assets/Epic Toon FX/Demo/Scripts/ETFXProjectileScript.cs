@@ -61,17 +61,20 @@ public class ETFXProjectileScript : MonoBehaviour
             transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
             GameObject impactParticle = null;
 
-            if (hit.collider.gameObject.GetComponent<PlayerHealth>() || hit.collider.gameObject.GetComponent<HitDetector>())
+            if( hit.collider.gameObject.GetComponent<DecalIgnoreObject>() == false)
             {
-                Instantiate(_hitInPlayerEffect, transform.position, Quaternion.LookRotation(hit.normal));
-                Debug.Log(1);
-            }
-            else
-            {
-                impactParticle = PhotonNetwork.Instantiate(_impactParticle.name, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
-                PhotonNetwork.Instantiate(_bulletHoleTemplate.name, transform.position, Quaternion.LookRotation(hit.normal));
-                Debug.Log(2);
-            }
+                if (hit.collider.gameObject.GetComponent<PlayerHealth>() || hit.collider.gameObject.GetComponent<HitDetector>())
+                {
+                    Instantiate(_hitInPlayerEffect, transform.position, Quaternion.LookRotation(hit.normal));
+                    Debug.Log(1);
+                }
+                else
+                {
+                    impactParticle = PhotonNetwork.Instantiate(_impactParticle.name, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
+                    PhotonNetwork.Instantiate(_bulletHoleTemplate.name, transform.position, Quaternion.LookRotation(hit.normal));
+                    Debug.Log(2);
+                }
+            }         
                  
             ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
                                                                                  //Component at [0] is that of the parent i.e. this object (if there is any)

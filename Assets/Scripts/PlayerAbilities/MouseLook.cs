@@ -14,6 +14,9 @@ namespace PlayerAbilities
         [SerializeField] private Transform _playerBody;
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private Transform _weapon;
+        [SerializeField] private float _standartSensetivity;
+
+        private const string MouseSensitivitySaveKey = "MouseSensitivity";
 
         private float _xRotation;
         private Vector3 _deltaPosition;
@@ -35,6 +38,15 @@ namespace PlayerAbilities
 
             _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
             _slieder = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
+
+            if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+            {
+                _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+            }
+            else
+            {
+                _slieder.value = _standartSensetivity;
+            }
         }
 
         private void OnEnable()
@@ -63,8 +75,7 @@ namespace PlayerAbilities
         }
 
         public void Shoot(float rifleRecoilXMin,float rifleRecoilYMin,float rifleRecoilXMax, float rifleRecoilYMax, float magnitude, float shootDelay)
-        {
-         
+        {         
             float mouseX = Random.Range(rifleRecoilXMin, rifleRecoilXMax) /** sensetivityFactor*/;
             float mouseY = Random.Range(rifleRecoilYMin, rifleRecoilYMax) /** sensetivityFactor*/;
 
@@ -84,6 +95,7 @@ namespace PlayerAbilities
         private void ChangeSensetivity(float value)
         {
             _mouseSensetivity = _slieder.value;
+            PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slieder.value);
         }
     }
 }

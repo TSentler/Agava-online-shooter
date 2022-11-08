@@ -2181,6 +2181,7 @@ MonoBehaviour:
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
   _weapon: {fileID: 5769570462044029525}
+  _standartSensetivity: 50
 --- !u!114 &5917582119930069936
 MonoBehaviour:
   m_ObjectHideFlags: 0
