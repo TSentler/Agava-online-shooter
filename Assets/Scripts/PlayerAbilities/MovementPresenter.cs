@@ -11,6 +11,12 @@ namespace PlayerAbilities
             _forwardName = Animator.StringToHash("InputForward"),
             _rightName = Animator.StringToHash("InputRight");
 
+        private const string ForwardName = "IsRun";
+        private const string RightName = "InputRight";
+        private const string BackMoveName = "IsBackRun";
+        private const string RightMoveName = "IsRight";
+        private const string LeftMoveName = "IsLeft";
+
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerInfo _playerInfo;
@@ -42,8 +48,38 @@ namespace PlayerAbilities
 
         private void UpdateDirection(Vector2 direction)
         {
-            _animator.SetFloat(_forwardName, direction.y);
-            _animator.SetFloat(_rightName, direction.x);
+            Debug.Log(direction);
+            //_animator.SetFloat(ForwardName, direction.y);
+            //_animator.SetFloat(RightName, direction.x);
+            if (direction.y > 0)
+            {
+                _animator.SetBool(ForwardName, true);
+            }
+
+            if (direction.y < 0)
+            {
+                _animator.SetBool(BackMoveName, true);
+            }
+
+            if (direction.y == 0)
+            {
+                _animator.SetBool(BackMoveName, false);
+            }
+
+            if (direction.x > 0)
+            {
+                _animator.SetBool(RightMoveName, true);
+            }
+
+            if(direction.x == 0)
+            {
+                _animator.SetBool(RightMoveName, false);
+            }
+
+            if(direction.x < 0)
+            {
+                _animator.SetBool(LeftMoveName, true);
+            }
         }
     }
 }
