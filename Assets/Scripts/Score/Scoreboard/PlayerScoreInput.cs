@@ -31,6 +31,8 @@ public class PlayerScoreInput : MonoBehaviour
 
     private void Update()
     {
+        //_matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
+
         if (_photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.Tab))

@@ -21,6 +21,7 @@ namespace Match
         {
             _roomCatcher = FindObjectOfType<InRoomCallbackCatcher>();
             var props = PhotonNetwork.CurrentRoom.CustomProperties;
+
             if (props.ContainsKey(_startTimeName))
             {
                 SetTime((double)props[_startTimeName]);
