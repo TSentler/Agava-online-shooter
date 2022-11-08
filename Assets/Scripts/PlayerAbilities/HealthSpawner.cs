@@ -20,6 +20,11 @@ public class HealthSpawner : MonoBehaviour
         _collider = GetComponent<SphereCollider>();
     }
 
+    private void Update()
+    {
+        _showPoint.Rotate(_rotation * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (_canUse)
