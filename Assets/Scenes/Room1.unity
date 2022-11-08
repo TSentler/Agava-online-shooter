@@ -1750,6 +1750,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19815656, guid: 7d5bdfc07d77aab4a963e018ba7bccc4, type: 3}
+      propertyPath: startDelay.maxCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19815656, guid: 7d5bdfc07d77aab4a963e018ba7bccc4, type: 3}
+      propertyPath: startDelay.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d5bdfc07d77aab4a963e018ba7bccc4, type: 3}
 --- !u!1001 &56670697
@@ -56898,18 +56906,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2374949119785585004, guid: 088d4952eca7623439aad183827195c3, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374949119785585006, guid: 088d4952eca7623439aad183827195c3, type: 3}
-      propertyPath: ShowPoint
-      value: 
-      objectReference: {fileID: 2374949120453636136}
-    - target: {fileID: 2374949119785585006, guid: 088d4952eca7623439aad183827195c3, type: 3}
-      propertyPath: TimerToSpawn
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 2374949119785585007, guid: 088d4952eca7623439aad183827195c3, type: 3}
       propertyPath: m_Name
       value: GunSpawner
@@ -56930,17 +56926,15 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3228702344943736179, guid: 088d4952eca7623439aad183827195c3, type: 3}
     - {fileID: 3751982740553231229, guid: 088d4952eca7623439aad183827195c3, type: 3}
     - {fileID: 8516972456482725797, guid: 088d4952eca7623439aad183827195c3, type: 3}
-    - {fileID: 2374949119785585004, guid: 088d4952eca7623439aad183827195c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 088d4952eca7623439aad183827195c3, type: 3}
---- !u!4 &2374949120453636136 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2374949120811942749, guid: 088d4952eca7623439aad183827195c3, type: 3}
-  m_PrefabInstance: {fileID: 2374949120453636135}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2374949120453636137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2374949119785585001, guid: 088d4952eca7623439aad183827195c3, type: 3}
