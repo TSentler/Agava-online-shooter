@@ -2181,7 +2181,6 @@ MonoBehaviour:
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
   _weapon: {fileID: 5769570462044029525}
-  _standartSensetivity: 50
 --- !u!114 &5917582119930069936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,7 +3221,7 @@ GameObject:
   - component: {fileID: 3946544924353421128}
   - component: {fileID: 4820662887568432031}
   m_Layer: 7
-  m_Name: Robot Kyle
+  m_Name: _Robot Kyle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3272,6 +3271,7 @@ MonoBehaviour:
   _characterController: {fileID: 5896622498498545743}
   _botCollider: {fileID: 2665457723004009067}
   _navMeshAgent: {fileID: 3946544924353421128}
+  _botAim: {fileID: 1055481008330563794}
   _botInput: {fileID: 7696866275565000596}
   _mouseLook: {fileID: 5788905161855361682}
   _movementPresenter: {fileID: 4391770532931410501}
