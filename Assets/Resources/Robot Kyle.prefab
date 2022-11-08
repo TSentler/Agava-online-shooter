@@ -3218,7 +3218,6 @@ GameObject:
   - component: {fileID: 5526599788851391837}
   - component: {fileID: 9017436198434652240}
   - component: {fileID: 4737109014414487661}
-  - component: {fileID: 2665457723004009067}
   - component: {fileID: 3946544924353421128}
   - component: {fileID: 4820662887568432031}
   m_Layer: 7
@@ -3269,11 +3268,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInfo: {fileID: 1228789576761653420}
-  _characterController: {fileID: 5896622498498545743}
-  _botCollider: {fileID: 2665457723004009067}
   _navMeshAgent: {fileID: 3946544924353421128}
   _botInput: {fileID: 7696866275565000596}
   _mouseLook: {fileID: 5788905161855361682}
+  _playerMovement: {fileID: 7015599807556905031}
   _movementPresenter: {fileID: 4391770532931410501}
   _hide:
   - {fileID: 9150090653136674274}
@@ -3625,20 +3623,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7926811385654240329}
   m_Enabled: 1
---- !u!136 &2665457723004009067
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926811385654240329}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!195 &3946544924353421128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3649,13 +3633,13 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 1
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 400
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: -0.05
@@ -3700,7 +3684,7 @@ MonoBehaviour:
         Target","Instant":true,"SharedBotAimSelfBotNavMesh":{"Type":"BehaviourTrees.SharedVars.SharedBotAim","Name":"_botAim","IsShared":true,"BotAimmValue":2},"SharedGameObjectTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true}}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.80513,664.4003)"},"ID":17,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(3.05175781E-05,141.739136)"},"ID":18,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-989.3546,183.871017)"},"ID":19,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviourTrees.PlayerFounded","NodeData":{"Offset":"(-179.999786,110.000023)"},"ID":20,"Name":"Player
         Founded","Instant":true,"SharedGameObjectReturnedObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-48.125,110.625)"},"ID":21,"Name":"InSightShort","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"InSightShort","IsShared":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"BehaviourTrees.StopMovement","NodeData":{"Offset":"(79.375,110.625)"},"ID":22,"Name":"Stop
         Movement","Instant":true,"SharedBotMovementSelfBotMovement":{"Type":"BehaviourTrees.SharedVars.SharedBotMovement","Name":"_botMovement","IsShared":true,"BotMovementmValue":3}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-646.412231,182.174316)"},"ID":23,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviourTrees.PlayerFounded","NodeData":{"Offset":"(-62.17328,114.348282)"},"ID":24,"Name":"Player
-        Founded","Instant":true,"SharedGameObjectReturnedObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(60.64557,111.936523)"},"ID":25,"Name":"InSightFar","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"InSightFar","IsShared":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Movement.Seek","NodeData":{"Offset":"(184.600891,114.348282)"},"ID":26,"Name":"Seek","Instant":true,"SharedGameObjecttarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true},"SharedVector3targetPosition":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(0,0,0)"},"SharedFloatspeed":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":6},"SharedFloatangularSpeed":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":120},"SharedFloatarriveDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":3},"SharedBoolstopOnTaskEnd":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolupdateRotation":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(8.812746,171.7391)"},"ID":27,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-311.623352,129.4516)"},"ID":28,"Name":"Inverter","Instant":true,"Children":[{"Type":"BehaviourTrees.PlayerFounded","NodeData":{"Offset":"(-4.78125,106.293716)"},"ID":29,"Name":"Player
+        Founded","Instant":true,"SharedGameObjectReturnedObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(60.64557,111.936523)"},"ID":25,"Name":"InSightFar","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"InSightFar","IsShared":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Movement.Seek","NodeData":{"Offset":"(184.600891,114.348282)"},"ID":26,"Name":"Seek","Instant":true,"SharedGameObjecttarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true},"SharedVector3targetPosition":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(0,0,0)"},"SharedFloatspeed":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatangularSpeed":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":120},"SharedFloatarriveDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":3},"SharedBoolstopOnTaskEnd":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolupdateRotation":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(8.812746,171.7391)"},"ID":27,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-311.623352,129.4516)"},"ID":28,"Name":"Inverter","Instant":true,"Children":[{"Type":"BehaviourTrees.PlayerFounded","NodeData":{"Offset":"(-4.78125,106.293716)"},"ID":29,"Name":"Player
         Founded","Instant":true,"SharedGameObjectReturnedObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"_foundObject","IsShared":true}}]},{"Type":"BehaviourTrees.NextTarget","NodeData":{"Offset":"(-191.623352,132.6095)"},"ID":30,"Name":"Next
         Target","Instant":true,"SharedBotPatrolSelfBotPatrol":{"Type":"BehaviourTrees.SharedVars.SharedBotPatrol","Name":"_botPatrol","IsShared":true,"BotPatrolmValue":4}},{"Type":"BehaviourTrees.GoToPatrolPoint","NodeData":{"Offset":"(-67.7942047,131.71875)"},"ID":31,"Name":"Go
         To Patrol Point","Instant":true,"SharedBotPatrolSelfBotPatrol":{"Type":"BehaviourTrees.SharedVars.SharedBotPatrol","Name":"_botPatrol","IsShared":true,"BotPatrolmValue":5},"SharedBotMovementSelfBotMovement":{"Type":"BehaviourTrees.SharedVars.SharedBotMovement","Name":"_botMovement","IsShared":true,"BotMovementmValue":6}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(55.21875,132.6095)"},"ID":32,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":3},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviourTrees.StopMovement","NodeData":{"Offset":"(175.218628,132.6095)"},"ID":33,"Name":"Stop

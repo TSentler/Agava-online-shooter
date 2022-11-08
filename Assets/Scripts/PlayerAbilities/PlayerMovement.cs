@@ -33,17 +33,25 @@ namespace PlayerAbilities
             }
         } 
         
+        public void Initialize(ICharacterInputSource inputSource)
+        {
+            _inputSource = inputSource;
+        }
+        
         private void Awake()
         {
-            _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
             _character = GetComponent<CharacterController>();
             _playerInfo = GetComponent<PlayerInfo>();
             _groundChecker = GetComponent<GroundChecker>();
+            if (_inputSource == null)
+            {
+                _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+            }
         }
 
         private void Update()
         {
-            if (_playerInfo.IsMine == false || _playerInfo.IsBot)
+            if (_playerInfo.IsMine == false)
                 return;
             
             var inputDirection = new Vector3(_inputSource.MovementInput.x, 

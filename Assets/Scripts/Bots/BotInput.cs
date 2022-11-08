@@ -13,19 +13,22 @@ namespace Bots
 
         private void Awake()
         {
-            // _agent.desiredVelocity
+            _agent.updatePosition = false;
         }
 
         private void Update()
         {
+            Debug.Log(_agent.desiredVelocity);
+            //Debug.Log(_agent.steeringTarget);
             var rightInput = GetInputByAxis(transform.right);
             var forwardInput = GetInputByAxis(transform.forward);
             MovementInput = new Vector2(rightInput, forwardInput);
+            _agent.nextPosition = transform.position;
         }
 
         private float GetInputByAxis(Vector3 axis)
         {
-            var input = Vector3.Dot(_agent.velocity, axis);
+            var input = Vector3.Dot(_agent.desiredVelocity, axis);
             return Mathf.Clamp(input, -1f, 1f);
         }
     }
