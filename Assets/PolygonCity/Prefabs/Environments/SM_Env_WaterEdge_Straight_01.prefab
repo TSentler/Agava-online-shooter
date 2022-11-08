@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 447142}
   - component: {fileID: 3347706}
   - component: {fileID: 2398442}
-  - component: {fileID: 307338440955635645}
   m_Layer: 0
   m_Name: SM_Env_WaterEdge_Straight_01
   m_TagString: Untagged
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &307338440955635645
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163794}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.0426254, y: 5.7400928, z: 1.5080386}
-  m_Center: {x: 2.4810076, y: -2.3691294, z: -0.7540193}
