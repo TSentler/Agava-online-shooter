@@ -70,6 +70,7 @@ MonoBehaviour:
   - PlayEffects
   - DisableGun
   - EnableGun
+  - DisableItem
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

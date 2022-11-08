@@ -1,27 +1,23 @@
 using Photon.Pun;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider), typeof(PhotonView))]
-public class GunSpawner : MonoBehaviour
+public class HealthSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Gun> _guns;
+    [SerializeField] private float _healValue;
     [SerializeField] private Transform _showPoint;
     [SerializeField] private float _timerToSpawn;
 
     private PhotonView _photonView;
     private SphereCollider _collider;
-    private Gun _newGun;
     private bool _canUse = true;
     private Vector3 _rotation = new Vector3(0, 40, 0);
 
     private void Start()
     {
-        _newGun = _guns[GetRandomIndex()];
-        _newGun.gameObject.SetActive(true);
-        _collider = GetComponent<SphereCollider>();
         _photonView = GetComponent<PhotonView>();
+        _collider = GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -33,18 +29,21 @@ public class GunSpawner : MonoBehaviour
     {
         if (_canUse)
         {
-            if (other.TryGetComponent(out PlayerHand playerHand))
+            if (other.TryGetComponent(out PlayerAbilities.PlayerHealth playerHealth))
             {
-                playerHand.SetNewGun(_newGun.GunID);
-                _photonView.RPC(nameof(DisableWeapon), RpcTarget.All);
+                if (playerHealth.NeedHeal())
+                {
+                    playerHealth.TakeHeal(_healValue);
+                    _photonView.RPC(nameof(DisableItem), RpcTarget.All);
+                }
             }
         }
     }
 
     [PunRPC]
-    private void DisableWeapon()
+    private void DisableItem()
     {
-        _newGun.gameObject.SetActive(false);
+        _showPoint.gameObject.SetActive(false);
         _canUse = false;
         _collider.enabled = false;
         StartCoroutine(CountdownToSpawn());
@@ -53,14 +52,8 @@ public class GunSpawner : MonoBehaviour
     private IEnumerator CountdownToSpawn()
     {
         yield return new WaitForSeconds(_timerToSpawn);
-        _newGun = _guns[GetRandomIndex()];
-        _newGun.gameObject.SetActive(true);
+        _showPoint.gameObject.SetActive(true);
         _collider.enabled = true;
         _canUse = true;
-    }
-
-    private int GetRandomIndex()
-    {
-        return Random.Range(0, _guns.Count);
     }
 }
