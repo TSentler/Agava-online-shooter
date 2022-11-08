@@ -1,6 +1,7 @@
 using Photon.Pun;
 using PlayerAbilities;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -35,6 +36,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private float _bulletForce;
     [SerializeField] private Transform _bulletSpawnPosition;
     [SerializeField] private LayerMask _ignoredLayers;
+    [SerializeField] private Animator _animator;
 
     private protected int AmmoQuanity;
     private protected int MaxAmmoQuanity;
@@ -102,6 +104,11 @@ public abstract class Gun : MonoBehaviour
             PhotonViewComponent.RPC(nameof(PlayEffects), RpcTarget.All);
             ShootSound.Play();
 
+            if(_animator != null)
+            {
+                _animator.SetBool("CanShoot", true);
+                StartCoroutine(DisableAnimationsWithDellay());
+            }
 
             RaycastHit[] hits = Physics.RaycastAll(ray, LayerToDetect, ~_ignoredLayers);
 
@@ -197,4 +204,10 @@ public abstract class Gun : MonoBehaviour
     //    CanShoot = true;
     //    AmmoQuanity = MaxAmmo;
     //}
+
+    private IEnumerator DisableAnimationsWithDellay()
+    {
+        yield return new WaitForSeconds(1f);
+        _animator.SetBool("CanShoot", false);
+    }
 }

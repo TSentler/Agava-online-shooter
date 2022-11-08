@@ -36,6 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3843509030695939034}
+  - {fileID: 5964443631389372645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -124,7 +125,7 @@ MonoBehaviour:
   _bulletHoleTemplate: {fileID: 0}
   _bulletParticle: {fileID: 0}
   _bulletForce: 0
-  _bulletSpawnPosition: {fileID: 0}
+  _bulletSpawnPosition: {fileID: 5964443631389372645}
   _ignoredLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -191,6 +192,37 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1 &8395309219366054617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5964443631389372645}
+  m_Layer: 0
+  m_Name: BulletSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5964443631389372645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395309219366054617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0241, z: 0.0093}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1576153120468121581}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3843509030696093660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,11 +244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 437254, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.039
+      value: -0.0246
       objectReference: {fileID: 0}
     - target: {fileID: 437254, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.255
+      value: 0.0077
       objectReference: {fileID: 0}
     - target: {fileID: 437254, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
       propertyPath: m_LocalRotation.w
