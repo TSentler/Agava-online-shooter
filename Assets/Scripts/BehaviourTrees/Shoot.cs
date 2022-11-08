@@ -1,12 +1,13 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
     [TaskCategory("Attack")]
     public class Shoot: Action 
     {
-        public SharedBotNavMesh SelfBotNavMesh;
+        public SharedBotShoot SharedBotShoot;
         public SharedGameObject Target;
 
         public override TaskStatus OnUpdate()
@@ -16,7 +17,7 @@ namespace BehaviourTrees
                 return TaskStatus.Failure;
             }
 
-            SelfBotNavMesh.Value.Shoot(Target.Value.transform);
+            SharedBotShoot.Value.Shoot(Target.Value.transform);
             return TaskStatus.Success;
         }
     }

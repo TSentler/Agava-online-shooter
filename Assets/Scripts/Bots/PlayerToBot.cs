@@ -12,7 +12,7 @@ namespace Bots
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Collider _botCollider;
         [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private BotNavMesh _botNavMesh;
+        [SerializeField] private BotInput _botInput;
         [SerializeField] private MouseLook _mouseLook;
         [SerializeField] private MovementPresenter _movementPresenter;
         [SerializeField] private GameObject[] _hide;
@@ -33,9 +33,8 @@ namespace Bots
             _mouseLook.enabled = isBot == false;
             _botCollider.enabled = isBot;
             _navMeshAgent.enabled = isBot;
-            _botNavMesh.enabled = isBot;
 
-            _movementPresenter.Initialize(_botNavMesh);
+            _movementPresenter.Initialize(_botInput);
             
             for (int i = 0; i < _hide.Length; i++)
             {

@@ -1,15 +1,16 @@
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
     [TaskCategory("Movement")]
     public class StopMovement : Action 
     {
-        public SharedBotNavMesh SelfBotNavMesh;
+        public SharedBotMovement SelfBotMovement;
 
         public override TaskStatus OnUpdate()
         {
-            SelfBotNavMesh.Value.Stop();
+            SelfBotMovement.Value.Stop();
             return TaskStatus.Success;
         }
     }

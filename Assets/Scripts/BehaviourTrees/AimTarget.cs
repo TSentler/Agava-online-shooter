@@ -1,12 +1,13 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
     [TaskCategory("Movement")]
     public class AimTarget : Action 
     {
-        public SharedBotNavMesh SelfBotNavMesh;
+        public SharedBotAim SelfBotNavMesh;
         public SharedGameObject Target;
 
         public override TaskStatus OnUpdate()

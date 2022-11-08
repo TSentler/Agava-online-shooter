@@ -1,16 +1,16 @@
-using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
     [TaskCategory("Movement")]
     public class ResetAim : Action 
     {
-        public SharedBotNavMesh SelfBotNavMesh;
+        public SharedBotAim SelfBotAim;
 
         public override TaskStatus OnUpdate()
         {
-            SelfBotNavMesh.Value.ResetVerticalAim();
+            SelfBotAim.Value.ResetVerticalAim();
             return TaskStatus.Success;
         }
     }

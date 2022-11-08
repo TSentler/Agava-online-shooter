@@ -3,13 +3,15 @@ using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
-    public class NextTarget : Action 
+    public class GoToPatrolPoint : Action 
     {
         public SharedBotPatrol SelfBotPatrol;
+        public SharedBotMovement SelfBotMovement;
 
         public override TaskStatus OnUpdate()
         {
-            SelfBotPatrol.Value.NextTarget();
+            SelfBotMovement.Value.GoDestination(
+                SelfBotPatrol.Value.TargetPointPosition);
             return TaskStatus.Success;
         }
     }
