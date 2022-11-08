@@ -8,23 +8,20 @@ namespace Bots
     {
         [SerializeField] private NavMeshAgent _agent;
 
-        private bool _isStop;
-
         public void GoDestination(Vector3 destination)
         {
-            _isStop = false;
             _agent.isStopped = false;
-            _agent.destination = destination;
+            _agent.SetDestination(destination);
         }
 
         public void Stop()
         {
-            if (_isStop)
+            if (_agent.isStopped)
                 return;
 
-            _agent.destination = transform.position;
+            _agent.SetDestination(transform.position);
             _agent.isStopped = true;
-            _isStop = true;
         }
+
     }
 }

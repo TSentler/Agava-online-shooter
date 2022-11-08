@@ -7,7 +7,7 @@ namespace Bots
     public class BotAim : MonoBehaviour
     {
         [SerializeField] private MouseLook _mouseLook;
-        [Min(0f), SerializeField] private float _aimSpeed = 5f;
+        [Min(0f), SerializeField] private float _aimSpeed = 15f;
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Transform _root;
         

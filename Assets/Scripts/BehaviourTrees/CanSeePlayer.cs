@@ -31,6 +31,7 @@ namespace BehaviourTrees
         [UnityEngine.Tooltip("The object that is within sight")]
         public SharedGameObject ReturnedObject;
         public SharedBool InSight;
+        public SharedGameObject SelfRoot;
 
         private GameObject[] _agentColliderGameObjects;
         private int[] _originalColliderLayer;
@@ -73,8 +74,10 @@ namespace BehaviourTrees
                 for (int i = 0; i < hitCount; ++i)
                 {
                     var target = _overlapColliders[i].transform;
-                    
-                    if (target.TryGetComponent(out PlayerInfo playerInfo) == false)
+
+                    if (target.TryGetComponent(out PlayerInfo playerInfo) == false
+                        || MovementUtility.IsAncestor(SelfRoot.Value.transform,
+                            target))
                         continue;
 
                     var angle = CalculateAngle(target);
@@ -102,34 +105,29 @@ namespace BehaviourTrees
             if (targetObject == null || targetObject.activeSelf == false)
                 return false;
 
-            var hitTransform = LineOfSight(startPosition, endPosition, 
-                ignoreLayerMask);
-            if (hitTransform == null 
-                || MovementUtility.IsAncestor(targetObject.transform, hitTransform))
+            var dir = endPosition - startPosition;
+            var _hits = new RaycastHit[5];
+            var hitCount = Physics.RaycastNonAlloc(startPosition,
+                dir, _hits, dir.magnitude, ~ignoreLayerMask,
+                QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hitCount; i++)
             {
-                return true;
+                var hitTransform = _hits[i].transform;
+                if (MovementUtility.IsAncestor(SelfRoot.Value.transform, hitTransform)
+                    || MovementUtility.IsAncestor(targetObject.transform, hitTransform))
+                    continue;
+
+#if UNITY_EDITOR
+                if (drawDebugRay) {
+                    Debug.DrawLine(startPosition, endPosition, Color.red);
+                }
+#endif
+                return false;
             }
             
-#if UNITY_EDITOR
-            if (drawDebugRay) {
-                Debug.DrawLine(startPosition, endPosition, Color.red);
-            }
-#endif
-            return false;
+            return true;
         }
 
-        private Transform LineOfSight(Vector3 startPositiont, Vector3 endPosition, 
-            int ignoreLayerMask)
-        {
-            Transform hitTransform = null;
-            if (Physics.Linecast(startPositiont, endPosition, out var hit, 
-                    ~ignoreLayerMask, QueryTriggerInteraction.Ignore)) 
-            {
-                hitTransform = hit.transform;
-            }
-            return hitTransform;
-        }
-        
         private float CalculateAngle(Transform target)
         {
             var direction = target.TransformPoint(TargetOffset.Value)

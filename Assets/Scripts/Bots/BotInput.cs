@@ -18,7 +18,6 @@ namespace Bots
 
         private void Update()
         {
-            Debug.Log(_agent.desiredVelocity);
             //Debug.Log(_agent.steeringTarget);
             var rightInput = GetInputByAxis(transform.right);
             var forwardInput = GetInputByAxis(transform.forward);
