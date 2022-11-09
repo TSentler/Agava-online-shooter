@@ -45,7 +45,7 @@ namespace PlayerAbilities
             _groundChecker = GetComponent<GroundChecker>();
             if (_inputSource == null)
             {
-                _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+                Initialize((ICharacterInputSource)_inputSourceBehaviour);
             }
         }
 

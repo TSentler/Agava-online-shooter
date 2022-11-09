@@ -10,6 +10,7 @@ namespace PlayerAbilities
         private PlayerInfo _playerInfo;
         
         public Vector2 MovementInput { get; private set; }
+        public Vector2 MouseInput { get; private set; }
         public bool IsJumpInput { get; private set; }
 
         private void Awake()
@@ -25,8 +26,15 @@ namespace PlayerAbilities
             
             IsJumpInput = Input.GetButtonDown("Jump");
             MovementInput = GetInputDirection();
+            MouseInput = GetMouseInput();
         }
-        
+
+        private Vector2 GetMouseInput()
+        {
+            return new Vector2(Input.GetAxis("Mouse X"),
+                Input.GetAxis("Mouse Y"));
+        }
+
         private Vector2 GetInputDirection()
         {
             float horizontalInput = Input.GetAxis("Horizontal");

@@ -3097,6 +3097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputSourceBehaviour: {fileID: 7588953111737158721}
   _mouseSensetivity: 25
   _shootSensetivity: 100
   _camera: {fileID: 8626187333435406068}
@@ -4331,7 +4332,6 @@ GameObject:
   - component: {fileID: 5526599788851391837}
   - component: {fileID: 9017436198434652240}
   - component: {fileID: 4737109014414487661}
-  - component: {fileID: 2665457723004009067}
   - component: {fileID: 3946544924353421128}
   - component: {fileID: 4820662887568432031}
   m_Layer: 7
@@ -4383,11 +4383,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInfo: {fileID: 1228789576761653420}
-  _characterController: {fileID: 5896622498498545743}
-  _botCollider: {fileID: 2665457723004009067}
   _navMeshAgent: {fileID: 3946544924353421128}
   _botInput: {fileID: 7696866275565000596}
   _mouseLook: {fileID: 5788905161855361682}
+  _playerMovement: {fileID: 7015599807556905031}
   _movementPresenter: {fileID: 4391770532931410501}
   _hide:
   - {fileID: 9150090653136674274}
@@ -4578,9 +4577,6 @@ MonoBehaviour:
   - {fileID: 685216600623361187}
   - {fileID: 1657641695164528597}
   - {fileID: 7207851865025072847}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 4463912430028089753}
   - {fileID: 6020947964718226342}
   - {fileID: 2793077865897997635}
@@ -4739,20 +4735,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7926811385654240329}
   m_Enabled: 1
---- !u!136 &2665457723004009067
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926811385654240329}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!195 &3946544924353421128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4842,8 +4824,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!1 &8133982974615871234
 GameObject:
   m_ObjectHideFlags: 0

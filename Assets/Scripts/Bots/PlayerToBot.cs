@@ -28,10 +28,10 @@ namespace Bots
         public void ToBot()
         {
             var isBot = true;
-            _mouseLook.enabled = isBot == false;
             _navMeshAgent.enabled = isBot;
 
             _movementPresenter.Initialize(_botInput);
+            _mouseLook.Initialize(_botInput);
             _playerMovement.Initialize(_botInput);
             
             for (int i = 0; i < _hide.Length; i++)

@@ -2175,6 +2175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputSourceBehaviour: {fileID: 7588953111737158721}
   _mouseSensetivity: 25
   _shootSensetivity: 100
   _camera: {fileID: 8626187333435406068}
@@ -3462,9 +3463,9 @@ MonoBehaviour:
   - {fileID: 8496915630714598775}
   - {fileID: 1657641695164528597}
   - {fileID: 7207851865025072847}
-  - {fileID: 1659066215336997075}
-  - {fileID: 1658312805529471935}
-  - {fileID: 1658249218572780107}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 4463912430028089753}
   - {fileID: 6020947964718226342}
   - {fileID: 2793077865897997635}
@@ -4662,21 +4663,6 @@ PrefabInstance:
 --- !u!1 &1657641695164528597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1570187566766515973, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
-  m_PrefabInstance: {fileID: 201339352464363728}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1658249218572780107 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1569511015147344539, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
-  m_PrefabInstance: {fileID: 201339352464363728}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1658312805529471935 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1569732785816656751, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
-  m_PrefabInstance: {fileID: 201339352464363728}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1659066215336997075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1571020687260344323, guid: 80872cd87f807fe47a1d793aada085bf, type: 3}
   m_PrefabInstance: {fileID: 201339352464363728}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1663187235514754877 stripped

@@ -9,6 +9,7 @@ namespace Bots
         [SerializeField] private NavMeshAgent _agent;
         
         public Vector2 MovementInput { get; private set; }
+        public Vector2 MouseInput { get; private set; }
         public bool IsJumpInput { get; private set; }
 
         private void Awake()

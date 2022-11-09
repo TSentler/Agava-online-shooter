@@ -2909,6 +2909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputSourceBehaviour: {fileID: 7588953111737158721}
   _mouseSensetivity: 25
   _shootSensetivity: 100
   _camera: {fileID: 8626187333435406068}

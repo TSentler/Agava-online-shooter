@@ -34,7 +34,7 @@ namespace PlayerAbilities
         {
             if (_inputSource == null)
             {
-                _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+                Initialize((ICharacterInputSource)_inputSourceBehaviour);
             }
         }
 
