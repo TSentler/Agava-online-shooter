@@ -12725,7 +12725,7 @@ PrefabInstance:
     - target: {fileID: 1310459652431949321, guid: b2f3e585c4a8f654890607f513fcc115, type: 3}
       propertyPath: _playerPrefab
       value: 
-      objectReference: {fileID: 7926811385654240329, guid: 6f0bf6d380815a947b177f403aa3e040, type: 3}
+      objectReference: {fileID: 1354921826246218, guid: afa6936766c3d424b99687e7b9b15469, type: 3}
     - target: {fileID: 1310459652431949322, guid: b2f3e585c4a8f654890607f513fcc115, type: 3}
       propertyPath: m_Name
       value: PlayerSpawner

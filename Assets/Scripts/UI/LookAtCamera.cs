@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class LookAtCamera : MonoBehaviour
+namespace UI
 {
-    private void LateUpdate()
+    public class LookAtCamera : MonoBehaviour
     {
-        if (Camera.main == null)
-            return;
-        
-        transform.LookAt(
-            transform.position + Camera.main.transform.forward);
+        private void LateUpdate()
+        {
+            if (Camera.main == null)
+                return;
+
+            transform.LookAt(
+                transform.position + Camera.main.transform.forward);
+        }
     }
 }
