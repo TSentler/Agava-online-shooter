@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -56,6 +57,7 @@ namespace FPSControllerLPFP
         [Tooltip("The names of the axes and buttons for Unity's Input Manager."), SerializeField]
         private FpsInput input;
 #pragma warning restore 649
+        [SerializeField] private PhotonView _photonView;
 
         private Rigidbody _rigidbody;
         private CapsuleCollider _collider;
@@ -136,17 +138,23 @@ namespace FPSControllerLPFP
         private void FixedUpdate()
         {
             // FixedUpdate is used instead of Update because this code is dealing with physics and smoothing.
-            RotateCameraAndCharacter();
-            MoveCharacter();
-            _isGrounded = false;
+            if (_photonView.IsMine)
+            {
+                RotateCameraAndCharacter();
+                MoveCharacter();
+                _isGrounded = false;
+            }        
         }
 			
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
         private void Update()
         {
-			arms.position = transform.position + transform.TransformVector(armPosition);
-            Jump();
-            PlayFootstepSounds();
+            if (_photonView.IsMine)
+            {
+                arms.position = transform.position + transform.TransformVector(armPosition);
+                Jump();
+                PlayFootstepSounds();
+            }	
         }
 
         private void RotateCameraAndCharacter()
