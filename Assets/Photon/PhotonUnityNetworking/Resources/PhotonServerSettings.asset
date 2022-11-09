@@ -71,6 +71,7 @@ MonoBehaviour:
   - DisableGun
   - EnableGun
   - DisableItem
+  - EnableNewGun
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
