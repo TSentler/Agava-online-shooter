@@ -1295,6 +1295,7 @@ GameObject:
   - component: {fileID: 114326437458149736}
   - component: {fileID: 82546348207642188}
   - component: {fileID: 324320900069819033}
+  - component: {fileID: 7312492307850879255}
   m_Layer: 8
   m_Name: Assault_Rifle_01_FPSController
   m_TagString: Untagged
@@ -1363,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba9a63e484e8f142b3b13cfd976e290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arms: {fileID: 4228616928025212}
+  arms: {fileID: 340296900833809867}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 5ac86ac5747770349a6c124f36d233e1, type: 3}
   runningSound: {fileID: 8300000, guid: 8a49c532c25ef274781a01f02cd8b425, type: 3}
@@ -1500,6 +1501,24 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7312492307850879255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1ea20f807deec40a264a8c247bde70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapons:
+  - {fileID: 987267146490291893}
+  - {fileID: 1827594659235442}
+  - {fileID: 7008296314695688923}
+  - {fileID: 7070373092053562818}
+  _photonView: {fileID: 324320900069819033}
 --- !u!1 &1357289475648828
 GameObject:
   m_ObjectHideFlags: 0
@@ -15545,7 +15564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1710950534184969271
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33877,7 +33896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6898504458784601191
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34155,7 +34174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6654505361085443382
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35125,7 +35144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3816235787997709281
 RectTransform:
   m_ObjectHideFlags: 0
