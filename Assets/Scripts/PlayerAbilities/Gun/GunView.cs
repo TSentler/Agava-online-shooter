@@ -1,15 +1,13 @@
 using Photon.Pun;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GunView : MonoBehaviour
 {
-    [SerializeField] private PlayerHand _playerHand;
-    [SerializeField] private TMP_Text _ammoQuanityText;
+    [SerializeField] private WeaponsHolder _weaponsHolder;
+    [SerializeField] private Canvas _playerCanvas;
     [SerializeField] private PhotonView _photonView;
-    [SerializeField] private Image _crosshair;
     [SerializeField] private Image _hitIndicator;
 
     private float _timeToShowIndicator = 0.1f;
@@ -18,36 +16,35 @@ public class GunView : MonoBehaviour
     {
         if (!_photonView.IsMine)
         {
-            Destroy(_ammoQuanityText.gameObject);
-            Destroy(_crosshair.gameObject);
-            Destroy(_hitIndicator.gameObject);
+            Destroy(_playerCanvas.gameObject);            
         }
     }
 
     private void OnEnable()
     {
-        _playerHand.UpdateAmmo += OnGunChanged;
+        //_weaponsHolder.UpdateAmmo += OnGunChanged;
 
-        for (int i = 0; i < _playerHand.Guns.Count; i++)
-        {
-            _playerHand.Guns[i].Hit += OnHit;
-        }
+        //for (int i = 0; i < _weaponsHolder.Guns.Count; i++)
+        //{
+        //    _weaponsHolder.Guns[i].Hit += OnHit;
+        //}
     }
 
     private void OnDisable()
     {
-        _playerHand.UpdateAmmo -= OnGunChanged;
+        //_weaponsHolder.UpdateAmmo -= OnGunChanged;
 
-        for (int i = 0; i < _playerHand.Guns.Count; i++)
-        {
-            _playerHand.Guns[i].Hit -= OnHit;
-        }
+        //for (int i = 0; i < _weaponsHolder.Guns.Count; i++)
+        //{
+        //    _weaponsHolder.Guns[i].Hit -= OnHit;
+        //}
     }
 
-    private void OnGunChanged(int ammoQuanity, int maxAmmo)
-    {
-        _ammoQuanityText.text = $"{ammoQuanity}/{maxAmmo}";
-    }
+    //private void OnGunChanged(int ammoQuanity, int maxAmmo)
+    //{
+    //    _currentAmmoText.text = ammoQuanity.ToString();
+    //    _totalAmmoText.text = maxAmmo.ToString();
+    //}
 
     private void OnHit()
     {
