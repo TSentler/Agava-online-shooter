@@ -4606,10 +4606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8eb961b134f2c8408ecb237d75e5650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHand: {fileID: 6293996175980194239}
-  _ammoQuanityText: {fileID: 3691134727135528771}
+  _weaponsHolder: {fileID: 0}
+  _playerCanvas: {fileID: 0}
   _photonView: {fileID: 5537214694185517777}
-  _crosshair: {fileID: 3318341160028504967}
   _hitIndicator: {fileID: 411404444670697743}
 --- !u!114 &4294300332522861659
 MonoBehaviour:
