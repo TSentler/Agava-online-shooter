@@ -11,8 +11,9 @@ namespace FPSControllerLPFP
     [RequireComponent(typeof(AudioSource))]
     public class FpsControllerLPFP : MonoBehaviour
     {
+        [SerializeField] private WeaponsHolder _weaponsHolder;
 #pragma warning disable 649
-		[Header("Arms")]
+        [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
         private Transform arms;
 
@@ -71,6 +72,16 @@ namespace FPSControllerLPFP
         private readonly RaycastHit[] _groundCastResults = new RaycastHit[8];
         private readonly RaycastHit[] _wallCastResults = new RaycastHit[8];
 
+        private void OnEnable()
+        {
+            _weaponsHolder.GunChanged += SetNewArm;
+        }
+
+        private void OnDisable()
+        {
+            _weaponsHolder.GunChanged -= SetNewArm;
+        }
+
         /// Initializes the FpsController on start.
         private void Start()
         {
@@ -88,7 +99,12 @@ namespace FPSControllerLPFP
             Cursor.lockState = CursorLockMode.Locked;
             ValidateRotationRestriction();
         }
-			
+		
+        private void SetNewArm(Transform newArm)
+        {
+            arms = newArm;
+        }
+
         private Transform AssignCharactersCamera()
         {
             var t = transform;

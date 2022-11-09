@@ -11,12 +11,13 @@ public class WeaponsHolder : MonoBehaviour
 
     private int _currentGunId = 0;
 
-    //public event UnityAction GunChanged;
+    public event UnityAction<Transform> GunChanged;
 
     private void OnEnable()
     {
         _weapons[_currentGunId].SetActive(false);
         _weapons[0].SetActive(true);
+        GunChanged?.Invoke(_weapons[0].gameObject.transform);
     }
 
     public void SetNewGun(int id)
@@ -30,5 +31,6 @@ public class WeaponsHolder : MonoBehaviour
     {
         _weapons[_currentGunId].SetActive(false);
         _weapons[id].SetActive(true);
+        GunChanged?.Invoke(_weapons[id].gameObject.transform);
     }
 }
