@@ -9,7 +9,6 @@ public class ChooseModel : MonoBehaviour
     [SerializeField] private GameObject _notMineModel;
     [SerializeField] private PhotonView _photonView;
 
-
     private void Awake()
     {
         if (_photonView.IsMine)
