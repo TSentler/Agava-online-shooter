@@ -11,6 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 7ffc1bc2bbb1ef64f84b552b2d2f0619, type: 3}
   m_ValidKeywords:
   - TCP2_REFLECTIONS_FRESNEL
+  - TCP2_RIM_LIGHTING
   - TCP2_RIM_LIGHTING_LIGHTMASK
   - TCP2_SPECULAR
   m_InvalidKeywords:
@@ -127,14 +128,14 @@ Material:
     - _RampScale: 1
     - _RampSmooth: 0
     - _RampSmoothAdd: 0.656
-    - _RampSmoothing: 0.232
-    - _RampThreshold: 0.624
+    - _RampSmoothing: 1
+    - _RampThreshold: 0.518
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
     - _ReflectionSmoothness: 0.5
     - _RenderingMode: 0
-    - _RimMax: 1.01
+    - _RimMax: 1.16
     - _RimMin: 0.36
     - _RimStrength: 0.5
     - _SingleIndirectColor: 0
@@ -163,7 +164,7 @@ Material:
     - _UseOcclusion: 0
     - _UseOutline: 0
     - _UseReflections: 0
-    - _UseRim: 0
+    - _UseRim: 1
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
     - _UseSpecular: 1
@@ -177,6 +178,6 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0.6}
-    - _SColor: {r: 0.46226418, g: 0.2262144, b: 0, a: 1}
+    - _SColor: {r: 0.6037736, g: 0.17942329, b: 0.24882957, a: 1}
     - _SpecularColor: {r: 7.6549015, g: 0.16031207, b: 0, a: 1}
   m_BuildTextureStacks: []

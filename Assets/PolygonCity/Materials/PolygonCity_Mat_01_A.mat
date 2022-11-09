@@ -130,7 +130,7 @@ Material:
     - _RampSmooth: 0.2
     - _RampSmoothAdd: 0.75
     - _RampSmoothing: 0.574
-    - _RampThreshold: 0.604
+    - _RampThreshold: 0.55
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
@@ -171,15 +171,15 @@ Material:
     - _UseSpecular: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 0.9764151, b: 0.98727435, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
-    - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HColor: {r: 0.9485704, g: 0.8726415, b: 1, a: 1}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+    - _SColor: {r: 0.754717, g: 0.60875756, b: 0.65672165, a: 1}
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_BuildTextureStacks: []
