@@ -39,14 +39,17 @@ namespace PlayerAbilities
             _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
             _slieder = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
 
-            if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+            if (_photonView.IsMine)
             {
-                _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
-            }
-            else
-            {
-                _slieder.value = _standartSensetivity;
-            }
+                if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+                {
+                    _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+                }
+                else
+                {
+                    _slieder.value = _standartSensetivity;
+                }
+            }           
         }
 
         private void OnEnable()

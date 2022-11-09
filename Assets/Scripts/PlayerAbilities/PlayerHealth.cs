@@ -56,6 +56,33 @@ namespace PlayerAbilities
             _damagebleHit.gameObject.SetActive(false);
         }
 
+        public bool NeedHeal()
+        {
+            return _currentHealth < _maxHealth;
+        }
+
+        public void TakeHeal(float heal)
+        {
+            if (_photonView.IsMine == false)
+            {
+                return;
+            }
+
+            if (NeedHeal())
+            {
+                if (_currentHealth + heal >= _maxHealth)
+                {
+                    _currentHealth = _maxHealth;
+                }
+                else
+                {
+                    _currentHealth += heal;
+                }
+
+                ChangeHealth?.Invoke(_currentHealth, _maxHealth);
+            }
+        }
+
         public void ApplyDamage(float damage, Player player)
         {
             object[] rpcParametrs = new object[2] { damage, player };
@@ -84,7 +111,7 @@ namespace PlayerAbilities
                     _damagebleHit.gameObject.SetActive(true);
                     StartCoroutine(DestroyEffectWithDelay());
                 }
-                
+
                 if (_currentHealth <= 0)
                 {
                     _deaths++;

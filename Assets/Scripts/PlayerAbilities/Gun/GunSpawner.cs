@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider),typeof(PhotonView))]
-public class GunSpawner : MonoBehaviourPun
+[RequireComponent(typeof(SphereCollider), typeof(PhotonView))]
+public class GunSpawner : MonoBehaviour
 {
     [SerializeField] private List<Gun> _guns;
     [SerializeField] private Transform _showPoint;
     [SerializeField] private float _timerToSpawn;
 
+    private PhotonView _photonView;
     private SphereCollider _collider;
     private Gun _newGun;
-    private Vector3 _rotation = new Vector3(0, 20, 0);
     private bool _canUse = true;
-    private PhotonView _photonView;
+    private Vector3 _rotation = new Vector3(0, 40, 0);
 
     private void Start()
     {
