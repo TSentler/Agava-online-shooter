@@ -535,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4578432903294548}
   - component: {fileID: 137993580752214192}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: rails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492253680810262}
   - component: {fileID: 137367943965670056}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,6 +1220,8 @@ GameObject:
   - component: {fileID: 2212487470621667383}
   - component: {fileID: 3999451411826328546}
   - component: {fileID: 424512754763583127}
+  - component: {fileID: 3879372588321397246}
+  - component: {fileID: 1736374855633959505}
   m_Layer: 7
   m_Name: Assault_Rifle_01_FPSController
   m_TagString: Untagged
@@ -1509,6 +1511,33 @@ MonoBehaviour:
   _mineModel: {fileID: 987267146490291893}
   _notMineModel: {fileID: 2330538665306855919}
   _photonView: {fileID: 324320900069819033}
+--- !u!114 &3879372588321397246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98c62b4ba3913c4694b47cdb5f5892a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photonView: {fileID: 324320900069819033}
+--- !u!114 &1736374855633959505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edde46662b33c9a46912322fda2c87ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photonView: {fileID: 324320900069819033}
+  _playerHealth: {fileID: 5034792681743779307}
 --- !u!1 &1357289475648828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4482415918310156}
   - component: {fileID: 137633319302104258}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: assault_rifle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1728,7 +1757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048831312285502}
   - component: {fileID: 137086744083049168}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: silencer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1882,7 +1911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783169397140548}
   - component: {fileID: 137046500979869596}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: big_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2032,7 +2061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4692009356609794}
   - component: {fileID: 137157747714378784}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2405,7 +2434,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2459,7 +2488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4587560238698106}
   - component: {fileID: 137663166339120870}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2577,7 +2606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4557961494740526}
   - component: {fileID: 137524550265330448}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: assault_rifle_01_iron_sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2984,7 +3013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4881442728425758}
   - component: {fileID: 137864539901899324}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8537,7 +8566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048335400234540}
   - component: {fileID: 137258178650389340}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8688,7 +8717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4800934579335314}
   - component: {fileID: 137381082430240736}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13936,7 +13965,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -14715,7 +14744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 286377210237808596}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14746,7 +14775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 315242172496063461}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14787,7 +14816,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8987709183067380346}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Left 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14819,7 +14848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3752712924545075397}
   - component: {fileID: 2843555300114708364}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 4 Sight Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14902,7 +14931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1309580842893619218}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14935,7 +14964,7 @@ GameObject:
   - component: {fileID: 1682469603069095786}
   - component: {fileID: 3281605847619931229}
   - component: {fileID: 7284078439025943880}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 2 Render Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15018,7 +15047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4706850182488498270}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15053,7 +15082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7497841029964883509}
   - component: {fileID: 7987039233544314310}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -15106,7 +15135,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15129,7 +15158,7 @@ GameObject:
   - component: {fileID: 1644303037397436487}
   - component: {fileID: 2103325450530371034}
   - component: {fileID: 7947447119515862322}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 2 Render Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15214,7 +15243,7 @@ GameObject:
   - component: {fileID: 2983903028497439830}
   - component: {fileID: 2955951276326541031}
   - component: {fileID: 2943008638071700579}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope_Render_Camera_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15296,7 +15325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7855861266512839334}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15329,7 +15358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5853734097910553151}
   - component: {fileID: 3454809513624286408}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: silencer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15446,7 +15475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6063733440990925386}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15478,7 +15507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2638404685600218644}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawnpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15518,7 +15547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 412682892968344812}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15590,7 +15619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5493895840509853098}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15658,7 +15687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1812700102392317812}
   - component: {fileID: 5090718659413076232}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Muzzleflash Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15751,7 +15780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8355203112217669342}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15785,7 +15814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4570235562876168749}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15816,7 +15845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2394907470344205691}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15848,7 +15877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 575361220134614175}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15886,7 +15915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5139015138906934109}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_target_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15917,7 +15946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3218655676542341650}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15949,7 +15978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5460839611425683304}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15986,7 +16015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8682368970219288001}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lid_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16017,7 +16046,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3988589901536251987}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Grenade_Spawn_Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16048,7 +16077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6253421265695228913}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_target_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16079,7 +16108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2536664074269577088}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Top 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16186,7 +16215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317462330108524944}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16219,7 +16248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6759734902214785932}
   - component: {fileID: 7435713002119557889}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Muzzleflash Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16312,7 +16341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6433734298975197274}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16344,7 +16373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 870495577013149260}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: bipod_leg_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16378,7 +16407,7 @@ GameObject:
   - component: {fileID: 1480234828679741374}
   - component: {fileID: 2052707265196485910}
   - component: {fileID: 820555151420382285}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: sniper_01_lens_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16479,7 +16508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1941683054301156264}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16511,7 +16540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4315946520906691319}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16543,7 +16572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8677421927402109495}
   - component: {fileID: 402293187410241166}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16660,7 +16689,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194588508474106304}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Casing Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16692,7 +16721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3431036456282689188}
   - component: {fileID: 71988995521230594}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 2 Sight Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16775,7 +16804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8697596105173325269}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16809,7 +16838,7 @@ GameObject:
   - component: {fileID: 502756377991345906}
   - component: {fileID: 4025834515677730701}
   - component: {fileID: 5793231245162534407}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 3 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16890,7 +16919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6448625868328140382}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IK_arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16921,7 +16950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5760882840057484679}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16954,7 +16983,7 @@ GameObject:
   - component: {fileID: 7323246107358699949}
   - component: {fileID: 323504901365903133}
   - component: {fileID: 531577108406189592}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Muzzleflash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21841,7 +21870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8412688058554990200}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_target_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21872,7 +21901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9012949419208072583}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21904,7 +21933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5046595297020013894}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21935,7 +21964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2633822076178200181}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IK_arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21966,7 +21995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3327996228036467540}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21998,7 +22027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 450403875906164730}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22030,7 +22059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4820991128635939009}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22063,7 +22092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1329032373038829082}
   - component: {fileID: 1090840654472260594}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handgun_01_iron_sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22182,7 +22211,7 @@ GameObject:
   - component: {fileID: 4679128531545819839}
   - component: {fileID: 682958162147326852}
   - component: {fileID: 5132358901547027856}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -22235,7 +22264,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -22354,7 +22383,7 @@ GameObject:
   - component: {fileID: 5793714544863919044}
   - component: {fileID: 6674562949119728213}
   - component: {fileID: 7388983446356433093}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: SparkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27245,7 +27274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5962691513003817830}
   - component: {fileID: 5835304243263991285}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 2 Sight Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27329,7 +27358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5862880967188421051}
   - component: {fileID: 8620637988444151752}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -27382,7 +27411,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -27403,7 +27432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289880509689486611}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lower_arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27435,7 +27464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9007977907301885932}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27469,7 +27498,7 @@ GameObject:
   - component: {fileID: 7219240505646393544}
   - component: {fileID: 6993327447445204667}
   - component: {fileID: 5036978851406998920}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: SparkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32359,7 +32388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8798985364796858516}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Grenade_Spawn_Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32392,7 +32421,7 @@ GameObject:
   - component: {fileID: 1512748332609116375}
   - component: {fileID: 6667734285604424350}
   - component: {fileID: 601785980374689109}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 3 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32475,7 +32504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6972672324060807993}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Casing_Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32506,7 +32535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4620924858575531638}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32537,7 +32566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5683490691082477275}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IK_arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32569,7 +32598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1991111116576659181}
   - component: {fileID: 6566252273233788713}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32688,7 +32717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8784309637916753625}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Top 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32720,7 +32749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263560642368314794}
   - component: {fileID: 5441130584502292326}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32841,7 +32870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7509997841970587522}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32873,7 +32902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3707567462723838139}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Casing Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32904,7 +32933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7560957727147409681}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: bipod_leg_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32936,7 +32965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3192376013011334993}
   - component: {fileID: 4535456727600622348}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33053,7 +33082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3163080374456266789}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_target_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33084,7 +33113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3582827281138051569}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33117,7 +33146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6448528511344460384}
   - component: {fileID: 2742765788626541705}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: shellcasing_full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33234,7 +33263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3111108862557098811}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Casing Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33265,7 +33294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1912197289952940626}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33298,7 +33327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4451293545072257427}
   - component: {fileID: 6754526099704173539}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33415,7 +33444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1839761394517980876}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33448,7 +33477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3354050214633431772}
   - component: {fileID: 3753363690076967958}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33565,7 +33594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2269830473111272840}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33597,7 +33626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5043454991204006207}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IK_arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33629,7 +33658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443778010677725369}
   - component: {fileID: 8945335459661489162}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33746,7 +33775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8991245334958261382}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33778,7 +33807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6884295240386557649}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33809,7 +33838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3937024433452653401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grenade_Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33840,7 +33869,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4739792611961348849}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33873,7 +33902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3366421929338443296}
   - component: {fileID: 6779857010529345053}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handgun_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33995,7 +34024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8954666197133109762}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IK_arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34026,7 +34055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3563860376792345766}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34057,7 +34086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7026494117256437261}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34089,7 +34118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4509200585786678528}
   - component: {fileID: 7330545096827684456}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 3 Sight Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34172,7 +34201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7288262481329840978}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34203,7 +34232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6270206843590113462}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34239,7 +34268,7 @@ GameObject:
   - component: {fileID: 5097635476980567829}
   - component: {fileID: 3634189551342165127}
   - component: {fileID: 5991887501758528313}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arms_shotgun_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34588,7 +34617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6841359785269600953}
   - component: {fileID: 2090672577751978214}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: shotgun_01_iron_sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34705,7 +34734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218774403346341129}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34737,7 +34766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6239734480880242863}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34822,7 +34851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979325604254748600}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Left 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34853,7 +34882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3269741519556223439}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34885,7 +34914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6216593017744759802}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34916,7 +34945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522721783186632956}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34950,7 +34979,7 @@ GameObject:
   - component: {fileID: 1667881558455416158}
   - component: {fileID: 1336403538281077366}
   - component: {fileID: 4919244699959174446}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 3 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35031,7 +35060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 40809855315046082}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Grenade_Spawn_Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35062,7 +35091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2997031916334443524}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35094,7 +35123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7411725102165363618}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lower_arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35126,7 +35155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6418148725879721904}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lower_arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35158,7 +35187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6384991148191892874}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35190,7 +35219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067125725645712238}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35231,7 +35260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6303580218857447375}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35319,7 +35348,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -35470,7 +35499,7 @@ GameObject:
   - component: {fileID: 471189084265599256}
   - component: {fileID: 4264031763219282143}
   - component: {fileID: 3753089089858111663}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 2 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35551,7 +35580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6038864143741255655}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35582,7 +35611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2929624714584299567}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35613,7 +35642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5009385456398320240}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35645,7 +35674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8220500044070692694}
   - component: {fileID: 5956506678683740219}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: shotgun_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35769,7 +35798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477604229993147880}
   - component: {fileID: 4462517487407427139}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Sniper_01_Scope_Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35852,7 +35881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8226361575704091961}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35883,7 +35912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4334704140482098664}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35915,7 +35944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4563489633111888484}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35947,7 +35976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5279701116962647902}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35980,7 +36009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6988455253799113982}
   - component: {fileID: 8159965399961935589}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 3 Sight Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36063,7 +36092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1052992160357813346}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36095,7 +36124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4126076777713379353}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36126,7 +36155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8336799486853388463}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36162,7 +36191,7 @@ GameObject:
   - component: {fileID: 952312081458963594}
   - component: {fileID: 227493087321813516}
   - component: {fileID: 5042368611096032072}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arms_handgun_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36490,7 +36519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3966205037493237030}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36526,7 +36555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1538278479531642740}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36560,7 +36589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7420983250849778328}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36592,7 +36621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8071031610594010204}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36626,7 +36655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6952819992810921183}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36659,7 +36688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1102123390437970387}
   - component: {fileID: 8952786535947240252}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36776,7 +36805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7302771085752754058}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36813,7 +36842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6792604835475489422}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: IK_arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36846,7 +36875,7 @@ GameObject:
   - component: {fileID: 6042570247822559411}
   - component: {fileID: 6758455164466831385}
   - component: {fileID: 219078460279658800}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 1 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36931,7 +36960,7 @@ GameObject:
   - component: {fileID: 4078354837555547819}
   - component: {fileID: 1243039683625065345}
   - component: {fileID: 5879190152077165316}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 3 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37014,7 +37043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970365901990141643}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37046,7 +37075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6346557022159967650}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37079,7 +37108,7 @@ GameObject:
   - component: {fileID: 308820943745807589}
   - component: {fileID: 4655772185419617403}
   - component: {fileID: 7937821004483789657}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: SparkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41971,7 +42000,7 @@ GameObject:
   - component: {fileID: 6057260492506579721}
   - component: {fileID: 8441356612050372960}
   - component: {fileID: 7114793955969040573}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 4 Render Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42052,7 +42081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8202655900328091661}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lower_arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42084,7 +42113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2620369343069645211}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42149,7 +42178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7906465092757091555}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Right 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42181,7 +42210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2727150514123306083}
   - component: {fileID: 7647129455234572285}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 1 Sight Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42264,7 +42293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3996682344806979759}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42295,7 +42324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1286284235016096549}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42416,7 +42445,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -42526,7 +42555,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -42675,7 +42704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1035439143453692537}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42707,7 +42736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7988581353208604004}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42743,7 +42772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531900269159814356}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: middle_finger_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42774,7 +42803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7953413789297552153}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42806,7 +42835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2105042777313314546}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lower_arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42838,7 +42867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9107178482197166889}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Bottom 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42871,7 +42900,7 @@ GameObject:
   - component: {fileID: 262975926244819377}
   - component: {fileID: 338189905477941522}
   - component: {fileID: 8038039161393532558}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Muzzleflash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47681,7 +47710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5038545770760721424}
   - component: {fileID: 8129128863989146402}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Muzzleflash Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47774,7 +47803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5052198623879710108}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47807,7 +47836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1250092684647768960}
   - component: {fileID: 9040604141618546275}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47926,7 +47955,7 @@ GameObject:
   - component: {fileID: 5736804310760125882}
   - component: {fileID: 2643683401453446025}
   - component: {fileID: 6685824368848083793}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Scope 4 Render Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48009,7 +48038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1507377324480970365}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48041,7 +48070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6607367133969053989}
   - component: {fileID: 8934569826101952919}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48165,7 +48194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2704059310436510388}
   - component: {fileID: 1276246332185237688}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: sniper_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48363,7 +48392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6276361090797265699}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_target_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48396,7 +48425,7 @@ GameObject:
   - component: {fileID: 3211210311917302443}
   - component: {fileID: 227207812293457436}
   - component: {fileID: 423320753028408897}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Muzzleflash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53206,7 +53235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5681991451633869413}
   - component: {fileID: 1109218884538781848}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: silencer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53477,7 +53506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1240274766188782525}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Bottom 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53512,7 +53541,7 @@ GameObject:
   - component: {fileID: 7047536469968301062}
   - component: {fileID: 4753612558477188972}
   - component: {fileID: 2708297537253319914}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'arms_sniper_01 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53823,7 +53852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3490826747965595079}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53858,7 +53887,7 @@ GameObject:
   - component: {fileID: 346277884154125384}
   - component: {fileID: 7761815099128939788}
   - component: {fileID: 480763211673020889}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: sniper_01_render_mesh_vignette_front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53961,7 +53990,7 @@ GameObject:
   - component: {fileID: 4540983319796322048}
   - component: {fileID: 7859680206502863272}
   - component: {fileID: 9032764605962568745}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 2 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54042,7 +54071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7018071271323611863}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54073,7 +54102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4356795234825030939}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54104,7 +54133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9141091026681453647}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54137,7 +54166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5285476612340779464}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54169,7 +54198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023828662199899394}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54202,7 +54231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3052257108857279994}
   - component: {fileID: 5817037937968790228}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54397,7 +54426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7419421169270011852}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54428,7 +54457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3181686644223779895}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54459,7 +54488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5505384325225015689}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54490,7 +54519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3644643052194997976}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: finger_03_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54521,7 +54550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6288215481112427207}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54683,7 +54712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8874575150746577357}
   - component: {fileID: 231596145746527868}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: knife 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54803,7 +54832,7 @@ GameObject:
   - component: {fileID: 5952594051637500333}
   - component: {fileID: 7666195891308651856}
   - component: {fileID: 5544877050279484878}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: sniper_01_render_mesh_vignette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54904,7 +54933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369039085815862846}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54945,7 +54974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2784599387802001313}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54976,7 +55005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7700708655138208008}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55011,7 +55040,7 @@ GameObject:
   - component: {fileID: 4871802304322745264}
   - component: {fileID: 6601338747614929278}
   - component: {fileID: 3913718930886061160}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Muzzleflash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59820,7 +59849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487366397054580233}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59852,7 +59881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777995481021072393}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59886,7 +59915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6495186735899657091}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59922,7 +59951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7056526812366486200}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: arm_target_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59954,7 +59983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3466554078336272717}
   - component: {fileID: 8998991578110219047}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: scope_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60073,7 +60102,7 @@ GameObject:
   - component: {fileID: 6761223488481971993}
   - component: {fileID: 365366641633254055}
   - component: {fileID: 3456710136142047084}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 'Scope 3 Render Mesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60154,7 +60183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7011987831120693440}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Bullet Spawn Point Right 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60185,7 +60214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5636746033480847191}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: lower_arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60217,7 +60246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2053777524382817149}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: thumb_03_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60249,7 +60278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7797309511527538118}
   - component: {fileID: 7986082312734464673}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Muzzleflash Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60345,7 +60374,7 @@ GameObject:
   - component: {fileID: 6312960410064098988}
   - component: {fileID: 7200302384907163534}
   - component: {fileID: 8160750126376315762}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: sniper_01_render_mesh_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60444,6 +60473,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2330538665306621415}
     m_Modifications:
+    - target: {fileID: 1344099432518858, guid: 2c96a3ff0dac9d04283e0441c019d9f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454983431582380, guid: 2c96a3ff0dac9d04283e0441c019d9f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497073943049714, guid: 2c96a3ff0dac9d04283e0441c019d9f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899242647968138, guid: 2c96a3ff0dac9d04283e0441c019d9f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988326098106176, guid: 2c96a3ff0dac9d04283e0441c019d9f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4011494775309702, guid: 2c96a3ff0dac9d04283e0441c019d9f7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -60500,6 +60549,10 @@ PrefabInstance:
     - target: {fileID: 1053004240734088, guid: cecd33e1ab146f74a90c1a9348a0cc1f, type: 3}
       propertyPath: m_Name
       value: Rocket_Launcher_01_Projectile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053004240734088, guid: cecd33e1ab146f74a90c1a9348a0cc1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4079696162786616, guid: cecd33e1ab146f74a90c1a9348a0cc1f, type: 3}
       propertyPath: m_RootOrder
@@ -60566,6 +60619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2330538665306621401}
     m_Modifications:
+    - target: {fileID: 1819991323825934, guid: d3882a1d26d11214da76a466ac04da95, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4972077589141746, guid: d3882a1d26d11214da76a466ac04da95, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -60619,6 +60676,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2330538665306621345}
     m_Modifications:
+    - target: {fileID: 1222745324788130, guid: 592e928ce3d3f554f81db860fd9a190b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249643103842932, guid: 592e928ce3d3f554f81db860fd9a190b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266391295367128, guid: 592e928ce3d3f554f81db860fd9a190b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360724134875514, guid: 592e928ce3d3f554f81db860fd9a190b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365825458302188, guid: 592e928ce3d3f554f81db860fd9a190b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4636391557989754, guid: 592e928ce3d3f554f81db860fd9a190b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -60689,6 +60766,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2330538665306621315}
     m_Modifications:
+    - target: {fileID: 1164156383286612, guid: 322de508b80432346a66fb5492e4c1a3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235461646572588, guid: 322de508b80432346a66fb5492e4c1a3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497239134828274, guid: 322de508b80432346a66fb5492e4c1a3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631865383055820, guid: 322de508b80432346a66fb5492e4c1a3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753418663013312, guid: 322de508b80432346a66fb5492e4c1a3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4069487568713980, guid: 322de508b80432346a66fb5492e4c1a3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -60754,6 +60851,210 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4134242888593646}
     m_Modifications:
+    - target: {fileID: 100000, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100032, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100042, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100044, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100050, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100052, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100054, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100056, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100058, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100060, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100062, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100064, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100068, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100070, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100072, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100072, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100076, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100080, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100082, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100084, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100086, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100088, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100090, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100092, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100094, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100096, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100098, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61041,6 +61342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2330538665306621315}
     m_Modifications:
+    - target: {fileID: 1053004240734088, guid: cecd33e1ab146f74a90c1a9348a0cc1f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4079696162786616, guid: cecd33e1ab146f74a90c1a9348a0cc1f, type: 3}
       propertyPath: m_RootOrder
       value: 4
