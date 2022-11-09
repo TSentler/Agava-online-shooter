@@ -1,26 +1,21 @@
 using System;
 using BehaviorDesigner.Runtime;
 using Photon.Pun;
+using PlayerAbilities;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Bots
 {
-    [RequireComponent(typeof(PhotonView), 
-        typeof(NavMeshAgent), 
-        typeof(BehaviorTree))]
     public class BotSynchronizer : MonoBehaviour
     {
-        private NavMeshAgent _agent;
-        private BehaviorTree _behavior;
-        private PhotonView _photonView;
+        [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private PlayerInfo _playerInfo;
+        [SerializeField] private BehaviorTree _behavior;
 
         private void Awake()
         {
-            _photonView = GetComponent<PhotonView>();
-            _behavior = GetComponent<BehaviorTree>();
-            _agent = GetComponent<NavMeshAgent>();
-            if (_photonView.IsMine == false)
+            if (_playerInfo.IsBot && _playerInfo.IsMine == false)
             {
                 _agent.enabled = false;
                 _behavior.enabled = false;

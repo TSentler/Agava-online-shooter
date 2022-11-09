@@ -1,6 +1,4 @@
-using System;
 using CharacterInput;
-using Photon.Pun;
 using UnityEngine;
 
 namespace PlayerAbilities
@@ -10,12 +8,6 @@ namespace PlayerAbilities
         private readonly int 
             _forwardName = Animator.StringToHash("InputForward"),
             _rightName = Animator.StringToHash("InputRight");
-
-        private const string ForwardName = "IsRun";
-        private const string RightName = "InputRight";
-        private const string BackMoveName = "IsBackRun";
-        private const string RightMoveName = "IsRight";
-        private const string LeftMoveName = "IsLeft";
 
         [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private Animator _animator;
@@ -33,9 +25,17 @@ namespace PlayerAbilities
             }
         }
 
+        public void Initialize(ICharacterInputSource inputSource)
+        {
+            _inputSource = inputSource;
+        }
+        
         private void Awake()
         {
-            _inputSource = (ICharacterInputSource)_inputSourceBehaviour;
+            if (_inputSource == null)
+            {
+                Initialize((ICharacterInputSource)_inputSourceBehaviour);
+            }
         }
 
         private void Update()
@@ -48,38 +48,8 @@ namespace PlayerAbilities
 
         private void UpdateDirection(Vector2 direction)
         {
-            Debug.Log(direction);
-            //_animator.SetFloat(ForwardName, direction.y);
-            //_animator.SetFloat(RightName, direction.x);
-            if (direction.y > 0)
-            {
-                _animator.SetBool(ForwardName, true);
-            }
-
-            if (direction.y < 0)
-            {
-                _animator.SetBool(BackMoveName, true);
-            }
-
-            if (direction.y == 0)
-            {
-                _animator.SetBool(BackMoveName, false);
-            }
-
-            if (direction.x > 0)
-            {
-                _animator.SetBool(RightMoveName, true);
-            }
-
-            if(direction.x == 0)
-            {
-                _animator.SetBool(RightMoveName, false);
-            }
-
-            if(direction.x < 0)
-            {
-                _animator.SetBool(LeftMoveName, true);
-            }
+            _animator.SetFloat(_forwardName, direction.y);
+            _animator.SetFloat(_rightName, direction.x);
         }
     }
 }

@@ -494,7 +494,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.3
+  m_fontSize: 67.95
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -630,7 +630,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1906580642}
         m_TargetAssemblyTypeName: Levels.LevelLoader, Assembly-CSharp
-        m_MethodName: CreateOrJoinTestLargeMap
+        m_MethodName: CreateOrJoinLargeMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1068,11 +1068,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &782628375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 232012871910015208, guid: aa6c3bd48a4c33b2891bf1cf01c80b7e, type: 3}
-  m_PrefabInstance: {fileID: 232012872455432159}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813565514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1666,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270916656}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34c66b74016ea54e09b0a1a2b4943fb8, type: 3}
   m_Name: 
@@ -1775,7 +1770,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.6
+  m_fontSize: 69.3
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2864,7 +2859,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.9
+  m_fontSize: 69.95
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2996,28 +2991,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 232012871910015206, guid: aa6c3bd48a4c33b2891bf1cf01c80b7e, type: 3}
   m_PrefabInstance: {fileID: 232012872455432159}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782628375}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07b8fbaa461b78575b4342e5147efe5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1906580643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782628375}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1b84a427010e0469ce0df07ab64dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoConnect: 1
-  Version: 1
-  MaxPlayers: 15
-  playerTTL: -1
 --- !u!1 &1921600466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,7 +3084,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.35
+  m_fontSize: 68.85
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1

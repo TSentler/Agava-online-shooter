@@ -5,6 +5,8 @@ using PlayerAbilities;
 
 public class ETFXProjectileScript : MonoBehaviour
 {
+    private const float _timeToDestroy = 10f;
+
     [SerializeField] private GameObject _impactParticle; // Effect spawned when projectile hits a collider
     [SerializeField] private GameObject _projectileParticle; // Effect attached to the gameobject as child
     [SerializeField] private GameObject _muzzleParticle; // Effect instantly spawned when gameobject is spawned
@@ -102,7 +104,7 @@ public class ETFXProjectileScript : MonoBehaviour
 
     private IEnumerator DestroyWithDelay()
     {
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(_timeToDestroy);
         PhotonNetwork.Destroy(gameObject);
     }
 }

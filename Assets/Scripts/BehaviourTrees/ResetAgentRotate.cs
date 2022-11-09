@@ -1,11 +1,12 @@
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
     [TaskCategory("Movement")]
     public class ResetAgentRotate : Action 
     {
-        public SharedBotNavMesh SelfBotNavMesh;
+        public SharedBotAim SelfBotNavMesh;
 
         public override TaskStatus OnUpdate()
         {

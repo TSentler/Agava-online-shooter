@@ -1,5 +1,6 @@
 using Photon.Pun;
 using System.Collections;
+using CharacterInput;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,6 +9,9 @@ namespace PlayerAbilities
 {
     public class MouseLook : MonoBehaviour
     {      
+        private const string MouseSensitivitySaveKey = "MouseSensitivity";
+
+        [SerializeField] private MonoBehaviour _inputSourceBehaviour;
         [SerializeField] private float _mouseSensetivity;
         [SerializeField] private float _shootSensetivity;
         [SerializeField] private Camera _camera;
@@ -16,8 +20,7 @@ namespace PlayerAbilities
         [SerializeField] private Transform _weapon;
         [SerializeField] private float _standartSensetivity;
 
-        private const string MouseSensitivitySaveKey = "MouseSensitivity";
-
+        private ICharacterInputSource _inputSource;
         private float _xRotation;
         private Vector3 _deltaPosition;
         private Slider _slieder;
@@ -27,8 +30,28 @@ namespace PlayerAbilities
         
         public event UnityAction<float> OnLookChange;
 
+        private void OnValidate()
+        {
+            if (_inputSourceBehaviour 
+                && !(_inputSourceBehaviour is ICharacterInputSource))
+            {
+                Debug.LogError(nameof(_inputSourceBehaviour) + " needs to implement " + nameof(ICharacterInputSource));
+                _inputSourceBehaviour = null;
+            }
+        } 
+        
+        public void Initialize(ICharacterInputSource inputSource)
+        {
+            _inputSource = inputSource;
+        }
+        
         private void Awake()
         {
+            if (_inputSource == null)
+            {
+                Initialize((ICharacterInputSource)_inputSourceBehaviour);
+            }
+            
             Cursor.lockState = CursorLockMode.Locked;
 
             if (_photonView.IsMine == false)
@@ -39,14 +62,17 @@ namespace PlayerAbilities
             _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
             _slieder = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
 
-            if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+            if (_photonView.IsMine)
             {
-                _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
-            }
-            else
-            {
-                _slieder.value = _standartSensetivity;
-            }
+                if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+                {
+                    _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+                }
+                else
+                {
+                    _slieder.value = _standartSensetivity;
+                }
+            }           
         }
 
         private void OnEnable()
@@ -64,8 +90,8 @@ namespace PlayerAbilities
             if (_photonView.IsMine)
             {
                 var sensetivityFactor = _mouseSensetivity * Time.deltaTime;
-                float mouseX = Input.GetAxis("Mouse X") * sensetivityFactor;
-                float mouseY = Input.GetAxis("Mouse Y") * sensetivityFactor;
+                float mouseX = _inputSource.MouseInput.x * sensetivityFactor;
+                float mouseY = _inputSource.MouseInput.y * sensetivityFactor;
 
                 if (mouseX != 0 || mouseY !=0)
                 {

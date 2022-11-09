@@ -1,14 +1,15 @@
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviourTrees.SharedVars;
 
 namespace BehaviourTrees
 {
     public class NextTarget : Action 
     {
-        public SharedBotNavMesh SelfBotNavMesh;
+        public SharedBotPatrol SelfBotPatrol;
 
         public override TaskStatus OnUpdate()
         {
-            SelfBotNavMesh.Value.NextTarget();
+            SelfBotPatrol.Value.NextTarget();
             return TaskStatus.Success;
         }
     }

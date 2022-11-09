@@ -30,6 +30,9 @@ namespace Score
         private void Awake()
         {
             _matchCallbacks = FindObjectOfType<MatchmakingCallbacksCatcher>();
+            _sortedScores.Clear();
+            PhotonNetwork.AutomaticallySyncScene = true;
+
             PhotonNetwork.CurrentRoom.IsOpen = true;
             PhotonNetwork.CurrentRoom.IsVisible = true;
         }
@@ -56,12 +59,11 @@ namespace Score
             if(_currentTime <= 0)
             {
                 _textTimer.text = "Reloud level";
-                PhotonNetwork.AutomaticallySyncScene = true;
-
-                //if (PhotonNetwork.IsMasterClient)
-                //{             
-                    PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);                
-                //}
+             
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+                }
 
                 PhotonNetwork.CurrentRoom.CustomProperties.Clear();
                 _isTimerStope = false;
