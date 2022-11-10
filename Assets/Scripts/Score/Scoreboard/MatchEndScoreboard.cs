@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Score
@@ -19,6 +18,7 @@ namespace Score
         [SerializeField] private ScoreboardItem _scoreTemplate;
         [SerializeField] private TMP_Text _textTimer;
         [SerializeField] private float _maxTime;
+        [SerializeField] private PhotonView _photonView;
 
         private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
         private MatchmakingCallbacksCatcher _matchCallbacks;
@@ -54,18 +54,17 @@ namespace Score
                 return;
 
             _currentTime -= Time.deltaTime;
-            _textTimer.text = "Reloud level in " + _currentTime.ToString("0") + " seconds";
+            _textTimer.text = "Reload level in " + _currentTime.ToString("0") + " seconds";
 
             if(_currentTime <= 0)
             {
-                _textTimer.text = "Reloud level";
+                _textTimer.text = "Reload level";
              
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+                    _photonView.RPC(nameof(ReloadLevel), RpcTarget.All);
                 }
 
-                PhotonNetwork.CurrentRoom.CustomProperties.Clear();
                 _isTimerStope = false;
             }
         }
@@ -110,6 +109,14 @@ namespace Score
         private void RoomLeftHandler()
         {
             PhotonNetwork.LoadLevel(0);
+        }
+
+        [PunRPC]
+        private void ReloadLevel()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
