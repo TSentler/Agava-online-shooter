@@ -1,6 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using Bots;
 using UnityEngine;
 
 namespace PlayerAbilities
@@ -12,7 +10,10 @@ namespace PlayerAbilities
 
         private void Start()
         {
-            Spawn();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Spawn();
+            }
         }
 
         private void Spawn()

@@ -14452,7 +14452,6 @@ MonoBehaviour:
   _playerPrefab: {fileID: 7926811385654240329, guid: d373b938b7e23595fbc6a765816fcd1c, type: 3}
   _spawnPoints:
   - {fileID: 871003138}
-  _isBot: 0
 --- !u!1 &1477372229245630099
 GameObject:
   m_ObjectHideFlags: 0
@@ -14636,6 +14635,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2374949119785585006, guid: 088d4952eca7623439aad183827195c3, type: 3}
+      propertyPath: _showPoint
+      value: 
+      objectReference: {fileID: 2374949120453636136}
     - target: {fileID: 2374949119785585007, guid: 088d4952eca7623439aad183827195c3, type: 3}
       propertyPath: m_Name
       value: GunSpawner
@@ -14653,3 +14656,8 @@ PrefabInstance:
     - {fileID: 3751982740553231229, guid: 088d4952eca7623439aad183827195c3, type: 3}
     - {fileID: 8516972456482725797, guid: 088d4952eca7623439aad183827195c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 088d4952eca7623439aad183827195c3, type: 3}
+--- !u!4 &2374949120453636136 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2374949120811942749, guid: 088d4952eca7623439aad183827195c3, type: 3}
+  m_PrefabInstance: {fileID: 2374949120453636135}
+  m_PrefabAsset: {fileID: 0}

@@ -16,7 +16,7 @@ namespace BehaviourTrees
             {
                 return TaskStatus.Failure;
             }
-            SelfBotNavMesh.Value.Aim(Target.Value);
+            SelfBotNavMesh.Value.Aim(Target.Value.transform.position);
             return TaskStatus.Success;
         }
     }

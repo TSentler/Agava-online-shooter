@@ -29,10 +29,9 @@ namespace Bots
             _agent.angularSpeed = _tempAngularSpeed;
         }
 
-        public void Aim(GameObject target)
+        public void Aim(Vector3 target)
         {
-            var lookDirection = target.transform.position - 
-                                _root.position;
+            var lookDirection = target - _root.position;
             var lookDirectionXZ = lookDirection;
             lookDirectionXZ.y = 0f;
             VerticalAim(lookDirectionXZ, lookDirection);

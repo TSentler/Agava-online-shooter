@@ -14,6 +14,7 @@ namespace Bots
         [SerializeField] private MouseLook _mouseLook;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private MovementPresenter _movementPresenter;
+        [SerializeField] private AudioListener _audioListener;
         [SerializeField] private GameObject[] _hide;
         [SerializeField] private UnityEvent _onConvertToBot;
             
@@ -29,9 +30,11 @@ namespace Bots
         {
             var isBot = true;
             _navMeshAgent.enabled = isBot;
+            _audioListener.enabled = isBot == false;
+            _mouseLook.enabled = isBot;
 
             _movementPresenter.Initialize(_botInput);
-            _mouseLook.Initialize(_botInput);
+            //_mouseLook.Initialize(_botInput);
             _playerMovement.Initialize(_botInput);
             
             for (int i = 0; i < _hide.Length; i++)

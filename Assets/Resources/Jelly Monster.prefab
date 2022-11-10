@@ -3739,6 +3739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 3946544924353421128}
+  _angularSpeed: 150
+  _rotationTime: 20
+  _horizontalAngleDeadZone: 5
 --- !u!114 &6784944861631139795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4388,6 +4391,7 @@ MonoBehaviour:
   _mouseLook: {fileID: 5788905161855361682}
   _playerMovement: {fileID: 7015599807556905031}
   _movementPresenter: {fileID: 4391770532931410501}
+  _audioListener: {fileID: 0}
   _hide:
   - {fileID: 9150090653136674274}
   - {fileID: 1124337238284362955}

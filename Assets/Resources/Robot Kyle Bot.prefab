@@ -2175,12 +2175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68476fb882c33604f9480093264d61aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputSourceBehaviour: {fileID: 0}
   _mouseSensetivity: 25
   _shootSensetivity: 100
   _camera: {fileID: 8626187333435406068}
   _playerBody: {fileID: 7926811385654605929}
   _photonView: {fileID: 5537214694185517777}
   _weapon: {fileID: 5769570462044029525}
+  _standartSensetivity: 0
 --- !u!114 &5917582119930069936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2395,7 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469acbf02b56d924d8fb1f561b0ac887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputSourceBehaviour: {fileID: 8207064327060512845}
+  _inputSourceBehaviour: {fileID: 0}
   _animator: {fileID: 7926811385661495177}
   _playerInfo: {fileID: 1228789576761653420}
 --- !u!114 &7153070083620742640
@@ -3374,8 +3376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouseLook: {fileID: 5788905161855361682}
   _aimSpeed: 5
-  _playerHand: {fileID: 6293996175980194239}
-  _angleShootSpread: 20
+  _agent: {fileID: 0}
+  _root: {fileID: 0}
 --- !u!114 &6799963045250450372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,6 +3390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6448c1c529c9c4841847331cda4f07c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 0}
+  _playerInfo: {fileID: 0}
+  _behavior: {fileID: 0}
 --- !u!195 &380201270662068934
 NavMeshAgent:
   m_ObjectHideFlags: 0
