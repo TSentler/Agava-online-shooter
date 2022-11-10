@@ -60046,7 +60046,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b0ea9aa64da8c76498ef3b008d0cca1b, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61423,43 +61422,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400096, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
   m_PrefabInstance: {fileID: 2330538665306758919}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2330538665306855431 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100096, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
-  m_PrefabInstance: {fileID: 2330538665306758919}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &8996502048270362566
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2330538665306855431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.085
-  m_Height: 0.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
---- !u!1 &2330538665306855893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100050, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
-  m_PrefabInstance: {fileID: 2330538665306758919}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &8106476224631344552
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2330538665306855893}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2330538665306855919 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100072, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
