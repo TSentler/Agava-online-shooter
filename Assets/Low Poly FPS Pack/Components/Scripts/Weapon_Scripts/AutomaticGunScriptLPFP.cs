@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 {
 	[SerializeField] private float _damage;
 	[SerializeField] private GunView _gunView;
 	[SerializeField] private WeaponsHolder _weaponsHolder;
+	[SerializeField] private PhotonView _photonView;
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -435,34 +437,36 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	
 	private void Update () {
 
-		//Aiming
-		//Toggle camera FOV when right click is held down
-		if(Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting) 
-		{
-			if (ironSights == true) 
+        //Aiming
+        //Toggle camera FOV when right click is held down
+        if (_photonView.IsMine) {
+			if (Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting)
 			{
-				gunCamera.fieldOfView = Mathf.Lerp (gunCamera.fieldOfView,
-					ironSightsAimFOV, fovSpeed * Time.deltaTime);
-			}
-			if (scope1 == true) 
-			{
-				gunCamera.fieldOfView = Mathf.Lerp (gunCamera.fieldOfView,
-					scope1AimFOV, fovSpeed * Time.deltaTime);
-			}
-			if (scope2 == true) 
-			{
-				gunCamera.fieldOfView = Mathf.Lerp (gunCamera.fieldOfView,
-					scope2AimFOV, fovSpeed * Time.deltaTime);
-			}
-			if (scope3 == true) 
-			{
-				gunCamera.fieldOfView = Mathf.Lerp (gunCamera.fieldOfView,
-					scope3AimFOV, fovSpeed * Time.deltaTime);
-			}
-			if (scope4 == true) 
-			{
-				gunCamera.fieldOfView = Mathf.Lerp (gunCamera.fieldOfView,
-					scope4AimFOV, fovSpeed * Time.deltaTime);
+				if (ironSights == true)
+				{
+					gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
+						ironSightsAimFOV, fovSpeed * Time.deltaTime);
+				}
+				if (scope1 == true)
+				{
+					gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
+						scope1AimFOV, fovSpeed * Time.deltaTime);
+				}
+				if (scope2 == true)
+				{
+					gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
+						scope2AimFOV, fovSpeed * Time.deltaTime);
+				}
+				if (scope3 == true)
+				{
+					gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
+						scope3AimFOV, fovSpeed * Time.deltaTime);
+				}
+				if (scope4 == true)
+				{
+					gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
+						scope4AimFOV, fovSpeed * Time.deltaTime);
+				}
 			}
 
 			isAiming = true;
@@ -636,27 +640,30 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		//is currently playing
 		AnimationCheck ();
 
-		//Play knife attack 1 animation when Q key is pressed
-		if (Input.GetKeyDown (KeyCode.Q) && !isInspecting) 
+		////Play knife attack 1 animation when Q key is pressed
+		//if (Input.GetKeyDown (KeyCode.Q) && !isInspecting) 
+		//{
+		//	anim.Play ("Knife Attack 1", 0, 0f);
+		//}
+		////Play knife attack 2 animation when F key is pressed
+		//if (Input.GetKeyDown (KeyCode.F) && !isInspecting) 
+		//{
+		//	anim.Play ("Knife Attack 2", 0, 0f);
+		//}
+
+		if (_photonView.IsMine)
 		{
-			anim.Play ("Knife Attack 1", 0, 0f);
-		}
-		//Play knife attack 2 animation when F key is pressed
-		if (Input.GetKeyDown (KeyCode.F) && !isInspecting) 
-		{
-			anim.Play ("Knife Attack 2", 0, 0f);
-		}
-			
-		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G) && !isInspecting) 
-		{
-			StartCoroutine (GrenadeSpawnDelay ());
-			//Play grenade throw animation
-			anim.Play("GrenadeThrow", 0, 0.0f);
+			//Throw grenade when pressing G key
+			if (Input.GetKeyDown(KeyCode.G) && !isInspecting)
+			{
+				StartCoroutine(GrenadeSpawnDelay());
+				//Play grenade throw animation
+				anim.Play("GrenadeThrow", 0, 0.0f);
+			}
 		}
 
 		//If out of ammo
-		if (currentAmmo == 0) 
+		if (currentAmmo == 0 && _photonView.IsMine) 
 		{
 			//Show out of ammo text
 			currentWeaponText.text = "OUT OF AMMO";
@@ -679,7 +686,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 			
 		//AUtomatic fire
 		//Left click hold 
-		if (Input.GetMouseButton (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning) 
+		if (Input.GetMouseButton (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning && _photonView.IsMine) 
 		{
 			//Shoot automatic
 			if (Time.time - lastFired > 1 / fireRate) 
@@ -810,13 +817,13 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Inspect weapon when T key is pressed
-		if (Input.GetKeyDown (KeyCode.T)) 
+		if (Input.GetKeyDown (KeyCode.T) && _photonView.IsMine) 
 		{
 			anim.SetTrigger ("Inspect");
 		}
 
 		//Toggle weapon holster when E key is pressed
-		if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered) 
+		if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered && _photonView.IsMine) 
 		{
 			holstered = true;
 
@@ -825,7 +832,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 			hasBeenHolstered = true;
 		} 
-		else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered) 
+		else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered && _photonView.IsMine) 
 		{
 			holstered = false;
 
@@ -855,7 +862,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		if (Input.GetKey (KeyCode.W) && !isRunning || 
 			Input.GetKey (KeyCode.A) && !isRunning || 
 			Input.GetKey (KeyCode.S) && !isRunning || 
-			Input.GetKey (KeyCode.D) && !isRunning) 
+			Input.GetKey (KeyCode.D) && !isRunning && _photonView.IsMine) 
 		{
 			anim.SetBool ("Walk", true);
 		} else {
@@ -863,7 +870,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Running when pressing down W and Left Shift key
-		if ((Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.LeftShift))) 
+		if ((Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.LeftShift) && _photonView.IsMine)) 
 		{
 			isRunning = true;
 		} else {
