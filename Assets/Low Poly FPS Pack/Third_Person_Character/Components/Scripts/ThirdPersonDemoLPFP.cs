@@ -172,7 +172,7 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		//Throw grenade when pressing G key
 		if (Input.GetKeyDown (KeyCode.G)) 
 		{
-			StartCoroutine (GrenadeSpawnDelay ());
+			//StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation
 			anim.Play("Grenade_Throw", 1, 0.0f);
 		}
