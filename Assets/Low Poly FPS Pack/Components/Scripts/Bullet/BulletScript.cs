@@ -29,16 +29,18 @@ public class BulletScript : MonoBehaviour {
 		StartCoroutine (DestroyAfter ());
 	}
 
-	//If the bullet collides with anything
-	private void OnCollisionEnter (Collision collision) 
-	{
-
-		if (collision.gameObject.TryGetComponent(out HitDetector hitDetector))
+    private void OnTriggerEnter(Collider other)
+    {
+		if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
 		{
 			hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
 			_gun.HitOnPlayer();
 		}
+	}
 
+    //If the bullet collides with anything
+    private void OnCollisionEnter (Collision collision) 
+	{		
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
 		if (!destroyOnImpact) 
