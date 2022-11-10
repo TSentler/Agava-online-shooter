@@ -46,7 +46,7 @@ public class GunView : MonoBehaviour
     //    _totalAmmoText.text = maxAmmo.ToString();
     //}
 
-    private void OnHit()
+    public void OnHit()
     {
         StartCoroutine(ShowHitIndicator());
     }

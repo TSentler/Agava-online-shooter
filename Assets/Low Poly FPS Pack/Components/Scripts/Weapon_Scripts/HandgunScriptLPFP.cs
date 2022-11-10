@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Photon.Pun;
+using PlayerAbilities;
+using UnityEngine.Events;
 
-public class HandgunScriptLPFP : MonoBehaviour
+public class HandgunScriptLPFP : MonoBehaviour, IShooting
 {
+    [SerializeField] private float _damage;
+    [SerializeField] private GunView _gunView;
 
     //Animator component attached to weapon
     Animator anim;
@@ -174,7 +179,7 @@ public class HandgunScriptLPFP : MonoBehaviour
     public class prefabs
     {
         [Header("Prefabs")]
-        public Transform bulletPrefab;
+        public BulletScript bulletPrefab;
         public Transform casingPrefab;
         public Transform grenadePrefab;
     }
@@ -208,6 +213,8 @@ public class HandgunScriptLPFP : MonoBehaviour
     public soundClips SoundClips;
 
     private bool soundHasPlayed = false;
+
+    public event UnityAction Hit;
 
     private void Awake()
     {
@@ -629,11 +636,12 @@ public class HandgunScriptLPFP : MonoBehaviour
             }
 
             //Spawn bullet at bullet spawnpoint
-            var bullet = (Transform)Instantiate(
+            var bullet = Instantiate(
                 Prefabs.bulletPrefab,
                 Spawnpoints.bulletSpawnPoint.transform.position,
                 Spawnpoints.bulletSpawnPoint.transform.rotation);
-
+            bullet.SetDamage(_damage);
+            bullet.SetGun(this);
             //Add velocity to the bullet
             bullet.GetComponent<Rigidbody>().velocity =
             bullet.transform.forward * bulletForce;
@@ -725,6 +733,11 @@ public class HandgunScriptLPFP : MonoBehaviour
         {
             anim.SetBool("Run", false);
         }
+    }
+
+    public void HitOnPlayer()
+    {
+        _gunView.OnHit();
     }
 
     private IEnumerator HandgunSliderBackDelay()

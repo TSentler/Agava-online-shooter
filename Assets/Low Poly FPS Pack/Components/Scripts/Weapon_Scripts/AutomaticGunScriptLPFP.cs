@@ -2,7 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class AutomaticGunScriptLPFP : MonoBehaviour {
+public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
+{
+	[SerializeField] private float _damage;
+	[SerializeField] private GunView _gunView;
+	[SerializeField] private WeaponsHolder _weaponsHolder;
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -142,6 +146,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	//Totalt amount of ammo
 	[Tooltip("How much ammo the weapon should have.")]
 	public int ammo;
+	public int maxAmmo;
+	private int maxAmmoQuanity;
 	//Check if out of ammo
 	private bool outOfAmmo;
 
@@ -196,7 +202,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	public class prefabs
 	{  
 		[Header("Prefabs")]
-		public Transform bulletPrefab;
+		public BulletScript bulletPrefab;
 		public Transform casingPrefab;
 		public Transform grenadePrefab;
 	}
@@ -233,7 +239,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	private bool soundHasPlayed = false;
 
 	private void Awake () {
-		
+
+		maxAmmoQuanity = maxAmmo;
 		//Set the animator component
 		anim = GetComponent<Animator>();
 		//Set current ammo to total ammo value
@@ -382,8 +389,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 	private void OnEnable()
 	{
+		maxAmmo = maxAmmoQuanity;
 		currentWeaponText.text = weaponName;
-		totalAmmoText.text = ammo.ToString();
+		totalAmmoText.text = maxAmmo == 0 ? ammo.ToString() : maxAmmo.ToString();
 		currentAmmoText.text = currentAmmo.ToString();
 		gunIcon.sprite = gunSprite;
 	}
@@ -395,7 +403,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		//Get weapon name from string to text
 		currentWeaponText.text = weaponName;
 		//Set total ammo text from total ammo int
-		totalAmmoText.text = ammo.ToString();
+		totalAmmoText.text = maxAmmo == 0 ? maxAmmo.ToString() : ammo.ToString();
 
 		//Weapon sway
 		initialSwayPosition = transform.localPosition;
@@ -622,6 +630,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 		//Set current ammo text from ammo int
 		currentAmmoText.text = currentAmmo.ToString ();
+		totalAmmoText.text = maxAmmo == 0 ? ammo.ToString() : maxAmmo.ToString();
 
 		//Continosuly check which animation 
 		//is currently playing
@@ -680,6 +689,17 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 				//Remove 1 bullet from ammo
 				currentAmmo -= 1;
 
+				if (maxAmmo != 0)
+                {
+					maxAmmo--;
+
+					if(maxAmmo == 0)
+                    {
+						_weaponsHolder.SetNewGun(0);
+						maxAmmo = 90;
+					}
+                }
+
 				//If silencer is enabled, play silencer shoot sound, don't play if there is nothing assigned in the inspector
 				if (silencer == true && WeaponAttachmentRenderers.silencerRenderer != null) 
 				{
@@ -714,7 +734,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 								//Emit random amount of spark particles
 								sparkParticles.Emit (Random.Range (minSparkEmission, maxSparkEmission));
 							}
-							if (enableMuzzleflash == true && !silencer) 
+							if (enableMuzzleflash == true && !silencer && maxAmmo == 0) 
 							{
 								muzzleParticles.Emit (1);
 								//Light flash start
@@ -761,7 +781,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 								//Emit random amount of spark particles
 								sparkParticles.Emit (Random.Range (minSparkEmission, maxSparkEmission));
 							}
-							if (enableMuzzleflash == true && !silencer) 
+							if (enableMuzzleflash == true && !silencer && maxAmmo == 0) 
 							{
 								muzzleParticles.Emit (1);
 								//Light flash start
@@ -772,11 +792,12 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 				}
 
 				//Spawn bullet from bullet spawnpoint
-				var bullet = (Transform)Instantiate (
+				var bullet = Instantiate (
 					Prefabs.bulletPrefab,
 					Spawnpoints.bulletSpawnPoint.transform.position,
 					Spawnpoints.bulletSpawnPoint.transform.rotation);
-
+				bullet.SetDamage(_damage);
+				bullet.SetGun(this);
 				//Add velocity to the bullet
 				bullet.GetComponent<Rigidbody>().velocity = 
 					bullet.transform.forward * bulletForce;
@@ -935,7 +956,17 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			}
 		}
 		//Restore ammo when reloading
-		currentAmmo = ammo;
+		if (maxAmmo <= ammo && maxAmmo != 0)
+		{
+			currentAmmo = maxAmmo;
+		}
+		else
+		{
+			currentAmmo = ammo;
+		}
+
+		//AmmoCountChange?.Invoke(AmmoQuanity, MaxAmmoCount == 0 ? MaxAmmo : MaxAmmoQuanity);
+		//currentAmmo = ammo;
 		outOfAmmo = false;
 	}
 
@@ -980,4 +1011,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			isInspecting = false;
 		}
 	}
+
+    public void HitOnPlayer()
+    {
+		_gunView.OnHit();
+    }
 }

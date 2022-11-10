@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 public class BulletScript : MonoBehaviour {
 
@@ -19,6 +20,9 @@ public class BulletScript : MonoBehaviour {
 	public Transform [] dirtImpactPrefabs;
 	public Transform []	concreteImpactPrefabs;
 
+	private float _damage;
+	private IShooting _gun;
+
 	private void Start () 
 	{
 		//Start destroy timer
@@ -28,6 +32,13 @@ public class BulletScript : MonoBehaviour {
 	//If the bullet collides with anything
 	private void OnCollisionEnter (Collision collision) 
 	{
+
+		if (collision.gameObject.TryGetComponent(out HitDetector hitDetector))
+		{
+			hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
+			_gun.HitOnPlayer();
+		}
+
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
 		if (!destroyOnImpact) 
@@ -125,6 +136,16 @@ public class BulletScript : MonoBehaviour {
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
+	}
+
+	public void SetDamage(float damage)
+    {
+		_damage = damage;
+    }
+
+	public void SetGun(IShooting gun)
+    {
+		_gun = gun;
 	}
 
 	private IEnumerator DestroyTimer () 
