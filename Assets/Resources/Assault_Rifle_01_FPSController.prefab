@@ -14444,6 +14444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd38df9a0796d9842adfbe580ed6042e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 25
+  _gunView: {fileID: 4387319589381292558}
+  _weaponsHolder: {fileID: 7312492307850879255}
   gunSprite: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 20607603889952386}
   fovSpeed: 15
@@ -14491,7 +14494,8 @@ MonoBehaviour:
   fireRate: 11.5
   autoReload: 1
   autoReloadDelay: 0.25
-  ammo: 31
+  ammo: 30
+  maxAmmo: 60
   bulletForce: 400
   showBulletInMagDelay: 0.6
   bulletInMagRenderer: {fileID: 137046500979869596}
@@ -14513,7 +14517,7 @@ MonoBehaviour:
   totalAmmoText: {fileID: 114820106648412418}
   gunIcon: {fileID: 114113902917611958}
   Prefabs:
-    bulletPrefab: {fileID: 4879702113200764, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
+    bulletPrefab: {fileID: 114243545424532484, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
     casingPrefab: {fileID: 4420745226056240, guid: 7be59128a5ee3424faf33d7a408c0b2e, type: 3}
     grenadePrefab: {fileID: 4191440083646698, guid: 7b04fe350ed10a741a1e245447860d9e, type: 3}
   Spawnpoints:
@@ -34631,6 +34635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454d9b69473a2d248b0dc828be5c49ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
+  _gunView: {fileID: 4387319589381292558}
+  _weaponsHolder: {fileID: 7312492307850879255}
   gunSprite: {fileID: 21300018, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 7589460530982128827}
   fovSpeed: 15
@@ -34677,6 +34684,7 @@ MonoBehaviour:
   autoReload: 1
   autoReloadDelay: 0.5
   ammo: 5
+  maxAmmo: 15
   bulletForce: 400
   grenadeSpawnDelay: 0.35
   randomMuzzleflash: 1
@@ -34696,7 +34704,7 @@ MonoBehaviour:
   totalAmmoText: {fileID: 114820106648412418}
   gunIcon: {fileID: 114113902917611958}
   Prefabs:
-    bulletPrefab: {fileID: 4879702113200764, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
+    bulletPrefab: {fileID: 114243545424532484, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
     casingPrefab: {fileID: 4599815396279600, guid: 58ad70332ff860e439314b337c4609bc, type: 3}
     grenadePrefab: {fileID: 4191440083646698, guid: 7b04fe350ed10a741a1e245447860d9e, type: 3}
   Spawnpoints:
@@ -34986,7 +34994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.043, y: 0.08822665}
   m_AnchorMax: {x: 0.42700002, y: 0.23010984}
-  m_AnchoredPosition: {x: 0.60162354, y: -0.09329224}
+  m_AnchoredPosition: {x: 0.6016846, y: -0.09326172}
   m_SizeDelta: {x: 295.04895, y: 59.510468}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &388229053276366174
@@ -36411,6 +36419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56ac14cb72efeb4b92cf5cb025a97c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 15
+  _gunView: {fileID: 4387319589381292558}
   gunSprite: {fileID: 21300008, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 100414656708919175}
   fovSpeed: 15
@@ -36466,7 +36476,7 @@ MonoBehaviour:
   totalAmmoText: {fileID: 114820106648412418}
   gunIcon: {fileID: 114113902917611958}
   Prefabs:
-    bulletPrefab: {fileID: 4879702113200764, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
+    bulletPrefab: {fileID: 114243545424532484, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
     casingPrefab: {fileID: 4924048156253418, guid: b1995a53a949fac4db5722fc1df9efe4, type: 3}
     grenadePrefab: {fileID: 4191440083646698, guid: 7b04fe350ed10a741a1e245447860d9e, type: 3}
   Spawnpoints:
@@ -53815,6 +53825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b47667facbc44418c1f79ef53ed2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 50
+  _gunView: {fileID: 4387319589381292558}
+  _weaponsHolder: {fileID: 7312492307850879255}
   gunSprite: {fileID: 21300030, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 3195077575992808416}
   fovSpeed: 15
@@ -53832,6 +53845,7 @@ MonoBehaviour:
   autoReload: 1
   autoReloadDelay: 0.75
   ammo: 5
+  maxAmmo: 15
   bulletForce: 400
   grenadeSpawnDelay: 0.35
   scopeRenderMaterial: {fileID: 2100000, guid: e42b5b324c3b7cf499d473a7f9762f64, type: 2}
@@ -53854,7 +53868,7 @@ MonoBehaviour:
   totalAmmoText: {fileID: 114820106648412418}
   gunIcon: {fileID: 114113902917611958}
   Prefabs:
-    bulletPrefab: {fileID: 4879702113200764, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
+    bulletPrefab: {fileID: 114243545424532484, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
     casingPrefab: {fileID: 4420745226056240, guid: 7be59128a5ee3424faf33d7a408c0b2e, type: 3}
     grenadePrefab: {fileID: 4191440083646698, guid: 7b04fe350ed10a741a1e245447860d9e, type: 3}
   Spawnpoints:
