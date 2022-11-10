@@ -1222,6 +1222,9 @@ GameObject:
   - component: {fileID: 424512754763583127}
   - component: {fileID: 3879372588321397246}
   - component: {fileID: 1736374855633959505}
+  - component: {fileID: -8042488862029087902}
+  - component: {fileID: 2610393471383777675}
+  - component: {fileID: 2802158373968492841}
   m_Layer: 7
   m_Name: Assault_Rifle_01_FPSController
   m_TagString: Untagged
@@ -1429,6 +1432,12 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3999451411826328546}
+  - {fileID: -8042488862029087902}
+  - {fileID: 3258389117131450028}
+  - {fileID: 7492778290473507557}
+  - {fileID: 4960712031303489442}
+  - {fileID: 187139309946197141}
+  - {fileID: 4591319083580457548}
   - {fileID: 388229053276366174}
   sceneViewId: 0
   InstantiationId: 0
@@ -1539,6 +1548,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _photonView: {fileID: 324320900069819033}
   _playerHealth: {fileID: 5034792681743779307}
+--- !u!114 &-8042488862029087902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &2610393471383777675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d628129d0233bb4f8f5cd3bbb7b6553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mineLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  _settable: []
+  _withChilds:
+  - {fileID: 2330538665306621391}
+--- !u!114 &2802158373968492841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e938b9b4a8134dc981873d4cfd42ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1357289475648828
 GameObject:
   m_ObjectHideFlags: 0
@@ -13966,7 +14021,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966015
+    m_Bits: 4294963967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -14323,6 +14378,7 @@ GameObject:
   - component: {fileID: 114090783443918852}
   - component: {fileID: 82936729272205366}
   - component: {fileID: 82570297122578922}
+  - component: {fileID: 4960712031303489442}
   m_Layer: 7
   m_Name: arms_assault_rifle_01
   m_TagString: Untagged
@@ -14656,6 +14712,54 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &4960712031303489442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973744589517680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: Shoot
+  - Type: 9
+    SynchronizeType: 1
+    Name: Inspect
+  - Type: 4
+    SynchronizeType: 1
+    Name: Holster
+  - Type: 4
+    SynchronizeType: 1
+    Name: Run
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 1
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 2
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 3
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 4
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &1995699278847444
 GameObject:
   m_ObjectHideFlags: 0
@@ -15136,7 +15240,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966015
+    m_Bits: 4294963967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15297,13 +15401,13 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2047
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8600000, guid: edc8b6fd899e5a445a809e09e312fbe6, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -22265,7 +22369,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966015
+    m_Bits: 4294963967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -27412,7 +27516,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966015
+    m_Bits: 4294963967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -34269,6 +34373,7 @@ GameObject:
   - component: {fileID: 5097635476980567829}
   - component: {fileID: 3634189551342165127}
   - component: {fileID: 5991887501758528313}
+  - component: {fileID: 187139309946197141}
   m_Layer: 10
   m_Name: arms_shotgun_01
   m_TagString: Untagged
@@ -34608,6 +34713,54 @@ MonoBehaviour:
     takeOutSound: {fileID: 8300000, guid: 2ae41e984ff1f3e4a840a1a46b6a8816, type: 3}
     holsterSound: {fileID: 8300000, guid: 33a4a9bf1a1dbca4cb379a1118c6b20d, type: 3}
     aimSound: {fileID: 8300000, guid: acaebc89b98b82142bd2b24edb6081e4, type: 3}
+--- !u!114 &187139309946197141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800687654516407308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: Shoot
+  - Type: 9
+    SynchronizeType: 1
+    Name: Inspect
+  - Type: 4
+    SynchronizeType: 1
+    Name: Holster
+  - Type: 4
+    SynchronizeType: 1
+    Name: Run
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 1
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 2
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 3
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 4
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &4815286374616966665
 GameObject:
   m_ObjectHideFlags: 0
@@ -36192,6 +36345,7 @@ GameObject:
   - component: {fileID: 952312081458963594}
   - component: {fileID: 227493087321813516}
   - component: {fileID: 5042368611096032072}
+  - component: {fileID: 7492778290473507557}
   m_Layer: 10
   m_Name: arms_handgun_01
   m_TagString: Untagged
@@ -36511,6 +36665,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &7492778290473507557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230370638228224752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: Shoot
+  - Type: 9
+    SynchronizeType: 1
+    Name: Inspect
+  - Type: 4
+    SynchronizeType: 1
+    Name: Holster
+  - Type: 4
+    SynchronizeType: 1
+    Name: Run
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 1
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 2
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 3
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 4
+  - Type: 4
+    SynchronizeType: 1
+    Name: Out Of Ammo Slider
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!1 &6239874374300817380
 GameObject:
   m_ObjectHideFlags: 0
@@ -53542,6 +53749,7 @@ GameObject:
   - component: {fileID: 7047536469968301062}
   - component: {fileID: 4753612558477188972}
   - component: {fileID: 2708297537253319914}
+  - component: {fileID: 4591319083580457548}
   m_Layer: 10
   m_Name: 'arms_sniper_01 '
   m_TagString: Untagged
@@ -53844,6 +54052,54 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &4591319083580457548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804217660160099308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 1
+    Name: Shoot
+  - Type: 9
+    SynchronizeType: 1
+    Name: Inspect
+  - Type: 4
+    SynchronizeType: 1
+    Name: Holster
+  - Type: 4
+    SynchronizeType: 1
+    Name: Run
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim
+  - Type: 4
+    SynchronizeType: 1
+    Name: Walk
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 1
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 2
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 3
+  - Type: 4
+    SynchronizeType: 1
+    Name: Aim Scope 4
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &7882769508557821302
 GameObject:
   m_ObjectHideFlags: 0
@@ -60854,7 +61110,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_Layer
@@ -61002,7 +61258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100072, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100074, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_Layer
@@ -61305,6 +61561,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &3258389117131450028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330538665306855919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 1
+    Name: Horizontal
+  - Type: 1
+    SynchronizeType: 1
+    Name: Vertical
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!114 &6913372958308196480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61317,7 +61599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920abf3add0cc894f806736be5fca74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 100414656708919175}
   zoomedFOV: 45
   defaultFOV: 75
   fovSpeed: 25
@@ -61336,6 +61618,8 @@ MonoBehaviour:
   grenadeSpawnpoint: {fileID: 3937024433452653401}
   shootSound: {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
   shootAudioSource: {fileID: 5242585389090935171}
+  _inputSourceBehaviour: {fileID: 2802158373968492841}
+  _photonView: {fileID: 324320900069819033}
 --- !u!1001 &7644448383696180796
 PrefabInstance:
   m_ObjectHideFlags: 0

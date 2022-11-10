@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Network
     {
         [SerializeField] private LayerMask _mineLayer;
         [SerializeField] private GameObject[] _settable;
+        [SerializeField] private Transform[] _withChilds;
         
         private PhotonView _photonView;
         
@@ -22,6 +24,15 @@ namespace Network
                 foreach (var child in _settable)
                 {
                     child.layer = layer;
+                }
+
+                for (int i = 0; i < _withChilds.Length; i++)
+                {
+                    foreach (Transform child in
+                             _withChilds[i].GetComponentsInChildren<Transform>())
+                    {
+                        child.gameObject.layer = layer;
+                    }
                 }
             }
         }
