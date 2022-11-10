@@ -26031,7 +26031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1310459652431949320, guid: b2f3e585c4a8f654890607f513fcc115, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.87
+      value: 6.89
       objectReference: {fileID: 0}
     - target: {fileID: 1310459652431949320, guid: b2f3e585c4a8f654890607f513fcc115, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58105,6 +58105,7 @@ MonoBehaviour:
   _damage: 0
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
+  _photonView: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 677085517}
   fovSpeed: 15
@@ -92613,6 +92614,7 @@ MonoBehaviour:
   _damage: 0
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
+  _photonView: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 933746593}
   fovSpeed: 15
@@ -101427,6 +101429,7 @@ MonoBehaviour:
   _damage: 0
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
+  _photonView: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 160260386}
   fovSpeed: 15
@@ -104176,6 +104179,7 @@ MonoBehaviour:
   _damage: 0
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
+  _photonView: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 2374949120214032590}
   fovSpeed: 15

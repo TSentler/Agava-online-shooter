@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GameMapScene.unity
     guid: 503ef68b5abdaa14b98fae2b49229aca
-  - enabled: 1
+  - enabled: 0
     path: Assets/CandyFantasyworld/Scenes/CandyScene_night.unity
     guid: 4d91102fd531ca9419700297df4d1154
   - enabled: 1

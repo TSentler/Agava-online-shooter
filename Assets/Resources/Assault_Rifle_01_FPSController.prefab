@@ -1225,7 +1225,6 @@ GameObject:
   - component: {fileID: -8042488862029087902}
   - component: {fileID: 2610393471383777675}
   - component: {fileID: 2802158373968492841}
-  - component: {fileID: 4177181036137249874}
   m_Layer: 7
   m_Name: Assault_Rifle_01_FPSController
   m_TagString: Untagged
@@ -1434,7 +1433,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3999451411826328546}
   - {fileID: -8042488862029087902}
-  - {fileID: 4177181036137249874}
   - {fileID: 3258389117131450028}
   - {fileID: 7492778290473507557}
   - {fileID: 4960712031303489442}
@@ -1608,22 +1606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e938b9b4a8134dc981873d4cfd42ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4177181036137249874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354921826246218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &1357289475648828
 GameObject:
   m_ObjectHideFlags: 0
