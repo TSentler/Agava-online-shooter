@@ -22,7 +22,7 @@ RenderSettings:
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.9254902, g: 0.7882353, b: 0.83482844, a: 1}
   m_AmbientEquatorColor: {r: 0.39935738, g: 0.2845319, b: 0.4339623, a: 1}
-  m_AmbientGroundColor: {r: 0.17605044, g: 0, b: 0.3679245, a: 1}
+  m_AmbientGroundColor: {r: 0.24528301, g: 0, b: 0.053208638, a: 1}
   m_AmbientIntensity: 1.37
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -3722,6 +3722,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23846265411105572, guid: 3ecedab8817d6db40848e273e6614cf8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df72c04ac1518774ab4b7692b05883a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ecedab8817d6db40848e273e6614cf8, type: 3}
 --- !u!4 &111298432 stripped
@@ -21481,6 +21485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23797462368883538, guid: 3dfdc09e3f15b984aa13c190aa6dfd04, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df72c04ac1518774ab4b7692b05883a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dfdc09e3f15b984aa13c190aa6dfd04, type: 3}
 --- !u!4 &606260953 stripped
@@ -36256,6 +36264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23846265411105572, guid: 3ecedab8817d6db40848e273e6614cf8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df72c04ac1518774ab4b7692b05883a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ecedab8817d6db40848e273e6614cf8, type: 3}
 --- !u!4 &1034380758 stripped
