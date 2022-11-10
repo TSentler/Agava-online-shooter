@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb84bf68fd480b54d963e4d69fe6eb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _matchTimeInSeconds: 7
+  _matchTimeInSeconds: 180
   _matchScoreboard: {fileID: 578353688360086887}
   _syncronizer: {fileID: 0}
 --- !u!114 &578353688613642808
