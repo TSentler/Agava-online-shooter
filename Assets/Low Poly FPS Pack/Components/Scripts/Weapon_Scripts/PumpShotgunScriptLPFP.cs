@@ -806,30 +806,30 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Inspect weapon when pressing T key
-        if (Input.GetKeyDown(KeyCode.T) && _photonView.IsMine)
-        {
-            anim.SetTrigger("Inspect");
-        }
+        //if (Input.GetKeyDown(KeyCode.T) && _photonView.IsMine)
+        //{
+        //    anim.SetTrigger("Inspect");
+        //}
 
-        //Toggle holster weapon when pressing E key
-        if (Input.GetKeyDown(KeyCode.E) && !hasBeenHolstered && _photonView.IsMine)
-        {
-            holstered = true;
+        ////Toggle holster weapon when pressing E key
+        //if (Input.GetKeyDown(KeyCode.E) && !hasBeenHolstered && _photonView.IsMine)
+        //{
+        //    holstered = true;
 
-            mainAudioSource.clip = SoundClips.holsterSound;
-            mainAudioSource.Play();
+        //    mainAudioSource.clip = SoundClips.holsterSound;
+        //    mainAudioSource.Play();
 
-            hasBeenHolstered = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && hasBeenHolstered && _photonView.IsMine)
-        {
-            holstered = false;
+        //    hasBeenHolstered = true;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.E) && hasBeenHolstered && _photonView.IsMine)
+        //{
+        //    holstered = false;
 
-            mainAudioSource.clip = SoundClips.takeOutSound;
-            mainAudioSource.Play();
+        //    mainAudioSource.clip = SoundClips.takeOutSound;
+        //    mainAudioSource.Play();
 
-            hasBeenHolstered = false;
-        }
+        //    hasBeenHolstered = false;
+        //}
         //Holster anim toggle
         if (holstered == true)
         {

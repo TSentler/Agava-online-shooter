@@ -18,12 +18,10 @@ public class WeaponsHolder : MonoBehaviour
     public event UnityAction<Transform> GunChanged;
 
     private void OnEnable()
-    {
-        _weapons[_currentGunId].SetActive(false);
-        _weapons[0].SetActive(true);
+    {   
         GunChanged?.Invoke(_weapons[0].gameObject.transform);
-        _weaponsInThirdPersons[_currentGunId].SetActive(true);    
-        _animator.runtimeAnimatorController = _controllerOneHand;
+        _photonView.RPC(nameof(EnableGunInStart), RpcTarget.All);
+        _currentGunId = 0;
     }
 
     public void SetNewGun(int id)
@@ -49,5 +47,15 @@ public class WeaponsHolder : MonoBehaviour
         {
             _animator.runtimeAnimatorController = _controllerOneHand;
         }
+    }
+
+    [PunRPC]
+    private void EnableGunInStart()
+    {
+        _weapons[_currentGunId].SetActive(false);
+        _weapons[0].SetActive(true);
+        _weaponsInThirdPersons[_currentGunId].SetActive(false);
+        _weaponsInThirdPersons[0].SetActive(true);
+        _animator.runtimeAnimatorController = _controllerOneHand;
     }
 }

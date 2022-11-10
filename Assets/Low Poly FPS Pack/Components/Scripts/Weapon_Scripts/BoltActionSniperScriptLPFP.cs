@@ -490,30 +490,30 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Inspect weapon when T key is pressed
-		if (Input.GetKeyDown (KeyCode.T) && _photonView.IsMine) 
-		{
-			anim.SetTrigger ("Inspect");
-		}
+		//if (Input.GetKeyDown (KeyCode.T) && _photonView.IsMine) 
+		//{
+		//	anim.SetTrigger ("Inspect");
+		//}
 
-		//Toggle weapon holster when E key is pressed
-		if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered && _photonView.IsMine) 
-		{
-			holstered = true;
+		////Toggle weapon holster when E key is pressed
+		//if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered && _photonView.IsMine) 
+		//{
+		//	holstered = true;
 
-			mainAudioSource.clip = SoundClips.holsterSound;
-			mainAudioSource.Play();
+		//	mainAudioSource.clip = SoundClips.holsterSound;
+		//	mainAudioSource.Play();
 
-			hasBeenHolstered = true;
-		} 
-		else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered && _photonView.IsMine) 
-		{
-			holstered = false;
+		//	hasBeenHolstered = true;
+		//} 
+		//else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered && _photonView.IsMine) 
+		//{
+		//	holstered = false;
 
-			mainAudioSource.clip = SoundClips.takeOutSound;
-			mainAudioSource.Play ();
+		//	mainAudioSource.clip = SoundClips.takeOutSound;
+		//	mainAudioSource.Play ();
 
-			hasBeenHolstered = false;
-		}
+		//	hasBeenHolstered = false;
+		//}
 		//Holster anim toggle
 		if (holstered == true) 
 		{
