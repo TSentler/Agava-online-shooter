@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAtCameraTest : MonoBehaviour {
+public class LookAtCamera : MonoBehaviour {
 
 	private void Start () 
 	{
