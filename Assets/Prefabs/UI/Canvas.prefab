@@ -278,6 +278,7 @@ MonoBehaviour:
   _scoreTemplate: {fileID: 8942237104176839078, guid: e969c7fbcb91fe745a82d024af7c1c9b, type: 3}
   _textTimer: {fileID: 2658104175072605468}
   _maxTime: 5
+  _photonView: {fileID: 578353688360086880}
 --- !u!114 &578353688360086905
 MonoBehaviour:
   m_ObjectHideFlags: 0

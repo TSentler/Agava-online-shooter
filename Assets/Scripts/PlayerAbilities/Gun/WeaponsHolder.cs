@@ -8,6 +8,10 @@ public class WeaponsHolder : MonoBehaviour
 {
     [SerializeField] private GameObject[] _weapons;
     [SerializeField] private PhotonView _photonView;
+    [SerializeField] private GameObject[] _weaponsInThirdPersons;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private RuntimeAnimatorController _controllerTwoHand;
+    [SerializeField] private RuntimeAnimatorController _controllerOneHand;
 
     private int _currentGunId = 0;
 
@@ -18,6 +22,8 @@ public class WeaponsHolder : MonoBehaviour
         _weapons[_currentGunId].SetActive(false);
         _weapons[0].SetActive(true);
         GunChanged?.Invoke(_weapons[0].gameObject.transform);
+        _weaponsInThirdPersons[_currentGunId].SetActive(true);    
+        _animator.runtimeAnimatorController = _controllerOneHand;
     }
 
     public void SetNewGun(int id)
@@ -32,5 +38,15 @@ public class WeaponsHolder : MonoBehaviour
         _weapons[_currentGunId].SetActive(false);
         _weapons[id].SetActive(true);
         GunChanged?.Invoke(_weapons[id].gameObject.transform);
+        _weaponsInThirdPersons[_currentGunId].SetActive(true);
+
+        if(id > 0)
+        {
+            _animator.runtimeAnimatorController = _controllerTwoHand;
+        }
+        else
+        {
+            _animator.runtimeAnimatorController = _controllerOneHand;
+        }
     }
 }

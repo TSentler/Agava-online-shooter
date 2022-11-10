@@ -43,5 +43,6 @@ namespace PlayerAbilities
             return Vector2.right * horizontalInput + 
                    Vector2.up * verticalInput;
         }
+        
     }
 }

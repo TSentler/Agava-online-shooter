@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using CharacterInput;
+using Photon.Pun;
 using UnityEngine;
 
 public class ThirdPersonDemoLPFP : MonoBehaviour {
@@ -45,7 +47,35 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 
 	[Header("Audio Sources")]
 	public AudioSource shootAudioSource;
+	
+    [SerializeField] private MonoBehaviour _inputSourceBehaviour;
+    [SerializeField] private PhotonView _photonView;
+	
+	private ICharacterInputSource _inputSource;
+	
+	private void OnValidate()
+	{
+		if (_inputSourceBehaviour 
+			&& !(_inputSourceBehaviour is ICharacterInputSource))
+		{
+			Debug.LogError(nameof(_inputSourceBehaviour) + " needs to implement " + nameof(ICharacterInputSource));
+			_inputSourceBehaviour = null;
+		}
+	}
 
+	public void Initialize(ICharacterInputSource inputSource)
+	{
+		_inputSource = inputSource;
+	}
+	
+	private void Awake()
+	{
+		if (_inputSource == null)
+		{
+			Initialize((ICharacterInputSource)_inputSourceBehaviour);
+		}
+	}
+	
 	private void Start () 
 	{
 		//Assign animator component
@@ -56,6 +86,9 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 
 	private void Update () 
 	{
+		if (_photonView.IsMine == false)
+			return;
+		
 		//Aim in with right click hold
 		if (Input.GetMouseButton (1)) 
 		{
@@ -70,62 +103,9 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 				defaultFOV, fovSpeed * Time.deltaTime);
 		}
 
-		//---------- The movement code is used to preview the different animations in the demo scene, should not actually be used for your games :) ---------//
-		//Idle
-		if (Input.GetKeyDown (KeyCode.T)) 
-		{
-			anim.SetFloat ("Vertical", 0.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", 0.0f, 0, Time.deltaTime);
-		}
-		//Run forward
-		if (Input.GetKeyDown (KeyCode.W)) 
-		{
-			anim.SetFloat ("Vertical", 1.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", 0.0f, 0, Time.deltaTime);
-		}
-		//Run 45 up right
-		if (Input.GetKeyDown (KeyCode.E)) 
-		{
-			anim.SetFloat ("Vertical", 1.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", 1.0f, 0, Time.deltaTime);
-		}
-		//Run strafe right
-		if (Input.GetKeyDown (KeyCode.D)) 
-		{
-			anim.SetFloat ("Vertical", 0.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", 1.0f, 0, Time.deltaTime);
-		}
-		//Run 45 back right
-		if (Input.GetKeyDown (KeyCode.X)) 
-		{
-			anim.SetFloat ("Vertical", -1.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", 1.0f, 0, Time.deltaTime);
-		}
-		//Run backwards
-		if (Input.GetKeyDown (KeyCode.S)) 
-		{
-			anim.SetFloat ("Vertical", -1.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", 0.0f, 0, Time.deltaTime);
-		}
-		//Run 45 back left
-		if (Input.GetKeyDown (KeyCode.Z)) 
-		{
-			anim.SetFloat ("Vertical", -1.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", -1.0f, 0, Time.deltaTime);
-		}
-		//Run strafe left
-		if (Input.GetKeyDown (KeyCode.A)) 
-		{
-			anim.SetFloat ("Vertical", 0.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", -1.0f, 0, Time.deltaTime);
-		}
-		//Run 45 up left
-		if (Input.GetKeyDown (KeyCode.Q)) 
-		{
-			anim.SetFloat ("Vertical", 1.0f, 0, Time.deltaTime);
-			anim.SetFloat ("Horizontal", -1.0f, 0, Time.deltaTime);
-		}
-		//---------- The movement code is used to preview the different animations in the demo scene, should not actually be used for your games :) ---------//
+		var moveInput = _inputSource.MovementInput;
+		anim.SetFloat ("Vertical", moveInput.y, 0, Time.deltaTime);
+		anim.SetFloat ("Horizontal", moveInput.x, 0, Time.deltaTime);
 
 		//Single fire with left click
 		if (Input.GetMouseButtonDown (0) && semi == true) 
@@ -192,7 +172,7 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		//Throw grenade when pressing G key
 		if (Input.GetKeyDown (KeyCode.G)) 
 		{
-			StartCoroutine (GrenadeSpawnDelay ());
+			//StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation
 			anim.Play("Grenade_Throw", 1, 0.0f);
 		}
@@ -214,4 +194,5 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		yield return new WaitForSeconds (0.02f);
 		muzzleflashLight.enabled = false;
 	}
+	
 }

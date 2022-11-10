@@ -6,7 +6,9 @@ TagManager:
   tags:
   - Missile
   - Metal
-  - Dirt
+  - GasTank
+  - Target
+  - ExplosiveBarrel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - HitDetection
   - PostProcessing
   - PlayerHands
-  - 
+  - CameraIgnore
   - 
   - 
   - 

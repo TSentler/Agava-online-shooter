@@ -14,7 +14,7 @@ public class ChooseModel : MonoBehaviour
         if (_photonView.IsMine)
         {
             _mineModel.SetActive(true);
-            _notMineModel.SetActive(false);
+            _notMineModel.SetActive(true);
         }
         else
         {
