@@ -5,7 +5,6 @@ using Photon.Pun;
 using UnityEngine;
 
 public class ThirdPersonDemoLPFP : MonoBehaviour {
-
 	[Header("Camera")]
 	public Camera mainCamera;
 	[Header("Camera FOV Settings")]
@@ -111,8 +110,8 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0) && semi == true) 
 		{
 			//Play shoot sound 
-			shootAudioSource.clip = shootSound;
-			shootAudioSource.Play ();
+			//shootAudioSource.clip = shootSound;
+			//shootAudioSource.Play ();
 
 			//Play from second layer, from the beginning
 			anim.Play ("Fire", 1, 0.0f);
@@ -122,9 +121,9 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 			StartCoroutine (MuzzleflashLight ());
 
 			//Spawn casing at spawnpoint
-			Instantiate (casingPrefab, 
-				casingSpawnpoint.transform.position, 
-				casingSpawnpoint.transform.rotation);
+			//Instantiate (casingPrefab, 
+			//	casingSpawnpoint.transform.position, 
+			//	casingSpawnpoint.transform.rotation);
 		}
 
 		//AUtomatic fire
@@ -136,8 +135,8 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 			{
 				lastFired = Time.time;
 				//Play shoot sound
-				shootAudioSource.clip = shootSound;
-				shootAudioSource.Play ();
+				//shootAudioSource.clip = shootSound;
+				//shootAudioSource.Play ();
 
 				//Play from second layer, from the beginning
 				anim.Play ("Fire", 1, 0.0f);
@@ -152,14 +151,14 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 					casingSpawnpoint.transform.rotation);
 
 				//Spawn bullet from bullet spawnpoint
-				var bullet = (Transform)Instantiate (
-					bulletPrefab,
-					bulletSpawnpoint.transform.position,
-					bulletSpawnpoint.transform.rotation);
+				//var bullet = (Transform)Instantiate (
+				//	bulletPrefab,
+				//	bulletSpawnpoint.transform.position,
+				//	bulletSpawnpoint.transform.rotation);
 
 				//Add velocity to the bullet
-				bullet.GetComponent<Rigidbody> ().velocity = 
-					bullet.transform.forward * bulletForce;
+				//bullet.GetComponent<Rigidbody> ().velocity = 
+				//	bullet.transform.forward * bulletForce;
 			}
 		}
 
