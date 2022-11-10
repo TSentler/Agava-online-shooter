@@ -9,6 +9,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 {
     [SerializeField] private float _damage;
     [SerializeField] private GunView _gunView;
+    [SerializeField] private PhotonView _photonView;
 
     //Animator component attached to weapon
     Animator anim;
@@ -361,7 +362,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
         //Aiming
         //Toggle camera FOV when right click is held down
-        if (Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting)
+        if (Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting && _photonView.IsMine)
         {
             if (ironSights == true)
             {
@@ -506,18 +507,18 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         AnimationCheck();
 
         //Play knife attack 1 animation when Q key is pressed
-        if (Input.GetKeyDown(KeyCode.Q) && !isInspecting)
-        {
-            anim.Play("Knife Attack 1", 0, 0f);
-        }
-        //Play knife attack 2 animation when F key is pressed
-        if (Input.GetKeyDown(KeyCode.F) && !isInspecting)
-        {
-            anim.Play("Knife Attack 2", 0, 0f);
-        }
+        //if (Input.GetKeyDown(KeyCode.Q) && !isInspecting)
+        //{
+        //    anim.Play("Knife Attack 1", 0, 0f);
+        //}
+        ////Play knife attack 2 animation when F key is pressed
+        //if (Input.GetKeyDown(KeyCode.F) && !isInspecting)
+        //{
+        //    anim.Play("Knife Attack 2", 0, 0f);
+        //}
 
         //Throw grenade when pressing G key
-        if (Input.GetKeyDown(KeyCode.G) && !isInspecting)
+        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine)
         {
             StartCoroutine(GrenadeSpawnDelay());
             //Play grenade throw animation
@@ -525,7 +526,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //If out of ammo
-        if (currentAmmo == 0)
+        if (currentAmmo == 0 && _photonView.IsMine)
         {
             //Show out of ammo text
             currentWeaponText.text = "OUT OF AMMO";
@@ -553,7 +554,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Shooting 
-        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning)
+        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning && _photonView.IsMine)
         {
             anim.Play("Fire", 0, 0f);
             if (!silencer)
@@ -653,13 +654,13 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Inspect weapon when pressing T key
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && _photonView.IsMine)
         {
             anim.SetTrigger("Inspect");
         }
 
         //Toggle weapon holster when pressing E key
-        if (Input.GetKeyDown(KeyCode.E) && !hasBeenHolstered)
+        if (Input.GetKeyDown(KeyCode.E) && !hasBeenHolstered && _photonView.IsMine)
         {
             holstered = true;
 
@@ -668,7 +669,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
             hasBeenHolstered = true;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && hasBeenHolstered)
+        else if (Input.GetKeyDown(KeyCode.E) && hasBeenHolstered && _photonView.IsMine)
         {
             holstered = false;
 
@@ -689,7 +690,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Reload 
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine)
         {
             //Reload
             Reload();
@@ -705,7 +706,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         if (Input.GetKey(KeyCode.W) && !isRunning ||
             Input.GetKey(KeyCode.A) && !isRunning ||
             Input.GetKey(KeyCode.S) && !isRunning ||
-            Input.GetKey(KeyCode.D) && !isRunning)
+            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine) 
         {
             anim.SetBool("Walk", true);
         }
@@ -715,7 +716,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)))
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine)
         {
             isRunning = true;
         }
