@@ -32464,7 +32464,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 294f8fd558aa0d1488d4997453398cf0, type: 2}
-  - {fileID: 2100000, guid: 294f8fd558aa0d1488d4997453398cf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47896,7 +47895,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b0ea9aa64da8c76498ef3b008d0cca1b, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61602,6 +61600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: 3999451411826328546}
+  _photonView: {fileID: 324320900069819033}
   _playerInfo: {fileID: 2212487470621667383}
 --- !u!1 &2330538665306855907 stripped
 GameObject:
@@ -61635,6 +61634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: 3999451411826328546}
+  _photonView: {fileID: 324320900069819033}
   _playerInfo: {fileID: 2212487470621667383}
 --- !u!1 &2330538665306855919 stripped
 GameObject:

@@ -33,8 +33,11 @@ public class BulletScript : MonoBehaviour {
     {
 		if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
 		{
-			hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
-			_gun.HitOnPlayer();
+			if(hitDetector.PhotonView.IsMine == false)
+            {
+				hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
+				_gun.HitOnPlayer();
+			}	
 		}
 	}
 

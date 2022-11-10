@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayerAbilities;
+using Photon.Pun;
 
 public class GrenadeScript : MonoBehaviour {
-
+	
 	[Header("Timer")]
 	//Time before the grenade explodes
 	[Tooltip("Time before the grenade explodes")]
@@ -29,6 +31,8 @@ public class GrenadeScript : MonoBehaviour {
 
 	[Header("Audio")]
 	public AudioSource impactSound;
+
+	[SerializeField] private float _damage;
 
 	private void Awake () 
 	{
@@ -109,6 +113,11 @@ public class GrenadeScript : MonoBehaviour {
 				hit.gameObject.GetComponent<GasTankScript> ().isHit = true;
 				//Reduce explosion timer on gas tank object to make it explode faster
 				hit.gameObject.GetComponent<GasTankScript> ().explosionTimer = 0.05f;
+			}
+
+			if(hit.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+            {
+				playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer);
 			}
 		}
 

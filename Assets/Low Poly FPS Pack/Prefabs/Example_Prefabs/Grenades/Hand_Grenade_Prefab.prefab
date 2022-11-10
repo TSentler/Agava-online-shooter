@@ -503,3 +503,4 @@ MonoBehaviour:
   minimumForce: 750
   maximumForce: 1000
   impactSound: {fileID: 82305533685823640}
+  _damage: 200
