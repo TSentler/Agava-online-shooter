@@ -36,9 +36,10 @@ public class WeaponsHolder : MonoBehaviour
     private void EnableNewGun(int id)
     {
         _weapons[_currentGunId].SetActive(false);
+        _weaponsInThirdPersons[_currentGunId].SetActive(false);
         _weapons[id].SetActive(true);
         GunChanged?.Invoke(_weapons[id].gameObject.transform);
-        _weaponsInThirdPersons[_currentGunId].SetActive(true);
+        _weaponsInThirdPersons[id].SetActive(true);
 
         if(id > 0)
         {
