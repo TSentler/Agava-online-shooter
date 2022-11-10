@@ -54,7 +54,7 @@ namespace Levels
             _largeRoomOptions.CleanupCacheOnLeave = true;
             _largeRoomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
             _largeRoomOptions.CustomRoomPropertiesForLobby = new string[] { SceneNameKey.ToString() };
-            _largeRoomOptions.CustomRoomProperties.Add(SceneNameKey, LevelNames.LargeLevelScene.ToString());
+            _largeRoomOptions.CustomRoomProperties.Add(SceneNameKey, LevelNames.SmallMapCity.ToString());
         }
 
         private void OnEnable()
@@ -108,7 +108,7 @@ namespace Levels
 
         public void CreateOrJoinLargeMap()
         {
-            CreateOrJoinMap(LevelNames.LargeLevelScene, _largeRoomOptions);
+            CreateOrJoinMap(LevelNames.SmallMapCity, _largeRoomOptions);
         }
 
         private void CreateOrJoinMap(LevelNames levelName, RoomOptions options)
