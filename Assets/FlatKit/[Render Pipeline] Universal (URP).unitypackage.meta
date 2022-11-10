@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Postprocessing.meta
+guid: 1457da65dd177204aad33233833032a0
+folderAsset: yes
+========
+guid: 41e59f562b69648719f2424c438758f3
+>>>>>>>> feature/add-health-on-new-model:Assets/FlatKit/[Render Pipeline] Universal (URP).unitypackage.meta
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

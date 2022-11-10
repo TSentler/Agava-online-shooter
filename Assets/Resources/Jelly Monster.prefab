@@ -1781,6 +1781,7 @@ Transform:
   m_Children:
   - {fileID: 2184113064619443037}
   - {fileID: 7009398602252673530}
+  - {fileID: 8401600077742280504}
   m_Father: {fileID: 1803953282928573272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2444,6 +2445,37 @@ CapsuleCollider:
   m_Height: 3.685944
   m_Direction: 1
   m_Center: {x: 0.004954796, y: 1.1673139, z: -0.08210475}
+--- !u!1 &3778181554192986645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8401600077742280504}
+  m_Layer: 7
+  m_Name: weapon (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8401600077742280504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3778181554192986645}
+  m_LocalRotation: {x: -0.63864404, y: 0.25700405, z: 0.3319922, w: 0.64487505}
+  m_LocalPosition: {x: 28.1, y: -495, z: -60.8}
+  m_LocalScale: {x: 0.4999998, y: 0.49999988, z: 0.5000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4508799192511301067}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -96.1, y: 119.4, z: -70.1}
 --- !u!1 &3852712350805012952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,6 +3334,7 @@ GameObject:
   - component: {fileID: 8717959275081263759}
   - component: {fileID: 1671936356364261117}
   - component: {fileID: 5769570461929580660}
+  - component: {fileID: 1575338295547030630}
   m_Layer: 7
   m_Name: AnimationPresenters
   m_TagString: Untagged
@@ -3423,6 +3456,28 @@ MonoBehaviour:
     _weight: 0
   - _bone: 11
     _weight: 0
+--- !u!114 &1575338295547030630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769570461929580649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47613a14a59c51735a67cd34acdbdbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7926811385661495177}
+  _target: {fileID: 5769570462044029525}
+  _aim: {fileID: 8401600077742280504}
+  _weight: 0.08
+  _angleLimit: 0
+  _humanBones:
+  - _bone: 13
+    _weight: 1
+  - _bone: 15
+    _weight: 1
 --- !u!1 &5769570462044029524
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,10 +4610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8eb961b134f2c8408ecb237d75e5650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHand: {fileID: 6293996175980194239}
-  _ammoQuanityText: {fileID: 3691134727135528771}
+  _weaponsHolder: {fileID: 0}
+  _playerCanvas: {fileID: 0}
   _photonView: {fileID: 5537214694185517777}
-  _crosshair: {fileID: 3318341160028504967}
   _hitIndicator: {fileID: 411404444670697743}
 --- !u!114 &4294300332522861659
 MonoBehaviour:
@@ -4828,8 +4882,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!1 &8133982974615871234
 GameObject:
   m_ObjectHideFlags: 0
@@ -6126,15 +6180,15 @@ PrefabInstance:
       objectReference: {fileID: 7009398602252673530}
     - target: {fileID: 1505393906803427882, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _offset.x
-      value: 3.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1505393906803427882, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _offset.y
-      value: 1.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1505393906803427882, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: _offset.z
-      value: -3.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1720276398373521207, guid: d7f78012d1ef348489a886b00d362c2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
