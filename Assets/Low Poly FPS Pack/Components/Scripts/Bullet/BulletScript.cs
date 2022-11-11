@@ -34,8 +34,6 @@ public class BulletScript : MonoBehaviour {
 
 		if (Physics.Raycast(startPosition, transform.forward, out hit))
         {
-			var collisionPoint = hit.collider.ClosestPoint(transform.position);
-			var collisionNormal = transform.position - collisionPoint;
 
 			Debug.DrawRay(transform.position, transform.position + transform.forward * 0.05f);
 			if (hit.collider.TryGetComponent(out HitDetector hitDetector))
@@ -45,32 +43,9 @@ public class BulletScript : MonoBehaviour {
 					hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
 					_gun.HitOnPlayer();
 				}
-			}
-
-			//If bullet collides with "Metal" tag
-			if (hit.collider.transform.tag == "Metal")
-			{
-				//Instantiate random impact prefab from array
-				Instantiate(metalImpactPrefabs[Random.Range
-					(0, bloodImpactPrefabs.Length)], transform.position,
-					Quaternion.LookRotation(collisionNormal));
-				//Destroy bullet object
-				Destroy(gameObject);
-			}
+			}			
 		}
 	}
-
- //   private void OnTriggerEnter(Collider other)
- //   {
-	//	if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
-	//	{
-	//		if(hitDetector.PhotonView.IsMine == false)
- //           {
-	//			hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
-	//			_gun.HitOnPlayer();
-	//		}	
-	//	}
-	//}
 
     //If the bullet collides with anything
     private void OnTriggerEnter(Collider other) 
@@ -78,20 +53,11 @@ public class BulletScript : MonoBehaviour {
 		var collisionPoint = other.ClosestPoint(transform.position);
 		var collisionNormal = transform.position - collisionPoint;
 
-		if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
-		{
-			if (hitDetector.PhotonView.IsMine == false)
-			{
-				hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
-				_gun.HitOnPlayer();
-			}
-		}
-
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
 		if (!destroyOnImpact) 
 		{
-			StartCoroutine (DestroyTimer ());
+			StartCoroutine (DestroyTimer());
 		}
 		//Otherwise, destroy bullet on impact
 		else 
@@ -101,8 +67,7 @@ public class BulletScript : MonoBehaviour {
 
 		//If bullet collides with "Blood" tag
 		if (other.transform.tag == "Blood") 
-		{
-			
+		{			
 			//Instantiate random impact prefab from array
 			Instantiate (bloodImpactPrefabs [Random.Range 
 				(0, bloodImpactPrefabs.Length)], transform.position, 
