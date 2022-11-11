@@ -34,7 +34,6 @@ public class BulletScript : MonoBehaviour {
 
 		if (Physics.Raycast(startPosition, transform.forward, out hit))
         {
-
 			Debug.DrawRay(transform.position, transform.position + transform.forward * 0.05f);
 			if (hit.collider.TryGetComponent(out HitDetector hitDetector))
 			{
@@ -43,15 +42,20 @@ public class BulletScript : MonoBehaviour {
 					hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
 					_gun.HitOnPlayer();
 				}
-			}			
+				
+			}
+
+			SpawnDecal(hit.collider.gameObject);
 		}
 	}
 
     //If the bullet collides with anything
-    private void OnTriggerEnter(Collider other) 
+    private void SpawnDecal(GameObject other) 
 	{
-		var collisionPoint = other.ClosestPoint(transform.position);
-		var collisionNormal = transform.position - collisionPoint;
+		//var collisionPoint = other.ClosestPoint(transform.position);
+		//var collisionNormal = transform.position - collisionPoint;
+		//Debug.DrawLine(transform.position, collisionPoint, Color.red, 1000);
+		//Debug.DrawLine(other.transform.position, collisionPoint, Color.white,1000);
 
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
@@ -70,8 +74,8 @@ public class BulletScript : MonoBehaviour {
 		{			
 			//Instantiate random impact prefab from array
 			Instantiate (bloodImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation(collisionNormal));
+				(0, bloodImpactPrefabs.Length)], other.transform.position, 
+				Quaternion.LookRotation(other.transform.position));
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
@@ -81,8 +85,8 @@ public class BulletScript : MonoBehaviour {
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (metalImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation (collisionNormal));
+				(0, bloodImpactPrefabs.Length)], other.transform.position, 
+				Quaternion.LookRotation (other.transform.position));
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
@@ -92,8 +96,8 @@ public class BulletScript : MonoBehaviour {
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (dirtImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation (collisionNormal));
+				(0, bloodImpactPrefabs.Length)], other.transform.position, 
+				Quaternion.LookRotation (other.transform.position));
 			//Destroy bullet object
 			Destroy(gameObject);
 		}	
