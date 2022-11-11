@@ -3,6 +3,7 @@ using PlayerAbilities;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FPSControllerLPFP
 {
@@ -12,7 +13,10 @@ namespace FPSControllerLPFP
     [RequireComponent(typeof(AudioSource))]
     public class FpsControllerLPFP : MonoBehaviour
     {
+        private const string MouseSensitivitySaveKey = "MouseSensitivity";
+
         [SerializeField] private WeaponsHolder _weaponsHolder;
+        [SerializeField] private float _standartSensetivity;
 #pragma warning disable 649
         [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
@@ -69,18 +73,40 @@ namespace FPSControllerLPFP
         private SmoothVelocity _velocityX;
         private SmoothVelocity _velocityZ;
         private bool _isGrounded;
+        private Slider _slieder;
+        private MouseSensitivityChange _mouseSensitivityChange;
 
         private readonly RaycastHit[] _groundCastResults = new RaycastHit[8];
         private readonly RaycastHit[] _wallCastResults = new RaycastHit[8];
 
+        private void Awake()
+        {
+            _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
+            _slieder = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
+
+            if (_photonView.IsMine)
+            {
+                if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+                {
+                    _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+                }
+                else
+                {
+                    _slieder.value = _standartSensetivity;
+                }
+            }
+        }
+
         private void OnEnable()
         {
             _weaponsHolder.GunChanged += SetNewArm;
+            _slieder.onValueChanged.AddListener(ChangeSensetivity);
         }
 
         private void OnDisable()
         {
             _weaponsHolder.GunChanged -= SetNewArm;
+            _slieder.onValueChanged.RemoveListener(ChangeSensetivity);
         }
 
         /// Initializes the FpsController on start.
@@ -156,7 +182,7 @@ namespace FPSControllerLPFP
         {
             if (_photonView.IsMine == false)
                 return;
-            
+
             // FixedUpdate is used instead of Update because this code is dealing with physics and smoothing.
             RotateCameraAndCharacter();
             MoveCharacter();
@@ -169,7 +195,7 @@ namespace FPSControllerLPFP
         {
             if (_photonView.IsMine == false)
                 return;
-            
+
             arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
@@ -298,6 +324,12 @@ namespace FPSControllerLPFP
                     _audioSource.Pause();
                 }
             }
+        }
+
+        private void ChangeSensetivity(float value)
+        {
+            mouseSensitivity = _slieder.value;
+            PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slieder.value);
         }
 
         /// A helper for assistance with smoothing the camera rotation.
