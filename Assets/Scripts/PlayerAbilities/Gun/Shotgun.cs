@@ -70,7 +70,7 @@ public class Shotgun : Gun
                     {
                         if (hitDetector.IsMine == false || hitDetector.IsBot)
                         {
-                            hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
+                            hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer, transform.position);
                             OnHit();
                         }
                         break;

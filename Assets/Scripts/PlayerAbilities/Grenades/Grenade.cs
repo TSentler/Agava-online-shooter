@@ -49,7 +49,7 @@ namespace PlayerAbilities
 
             foreach(var player in _players)
             {
-                player.ApplyDamage(_explouseDamage, PhotonNetwork.LocalPlayer);
+                player.ApplyDamage(_explouseDamage, PhotonNetwork.LocalPlayer, transform.position);
             }
 
             StartCoroutine(DestroyWihDelay());

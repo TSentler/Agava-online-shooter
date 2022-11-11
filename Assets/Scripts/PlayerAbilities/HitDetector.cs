@@ -13,7 +13,7 @@ public abstract class HitDetector : MonoBehaviour
     public bool IsBot => _playerInfo.IsBot;
     public PhotonView PhotonView => _photonView;
 
-    public abstract void DetectHit(float damage, Player player);
+    public abstract void DetectHit(float damage, Player player, Vector3 targetPostition);
 
     public bool IsSameRootTransform(Transform otherRootTransform)
     {

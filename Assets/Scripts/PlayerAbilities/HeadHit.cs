@@ -1,9 +1,10 @@
 using Photon.Realtime;
+using UnityEngine;
 
 public class HeadHit : HitDetector
 {
-    public override void DetectHit(float damage, Player player)
+    public override void DetectHit(float damage, Player player, Vector3 targetPostition)
     {
-        PlayerHealth.ApplyDamage(damage * 1.5f, player);
+        PlayerHealth.ApplyDamage(damage * 1.5f, player, targetPostition);
     }
 }

@@ -128,7 +128,7 @@ public abstract class Gun : MonoBehaviour
                         continue;
                     }
                     
-                    hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer);
+                    hitDetector.DetectHit(Damage, PhotonNetwork.LocalPlayer, transform.position);
                     OnHit();
                     break;
                 }

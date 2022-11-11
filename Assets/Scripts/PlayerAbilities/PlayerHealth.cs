@@ -83,14 +83,14 @@ namespace PlayerAbilities
             }
         }
 
-        public void ApplyDamage(float damage, Player player)
+        public void ApplyDamage(float damage, Player player, Vector3 targetPosition)
         {
-            object[] rpcParametrs = new object[2] { damage, player };
+            object[] rpcParametrs = new object[3] { damage, player, targetPosition };
             _photonView.RPC(nameof(ApplyDamageRPC), RpcTarget.All, rpcParametrs);
         }
 
         [PunRPC]
-        private void ApplyDamageRPC(float damage, Player player)
+        private void ApplyDamageRPC(float damage, Player player, Vector3 targetPosition)
         {
             if (_photonView.IsMine == false)
             {
@@ -109,6 +109,7 @@ namespace PlayerAbilities
                 if (_playerInfo.IsBot == false)
                 {
                     _damagebleHit.gameObject.SetActive(true);
+                    _damagebleHit.ShowHitPoint(targetPosition, transform);
                     StartCoroutine(DestroyEffectWithDelay());
                 }
 
@@ -142,7 +143,7 @@ namespace PlayerAbilities
 
         private IEnumerator DestroyEffectWithDelay()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(10f);
             _damagebleHit.gameObject.SetActive(false);
         }
     }
