@@ -22,28 +22,71 @@ public class BulletScript : MonoBehaviour {
 
 	private float _damage;
 	private IShooting _gun;
+	private Camera _camera;
 
 	private void Start () 
 	{
 		//Start destroy timer
 		StartCoroutine (DestroyAfter ());
-	}
 
-    private void OnTriggerEnter(Collider other)
-    {
-		if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
-		{
-			if(hitDetector.PhotonView.IsMine == false)
-            {
-				hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
-				_gun.HitOnPlayer();
-			}	
+		RaycastHit hit;
+		var startPosition = transform.position + transform.forward * 0.2f;
+
+		if (Physics.Raycast(startPosition, transform.forward, out hit))
+        {
+			var collisionPoint = hit.collider.ClosestPoint(transform.position);
+			var collisionNormal = transform.position - collisionPoint;
+
+			Debug.DrawRay(transform.position, transform.position + transform.forward * 0.05f);
+			if (hit.collider.TryGetComponent(out HitDetector hitDetector))
+			{
+				if (hitDetector.PhotonView.IsMine == false)
+				{
+					hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
+					_gun.HitOnPlayer();
+				}
+			}
+
+			//If bullet collides with "Metal" tag
+			if (hit.collider.transform.tag == "Metal")
+			{
+				//Instantiate random impact prefab from array
+				Instantiate(metalImpactPrefabs[Random.Range
+					(0, bloodImpactPrefabs.Length)], transform.position,
+					Quaternion.LookRotation(collisionNormal));
+				//Destroy bullet object
+				Destroy(gameObject);
+			}
 		}
 	}
 
+ //   private void OnTriggerEnter(Collider other)
+ //   {
+	//	if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
+	//	{
+	//		if(hitDetector.PhotonView.IsMine == false)
+ //           {
+	//			hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
+	//			_gun.HitOnPlayer();
+	//		}	
+	//	}
+	//}
+
     //If the bullet collides with anything
-    private void OnCollisionEnter (Collision collision) 
-	{		
+    private void OnTriggerEnter(Collider other) 
+	{
+		var collisionPoint = other.ClosestPoint(transform.position);
+		var collisionNormal = transform.position - collisionPoint;
+
+		if (other.gameObject.TryGetComponent(out HitDetector hitDetector))
+		{
+			if (hitDetector.PhotonView.IsMine == false)
+			{
+				hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
+				_gun.HitOnPlayer();
+			}
+		}
+
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
 		if (!destroyOnImpact) 
@@ -56,91 +99,39 @@ public class BulletScript : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		//Ignore collision if bullet collides with "Player" tag
-		if (collision.gameObject.tag == "Player") 
-		{
-			//Physics.IgnoreCollision (collision.collider);
-			Debug.LogWarning("Collides with player");
-			//Physics.IgnoreCollision(GetComponent<Collider>(), GetComponent<Collider>());
-
-
-			Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-
-		}
-
 		//If bullet collides with "Blood" tag
-		if (collision.transform.tag == "Blood") 
+		if (other.transform.tag == "Blood") 
 		{
+			
 			//Instantiate random impact prefab from array
 			Instantiate (bloodImpactPrefabs [Random.Range 
 				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation (collision.contacts [0].normal));
+				Quaternion.LookRotation(collisionNormal));
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
 
 		//If bullet collides with "Metal" tag
-		if (collision.transform.tag == "Metal") 
+		if (other.transform.tag == "Metal") 
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (metalImpactPrefabs [Random.Range 
 				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation (collision.contacts [0].normal));
+				Quaternion.LookRotation (collisionNormal));
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
 
 		//If bullet collides with "Dirt" tag
-		if (collision.transform.tag == "Dirt") 
+		if (other.transform.tag == "Dirt") 
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (dirtImpactPrefabs [Random.Range 
 				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation (collision.contacts [0].normal));
+				Quaternion.LookRotation (collisionNormal));
 			//Destroy bullet object
 			Destroy(gameObject);
-		}
-
-		//If bullet collides with "Concrete" tag
-		if (collision.transform.tag == "Concrete") 
-		{
-			//Instantiate random impact prefab from array
-			Instantiate (concreteImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], transform.position, 
-				Quaternion.LookRotation (collision.contacts [0].normal));
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
-
-		//If bullet collides with "Target" tag
-		if (collision.transform.tag == "Target") 
-		{
-			//Toggle "isHit" on target object
-			collision.transform.gameObject.GetComponent
-				<TargetScript>().isHit = true;
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
-			
-		//If bullet collides with "ExplosiveBarrel" tag
-		if (collision.transform.tag == "ExplosiveBarrel") 
-		{
-			//Toggle "explode" on explosive barrel object
-			collision.transform.gameObject.GetComponent
-				<ExplosiveBarrelScript>().explode = true;
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
-
-		//If bullet collides with "GasTank" tag
-		if (collision.transform.tag == "GasTank") 
-		{
-			//Toggle "isHit" on gas tank object
-			collision.transform.gameObject.GetComponent
-				<GasTankScript> ().isHit = true;
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
+		}	
 	}
 
 	public void SetDamage(float damage)
