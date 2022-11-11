@@ -53995,7 +53995,7 @@ MonoBehaviour:
   bulletForce: 400
   grenadeSpawnDelay: 0.35
   scopeRenderMaterial: {fileID: 2100000, guid: e42b5b324c3b7cf499d473a7f9762f64, type: 2}
-  fadeColor: {r: 0, g: 0, b: 0, a: 0}
+  fadeColor: {r: 1, g: 1, b: 1, a: 0}
   defaultColor: {r: 1, g: 1, b: 1, a: 0}
   randomMuzzleflash: 1
   maxRandomValue: 2
