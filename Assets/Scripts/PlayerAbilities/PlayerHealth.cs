@@ -35,8 +35,7 @@ namespace PlayerAbilities
 
         public void DisableObject()
         {
-            _animator.SetBool("IsDie", true);
-            StartCoroutine(DisableWithDelay());
+            
         }
 
         private void Awake()
@@ -126,7 +125,9 @@ namespace PlayerAbilities
                         int kills = (int)player.CustomProperties["Kills"] + 1;
                         player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
                     }
-                    _spawner.SpawnPlayer(this);
+                    _animator.SetBool("IsDie", true);
+                    StartCoroutine(DisableWithDelay());
+                    //_spawner.SpawnPlayer(this);
                     _weaponsHolder.SetNewGun(0);
                 }
             }
@@ -135,6 +136,7 @@ namespace PlayerAbilities
         [PunRPC]
         private void DisableObjectRPC()
         {
+            _spawner.SpawnPlayer(this);
             gameObject.SetActive(false);
         }
 
@@ -152,7 +154,7 @@ namespace PlayerAbilities
 
         private IEnumerator DisableWithDelay()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
         }
     }

@@ -17,8 +17,8 @@ namespace PlayerAbilities
 
         public void SpawnPlayer(PlayerHealth player)
         {
-            player.DisableObject();
-            StartCoroutine(SpawnWithCooldown(player));
+            Spawn(player);
+            //StartCoroutine(SpawnWithCooldown(player));
         }
 
         private IEnumerator SpawnWithCooldown(PlayerHealth player)
