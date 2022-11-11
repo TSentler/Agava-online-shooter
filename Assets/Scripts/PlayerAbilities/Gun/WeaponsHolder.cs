@@ -33,29 +33,51 @@ public class WeaponsHolder : MonoBehaviour
     [PunRPC]
     private void EnableNewGun(int id)
     {
-        _weapons[_currentGunId].SetActive(false);
-        _weaponsInThirdPersons[_currentGunId].SetActive(false);
-        _weapons[id].SetActive(true);
-        GunChanged?.Invoke(_weapons[id].gameObject.transform);
-        _weaponsInThirdPersons[id].SetActive(true);
-
-        if(id > 0)
+        if (_photonView.IsMine)
         {
-            _animator.runtimeAnimatorController = _controllerTwoHand;
+            _weapons[_currentGunId].SetActive(false);
+            _weaponsInThirdPersons[_currentGunId].SetActive(false);
+            _weapons[id].SetActive(true);
+            GunChanged?.Invoke(_weapons[id].gameObject.transform);
+            _weaponsInThirdPersons[id].SetActive(true);
+
+            if(id > 0)
+            {
+                _animator.runtimeAnimatorController = _controllerTwoHand;
+            }
+            else
+            {
+                _animator.runtimeAnimatorController = _controllerOneHand;
+            }
         }
         else
         {
-            _animator.runtimeAnimatorController = _controllerOneHand;
+            HideAllHands();
         }
     }
 
     [PunRPC]
     private void EnableGunInStart()
     {
-        _weapons[_currentGunId].SetActive(false);
-        _weapons[0].SetActive(true);
-        _weaponsInThirdPersons[_currentGunId].SetActive(false);
-        _weaponsInThirdPersons[0].SetActive(true);
-        _animator.runtimeAnimatorController = _controllerOneHand;
+        if (_photonView.IsMine)
+        {
+            _weapons[_currentGunId].SetActive(false);
+            _weapons[0].SetActive(true);
+            _weaponsInThirdPersons[_currentGunId].SetActive(false);
+            _weaponsInThirdPersons[0].SetActive(true);
+            _animator.runtimeAnimatorController = _controllerOneHand;
+        }
+        else
+        {
+            HideAllHands();
+        }
+    }
+
+    private void HideAllHands()
+    {
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            _weapons[i].SetActive(false);
+        }
     }
 }
