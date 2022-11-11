@@ -10,6 +10,13 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     [SerializeField] private float _damage;
     [SerializeField] private GunView _gunView;
     [SerializeField] private PhotonView _photonView;
+    [SerializeField] private int _maxGrenadesCount;
+    [SerializeField] private float _delay;
+
+    private bool _timerIsStart = false;
+    private float _currentTime;
+    private float _nextGrenadeTime;
+    private int _currenGrenadeCount;
 
     //Animator component attached to weapon
     Animator anim;
@@ -318,6 +325,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         totalAmmoText.text = ammo.ToString();
         currentAmmoText.text = currentAmmo.ToString();
         gunIcon.sprite = gunSprite;
+        _currenGrenadeCount = _maxGrenadesCount;
     }
 
     private void Start()
@@ -518,8 +526,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //}
 
         //Throw grenade when pressing G key
-        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine)
+        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount!= 0 && _timerIsStart == false)
         {
+            _nextGrenadeTime = Time.time + _delay;
+            _currentTime = Time.time;
+            _currenGrenadeCount--;
+            _timerIsStart = true;
             StartCoroutine(GrenadeSpawnDelay());
             //Play grenade throw animation
             anim.Play("GrenadeThrow", 0, 0.0f);
@@ -637,12 +649,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             }
 
             //Spawn bullet at bullet spawnpoint
-            var bullet = Instantiate(
-                Prefabs.bulletPrefab,
-                Spawnpoints.bulletSpawnPoint.transform.position,
-                Spawnpoints.bulletSpawnPoint.transform.rotation);
-            bullet.SetDamage(_damage);
-            bullet.SetGun(this);
+            var bullet = PhotonNetwork.Instantiate(
+            Prefabs.bulletPrefab.name,
+            Spawnpoints.bulletSpawnPoint.transform.position,
+            Spawnpoints.bulletSpawnPoint.transform.rotation);
+            bullet.GetComponent<BulletScript>().SetDamage(_damage);
+            bullet.GetComponent<BulletScript>().SetGun(this);
             //Add velocity to the bullet
             bullet.GetComponent<Rigidbody>().velocity =
             bullet.transform.forward * bulletForce;
@@ -734,6 +746,22 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         {
             anim.SetBool("Run", false);
         }
+
+        if(_timerIsStart == true)
+        {
+            _currentTime += Time.deltaTime;
+
+            if(_currentTime >= _nextGrenadeTime)
+            {
+                _timerIsStart = false;
+            }
+        }
+    }
+
+    [PunRPC]
+    private void InstantiateBullet()
+    {
+       
     }
 
     public void HitOnPlayer()
@@ -758,7 +786,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //Wait for set amount of time before spawning grenade
         yield return new WaitForSeconds(grenadeSpawnDelay);
         //Spawn grenade prefab at spawnpoint
-        Instantiate(Prefabs.grenadePrefab,
+       PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
             Spawnpoints.grenadeSpawnPoint.transform.position,
             Spawnpoints.grenadeSpawnPoint.transform.rotation);
     }

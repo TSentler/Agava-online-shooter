@@ -1,131 +1,356 @@
 fileFormatVersion: 2
 guid: 3a0fc50da26e55e49a89c167d5562115
-timeCreated: 1566372773
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Armature
-    100002: backpack
-    100004: chest
-    100006: f_index_01_L
-    100008: f_index_01_R
-    100010: f_index_02_L
-    100012: f_index_02_R
-    100014: f_index_03_L
-    100016: f_index_03_R
-    100018: f_middle_01_L
-    100020: f_middle_01_R
-    100022: f_middle_02_L
-    100024: f_middle_02_R
-    100026: f_middle_03_L
-    100028: f_middle_03_R
-    100030: foot_L
-    100032: foot_R
-    100034: goggles
-    100036: hand_L
-    100038: hand_R
-    100040: head
-    100042: headset
-    100044: heel_L
-    100046: heel_R
-    100048: helmet
-    100050: hips
-    100052: lower_arm_L
-    100054: lower_arm_R
-    100056: lower_leg_L
-    100058: lower_leg_R
-    100060: neck
-    100062: root
-    100064: shoulder_L
-    100066: shoulder_R
-    100068: spine
-    100070: third_person_character
-    100072: //RootNode
-    100074: thumb_01_L
-    100076: thumb_01_R
-    100078: thumb_02_L
-    100080: thumb_02_R
-    100082: thumb_03_L
-    100084: thumb_03_R
-    100086: toe_L
-    100088: toe_R
-    100090: upper_arm_L
-    100092: upper_arm_R
-    100094: upper_leg_L
-    100096: upper_leg_R
-    100098: weapon
-    400000: Armature
-    400002: backpack
-    400004: chest
-    400006: f_index_01_L
-    400008: f_index_01_R
-    400010: f_index_02_L
-    400012: f_index_02_R
-    400014: f_index_03_L
-    400016: f_index_03_R
-    400018: f_middle_01_L
-    400020: f_middle_01_R
-    400022: f_middle_02_L
-    400024: f_middle_02_R
-    400026: f_middle_03_L
-    400028: f_middle_03_R
-    400030: foot_L
-    400032: foot_R
-    400034: goggles
-    400036: hand_L
-    400038: hand_R
-    400040: head
-    400042: headset
-    400044: heel_L
-    400046: heel_R
-    400048: helmet
-    400050: hips
-    400052: lower_arm_L
-    400054: lower_arm_R
-    400056: lower_leg_L
-    400058: lower_leg_R
-    400060: neck
-    400062: root
-    400064: shoulder_L
-    400066: shoulder_R
-    400068: spine
-    400070: third_person_character
-    400072: //RootNode
-    400074: thumb_01_L
-    400076: thumb_01_R
-    400078: thumb_02_L
-    400080: thumb_02_R
-    400082: thumb_03_L
-    400084: thumb_03_R
-    400086: toe_L
-    400088: toe_R
-    400090: upper_arm_L
-    400092: upper_arm_R
-    400094: upper_leg_L
-    400096: upper_leg_R
-    400098: weapon
-    4300000: third_person_character
-    4300002: goggles
-    4300004: headset
-    4300006: helmet
-    4300008: backpack
-    7400000: T_pose
-    9500000: //RootNode
-    13700000: backpack
-    13700002: goggles
-    13700004: headset
-    13700006: helmet
-    13700008: third_person_character
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Armature
+  - first:
+      1: 100002
+    second: backpack
+  - first:
+      1: 100004
+    second: chest
+  - first:
+      1: 100006
+    second: f_index_01_L
+  - first:
+      1: 100008
+    second: f_index_01_R
+  - first:
+      1: 100010
+    second: f_index_02_L
+  - first:
+      1: 100012
+    second: f_index_02_R
+  - first:
+      1: 100014
+    second: f_index_03_L
+  - first:
+      1: 100016
+    second: f_index_03_R
+  - first:
+      1: 100018
+    second: f_middle_01_L
+  - first:
+      1: 100020
+    second: f_middle_01_R
+  - first:
+      1: 100022
+    second: f_middle_02_L
+  - first:
+      1: 100024
+    second: f_middle_02_R
+  - first:
+      1: 100026
+    second: f_middle_03_L
+  - first:
+      1: 100028
+    second: f_middle_03_R
+  - first:
+      1: 100030
+    second: foot_L
+  - first:
+      1: 100032
+    second: foot_R
+  - first:
+      1: 100034
+    second: goggles
+  - first:
+      1: 100036
+    second: hand_L
+  - first:
+      1: 100038
+    second: hand_R
+  - first:
+      1: 100040
+    second: head
+  - first:
+      1: 100042
+    second: headset
+  - first:
+      1: 100044
+    second: heel_L
+  - first:
+      1: 100046
+    second: heel_R
+  - first:
+      1: 100048
+    second: helmet
+  - first:
+      1: 100050
+    second: hips
+  - first:
+      1: 100052
+    second: lower_arm_L
+  - first:
+      1: 100054
+    second: lower_arm_R
+  - first:
+      1: 100056
+    second: lower_leg_L
+  - first:
+      1: 100058
+    second: lower_leg_R
+  - first:
+      1: 100060
+    second: neck
+  - first:
+      1: 100062
+    second: root
+  - first:
+      1: 100064
+    second: shoulder_L
+  - first:
+      1: 100066
+    second: shoulder_R
+  - first:
+      1: 100068
+    second: spine
+  - first:
+      1: 100070
+    second: third_person_character
+  - first:
+      1: 100072
+    second: //RootNode
+  - first:
+      1: 100074
+    second: thumb_01_L
+  - first:
+      1: 100076
+    second: thumb_01_R
+  - first:
+      1: 100078
+    second: thumb_02_L
+  - first:
+      1: 100080
+    second: thumb_02_R
+  - first:
+      1: 100082
+    second: thumb_03_L
+  - first:
+      1: 100084
+    second: thumb_03_R
+  - first:
+      1: 100086
+    second: toe_L
+  - first:
+      1: 100088
+    second: toe_R
+  - first:
+      1: 100090
+    second: upper_arm_L
+  - first:
+      1: 100092
+    second: upper_arm_R
+  - first:
+      1: 100094
+    second: upper_leg_L
+  - first:
+      1: 100096
+    second: upper_leg_R
+  - first:
+      1: 100098
+    second: weapon
+  - first:
+      4: 400000
+    second: Armature
+  - first:
+      4: 400002
+    second: backpack
+  - first:
+      4: 400004
+    second: chest
+  - first:
+      4: 400006
+    second: f_index_01_L
+  - first:
+      4: 400008
+    second: f_index_01_R
+  - first:
+      4: 400010
+    second: f_index_02_L
+  - first:
+      4: 400012
+    second: f_index_02_R
+  - first:
+      4: 400014
+    second: f_index_03_L
+  - first:
+      4: 400016
+    second: f_index_03_R
+  - first:
+      4: 400018
+    second: f_middle_01_L
+  - first:
+      4: 400020
+    second: f_middle_01_R
+  - first:
+      4: 400022
+    second: f_middle_02_L
+  - first:
+      4: 400024
+    second: f_middle_02_R
+  - first:
+      4: 400026
+    second: f_middle_03_L
+  - first:
+      4: 400028
+    second: f_middle_03_R
+  - first:
+      4: 400030
+    second: foot_L
+  - first:
+      4: 400032
+    second: foot_R
+  - first:
+      4: 400034
+    second: goggles
+  - first:
+      4: 400036
+    second: hand_L
+  - first:
+      4: 400038
+    second: hand_R
+  - first:
+      4: 400040
+    second: head
+  - first:
+      4: 400042
+    second: headset
+  - first:
+      4: 400044
+    second: heel_L
+  - first:
+      4: 400046
+    second: heel_R
+  - first:
+      4: 400048
+    second: helmet
+  - first:
+      4: 400050
+    second: hips
+  - first:
+      4: 400052
+    second: lower_arm_L
+  - first:
+      4: 400054
+    second: lower_arm_R
+  - first:
+      4: 400056
+    second: lower_leg_L
+  - first:
+      4: 400058
+    second: lower_leg_R
+  - first:
+      4: 400060
+    second: neck
+  - first:
+      4: 400062
+    second: root
+  - first:
+      4: 400064
+    second: shoulder_L
+  - first:
+      4: 400066
+    second: shoulder_R
+  - first:
+      4: 400068
+    second: spine
+  - first:
+      4: 400070
+    second: third_person_character
+  - first:
+      4: 400072
+    second: //RootNode
+  - first:
+      4: 400074
+    second: thumb_01_L
+  - first:
+      4: 400076
+    second: thumb_01_R
+  - first:
+      4: 400078
+    second: thumb_02_L
+  - first:
+      4: 400080
+    second: thumb_02_R
+  - first:
+      4: 400082
+    second: thumb_03_L
+  - first:
+      4: 400084
+    second: thumb_03_R
+  - first:
+      4: 400086
+    second: toe_L
+  - first:
+      4: 400088
+    second: toe_R
+  - first:
+      4: 400090
+    second: upper_arm_L
+  - first:
+      4: 400092
+    second: upper_arm_R
+  - first:
+      4: 400094
+    second: upper_leg_L
+  - first:
+      4: 400096
+    second: upper_leg_R
+  - first:
+      4: 400098
+    second: weapon
+  - first:
+      43: 4300000
+    second: third_person_character
+  - first:
+      43: 4300002
+    second: goggles
+  - first:
+      43: 4300004
+    second: headset
+  - first:
+      43: 4300006
+    second: helmet
+  - first:
+      43: 4300008
+    second: backpack
+  - first:
+      74: 7400000
+    second: T_pose
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: backpack
+  - first:
+      137: 13700002
+    second: goggles
+  - first:
+      137: 13700004
+    second: headset
+  - first:
+      137: 13700006
+    second: helmet
+  - first:
+      137: 13700008
+    second: third_person_character
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -133,6 +358,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -144,6 +371,7 @@ ModelImporter:
     - serializedVersion: 16
       name: T_pose
       takeName: Armature|t_pose
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -175,19 +403,33 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -195,10 +437,14 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - 0d7030a660e525e469c2c237867db18f
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: hips
       humanName: Hips
@@ -770,14 +1016,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

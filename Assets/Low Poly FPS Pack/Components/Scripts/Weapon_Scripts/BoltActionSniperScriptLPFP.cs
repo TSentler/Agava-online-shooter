@@ -9,6 +9,13 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 	[SerializeField] private GunView _gunView;
 	[SerializeField] private WeaponsHolder _weaponsHolder;
 	[SerializeField] private PhotonView _photonView;
+	[SerializeField] private int _maxGrenadesCount;
+	[SerializeField] private float _delay;
+
+	private bool _timerIsStart = false;
+	private float _currentTime;
+	private float _nextGrenadeTime;
+	private int _currenGrenadeCount;
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -218,6 +225,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		totalAmmoText.text = maxAmmo == 0 ? ammo.ToString() : maxAmmo.ToString();
 		currentAmmoText.text = currentAmmo.ToString();
 		gunIcon.sprite = gunSprite;
+		_currenGrenadeCount = _maxGrenadesCount;
 	}
 
 	private void Start () {
@@ -355,8 +363,12 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		//}
 
 		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G) && !isInspecting && _photonView.IsMine) 
+		if (Input.GetKeyDown (KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false) 
 		{
+			_nextGrenadeTime = Time.time + _delay;
+			_currentTime = Time.time;
+			_currenGrenadeCount--;
+			_timerIsStart = true;
 			StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation
 			anim.Play("GrenadeThrow", 0, 0.0f);
@@ -475,16 +487,18 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 				}
 
 				//Spawn bullet at bullet spawnpoint
-				var bullet = Instantiate (
-					Prefabs.bulletPrefab,
-					Spawnpoints.bulletSpawnPoint.transform.position,
-					Spawnpoints.bulletSpawnPoint.transform.rotation);
-				bullet.SetDamage(_damage);
-				bullet.SetGun(this);
+				var bullet = PhotonNetwork.Instantiate(
+				Prefabs.bulletPrefab.name,
+				Spawnpoints.bulletSpawnPoint.transform.position,
+				Spawnpoints.bulletSpawnPoint.transform.rotation);
+				bullet.GetComponent<BulletScript>().SetDamage(_damage);
+				bullet.GetComponent<BulletScript>().SetGun(this);
 				//Add velocity to the bullet
-				bullet.GetComponent<Rigidbody>().velocity = 
+				bullet.GetComponent<Rigidbody>().velocity =
 					bullet.transform.forward * bulletForce;
-				
+				//Add velocity to the bullet
+
+
 				StartCoroutine (CasingDelay ());
 			}
 		}
@@ -559,14 +573,30 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		{
 			anim.SetBool ("Run", false);
 		}
+
+		if (_timerIsStart == true)
+		{
+			_currentTime += Time.deltaTime;
+
+			if (_currentTime >= _nextGrenadeTime)
+			{
+				_timerIsStart = false;
+			}
+		}
+	}
+
+	[PunRPC]
+	private void InstantiateBullet()
+    {
+	
 	}
 
 	private IEnumerator GrenadeSpawnDelay () {
 		//Wait for set amount of time before spawning grenade
 		yield return new WaitForSeconds (grenadeSpawnDelay);
 		//Spawn grenade prefab at spawnpoint
-		Instantiate(Prefabs.grenadePrefab, 
-			Spawnpoints.grenadeSpawnPoint.transform.position, 
+		PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
+			Spawnpoints.grenadeSpawnPoint.transform.position,
 			Spawnpoints.grenadeSpawnPoint.transform.rotation);
 	}
 
