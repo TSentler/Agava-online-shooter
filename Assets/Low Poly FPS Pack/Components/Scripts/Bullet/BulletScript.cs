@@ -30,11 +30,12 @@ public class BulletScript : MonoBehaviour {
 		StartCoroutine (DestroyAfter ());
 
 		RaycastHit hit;
-		var startPosition = transform.position + transform.forward * 0.2f;
+		var startPosition = transform.position + transform.forward * 0.5f;
 
 		if (Physics.Raycast(startPosition, transform.forward, out hit))
         {
-			Debug.DrawRay(transform.position, transform.position + transform.forward * 0.05f);
+
+			Debug.DrawRay(startPosition, transform.forward * 0.5f, Color.cyan, 100f);
 			if (hit.collider.TryGetComponent(out HitDetector hitDetector))
 			{
 				if (hitDetector.PhotonView.IsMine == false)
@@ -42,20 +43,49 @@ public class BulletScript : MonoBehaviour {
 					hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer);
 					_gun.HitOnPlayer();
 				}
-				
 			}
 
-			SpawnDecal(hit.collider.gameObject);
+			var other = hit;
+			//If bullet collides with "Blood" tag
+			if (other.transform.tag == "Blood") 
+			{			
+				//Instantiate random impact prefab from array
+				Instantiate (bloodImpactPrefabs [Random.Range 
+					(0, bloodImpactPrefabs.Length)], other.point, 
+					Quaternion.LookRotation(other.normal));
+				//Destroy bullet object
+				Destroy(gameObject);
+			}
+
+			//If bullet collides with "Metal" tag
+			if (other.transform.tag == "Metal") 
+			{
+				//Instantiate random impact prefab from array
+				Instantiate (metalImpactPrefabs [Random.Range 
+					(0, bloodImpactPrefabs.Length)], other.point, 
+					Quaternion.LookRotation (other.normal));
+				//Destroy bullet object
+				Destroy(gameObject);
+			}
+
+			//If bullet collides with "Dirt" tag
+			if (other.transform.tag == "Dirt") 
+			{
+				//Instantiate random impact prefab from array
+				Instantiate (dirtImpactPrefabs [Random.Range 
+					(0, bloodImpactPrefabs.Length)], other.point, 
+					Quaternion.LookRotation (other.normal));
+				//Destroy bullet object
+				Destroy(gameObject);
+			}			
 		}
 	}
 
     //If the bullet collides with anything
-    private void SpawnDecal(GameObject other) 
+    private void OnTriggerEnter(Collider other) 
 	{
-		//var collisionPoint = other.ClosestPoint(transform.position);
-		//var collisionNormal = transform.position - collisionPoint;
-		//Debug.DrawLine(transform.position, collisionPoint, Color.red, 1000);
-		//Debug.DrawLine(other.transform.position, collisionPoint, Color.white,1000);
+		var collisionPoint = other.ClosestPoint(transform.position);
+		var collisionNormal = transform.position - collisionPoint;
 
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
@@ -68,39 +98,6 @@ public class BulletScript : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
-
-		//If bullet collides with "Blood" tag
-		if (other.transform.tag == "Blood") 
-		{			
-			//Instantiate random impact prefab from array
-			Instantiate (bloodImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], other.transform.position, 
-				Quaternion.LookRotation(other.transform.position));
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
-
-		//If bullet collides with "Metal" tag
-		if (other.transform.tag == "Metal") 
-		{
-			//Instantiate random impact prefab from array
-			Instantiate (metalImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], other.transform.position, 
-				Quaternion.LookRotation (other.transform.position));
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
-
-		//If bullet collides with "Dirt" tag
-		if (other.transform.tag == "Dirt") 
-		{
-			//Instantiate random impact prefab from array
-			Instantiate (dirtImpactPrefabs [Random.Range 
-				(0, bloodImpactPrefabs.Length)], other.transform.position, 
-				Quaternion.LookRotation (other.transform.position));
-			//Destroy bullet object
-			Destroy(gameObject);
-		}	
 	}
 
 	public void SetDamage(float damage)
