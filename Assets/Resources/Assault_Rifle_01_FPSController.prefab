@@ -14494,6 +14494,8 @@ MonoBehaviour:
   _gunView: {fileID: 4387319589381292558}
   _weaponsHolder: {fileID: 7312492307850879255}
   _photonView: {fileID: 324320900069819033}
+  _maxGrenadesCount: 3
+  _delay: 5
   gunSprite: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 20607603889952386}
   fovSpeed: 15
@@ -34741,6 +34743,8 @@ MonoBehaviour:
   _gunView: {fileID: 4387319589381292558}
   _weaponsHolder: {fileID: 7312492307850879255}
   _photonView: {fileID: 324320900069819033}
+  _maxGrenadesCount: 3
+  _delay: 5
   gunSprite: {fileID: 21300018, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 7589460530982128827}
   fovSpeed: 15
@@ -36539,6 +36543,8 @@ MonoBehaviour:
   _damage: 15
   _gunView: {fileID: 4387319589381292558}
   _photonView: {fileID: 324320900069819033}
+  _maxGrenadesCount: 3
+  _delay: 5
   gunSprite: {fileID: 21300008, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 100414656708919175}
   fovSpeed: 15
@@ -53974,6 +53980,8 @@ MonoBehaviour:
   _gunView: {fileID: 4387319589381292558}
   _weaponsHolder: {fileID: 7312492307850879255}
   _photonView: {fileID: 324320900069819033}
+  _maxGrenadesCount: 3
+  _delay: 5
   gunSprite: {fileID: 21300030, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 3195077575992808416}
   fovSpeed: 15

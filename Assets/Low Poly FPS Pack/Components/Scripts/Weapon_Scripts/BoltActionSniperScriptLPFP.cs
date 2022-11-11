@@ -9,6 +9,13 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 	[SerializeField] private GunView _gunView;
 	[SerializeField] private WeaponsHolder _weaponsHolder;
 	[SerializeField] private PhotonView _photonView;
+	[SerializeField] private int _maxGrenadesCount;
+	[SerializeField] private float _delay;
+
+	private bool _timerIsStart = false;
+	private float _currentTime;
+	private float _nextGrenadeTime;
+	private int _currenGrenadeCount;
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -218,6 +225,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		totalAmmoText.text = maxAmmo == 0 ? ammo.ToString() : maxAmmo.ToString();
 		currentAmmoText.text = currentAmmo.ToString();
 		gunIcon.sprite = gunSprite;
+		_currenGrenadeCount = _maxGrenadesCount;
 	}
 
 	private void Start () {
@@ -355,8 +363,12 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		//}
 
 		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G) && !isInspecting && _photonView.IsMine) 
+		if (Input.GetKeyDown (KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false) 
 		{
+			_nextGrenadeTime = Time.time + _delay;
+			_currentTime = Time.time;
+			_currenGrenadeCount--;
+			_timerIsStart = true;
 			StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation
 			anim.Play("GrenadeThrow", 0, 0.0f);
@@ -558,6 +570,16 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		else 
 		{
 			anim.SetBool ("Run", false);
+		}
+
+		if (_timerIsStart == true)
+		{
+			_currentTime += Time.deltaTime;
+
+			if (_currentTime >= _nextGrenadeTime)
+			{
+				_timerIsStart = false;
+			}
 		}
 	}
 
