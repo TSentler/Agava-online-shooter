@@ -487,16 +487,18 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 				}
 
 				//Spawn bullet at bullet spawnpoint
-				var bullet = Instantiate (
-					Prefabs.bulletPrefab,
-					Spawnpoints.bulletSpawnPoint.transform.position,
-					Spawnpoints.bulletSpawnPoint.transform.rotation);
-				bullet.SetDamage(_damage);
-				bullet.SetGun(this);
+				var bullet = PhotonNetwork.Instantiate(
+				Prefabs.bulletPrefab.name,
+				Spawnpoints.bulletSpawnPoint.transform.position,
+				Spawnpoints.bulletSpawnPoint.transform.rotation);
+				bullet.GetComponent<BulletScript>().SetDamage(_damage);
+				bullet.GetComponent<BulletScript>().SetGun(this);
 				//Add velocity to the bullet
-				bullet.GetComponent<Rigidbody>().velocity = 
+				bullet.GetComponent<Rigidbody>().velocity =
 					bullet.transform.forward * bulletForce;
-				
+				//Add velocity to the bullet
+
+
 				StartCoroutine (CasingDelay ());
 			}
 		}
@@ -583,12 +585,18 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 	}
 
+	[PunRPC]
+	private void InstantiateBullet()
+    {
+	
+	}
+
 	private IEnumerator GrenadeSpawnDelay () {
 		//Wait for set amount of time before spawning grenade
 		yield return new WaitForSeconds (grenadeSpawnDelay);
 		//Spawn grenade prefab at spawnpoint
-		Instantiate(Prefabs.grenadePrefab, 
-			Spawnpoints.grenadeSpawnPoint.transform.position, 
+		PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
+			Spawnpoints.grenadeSpawnPoint.transform.position,
 			Spawnpoints.grenadeSpawnPoint.transform.rotation);
 	}
 

@@ -649,12 +649,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             }
 
             //Spawn bullet at bullet spawnpoint
-            var bullet = Instantiate(
-                Prefabs.bulletPrefab,
-                Spawnpoints.bulletSpawnPoint.transform.position,
-                Spawnpoints.bulletSpawnPoint.transform.rotation);
-            bullet.SetDamage(_damage);
-            bullet.SetGun(this);
+            var bullet = PhotonNetwork.Instantiate(
+            Prefabs.bulletPrefab.name,
+            Spawnpoints.bulletSpawnPoint.transform.position,
+            Spawnpoints.bulletSpawnPoint.transform.rotation);
+            bullet.GetComponent<BulletScript>().SetDamage(_damage);
+            bullet.GetComponent<BulletScript>().SetGun(this);
             //Add velocity to the bullet
             bullet.GetComponent<Rigidbody>().velocity =
             bullet.transform.forward * bulletForce;
@@ -758,6 +758,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
     }
 
+    [PunRPC]
+    private void InstantiateBullet()
+    {
+       
+    }
+
     public void HitOnPlayer()
     {
         _gunView.OnHit();
@@ -780,7 +786,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //Wait for set amount of time before spawning grenade
         yield return new WaitForSeconds(grenadeSpawnDelay);
         //Spawn grenade prefab at spawnpoint
-        Instantiate(Prefabs.grenadePrefab,
+       PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
             Spawnpoints.grenadeSpawnPoint.transform.position,
             Spawnpoints.grenadeSpawnPoint.transform.rotation);
     }

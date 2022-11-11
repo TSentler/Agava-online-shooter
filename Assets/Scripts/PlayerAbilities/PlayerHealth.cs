@@ -13,6 +13,7 @@ namespace PlayerAbilities
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private DamagebleHit _damagebleHit;
         [SerializeField] private WeaponsHolder _weaponsHolder;
+        [SerializeField] private Animator _animator;
 
         private int _kills;
         private int _deaths;
@@ -34,7 +35,8 @@ namespace PlayerAbilities
 
         public void DisableObject()
         {
-            _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
+            _animator.SetBool("IsDie", true);
+            StartCoroutine(DisableWithDelay());
         }
 
         private void Awake()
@@ -54,6 +56,7 @@ namespace PlayerAbilities
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
             _damagebleHit.gameObject.SetActive(false);
+            _animator.SetBool("IsDie", false);
         }
 
         public bool NeedHeal()
@@ -144,6 +147,12 @@ namespace PlayerAbilities
         {
             yield return new WaitForSeconds(1f);
             _damagebleHit.gameObject.SetActive(false);
+        }
+
+        private IEnumerator DisableWithDelay()
+        {
+            yield return new WaitForSeconds(1f);
+            _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
         }
     }
 }
