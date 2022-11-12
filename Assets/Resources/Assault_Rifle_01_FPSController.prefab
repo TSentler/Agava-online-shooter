@@ -1516,7 +1516,7 @@ MonoBehaviour:
   _photonView: {fileID: 324320900069819033}
   _damagebleHit: {fileID: 0}
   _weaponsHolder: {fileID: 7312492307850879255}
-  _animator: {fileID: 2330538665299470951}
+  _player: {fileID: 2330538665306855919}
 --- !u!114 &424512754763583127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61894,6 +61894,12 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 1
     Name: Vertical
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsDie
+  - Type: 9
+    SynchronizeType: 0
+    Name: Die
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

@@ -13,8 +13,9 @@ namespace PlayerAbilities
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private DamagebleHit _damagebleHit;
         [SerializeField] private WeaponsHolder _weaponsHolder;
-        [SerializeField] private Animator _animator;
+        [SerializeField] private GameObject _player;
 
+        private Animator _animator;
         private int _kills;
         private int _deaths;
         private float _currentHealth;
@@ -55,6 +56,7 @@ namespace PlayerAbilities
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
             _damagebleHit.gameObject.SetActive(false);
+            _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
         }
 
@@ -110,9 +112,9 @@ namespace PlayerAbilities
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
                 if (_playerInfo.IsBot == false)
                 {
-                    _damagebleHit.gameObject.SetActive(true);
-                    _damagebleHit.ShowHitPoint(targetPosition, transform);
-                    StartCoroutine(DestroyEffectWithDelay());
+                    //_damagebleHit.gameObject.SetActive(true);
+                    //_damagebleHit.ShowHitPoint(targetPosition, transform);
+                    //StartCoroutine(DestroyEffectWithDelay());
                 }
 
                 if (_currentHealth <= 0)
@@ -125,6 +127,9 @@ namespace PlayerAbilities
                         int kills = (int)player.CustomProperties["Kills"] + 1;
                         player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
                     }
+
+                    _animator = _player.GetComponent<Animator>();
+                    //_animator.SetTrigger("Die");
                     _animator.SetBool("IsDie", true);
                     StartCoroutine(DisableWithDelay());
                     //_spawner.SpawnPlayer(this);
