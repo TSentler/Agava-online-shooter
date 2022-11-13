@@ -14,6 +14,7 @@ namespace PlayerAbilities
         [SerializeField] private DamagebleHit _damagebleHit;
         [SerializeField] private WeaponsHolder _weaponsHolder;
         [SerializeField] private GameObject _player;
+        [SerializeField] private GameObject _deadPanel;
 
         private Animator _animator;
         private int _kills;
@@ -58,6 +59,7 @@ namespace PlayerAbilities
             _damagebleHit.gameObject.SetActive(false);
             _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
+            _deadPanel.SetActive(false);
         }
 
         public bool NeedHeal()
@@ -134,6 +136,7 @@ namespace PlayerAbilities
                     StartCoroutine(DisableWithDelay());
                     //_spawner.SpawnPlayer(this);
                     _weaponsHolder.SetNewGun(0);
+                    _deadPanel.SetActive(true);
                 }
             }
         }
