@@ -58106,6 +58106,8 @@ MonoBehaviour:
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
   _photonView: {fileID: 0}
+  _maxGrenadesCount: 0
+  _delay: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 677085517}
   fovSpeed: 15
@@ -59512,7 +59514,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 578353688610734452, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578353688610734452, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 578353688610734452, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 578353688613642809, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
@@ -59523,6 +59533,10 @@ PrefabInstance:
       propertyPath: _syncronizer
       value: 
       objectReference: {fileID: 365169197}
+    - target: {fileID: 578353688756672742, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 578353688756672742, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -92765,6 +92779,8 @@ MonoBehaviour:
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
   _photonView: {fileID: 0}
+  _maxGrenadesCount: 0
+  _delay: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 933746593}
   fovSpeed: 15
@@ -101580,6 +101596,8 @@ MonoBehaviour:
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
   _photonView: {fileID: 0}
+  _maxGrenadesCount: 0
+  _delay: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 160260386}
   fovSpeed: 15
@@ -104330,6 +104348,8 @@ MonoBehaviour:
   _gunView: {fileID: 0}
   _weaponsHolder: {fileID: 0}
   _photonView: {fileID: 0}
+  _maxGrenadesCount: 0
+  _delay: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 2374949120214032590}
   fovSpeed: 15

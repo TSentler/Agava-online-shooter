@@ -10,6 +10,7 @@ public class GunView : MonoBehaviour
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private Image _hitIndicator;
 
+  
     private float _timeToShowIndicator = 0.1f;
 
     private void Start()
@@ -17,7 +18,7 @@ public class GunView : MonoBehaviour
         if (!_photonView.IsMine)
         {
             Destroy(_playerCanvas.gameObject);            
-        }
+        }      
     }
 
     private void OnEnable()
@@ -45,6 +46,7 @@ public class GunView : MonoBehaviour
     //    _currentAmmoText.text = ammoQuanity.ToString();
     //    _totalAmmoText.text = maxAmmo.ToString();
     //}
+
 
     public void OnHit()
     {
