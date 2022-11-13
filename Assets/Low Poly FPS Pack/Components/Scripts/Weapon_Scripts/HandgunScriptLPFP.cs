@@ -367,6 +367,38 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Update()
     {
+        //Walking when pressing down WASD keys
+        if (Input.GetKey(KeyCode.W) && !isRunning ||
+            Input.GetKey(KeyCode.A) && !isRunning ||
+            Input.GetKey(KeyCode.S) && !isRunning ||
+            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine)
+        {
+            anim.SetBool("Walk", true);
+        }
+        else
+        {
+            anim.SetBool("Walk", false);
+        }
+
+        //Running when pressing down W and Left Shift key
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+
+        //Run anim toggle
+        if (isRunning == true)
+        {
+            anim.SetBool("Run", true);
+        }
+        else
+        {
+            anim.SetBool("Run", false);
+        }
 
         //Aiming
         //Toggle camera FOV when right click is held down
@@ -566,9 +598,14 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Shooting 
-        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning && _photonView.IsMine)
+        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine)
         {
+
+            isRunning = false;
+            anim.SetBool("Run", false);
             anim.Play("Fire", 0, 0f);
+            
+
             if (!silencer)
             {
                 muzzleParticles.Emit(1);
@@ -720,38 +757,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             }
         }
 
-        //Walking when pressing down WASD keys
-        if (Input.GetKey(KeyCode.W) && !isRunning ||
-            Input.GetKey(KeyCode.A) && !isRunning ||
-            Input.GetKey(KeyCode.S) && !isRunning ||
-            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine) 
-        {
-            anim.SetBool("Walk", true);
-        }
-        else
-        {
-            anim.SetBool("Walk", false);
-        }
-
-        //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine)
-        {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
-        //Run anim toggle
-        if (isRunning == true)
-        {
-            anim.SetBool("Run", true);
-        }
-        else
-        {
-            anim.SetBool("Run", false);
-        }
+      
 
         if(_timerIsStart == true)
         {
