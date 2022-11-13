@@ -75,7 +75,6 @@ namespace FPSControllerLPFP
         private bool _isGrounded;
         private Slider _slieder;
         private MouseSensitivityChange _mouseSensitivityChange;
-        private Vector3 LastImpactDirection = Vector3.forward;
 
         private readonly RaycastHit[] _groundCastResults = new RaycastHit[8];
         private readonly RaycastHit[] _wallCastResults = new RaycastHit[8];
@@ -104,14 +103,12 @@ namespace FPSControllerLPFP
         {
             _weaponsHolder.GunChanged += SetNewArm;
             _slieder.onValueChanged.AddListener(ChangeSensetivity);
-            bl_DamageDelegate.OnIndicator += OnImpact;
         }
 
         private void OnDisable()
         {
             _weaponsHolder.GunChanged -= SetNewArm;
             _slieder.onValueChanged.RemoveListener(ChangeSensetivity);
-            bl_DamageDelegate.OnIndicator -= OnImpact;
         }
 
         /// Initializes the FpsController on start.
@@ -218,12 +215,7 @@ namespace FPSControllerLPFP
                            Quaternion.AngleAxis(clampedY, Vector3.left);
             transform.eulerAngles = new Vector3(0f, rotation.eulerAngles.y, 0f);
             arms.rotation = rotation;
-        }
-
-        private void OnImpact(bl_IndicatorInfo info)
-        {
-            LastImpactDirection = info.Direction;
-        }
+        }     
 
         /// Returns the target rotation of the camera around the y axis with no smoothing.
         private float RotationXRaw
