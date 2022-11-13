@@ -49,20 +49,20 @@ public class BulletScript : MonoBehaviour
 
                 }              
 
-                if (hit.collider.TryGetComponent(out bl_DamageCallback damageCallback))
-                {
-                    //if (damageCallback.PhotonView.IsMine)
-                    //{
-                        bl_DamageInfo info = new bl_DamageInfo(_damage);
-                        //Send the sender (enemy) that inflict this damage.
-                        info.Sender = Sender;
+                //if (hit.collider.TryGetComponent(out bl_DamageCallback damageCallback))
+                //{
+                //    //if (damageCallback.PhotonView.IsMine)
+                //    //{
+                //        bl_DamageInfo info = new bl_DamageInfo(_damage);
+                //    //Send the sender (enemy) that inflict this damage.
+                //        info.Sender = Sender;
 
-                        //And the other important variable is the position of enemy.
-                        //for this is we need to have a reference of enemy to do the following:
-                        Sender.SetIndicator();
-                        damageCallback.OnDamage(info);
-                    //}
-                }
+                //    //And the other important variable is the position of enemy.
+                //    //for this is we need to have a reference of enemy to do the following:
+                //        Sender.SetIndicator();
+                //        damageCallback.OnDamage(info);
+                //    //}
+                //}
             }
 
             var other = hit;

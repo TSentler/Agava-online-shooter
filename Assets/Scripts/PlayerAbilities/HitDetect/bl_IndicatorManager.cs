@@ -74,6 +74,7 @@ public class bl_IndicatorManager : MonoBehaviour
     /// <param name="info">info of new indicator</param>
     void OnNewIndicator(bl_IndicatorInfo info)
     {
+        Debug.Log(666);
         //Apply globat settings
         info.PivotSize = PivotSize;
         info.Size = SpriteSize;
@@ -101,6 +102,8 @@ public class bl_IndicatorManager : MonoBehaviour
         }
     }
 
+
+
     /// <summary>
     /// Create a new indicator UI
     /// </summary>
@@ -109,11 +112,13 @@ public class bl_IndicatorManager : MonoBehaviour
     {
         GameObject newentry = Instantiate(IndicatorUI) as GameObject;
         bl_Indicator indicator = newentry.GetComponent<bl_Indicator>();
-        indicator.GetInfo(info, this);
         newentry.transform.SetParent(PanelIndicator, false);
+        indicator.GetInfo(info, this);
         //cache the new indicator
         IndicatorsEntrys.Add(indicator);
+
     }
+
 
     /// <summary>
     /// If have a indicator of a same sender and this is available yet.

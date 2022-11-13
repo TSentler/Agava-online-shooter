@@ -6,16 +6,13 @@ public class DamagebleHit : MonoBehaviour
 {
     [SerializeField] private Transform _hitPoint;
 
-    private Vector3 _direction;  
+    private Vector3 _direction;
 
-    public void ShowHitPoint(Vector3 targetPosition, Transform player)
+    public void ShowHitPoint(Vector3 enemyPosition, Vector3 playerPosition, Vector3 playerForward)
     {
-        _direction = player.position - targetPosition;
-        Quaternion targetRoot = Quaternion.LookRotation(_direction);
-        targetRoot.z = -targetRoot.y;
-        targetRoot.x = 0;
-        targetRoot.y = 0;
-        Vector3 _northDirection = new Vector3(0, 0, -player.eulerAngles.y);
-        _hitPoint.localRotation = targetRoot * Quaternion.Euler(_northDirection);
+        _direction = playerPosition - enemyPosition;
+        var angle = Vector3.SignedAngle(playerForward, _direction, Vector3.up) * -1;
+        _hitPoint.gameObject.SetActive(true);
+        _hitPoint.localRotation = Quaternion.Euler(angle * Vector3.forward);
     }
 }
