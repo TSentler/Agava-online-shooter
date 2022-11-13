@@ -11,6 +11,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private int _maxGrenadesCount;
     [SerializeField] private float _delay;
+    [SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
 
     private bool _timerIsStart = false;
     private float _currentTime;
@@ -680,7 +681,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Fire
-        if (Input.GetMouseButton(0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning && _photonView.IsMine)
+        if (Input.GetMouseButton(0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine)
         {
             if (Time.time - lastFired > 1 / fireRate)
             {
@@ -873,7 +874,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine)
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine && _fpsController.IsGrounded)
         {
             isRunning = true;
         }

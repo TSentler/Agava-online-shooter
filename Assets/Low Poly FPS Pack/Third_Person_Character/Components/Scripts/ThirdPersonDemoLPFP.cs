@@ -116,9 +116,9 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 			//Play from second layer, from the beginning
 			anim.Play ("Fire", 1, 0.0f);
 			//Play muzzleflash particles
-			muzzleflashParticles.Emit (1);
-			//Play light flash
-			StartCoroutine (MuzzleflashLight ());
+			//muzzleflashParticles.Emit (1);
+			////Play light flash
+			//StartCoroutine (MuzzleflashLight ());
 
 			//Spawn casing at spawnpoint
 			//Instantiate (casingPrefab, 
@@ -141,14 +141,14 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 				//Play from second layer, from the beginning
 				anim.Play ("Fire", 1, 0.0f);
 				//Play muzzleflash particles
-				muzzleflashParticles.Emit (1);
-				//Play light flash
-				StartCoroutine (MuzzleflashLight ());
+				//muzzleflashParticles.Emit (1);
+				////Play light flash
+				//StartCoroutine (MuzzleflashLight ());
 
-				//Spawn casing at spawnpoint
-				Instantiate (casingPrefab, 
-					casingSpawnpoint.transform.position, 
-					casingSpawnpoint.transform.rotation);
+				////Spawn casing at spawnpoint
+				//Instantiate (casingPrefab, 
+				//	casingSpawnpoint.transform.position, 
+				//	casingSpawnpoint.transform.rotation);
 
 				//Spawn bullet from bullet spawnpoint
 				//var bullet = (Transform)Instantiate (
@@ -193,5 +193,4 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		yield return new WaitForSeconds (0.02f);
 		muzzleflashLight.enabled = false;
 	}
-	
 }

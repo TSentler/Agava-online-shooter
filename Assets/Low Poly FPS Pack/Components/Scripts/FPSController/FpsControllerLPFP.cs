@@ -79,6 +79,8 @@ namespace FPSControllerLPFP
         private readonly RaycastHit[] _groundCastResults = new RaycastHit[8];
         private readonly RaycastHit[] _wallCastResults = new RaycastHit[8];
 
+        public bool IsGrounded => _isGrounded;
+
         private void Awake()
         {
             _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
