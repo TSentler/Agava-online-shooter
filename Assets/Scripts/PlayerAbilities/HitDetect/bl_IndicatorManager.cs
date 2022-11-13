@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System;
 using Photon.Pun;
 
-public class bl_IndicatorManager : MonoBehaviour {
+public class bl_IndicatorManager : MonoBehaviour
+{
 
     [SerializeField] private PhotonView _photonView;
     [Header("List")]
     public List<bl_Indicator> IndicatorsEntrys = new List<bl_Indicator>();
     [Header("Settings")]
-    [Range(1,15)]
+    [Range(1, 15)]
     [Tooltip("Time before fade sprite indicator.")]
     public float TimeToShow = 5;
     [Range(20, 100)]
     public float PivotSize = 20;
-    [Range(0,70)]
-    [SerializeField]private float Inclination = 10;
+    [Range(0, 70)]
+    [SerializeField] private float Inclination = 10;
     public Vector2 SpriteSize = new Vector2(80, 25);
     public Color SpriteColor = Color.white;
     [Tooltip("Use smooth movement rotation?.")]
@@ -23,15 +24,15 @@ public class bl_IndicatorManager : MonoBehaviour {
     [Tooltip("Use local position of camera or localPlayer Object as reference?")]
     public bool UseCameraReference = true;
 
-   
+
 
     public bool ShowDistance = true;
     [Header("References")]
     [Tooltip("This can be the root of player or the camera player.")]
-    [SerializeField]private Transform LocalPlayer;
-    [SerializeField]private GameObject IndicatorUI;
+    [SerializeField] private Transform LocalPlayer;
+    [SerializeField] private GameObject IndicatorUI;
     [Tooltip("RectTransform where indicators will be instantiate (Default Root Canvas)")]
-    [SerializeField]private Transform PanelIndicator;
+    [SerializeField] private Transform PanelIndicator;
 
     /// <summary>
     /// 
@@ -73,35 +74,35 @@ public class bl_IndicatorManager : MonoBehaviour {
     /// <param name="info">info of new indicator</param>
     void OnNewIndicator(bl_IndicatorInfo info)
     {
-        if(_photonView.IsMine == false)
+        Debug.Log(666);
+        //Apply globat settings
+        info.PivotSize = PivotSize;
+        info.Size = SpriteSize;
+        info.ShowDistance = ShowDistance;
+        //Determine if need create on new indicator or just update one existing
+        //this is determined based on whether there is an indicator of the same sender
+        //so, first check if have the same sender
+        if (bl_IndicatorUtils.CheckIfHaveSender(info.Sender, IndicatorsEntrys))
         {
-            //Apply globat settings
-            info.PivotSize = PivotSize;
-            info.Size = SpriteSize;
-            info.ShowDistance = ShowDistance;
-            //Determine if need create on new indicator or just update one existing
-            //this is determined based on whether there is an indicator of the same sender
-            //so, first check if have the same sender
-            if (bl_IndicatorUtils.CheckIfHaveSender(info.Sender, IndicatorsEntrys))
+            //if have a sender, then get it from list for update.
+            int id = bl_IndicatorUtils.GetSenderInList(info.Sender, IndicatorsEntrys);
+            //If is update just show the half of time.
+            info.TimeToShow = TimeToShow / 2;
+            UpdateIndicator(info, id);
+        }
+        else//if not have a sender, them create a new indicator and cache this sender.
+        {
+            info.TimeToShow = TimeToShow;
+            //If dont have asigne a color yet.
+            if (info.Color == new Color(1, 1, 1, 0))
             {
-                //if have a sender, then get it from list for update.
-                int id = bl_IndicatorUtils.GetSenderInList(info.Sender, IndicatorsEntrys);
-                //If is update just show the half of time.
-                info.TimeToShow = TimeToShow / 2;
-                UpdateIndicator(info, id);
+                info.Color = SpriteColor;
             }
-            else//if not have a sender, them create a new indicator and cache this sender.
-            {
-                info.TimeToShow = TimeToShow;
-                //If dont have asigne a color yet.
-                if (info.Color == new Color(1, 1, 1, 0))
-                {
-                    info.Color = SpriteColor;
-                }
-                CreateNewIndicator(info);
-            }
-        }      
+            CreateNewIndicator(info);
+        }
     }
+
+
 
     /// <summary>
     /// Create a new indicator UI
@@ -111,11 +112,13 @@ public class bl_IndicatorManager : MonoBehaviour {
     {
         GameObject newentry = Instantiate(IndicatorUI) as GameObject;
         bl_Indicator indicator = newentry.GetComponent<bl_Indicator>();
-        indicator.GetInfo(info,this);
         newentry.transform.SetParent(PanelIndicator, false);
+        indicator.GetInfo(info, this);
         //cache the new indicator
         IndicatorsEntrys.Add(indicator);
+
     }
+
 
     /// <summary>
     /// If have a indicator of a same sender and this is available yet.
@@ -123,10 +126,10 @@ public class bl_IndicatorManager : MonoBehaviour {
     /// </summary>
     /// <param name="info"></param>
     /// <param name="id"></param>
-    void UpdateIndicator(bl_IndicatorInfo info,int id)
+    void UpdateIndicator(bl_IndicatorInfo info, int id)
     {
         bl_Indicator indicator = IndicatorsEntrys[id];
-        if(indicator == null)
+        if (indicator == null)
         {
             Debug.LogWarning("Can't update indicator because this doesn't exit in list");
             return;
@@ -136,7 +139,7 @@ public class bl_IndicatorManager : MonoBehaviour {
             info.Color = SpriteColor;
         }
 
-        indicator.GetInfo(info,this,true);
+        indicator.GetInfo(info, this, true);
     }
 
     /// <summary>
@@ -145,7 +148,7 @@ public class bl_IndicatorManager : MonoBehaviour {
     void FixedUpdate()
     {
         //Just call if have at least a indicator
-        if(IndicatorsEntrys.Count > 0)
+        if (IndicatorsEntrys.Count > 0)
         {
             ControllIndicators();
         }
@@ -156,11 +159,11 @@ public class bl_IndicatorManager : MonoBehaviour {
     /// </summary>
     void ControllIndicators()
     {
-        for(int i = 0; i < IndicatorsEntrys.Count; i++)
+        for (int i = 0; i < IndicatorsEntrys.Count; i++)
         {
             bl_Indicator indicator = IndicatorsEntrys[i];
             //Remove nulls indicators in list
-            if(indicator == null || indicator.Transform == null)
+            if (indicator == null || indicator.Transform == null)
             {
                 IndicatorsEntrys.Remove(indicator);
                 return;
@@ -208,7 +211,7 @@ public class bl_IndicatorManager : MonoBehaviour {
             {
                 indicator.Transform.localRotation = Quaternion.Euler(offset);
             }
-        }       
+        }
     }
 
 

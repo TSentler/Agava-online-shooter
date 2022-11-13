@@ -1515,6 +1515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _photonView: {fileID: 324320900069819033}
+  _damagebleHit: {fileID: 0}
   _weaponsHolder: {fileID: 7312492307850879255}
   _player: {fileID: 2330538665306855919}
 --- !u!114 &424512754763583127
@@ -62230,6 +62231,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224249693280608806}
     m_Modifications:
+    - target: {fileID: 100002, guid: 9a8c4938f4468294ea58e3f22fefaec9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11400018, guid: 9a8c4938f4468294ea58e3f22fefaec9, type: 3}
       propertyPath: LocalPlayer
       value: 

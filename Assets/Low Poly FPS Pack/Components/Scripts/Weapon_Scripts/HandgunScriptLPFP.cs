@@ -370,7 +370,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
         //Aiming
         //Toggle camera FOV when right click is held down
-        if (Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting && _photonView.IsMine)
+        if (Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting /*&& _photonView.IsMine*/)
         {
             if (ironSights == true)
             {
@@ -526,7 +526,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //}
 
         //Throw grenade when pressing G key
-        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount!= 0 && _timerIsStart == false)
+        if (Input.GetKeyDown(KeyCode.G) && !isInspecting /*&& _photonView.IsMine*/ && _currenGrenadeCount != 0 && _timerIsStart == false)
         {
             _nextGrenadeTime = Time.time + _delay;
             _currentTime = Time.time;
@@ -566,7 +566,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Shooting 
-        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning && _photonView.IsMine)
+        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning /*&& _photonView.IsMine*/)
         {
             anim.Play("Fire", 0, 0f);
             if (!silencer)
@@ -654,11 +654,6 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             Spawnpoints.bulletSpawnPoint.transform.position,
             Spawnpoints.bulletSpawnPoint.transform.rotation);
 
-            if (_photonView.IsMine)
-            {
-                bullet.GetComponent<BulletScript>().Sender = this.gameObject;
-            }
-
             bullet.GetComponent<BulletScript>().SetDamage(_damage);
             bullet.GetComponent<BulletScript>().SetGun(this);
             //Add velocity to the bullet
@@ -708,7 +703,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Reload 
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting /*&& _photonView.IsMine*/)
         {
             //Reload
             Reload();
@@ -724,7 +719,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         if (Input.GetKey(KeyCode.W) && !isRunning ||
             Input.GetKey(KeyCode.A) && !isRunning ||
             Input.GetKey(KeyCode.S) && !isRunning ||
-            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine) 
+            Input.GetKey(KeyCode.D) && !isRunning /*&& _photonView.IsMine*/)
         {
             anim.SetBool("Walk", true);
         }
@@ -734,7 +729,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine)
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) /*&& _photonView.IsMine*/)
         {
             isRunning = true;
         }
@@ -753,11 +748,11 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             anim.SetBool("Run", false);
         }
 
-        if(_timerIsStart == true)
+        if (_timerIsStart == true)
         {
             _currentTime += Time.deltaTime;
 
-            if(_currentTime >= _nextGrenadeTime)
+            if (_currentTime >= _nextGrenadeTime)
             {
                 _timerIsStart = false;
             }
@@ -767,7 +762,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     [PunRPC]
     private void InstantiateBullet()
     {
-       
+
     }
 
     public void HitOnPlayer()
@@ -792,9 +787,9 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //Wait for set amount of time before spawning grenade
         yield return new WaitForSeconds(grenadeSpawnDelay);
         //Spawn grenade prefab at spawnpoint
-       PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
-            Spawnpoints.grenadeSpawnPoint.transform.position,
-            Spawnpoints.grenadeSpawnPoint.transform.rotation);
+        PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
+             Spawnpoints.grenadeSpawnPoint.transform.position,
+             Spawnpoints.grenadeSpawnPoint.transform.rotation);
     }
 
     private IEnumerator AutoReload()

@@ -11,7 +11,7 @@ namespace PlayerAbilities
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
-       // [SerializeField] private DamagebleHit _damagebleHit;
+        [SerializeField] private DamagebleHit _damagebleHit;
         [SerializeField] private WeaponsHolder _weaponsHolder;
         [SerializeField] private GameObject _player;
 
@@ -46,8 +46,8 @@ namespace PlayerAbilities
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
-            //_damagebleHit = FindObjectOfType<DamagebleHit>(true);
-            //_damagebleHit.gameObject.SetActive(false);
+            _damagebleHit = FindObjectOfType<DamagebleHit>(true);
+            _damagebleHit.gameObject.SetActive(false);
             _playerInfo = GetComponent<PlayerInfo>();
         }
 
@@ -55,7 +55,7 @@ namespace PlayerAbilities
         {
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
-           // _damagebleHit.gameObject.SetActive(false);
+           _damagebleHit.gameObject.SetActive(false);
             _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
         }
@@ -87,9 +87,9 @@ namespace PlayerAbilities
             }
         }
 
-        public void ApplyDamage(float damage, Player player, Vector3 targetPosition)
+        public void ApplyDamage(float damage, Player player, Vector3 enemy)
         {
-            object[] rpcParametrs = new object[3] { damage, player, targetPosition };
+            object[] rpcParametrs = new object[3] { damage, player, enemy};
             _photonView.RPC(nameof(ApplyDamageRPC), RpcTarget.All, rpcParametrs);
         }
 
@@ -112,8 +112,8 @@ namespace PlayerAbilities
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
                 if (_playerInfo.IsBot == false)
                 {
-                    //_damagebleHit.gameObject.SetActive(true);
-                    //_damagebleHit.ShowHitPoint(targetPosition, transform);
+                    _damagebleHit.gameObject.SetActive(true);
+                    _damagebleHit.ShowHitPoint(targetPosition, transform.position, transform.forward);
                     //StartCoroutine(DestroyEffectWithDelay());
                 }
 
