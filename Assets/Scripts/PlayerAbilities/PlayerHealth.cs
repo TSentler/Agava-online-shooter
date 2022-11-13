@@ -11,7 +11,7 @@ namespace PlayerAbilities
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
-        [SerializeField] private DamagebleHit _damagebleHit;
+       // [SerializeField] private DamagebleHit _damagebleHit;
         [SerializeField] private WeaponsHolder _weaponsHolder;
         [SerializeField] private GameObject _player;
 
@@ -46,8 +46,8 @@ namespace PlayerAbilities
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", _deaths } });
             PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", _kills } });
             _spawner = FindObjectOfType<PlayerSpawner>();
-            _damagebleHit = FindObjectOfType<DamagebleHit>(true);
-            _damagebleHit.gameObject.SetActive(false);
+            //_damagebleHit = FindObjectOfType<DamagebleHit>(true);
+            //_damagebleHit.gameObject.SetActive(false);
             _playerInfo = GetComponent<PlayerInfo>();
         }
 
@@ -55,7 +55,7 @@ namespace PlayerAbilities
         {
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
-            _damagebleHit.gameObject.SetActive(false);
+           // _damagebleHit.gameObject.SetActive(false);
             _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
         }
@@ -151,11 +151,11 @@ namespace PlayerAbilities
             gameObject.SetActive(true);
         }
 
-        private IEnumerator DestroyEffectWithDelay()
-        {
-            yield return new WaitForSeconds(10f);
-            _damagebleHit.gameObject.SetActive(false);
-        }
+        //private IEnumerator DestroyEffectWithDelay()
+        //{
+        //    yield return new WaitForSeconds(10f);
+        //    _damagebleHit.gameObject.SetActive(false);
+        //}
 
         private IEnumerator DisableWithDelay()
         {

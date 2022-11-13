@@ -653,6 +653,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             Prefabs.bulletPrefab.name,
             Spawnpoints.bulletSpawnPoint.transform.position,
             Spawnpoints.bulletSpawnPoint.transform.rotation);
+
+            if (_photonView.IsMine)
+            {
+                bullet.GetComponent<BulletScript>().Sender = this.gameObject;
+            }
+
             bullet.GetComponent<BulletScript>().SetDamage(_damage);
             bullet.GetComponent<BulletScript>().SetGun(this);
             //Add velocity to the bullet
