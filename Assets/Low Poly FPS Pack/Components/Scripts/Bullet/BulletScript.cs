@@ -4,7 +4,6 @@ using Photon.Pun;
 
 public class BulletScript : MonoBehaviour
 {
-
     [Range(5, 100)]
     [Tooltip("After how long time should the bullet prefab be destroyed?")]
     public float destroyAfter;
@@ -25,8 +24,6 @@ public class BulletScript : MonoBehaviour
 
     private float _damage;
     private IShooting _gun;
-    private Camera _camera;
-
 
     private void Start()
     {
@@ -47,22 +44,7 @@ public class BulletScript : MonoBehaviour
                     hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer, transform.position);
                     _gun.HitOnPlayer();
 
-                }              
-
-                //if (hit.collider.TryGetComponent(out bl_DamageCallback damageCallback))
-                //{
-                //    //if (damageCallback.PhotonView.IsMine)
-                //    //{
-                //        bl_DamageInfo info = new bl_DamageInfo(_damage);
-                //    //Send the sender (enemy) that inflict this damage.
-                //        info.Sender = Sender;
-
-                //    //And the other important variable is the position of enemy.
-                //    //for this is we need to have a reference of enemy to do the following:
-                //        Sender.SetIndicator();
-                //        damageCallback.OnDamage(info);
-                //    //}
-                //}
+                }                            
             }
 
             var other = hit;
@@ -104,8 +86,6 @@ public class BulletScript : MonoBehaviour
     //If the bullet collides with anything
     private void OnTriggerEnter(Collider other)
     {
-        var collisionPoint = other.ClosestPoint(transform.position);
-        var collisionNormal = transform.position - collisionPoint;
 
         //If destroy on impact is false, start 
         //coroutine with random destroy timer

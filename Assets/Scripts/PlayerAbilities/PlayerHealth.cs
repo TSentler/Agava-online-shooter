@@ -114,7 +114,7 @@ namespace PlayerAbilities
                 {
                     _damagebleHit.gameObject.SetActive(true);
                     _damagebleHit.ShowHitPoint(targetPosition, transform.position, transform.forward);
-                    //StartCoroutine(DestroyEffectWithDelay());
+                    StartCoroutine(DestroyEffectWithDelay());
                 }
 
                 if (_currentHealth <= 0)
@@ -151,11 +151,11 @@ namespace PlayerAbilities
             gameObject.SetActive(true);
         }
 
-        //private IEnumerator DestroyEffectWithDelay()
-        //{
-        //    yield return new WaitForSeconds(10f);
-        //    _damagebleHit.gameObject.SetActive(false);
-        //}
+        private IEnumerator DestroyEffectWithDelay()
+        {
+            yield return new WaitForSeconds(3f);
+            _damagebleHit.gameObject.SetActive(false);
+        }
 
         private IEnumerator DisableWithDelay()
         {
