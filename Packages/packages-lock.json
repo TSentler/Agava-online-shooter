@@ -1,11 +1,25 @@
 {
   "dependencies": {
+    "com.agava.vkgames": {
+      "version": "https://github.com/punisherpete/com.agava.vkgames.git#1.1.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "86552c5b60dad58462539c3a3708527440edbb7e"
+    },
     "com.agava.webutility": {
       "version": "https://github.com/forcepusher/com.agava.webutility.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "dbf49295fd77c3f9d8ba0ab156c96c0f2e90e9de"
+    },
+    "com.agava.yandexgames": {
+      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#11.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "51d2698d5aaa609e1679da6546bbb49148c4909c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

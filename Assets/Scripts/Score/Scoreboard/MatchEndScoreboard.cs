@@ -1,3 +1,4 @@
+using Lean.Localization;
 using Network;
 using Network.UI;
 using Photon.Pun;
@@ -24,13 +25,20 @@ namespace Score
         private MatchmakingCallbacksCatcher _matchCallbacks;
         private bool _isTimerStope = false;    
         private float _currentTime;
+        private LeanLocalization _leanLocalization;
 
         public Action MatchComplete;
+        private Action _adOpened;
+        private Action<bool> _adClosed;
+        private Action _adOfline;
+        private Action<string> _adError;
+        private Action _adErrorVk;
 
         private void Awake()
         {
             _matchCallbacks = FindObjectOfType<MatchmakingCallbacksCatcher>();
             _sortedScores.Clear();
+            _leanLocalization = FindObjectOfType<LeanLocalization>();
             PhotonNetwork.AutomaticallySyncScene = true;
 
             PhotonNetwork.CurrentRoom.IsOpen = true;
@@ -41,11 +49,21 @@ namespace Score
         {
             _matchCallbacks.OnRoomLeft += RoomLeftHandler;
             _matchEndPanel.SetActive(false);
+            _adOpened += OnAdOpen;
+            _adClosed += OnAdClose;
+            _adOfline += OnAdOfline;
+            _adError += OnAdError;
         }
+
+      
 
         private void OnDisable()
         {
             _matchCallbacks.OnRoomLeft -= RoomLeftHandler;
+            _adOpened -= OnAdOpen;
+            _adClosed -= OnAdClose;
+            _adOfline -= OnAdOfline;
+            _adError -= OnAdError;
         }
 
         private void Update()
@@ -54,11 +72,14 @@ namespace Score
                 return;
 
             _currentTime -= Time.deltaTime;
-            _textTimer.text = "Reload level in " + _currentTime.ToString("0") + " seconds";
+            string reload = LeanLocalization.GetTranslationText("ReloudText");
+            string seconds = LeanLocalization.GetTranslationText("Seconds");
+            _textTimer.text = reload + _currentTime.ToString("0") + seconds;
 
             if(_currentTime <= 0)
             {
-                _textTimer.text = "Reload level";
+                string reloading = LeanLocalization.GetTranslationText("Relouding");
+                _textTimer.text = reloading;
              
                 if (PhotonNetwork.IsMasterClient)
                 {
@@ -114,9 +135,42 @@ namespace Score
         [PunRPC]
         private void ReloadLevel()
         {
+#if YANDEX_GAMES
+            Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
+#endif
+#if VK_GAMES && !UNITY_EDITOR
+        Agava.VKGames.Interstitial.Show();
+         PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+#endif
+
+        }
+
+        private void OnAdError(string obj)
+        {
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.CurrentRoom.CustomProperties.Clear();
             PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnAdOfline()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnAdClose(bool obj)
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnAdOpen()
+        {
+         
         }
     }
 }
