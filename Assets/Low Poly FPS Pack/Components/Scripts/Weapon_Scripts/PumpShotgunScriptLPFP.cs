@@ -149,7 +149,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     //Check if walking
     private bool isWalking;
     //Check if inspecting weapon
-    private bool isInspecting;
+    private bool isInspecting = false;
 
     //How much ammo is currently left
     private int currentAmmo;
@@ -929,6 +929,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
     private IEnumerator AutoReload()
     {
+        isReloading = true;
         //Wait for set amount of time
         yield return new WaitForSeconds(autoReloadDelay);
 
@@ -982,9 +983,12 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     {
         //Check if reloading
         //Check both animations
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Inser Shell") ||
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||           
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 1") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 2") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 3") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 4") ||
             anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Close"))
         {
             isReloading = true;

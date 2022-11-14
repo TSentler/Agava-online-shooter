@@ -667,8 +667,11 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		//Check if reloading
 		//Check both animations
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Reload Open") || 
-			anim.GetCurrentAnimatorStateInfo (0).IsName ("Reload Open") ||
-			anim.GetCurrentAnimatorStateInfo (0).IsName ("Inser Shell") ||
+			anim.GetCurrentAnimatorStateInfo (0).IsName ("Insert Bullet") ||
+			anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Bullet 0") ||
+			anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Bullet 1") ||
+			anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Bullet 2") ||
+			anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Bullet 3") ||
 			anim.GetCurrentAnimatorStateInfo (0).IsName ("Reload Close"))
 		{
 			isReloading = true;
