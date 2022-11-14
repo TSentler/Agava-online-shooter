@@ -933,6 +933,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 	private IEnumerator AutoReload()
 	{
+		isReloading = true;
 		//Wait set amount of time
 		yield return new WaitForSeconds(autoReloadDelay);
 
@@ -957,6 +958,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		//Restore ammo when reloading
 		currentAmmo = ammo;
 		outOfAmmo = false;
+		isReloading = false;
 	}
 
 	//Reload

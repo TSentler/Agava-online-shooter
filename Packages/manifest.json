@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.agava.vkgames": "https://github.com/punisherpete/com.agava.vkgames.git#1.1.1",
     "com.agava.webutility": "https://github.com/forcepusher/com.agava.webutility.git",
+    "com.agava.yandexgames": "https://github.com/forcepusher/com.agava.yandexgames.git#11.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.17.2",
     "com.unity.ide.rider": "3.0.15",

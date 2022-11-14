@@ -149,7 +149,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     //Check if walking
     private bool isWalking;
     //Check if inspecting weapon
-    private bool isInspecting = false;
+    private bool isInspecting;
 
     //How much ammo is currently left
     private int currentAmmo;
@@ -929,7 +929,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
     private IEnumerator AutoReload()
     {
-        isReloading = true;
+        isReloading = false;
         //Wait for set amount of time
         yield return new WaitForSeconds(autoReloadDelay);
 
@@ -950,11 +950,14 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
         //currentAmmo = ammo;
         outOfAmmo = false;
+        isReloading = true;
     }
 
     //Reload
     private void Reload()
     {
+        isReloading = false;
+
         if (outOfAmmo == true)
         {
             //Play diff anim if out of ammo
@@ -968,6 +971,17 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         //Restore ammo when reloading
         currentAmmo = ammo;
         outOfAmmo = false;
+
+        if(maxAmmo >= 0)
+        {
+            StartCoroutine(ReloudDelay());
+        }
+    }
+
+    private IEnumerator ReloudDelay()
+    {
+        yield return new WaitForSeconds(6f);
+        isReloading = true;
     }
 
     //Show light when shooting, then disable after set amount of time
@@ -983,12 +997,9 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     {
         //Check if reloading
         //Check both animations
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||           
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 1") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 2") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 3") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 4") ||
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Inser Shell") ||
             anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Close"))
         {
             isReloading = true;

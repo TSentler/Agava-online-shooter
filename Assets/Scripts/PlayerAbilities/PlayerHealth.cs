@@ -23,6 +23,8 @@ namespace PlayerAbilities
         private PlayerSpawner _spawner;
         private PlayerInfo _playerInfo;
 
+        public PhotonView PhotonView => _photonView;
+
         public UnityAction<float, float> ChangeHealth;
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
