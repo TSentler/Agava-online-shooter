@@ -117,8 +117,10 @@ public class GrenadeScript : MonoBehaviour {
 
 			if(hit.gameObject.TryGetComponent(out PlayerHealth playerHealth))
             {
-				
-				playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer, transform.position);
+				if(playerHealth.PhotonView.IsMine == false)
+                {
+					playerHealth.ApplyDamage(_damage, PhotonNetwork.LocalPlayer, transform.position);
+				}			
 			}
 		}
 

@@ -929,6 +929,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
     private IEnumerator AutoReload()
     {
+        isReloading = false;
         //Wait for set amount of time
         yield return new WaitForSeconds(autoReloadDelay);
 
@@ -949,11 +950,14 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
         //currentAmmo = ammo;
         outOfAmmo = false;
+        isReloading = true;
     }
 
     //Reload
     private void Reload()
     {
+        isReloading = false;
+
         if (outOfAmmo == true)
         {
             //Play diff anim if out of ammo
@@ -967,6 +971,17 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         //Restore ammo when reloading
         currentAmmo = ammo;
         outOfAmmo = false;
+
+        if(maxAmmo >= 0)
+        {
+            StartCoroutine(ReloudDelay());
+        }
+    }
+
+    private IEnumerator ReloudDelay()
+    {
+        yield return new WaitForSeconds(6f);
+        isReloading = true;
     }
 
     //Show light when shooting, then disable after set amount of time
