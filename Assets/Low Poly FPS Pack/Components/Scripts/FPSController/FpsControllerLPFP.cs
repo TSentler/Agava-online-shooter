@@ -17,6 +17,7 @@ namespace FPSControllerLPFP
 
         [SerializeField] private WeaponsHolder _weaponsHolder;
         [SerializeField] private float _standartSensetivity;
+        [SerializeField] private float _gravity;
 #pragma warning disable 649
         [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
@@ -126,7 +127,7 @@ namespace FPSControllerLPFP
             _velocityX = new SmoothVelocity();
             _velocityZ = new SmoothVelocity();
             Cursor.lockState = CursorLockMode.Locked;
-            ValidateRotationRestriction();
+            ValidateRotationRestriction();      
         }
 
         private void SetNewArm(Transform newArm)
@@ -201,6 +202,11 @@ namespace FPSControllerLPFP
             arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
+
+            if (_isGrounded == false)
+            {
+                _rigidbody.AddForce(Vector3.up * _gravity * Physics.gravity.y * Time.deltaTime);
+            }
         }
 
         private void RotateCameraAndCharacter()
