@@ -500,7 +500,10 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 				//Add velocity to the bullet
 
 
-				StartCoroutine (CasingDelay ());
+				if (maxAmmo <= 0)
+				{
+					StartCoroutine(CasingDelay());
+				}
 			}
 		}
 

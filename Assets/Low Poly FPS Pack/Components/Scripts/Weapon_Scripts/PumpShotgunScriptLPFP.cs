@@ -814,7 +814,10 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
                         bullet.transform.forward * bulletForce;
                 }
 
-                StartCoroutine(CasingDelay());
+                if (maxAmmo <= 0)
+                {
+                    StartCoroutine(CasingDelay());
+                }
             }
         }
 
@@ -909,9 +912,9 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         //Wait for set amount of time before spawning grenade
         yield return new WaitForSeconds(grenadeSpawnDelay);
         //Spawn grenade prefab at spawnpoint
-       PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
-            Spawnpoints.grenadeSpawnPoint.transform.position,
-            Spawnpoints.grenadeSpawnPoint.transform.rotation);
+        PhotonNetwork.Instantiate(Prefabs.grenadePrefab.name,
+             Spawnpoints.grenadeSpawnPoint.transform.position,
+             Spawnpoints.grenadeSpawnPoint.transform.rotation);
     }
 
     private IEnumerator CasingDelay()
