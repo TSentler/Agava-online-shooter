@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponsHolder: {fileID: 7312492307850879255}
   _standartSensetivity: 3
-  _gravity: 12
+  _gravity: 14
   arms: {fileID: 340296900833809867}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 5ac86ac5747770349a6c124f36d233e1, type: 3}
