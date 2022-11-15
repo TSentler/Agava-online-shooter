@@ -1219,7 +1219,6 @@ GameObject:
   - component: {fileID: 4387319589381292558}
   - component: {fileID: 2212487470621667383}
   - component: {fileID: 3999451411826328546}
-  - component: {fileID: 424512754763583127}
   - component: {fileID: 3879372588321397246}
   - component: {fileID: 1736374855633959505}
   - component: {fileID: -8042488862029087902}
@@ -1519,21 +1518,6 @@ MonoBehaviour:
   _weaponsHolder: {fileID: 7312492307850879255}
   _player: {fileID: 2330538665306855919}
   _deadPanel: {fileID: 795665910767289767}
---- !u!114 &424512754763583127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354921826246218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21901cdc524ec2042ab35bd57c1c2e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mineModel: {fileID: 987267146490291893}
-  _notMineModel: {fileID: 2330538665306855919}
-  _photonView: {fileID: 324320900069819033}
 --- !u!114 &3879372588321397246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15936,7 +15920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340296900833809867
 Transform:
   m_ObjectHideFlags: 0
