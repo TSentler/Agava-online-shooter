@@ -29,5 +29,8 @@ public class LanguageChanger : MonoBehaviour
 #if VK_GAMES
         _leanLocalization.SetCurrentLanguage("Russian");
 #endif
+#if CRAZY_GAMES
+        _leanLocalization.SetCurrentLanguage("English");
+#endif
     }
 }

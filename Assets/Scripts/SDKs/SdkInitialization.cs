@@ -8,11 +8,18 @@ public class SdkInitialization : MonoBehaviour
 {
     private void Awake()
     {
+#if !CRAZY_GAMES
         StartCoroutine(Init());
+#endif
+#if CRAZY_GAMES
+        SceneManager.LoadScene(1);
+#endif
     }
 
+#if !CRAZY_GAMES
     private IEnumerator Init()
     {
+
 #if YANDEX_GAMES
  while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
         {
@@ -32,5 +39,7 @@ public class SdkInitialization : MonoBehaviour
         //PlayerPrefs.SetInt("CountOfStart", _countOfStart);
 #endif
         SceneManager.LoadScene(1);
-    }
+
+}
+#endif
 }
