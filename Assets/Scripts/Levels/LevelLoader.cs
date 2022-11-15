@@ -30,6 +30,8 @@ namespace Levels
 
         private RoomOptions _currentRoomOptions;
         private List<RoomInfo> _roomInfos = new List<RoomInfo>();
+        private bool _isSmallMap = false;
+        private bool _isLargeMap = false;
 
         private void Awake()
         {
@@ -76,6 +78,36 @@ namespace Levels
             _lobbyCalback.OnRoomsUpdate -= RoomListUpdate;
         }
 
+        public void ActivateSmallMap()
+        {
+            _isSmallMap = true;
+            _isLargeMap = false;
+        }
+
+        public void ActivateLargeMap()
+        {
+            _isLargeMap = true;
+            _isSmallMap = false;
+        }
+
+        public void StartGame()
+        {
+            if(_isLargeMap == false && _isSmallMap == false)
+            {
+                return;
+            }
+
+            if (_isSmallMap)
+            {
+                CreateOrJoinSmallMap();
+            }
+
+            if (_isLargeMap)
+            {
+                CreateOrJoinLargeMap();
+            }
+        }
+
         private void CreateRoomHandler()
         {
             PhotonNetwork.LoadLevel(_levelName.ToString());
@@ -100,13 +132,13 @@ namespace Levels
             CreateOrJoinMap(LevelNames.Room1BotTest, _botRoomOptions);
         }
 
-        public void CreateOrJoinSmallMap()
+        private void CreateOrJoinSmallMap()
         {
 
             CreateOrJoinMap(LevelNames.Room1, _smallRoomOptions);
         }
 
-        public void CreateOrJoinLargeMap()
+        private void CreateOrJoinLargeMap()
         {
             CreateOrJoinMap(LevelNames.SmallMapCity, _largeRoomOptions);
         }
