@@ -8,7 +8,9 @@ public class LanguageChanger : MonoBehaviour
 
     private void Start()
     {
-#if YANDEX_GAMES
+#if !UNITY_WEBGL || UNITY_EDITOR
+        
+#elif YANDEX_GAMES
 
         switch (YandexGamesSdk.Environment.i18n.lang)
         {
@@ -25,8 +27,7 @@ public class LanguageChanger : MonoBehaviour
                 _leanLocalization.SetCurrentLanguage("English");
                 break;
         }
-#endif
-#if VK_GAMES
+#elif VK_GAMES
         _leanLocalization.SetCurrentLanguage("Russian");
 #endif
     }
