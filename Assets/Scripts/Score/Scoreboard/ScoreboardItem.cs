@@ -1,3 +1,4 @@
+using Lean.Localization;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -23,9 +24,11 @@ public class ScoreboardItem : MonoBehaviour
         if(player.CustomProperties.ContainsKey("Death") && player.CustomProperties.ContainsKey("Kills"))
         {
             _nickname.text = player.NickName;
-            _death.text = "Death " + player.CustomProperties["Death"].ToString();
+            string death = LeanLocalization.GetTranslationText("Death");
+            string kills = LeanLocalization.GetTranslationText("Kills");
+            _death.text = death + player.CustomProperties["Death"].ToString();
             _killsCount = (int)player.CustomProperties["Kills"];
-            _kills.text = "Kills " + _killsCount;
+            _kills.text = kills + _killsCount;
         }
         else
         {
