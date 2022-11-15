@@ -9,28 +9,53 @@ namespace Bonuses
         
         [SerializeField] private float _extraHP;
 
+        private RevardedVideo _revardedVideo;
+
+        private void Awake()
+        {
+            _revardedVideo = FindObjectOfType<RevardedVideo>();
+        }
+
         public void PrepareIncreaseHP()
         {
-            PrepareBonus(_increaseHPName, _extraHP);
+            _revardedVideo.OnRevardedVideoButtonClick("HP");
+            //Debug.Log(_revardedVideo.IsRewarded);
+
+            //if (_revardedVideo.IsRewarded == true)
+            //{
+            //    PrepareBonus(_increaseHPName, _extraHP);
+            //}       
         }
 
         public void PrepareRifle()
         {
-            PrepareBonus(_gunReadyName, 1);
+            _revardedVideo.OnRevardedVideoButtonClick("Rifle");
+            //Debug.Log(_revardedVideo.IsRewarded);
+
+            //if (_revardedVideo.IsRewarded == true)
+            //{
+            //    PrepareBonus(_gunReadyName, 1);
+            //}
         }
         
         public void PrepareShotgun()
         {
-            PrepareBonus(_gunReadyName, 2);
+            _revardedVideo.OnRevardedVideoButtonClick("Shotgun");
+            //Debug.Log(_revardedVideo.IsRewarded);
+
+            //if (_revardedVideo.IsRewarded == true)
+            //{
+            //    PrepareBonus(_gunReadyName, 2);
+            //}
         }
 
-        private void PrepareBonus(string name, float count)
+        public void PrepareBonus(string name, float count)
         {
             PlayerPrefs.SetFloat(name, count);
             PlayerPrefs.Save();
         }
         
-        private void PrepareBonus(string name, int count)
+        public void PrepareBonus(string name, int count)
         {
             PlayerPrefs.SetInt(name, count);
             PlayerPrefs.Save();
