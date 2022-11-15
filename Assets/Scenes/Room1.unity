@@ -32568,7 +32568,7 @@ MonoBehaviour:
   _weapon: {fileID: 882458676}
   _colider: {fileID: 669127676}
   _photonView: {fileID: 669127674}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &669127676
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -36887,7 +36887,7 @@ MonoBehaviour:
   _weapon: {fileID: 1793181707}
   _colider: {fileID: 811448430}
   _photonView: {fileID: 811448428}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &811448430
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59419,7 +59419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578353689405069936, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.06929779
+      value: -0.069298744
       objectReference: {fileID: 0}
     - target: {fileID: 3548471480739989744, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_IsActive
@@ -64747,7 +64747,7 @@ MonoBehaviour:
   _weapon: {fileID: 2100293811}
   _colider: {fileID: 1436195093}
   _photonView: {fileID: 1436195091}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &1436195093
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -79038,7 +79038,7 @@ MonoBehaviour:
   _weapon: {fileID: 394845984}
   _colider: {fileID: 1748089162}
   _photonView: {fileID: 404211529531300334}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &1748089162
 SphereCollider:
   m_ObjectHideFlags: 0

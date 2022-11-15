@@ -1362,9 +1362,9 @@ Transform:
   m_Children:
   - {fileID: 606260953}
   - {fileID: 2137031637}
+  - {fileID: 1260507716}
   - {fileID: 1174207433}
   - {fileID: 2045424309}
-  - {fileID: 1260507716}
   - {fileID: 94522491}
   - {fileID: 541789464}
   - {fileID: 1678443566}
@@ -13612,7 +13612,7 @@ MonoBehaviour:
   _weapon: {fileID: 126115263}
   _colider: {fileID: 325790911}
   _photonView: {fileID: 325790909}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &325790911
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18582,7 +18582,7 @@ MonoBehaviour:
   _weapon: {fileID: 2042413659}
   _colider: {fileID: 447760149}
   _photonView: {fileID: 447760147}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &447760149
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18964,7 +18964,7 @@ MonoBehaviour:
   _weapon: {fileID: 1525276005}
   _colider: {fileID: 451737761}
   _photonView: {fileID: 451737759}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &451737761
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28942,6 +28942,10 @@ PrefabInstance:
     - target: {fileID: 578353689234435328, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.26782227
+      objectReference: {fileID: 0}
+    - target: {fileID: 578353689405069936, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.06930065
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
@@ -40846,7 +40850,7 @@ MonoBehaviour:
   _weapon: {fileID: 1852466530}
   _colider: {fileID: 992823981}
   _photonView: {fileID: 992823979}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &992823981
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -50753,7 +50757,7 @@ Transform:
   - {fileID: 1266220891}
   - {fileID: 1381265444}
   m_Father: {fileID: 25395346}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1262860882
 GameObject:
@@ -79611,7 +79615,7 @@ MonoBehaviour:
   _weapon: {fileID: 866176764}
   _colider: {fileID: 1998347116}
   _photonView: {fileID: 1998347114}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &1998347116
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80060,7 +80064,7 @@ MonoBehaviour:
   _weapon: {fileID: 984393976}
   _colider: {fileID: 2010850089}
   _photonView: {fileID: 2010850087}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!135 &2010850089
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -86243,7 +86247,7 @@ MonoBehaviour:
   _weapon: {fileID: 2044286763}
   _colider: {fileID: 2145538367840131272}
   _photonView: {fileID: 1754846919717304428}
-  _cooldown: 15
+  _cooldown: 30
 --- !u!4 &2145538367840131276
 Transform:
   m_ObjectHideFlags: 0
