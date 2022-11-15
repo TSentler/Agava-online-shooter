@@ -998,8 +998,11 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         //Check if reloading
         //Check both animations
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Open") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Inser Shell") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 1") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 2") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 3") ||
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Insert Shell 4") ||
             anim.GetCurrentAnimatorStateInfo(0).IsName("Reload Close"))
         {
             isReloading = true;
