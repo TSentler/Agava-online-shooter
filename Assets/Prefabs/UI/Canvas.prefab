@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Menu
-  FallbackText: 
+  FallbackText: "\u041C\u0435\u043D\u044E\n"
 --- !u!1 &578353689092918772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,8 +1464,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1519,7 +1519,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Mouse
-  FallbackText: 
+  FallbackText: "\u0427\u0443\u0432\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C
+    \u043C\u044B\u0448\u0438"
 --- !u!1 &578353689233014457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,7 +3408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Score
-  FallbackText: 
+  FallbackText: "\u041E\u0447\u043A\u0438"
 --- !u!224 &4494703928173842159 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3920063470661218335, guid: cc6aaa486b609cd41ace5da07e735e6a, type: 3}
