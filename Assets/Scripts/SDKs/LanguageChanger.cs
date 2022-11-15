@@ -1,6 +1,5 @@
+using Agava.YandexGames;
 using Lean.Localization;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LanguageChanger : MonoBehaviour
