@@ -9,6 +9,8 @@ namespace PlayerAbilities
 {
     public class PlayerHealth : MonoBehaviour, IPunObservable
     {
+        private readonly string _increaseHPName = "IncreaseHP";
+        
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private DamagebleHit _damagebleHit;
@@ -22,6 +24,7 @@ namespace PlayerAbilities
         private float _currentHealth;
         private PlayerSpawner _spawner;
         private PlayerInfo _playerInfo;
+        private float _oldMaxHealth;
 
         public PhotonView PhotonView => _photonView;
 
@@ -52,16 +55,40 @@ namespace PlayerAbilities
             _damagebleHit = FindObjectOfType<DamagebleHit>(true);
             _damagebleHit.gameObject.SetActive(false);
             _playerInfo = GetComponent<PlayerInfo>();
+            _oldMaxHealth = _maxHealth;
+            InitializeImprovements();
         }
 
         private void OnEnable()
         {
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
-           _damagebleHit.gameObject.SetActive(false);
+            _damagebleHit.gameObject.SetActive(false);
             _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
             _deadPanel.SetActive(false);
+        }
+
+        private void OnDisable()
+        {
+            ResetImprovements();
+        }
+
+        private void ResetImprovements()
+        {
+            if (_photonView.IsMine)
+            {
+                _maxHealth = _oldMaxHealth;
+            }
+        }
+
+        private void InitializeImprovements()
+        {
+            if (_photonView.IsMine && PlayerPrefs.HasKey(_increaseHPName))
+            {
+                _maxHealth += PlayerPrefs.GetFloat(_increaseHPName);
+                PlayerPrefs.DeleteKey(_increaseHPName);
+            }
         }
 
         public bool NeedHeal()

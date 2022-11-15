@@ -1,6 +1,4 @@
-using Photon.Pun;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,13 +11,14 @@ public class SdkInitialization : MonoBehaviour
 
     private IEnumerator Init()
     {
-#if YANDEX_GAMES
- while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
+#if !UNITY_WEBGL || UNITY_EDITOR
+        
+#elif YANDEX_GAMES
+        while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
         {
             yield return Agava.YandexGames.YandexGamesSdk.Initialize();
         }
-#endif
-#if VK_GAMES
+#elif VK_GAMES
         while (Agava.VKGames.VKGamesSdk.Initialized == false)
         { 
       
@@ -32,5 +31,6 @@ public class SdkInitialization : MonoBehaviour
         //PlayerPrefs.SetInt("CountOfStart", _countOfStart);
 #endif
         SceneManager.LoadScene(1);
+        yield break;
     }
 }
