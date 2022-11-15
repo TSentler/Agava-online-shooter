@@ -14,6 +14,11 @@ namespace Bonuses
             PrepareBonus(_increaseHPName, _extraHP);
         }
 
+        public void PrepareRifle()
+        {
+            PrepareBonus(_gunReadyName, 1);
+        }
+        
         public void PrepareShotgun()
         {
             PrepareBonus(_gunReadyName, 2);
