@@ -33,6 +33,8 @@ namespace Score
         private Action _adOfline;
         private Action<string> _adError;
         private Action _adErrorVk;
+        //private CrazyAds.AdBreakCompletedCallback AdBreakCompletedCallback;
+        //private CrazyAds.AdErrorCallback AdErrorCallback;
 
         private void Awake()
         {
@@ -53,9 +55,9 @@ namespace Score
             _adClosed += OnAdClose;
             _adOfline += OnAdOfline;
             _adError += OnAdError;
-        }
-
-      
+            //AdBreakCompletedCallback += OnCrazyGamesRevardedAd;
+            //AdErrorCallback += OnCrazyGamesErrorAd;
+        }  
 
         private void OnDisable()
         {
@@ -64,6 +66,8 @@ namespace Score
             _adClosed -= OnAdClose;
             _adOfline -= OnAdOfline;
             _adError -= OnAdError;
+            //AdBreakCompletedCallback -= OnCrazyGamesRevardedAd;
+            //AdErrorCallback -= OnCrazyGamesErrorAd;
         }
 
         private void Update()
@@ -144,7 +148,9 @@ namespace Score
             PhotonNetwork.CurrentRoom.CustomProperties.Clear();
             PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
 #endif
-
+#if CRAZY_GAMES
+            CrazyAds.Instance.beginAdBreak(AdBreakCompletedCallback, AdErrorCallback);
+#endif
         }
 
         private void OnAdError(string obj)
@@ -171,6 +177,20 @@ namespace Score
         private void OnAdOpen()
         {
          
+        }
+
+        private void OnCrazyGamesRevardedAd()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnCrazyGamesErrorAd()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -1,4 +1,6 @@
+using Photon.Pun;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,19 +8,25 @@ public class SdkInitialization : MonoBehaviour
 {
     private void Awake()
     {
+#if !CRAZY_GAMES
         StartCoroutine(Init());
+#endif
+#if CRAZY_GAMES
+        SceneManager.LoadScene(1);
+#endif
     }
 
+#if !CRAZY_GAMES
     private IEnumerator Init()
     {
-#if !UNITY_WEBGL || UNITY_EDITOR
-        
-#elif YANDEX_GAMES
-        while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
+
+#if YANDEX_GAMES
+ while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
         {
             yield return Agava.YandexGames.YandexGamesSdk.Initialize();
         }
-#elif VK_GAMES
+#endif
+#if VK_GAMES
         while (Agava.VKGames.VKGamesSdk.Initialized == false)
         { 
       
@@ -31,6 +39,7 @@ public class SdkInitialization : MonoBehaviour
         //PlayerPrefs.SetInt("CountOfStart", _countOfStart);
 #endif
         SceneManager.LoadScene(1);
-        yield break;
-    }
+
+}
+#endif
 }

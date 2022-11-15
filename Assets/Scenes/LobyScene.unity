@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c52977f2772bee4c964d2ec9da7f721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leanLocalization: {fileID: 0}
+  _leanLocalization: {fileID: 448182518}
 --- !u!4 &448182520
 Transform:
   m_ObjectHideFlags: 0
