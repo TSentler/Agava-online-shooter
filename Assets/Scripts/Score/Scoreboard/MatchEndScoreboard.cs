@@ -23,7 +23,7 @@ namespace Score
 
         private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
         private MatchmakingCallbacksCatcher _matchCallbacks;
-        private bool _isTimerStope = false;    
+        private bool _isTimerStope = false;
         private float _currentTime;
         private LeanLocalization _leanLocalization;
 
@@ -57,7 +57,7 @@ namespace Score
             _adError += OnAdError;
             //AdBreakCompletedCallback += OnCrazyGamesRevardedAd;
             //AdErrorCallback += OnCrazyGamesErrorAd;
-        }  
+        }
 
         private void OnDisable()
         {
@@ -80,16 +80,11 @@ namespace Score
             string seconds = LeanLocalization.GetTranslationText("Seconds");
             _textTimer.text = reload + _currentTime.ToString("0") + seconds;
 
-            if(_currentTime <= 0)
+            if (_currentTime <= 0)
             {
                 string reloading = LeanLocalization.GetTranslationText("Relouding");
                 _textTimer.text = reloading;
-             
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    _photonView.RPC(nameof(ReloadLevelRPC), RpcTarget.All);
-                }
-
+                ReloadLevelRPC();
                 _isTimerStope = false;
             }
         }
@@ -134,11 +129,11 @@ namespace Score
             PhotonNetwork.LoadLevel(0);
         }
 
-        [PunRPC]
+
         private void ReloadLevelRPC()
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
-            
+
 #elif YANDEX_GAMES
             Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
 #elif VK_GAMES && !UNITY_EDITOR
@@ -146,7 +141,7 @@ namespace Score
 #elif CRAZY_GAMES
             CrazyAds.Instance.beginAdBreak(AdBreakCompletedCallback, AdErrorCallback);
 #endif
-            ReloadLevel();
+            _photonView.RPC(nameof(ReloadLevel), RpcTarget.All);
         }
 
         private void OnAdError(string obj)
@@ -173,11 +168,15 @@ namespace Score
         {
         }
 
+        [PunRPC]
         private void ReloadLevel()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.AutomaticallySyncScene = true;
+                PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+                PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 }
