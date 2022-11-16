@@ -350,8 +350,8 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //Weapon sway
         if (weaponSway == true)
         {
-            float movementX = -Input.GetAxis("Mouse X") * swayAmount;
-            float movementY = -Input.GetAxis("Mouse Y") * swayAmount;
+            float movementX = -Input.GetAxisRaw("Mouse X") * swayAmount;
+            float movementY = -Input.GetAxisRaw("Mouse Y") * swayAmount;
             //Clamp movement to min and max values
             movementX = Mathf.Clamp
                 (movementX, -maxSwayAmount, maxSwayAmount);

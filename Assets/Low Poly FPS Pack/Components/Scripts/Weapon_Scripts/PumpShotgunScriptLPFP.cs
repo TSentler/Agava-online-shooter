@@ -416,8 +416,8 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
         //Weapon sway
         if (weaponSway == true)
         {
-            float movementX = -Input.GetAxis("Mouse X") * swayAmount;
-            float movementY = -Input.GetAxis("Mouse Y") * swayAmount;
+            float movementX = -Input.GetAxisRaw("Mouse X") * swayAmount;
+            float movementY = -Input.GetAxisRaw("Mouse Y") * swayAmount;
             //Clamp movement to min and max amount
             movementX = Mathf.Clamp
                 (movementX, -maxSwayAmount, maxSwayAmount);
