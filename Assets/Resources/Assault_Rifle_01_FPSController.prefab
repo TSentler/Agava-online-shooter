@@ -14486,6 +14486,7 @@ MonoBehaviour:
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
+  _standartSensetivity: 0
   gunSprite: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 20607603889952386}
   fovSpeed: 15
@@ -14529,7 +14530,7 @@ MonoBehaviour:
   weaponSway: 1
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 10
+  swaySmoothValue: 5
   fireRate: 11.5
   autoReload: 1
   autoReloadDelay: 0.25
@@ -34813,6 +34814,7 @@ MonoBehaviour:
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
+  _standartSensetivity: 0
   gunSprite: {fileID: 21300018, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 7589460530982128827}
   fovSpeed: 15
@@ -34854,7 +34856,7 @@ MonoBehaviour:
   weaponSway: 1
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 10
+  swaySmoothValue: 5
   fireRate: 0.85
   autoReload: 1
   autoReloadDelay: 0.5
@@ -36751,6 +36753,7 @@ MonoBehaviour:
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
+  _standartSensetivity: 0
   gunSprite: {fileID: 21300008, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 100414656708919175}
   fovSpeed: 15
@@ -36780,7 +36783,7 @@ MonoBehaviour:
   weaponSway: 1
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 10
+  swaySmoothValue: 5
   sliderBackTimer: 1.58
   autoReload: 1
   autoReloadDelay: 0.15
@@ -54189,6 +54192,7 @@ MonoBehaviour:
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
+  _standartSensetivity: 0
   gunSprite: {fileID: 21300030, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 3195077575992808416}
   fovSpeed: 15
@@ -54201,7 +54205,7 @@ MonoBehaviour:
   weaponSway: 1
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 10
+  swaySmoothValue: 5
   fireRate: 0.75
   autoReload: 1
   autoReloadDelay: 0.75

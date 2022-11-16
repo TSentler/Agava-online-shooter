@@ -7,17 +7,22 @@ using UnityEngine.Events;
 
 public class HandgunScriptLPFP : MonoBehaviour, IShooting
 {
+    private const string MouseSensitivitySaveKey = "AimSensitivity";
+
     [SerializeField] private float _damage;
     [SerializeField] private GunView _gunView;
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private int _maxGrenadesCount;
     [SerializeField] private float _delay;
     [SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
+    [SerializeField] private float _standartSensetivity;
 
     private bool _timerIsStart = false;
     private float _currentTime;
     private float _nextGrenadeTime;
     private int _currenGrenadeCount;
+    private Slider _slider;
+    private AimSensentivity _aimSensentivity;
 
     //Animator component attached to weapon
     Animator anim;
@@ -227,6 +232,21 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Awake()
     {
+        _aimSensentivity = FindObjectOfType<AimSensentivity>();
+        _slider = _aimSensentivity.GetComponent<Slider>();
+
+        if (_photonView.IsMine)
+        {
+            if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
+            {
+                _slider.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+            }
+            else
+            {
+                _slider.value = _standartSensetivity;
+            }
+        }
+
         //Set the animator component
         anim = GetComponent<Animator>();
         //Set current ammo to total ammo value
@@ -327,6 +347,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         currentAmmoText.text = currentAmmo.ToString();
         gunIcon.sprite = gunSprite;
         _currenGrenadeCount = _maxGrenadesCount;
+        _slider.onValueChanged.AddListener(ChangeSensetivity);
+    }
+
+    private void OnDisable()
+    {
+        _slider.onValueChanged.RemoveListener(ChangeSensetivity);
     }
 
     private void Start()
@@ -911,5 +937,11 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         {
             isInspecting = false;
         }
+    }
+
+    private void ChangeSensetivity(float value)
+    {
+        swaySmoothValue = _slider.value;
+        PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slider.value);
     }
 }
