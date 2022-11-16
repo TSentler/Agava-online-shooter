@@ -87,7 +87,7 @@ namespace Score
              
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    _photonView.RPC(nameof(ReloadLevel), RpcTarget.All);
+                    _photonView.RPC(nameof(ReloadLevelRPC), RpcTarget.All);
                 }
 
                 _isTimerStope = false;
@@ -121,9 +121,7 @@ namespace Score
 
         public void OnRestartButtonClick()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            ReloadLevel();
         }
 
         public void OnExitButtonClick()
@@ -137,56 +135,45 @@ namespace Score
         }
 
         [PunRPC]
-        private void ReloadLevel()
+        private void ReloadLevelRPC()
         {
-#if YANDEX_GAMES
+#if !UNITY_WEBGL || UNITY_EDITOR
+            
+#elif YANDEX_GAMES
             Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
-#endif
-#if VK_GAMES && !UNITY_EDITOR
-        Agava.VKGames.Interstitial.Show();
-         PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
-#endif
-#if CRAZY_GAMES
+#elif VK_GAMES && !UNITY_EDITOR
+            Agava.VKGames.Interstitial.Show();
+#elif CRAZY_GAMES
             CrazyAds.Instance.beginAdBreak(AdBreakCompletedCallback, AdErrorCallback);
 #endif
+            ReloadLevel();
         }
 
         private void OnAdError(string obj)
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void OnAdOfline()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void OnAdClose(bool obj)
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void OnAdOpen()
         {
-         
         }
 
         private void OnCrazyGamesRevardedAd()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
-            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void OnCrazyGamesErrorAd()
+        {
+        }
+
+        private void ReloadLevel()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.CurrentRoom.CustomProperties.Clear();

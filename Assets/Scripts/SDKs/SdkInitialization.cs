@@ -16,17 +16,16 @@ public class SdkInitialization : MonoBehaviour
 #endif
     }
 
-#if !CRAZY_GAMES
     private IEnumerator Init()
     {
-
-#if YANDEX_GAMES
- while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
+#if !UNITY_WEBGL || UNITY_EDITOR
+       yield return new WaitForSeconds(0.1f);
+#elif YANDEX_GAMES
+        while(Agava.YandexGames.YandexGamesSdk.IsInitialized == false)
         {
             yield return Agava.YandexGames.YandexGamesSdk.Initialize();
         }
-#endif
-#if VK_GAMES
+#elif VK_GAMES
         while (Agava.VKGames.VKGamesSdk.Initialized == false)
         { 
       
@@ -39,7 +38,5 @@ public class SdkInitialization : MonoBehaviour
         //PlayerPrefs.SetInt("CountOfStart", _countOfStart);
 #endif
         SceneManager.LoadScene(1);
-
-}
-#endif
+    }
 }
