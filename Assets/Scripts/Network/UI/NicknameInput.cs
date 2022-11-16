@@ -13,6 +13,7 @@ namespace Network.UI
         {
             _input = GetComponent<TMP_InputField>();
             _input.onValueChanged.AddListener(SetNick);
+            SetNick(_input.text);
         }
 
         private void SetNick(string value)

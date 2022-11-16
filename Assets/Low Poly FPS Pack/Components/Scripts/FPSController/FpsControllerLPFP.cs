@@ -18,6 +18,7 @@ namespace FPSControllerLPFP
         [SerializeField] private WeaponsHolder _weaponsHolder;
         [SerializeField] private float _standartSensetivity;
         [SerializeField] private float _gravity;
+        [SerializeField] private AudioSource _audioSource;
 #pragma warning disable 649
         [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
@@ -67,14 +68,13 @@ namespace FPSControllerLPFP
         [SerializeField] private PhotonView _photonView;
 
         private Rigidbody _rigidbody;
-        private CapsuleCollider _collider;
-        private AudioSource _audioSource;
+        private CapsuleCollider _collider;     
         private SmoothRotation _rotationX;
         private SmoothRotation _rotationY;
         private SmoothVelocity _velocityX;
         private SmoothVelocity _velocityZ;
         private bool _isGrounded;
-        private Slider _slieder;
+        private Slider _sliederSensivity;
         private MouseSensitivityChange _mouseSensitivityChange;
 
         private readonly RaycastHit[] _groundCastResults = new RaycastHit[8];
@@ -85,17 +85,17 @@ namespace FPSControllerLPFP
         private void Awake()
         {
             _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
-            _slieder = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
+            _sliederSensivity = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
 
             if (_photonView.IsMine)
             {
                 if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
                 {
-                    _slieder.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+                    _sliederSensivity.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
                 }
                 else
                 {
-                    _slieder.value = _standartSensetivity;
+                    _sliederSensivity.value = _standartSensetivity;
                 }
             }
         }
@@ -103,13 +103,13 @@ namespace FPSControllerLPFP
         private void OnEnable()
         {
             _weaponsHolder.GunChanged += SetNewArm;
-            _slieder.onValueChanged.AddListener(ChangeSensetivity);
+            _sliederSensivity.onValueChanged.AddListener(ChangeSensetivity);
         }
 
         private void OnDisable()
         {
             _weaponsHolder.GunChanged -= SetNewArm;
-            _slieder.onValueChanged.RemoveListener(ChangeSensetivity);
+            _sliederSensivity.onValueChanged.RemoveListener(ChangeSensetivity);
         }
 
         /// Initializes the FpsController on start.
@@ -118,7 +118,6 @@ namespace FPSControllerLPFP
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();
-            _audioSource = GetComponent<AudioSource>();
             arms = AssignCharactersCamera();
             _audioSource.clip = walkingSound;
             _audioSource.loop = true;
@@ -127,7 +126,7 @@ namespace FPSControllerLPFP
             _velocityX = new SmoothVelocity();
             _velocityZ = new SmoothVelocity();
             Cursor.lockState = CursorLockMode.Locked;
-            ValidateRotationRestriction();      
+            ValidateRotationRestriction();
         }
 
         private void SetNewArm(Transform newArm)
@@ -336,9 +335,9 @@ namespace FPSControllerLPFP
 
         private void ChangeSensetivity(float value)
         {
-            mouseSensitivity = _slieder.value;
-            PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slieder.value);
-        }
+            mouseSensitivity = _sliederSensivity.value;
+            PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _sliederSensivity.value);
+        }      
 
         /// A helper for assistance with smoothing the camera rotation.
         private class SmoothRotation

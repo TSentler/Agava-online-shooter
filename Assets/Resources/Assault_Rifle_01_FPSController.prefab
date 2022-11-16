@@ -1225,6 +1225,7 @@ GameObject:
   - component: {fileID: 2610393471383777675}
   - component: {fileID: 2802158373968492841}
   - component: {fileID: 739342709006907318}
+  - component: {fileID: 2762856464976247801}
   m_Layer: 7
   m_Name: Assault_Rifle_01_FPSController
   m_TagString: Player
@@ -1298,6 +1299,7 @@ MonoBehaviour:
   _weaponsHolder: {fileID: 7312492307850879255}
   _standartSensetivity: 3
   _gravity: 200
+  _audioSource: {fileID: 82546348207642188}
   arms: {fileID: 340296900833809867}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 5ac86ac5747770349a6c124f36d233e1, type: 3}
@@ -1605,6 +1607,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76f566d305cd78c45ade1e4172c42149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photonView: {fileID: 324320900069819033}
+--- !u!114 &2762856464976247801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354921826246218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0868ce63880b5204aa14c12985f0c105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _photonView: {fileID: 324320900069819033}
