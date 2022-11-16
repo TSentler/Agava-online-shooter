@@ -28,8 +28,7 @@ public class SdkInitialization : MonoBehaviour
 #endif
 #if VK_GAMES
         while (Agava.VKGames.VKGamesSdk.Initialized == false)
-        { 
-      
+        {     
             yield return Agava.VKGames.VKGamesSdk.Initialize();
         }
 
