@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 89896553}
   - component: {fileID: 89896555}
   - component: {fileID: 89896554}
+  - component: {fileID: 89896556}
   m_Layer: 5
   m_Name: Text_Info
   m_TagString: Untagged
@@ -367,10 +368,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Waiting connect at server ...
+  m_text: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F
+    \u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u043E\u043C..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
-  m_sharedMaterial: {fileID: 7374927986402738804, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -444,6 +446,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89896552}
   m_CullTransparentMesh: 0
+--- !u!114 &89896556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89896552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: WaitConnect
+  FallbackText: "\u0411\u043E\u043B\u044C\u0448\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
 --- !u!1 &116021896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,6 +1170,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381492991}
   m_CullTransparentMesh: 1
+--- !u!1 &424349728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424349729}
+  - component: {fileID: 424349730}
+  m_Layer: 0
+  m_Name: WaitConnect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424349729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424349728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448182520}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424349730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424349728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "Sunucuda ba\u011Flanmak i\xE7in bekleniyor..."
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F
+      \u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u043E\u043C..."
+    Object: {fileID: 0}
+  - Language: English
+    Text: Waiting connect at server...
+    Object: {fileID: 0}
 --- !u!1 &448182517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1304,9 @@ Transform:
   - {fileID: 1345162150}
   - {fileID: 511489314}
   - {fileID: 1759520577}
+  - {fileID: 1870553011}
+  - {fileID: 1532704898}
+  - {fileID: 424349729}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1751,6 +1826,7 @@ GameObject:
   - component: {fileID: 588664229}
   - component: {fileID: 588664231}
   - component: {fileID: 588664230}
+  - component: {fileID: 588664232}
   m_Layer: 5
   m_Name: Text_Title
   m_TagString: Untagged
@@ -1798,10 +1874,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Connecting
+  m_text: "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1875,6 +1951,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588664228}
   m_CullTransparentMesh: 0
+--- !u!114 &588664232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588664228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Connecting
+  FallbackText: "\u0411\u043E\u043B\u044C\u0448\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
 --- !u!4 &595978040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 232012871910015207, guid: aa6c3bd48a4c33b2891bf1cf01c80b7e, type: 3}
@@ -4351,6 +4441,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af05b6f0a40aebfaaa105406fb62a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1532704897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532704898}
+  - component: {fileID: 1532704899}
+  m_Layer: 0
+  m_Name: Connecting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1532704898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532704897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448182520}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1532704899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532704897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "Ba\u011F"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Connecting
+    Object: {fileID: 0}
 --- !u!1 &1543047580
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,6 +5585,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _extraHP: 50
+--- !u!1 &1870553010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1870553011}
+  - component: {fileID: 1870553012}
+  m_Layer: 0
+  m_Name: Mode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1870553011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870553010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448182520}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870553012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870553010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "MOD: HERKES KEND\u0130 \u0130\xC7\u0130N\r\nBir kart se\xE7in"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0420\u0415\u0416\u0418\u041C: \u041A\u0410\u0416\u0414\u042B\u0419 \u0417\u0410
+      \u0421\u0415\u0411\u042F\r\n\u0412\u044B\u0431\u0435\u0440\u0435\u0442\u0435
+      \u043A\u0430\u0440\u0442\u0443"
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'MODE: EVERYONE FOR HIMSELF
+
+      Choose a card'
+    Object: {fileID: 0}
 --- !u!1 &1872641230
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,6 +5655,7 @@ GameObject:
   - component: {fileID: 1872641231}
   - component: {fileID: 1872641233}
   - component: {fileID: 1872641232}
+  - component: {fileID: 1872641234}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5499,7 +5704,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u0420\u0415\u0416\u0418\u041C: \u041A\u0410\u0416\u0414\u042B\u0419 \u0417\u0410
-    \u0421\u0415\u0411\u042F\n\u0412\u044B\u0431\u0435\u0440\u0435\u0442\u0435 \u043A\u0430\u0440\u0442\u0443"
+    \u0421\u0415\u0411\u042F\r\n\u0412\u044B\u0431\u0435\u0440\u0435\u0442\u0435
+    \u043A\u0430\u0440\u0442\u0443"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -5508,8 +5714,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286836223
-  m_fontColor: {r: 1, g: 0.9310148, b: 0.5137255, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5532,7 +5738,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -5576,6 +5782,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872641230}
   m_CullTransparentMesh: 1
+--- !u!114 &1872641234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872641230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Mode
+  FallbackText: "\u0411\u043E\u043B\u044C\u0448\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
 --- !u!1 &1880465886
 GameObject:
   m_ObjectHideFlags: 0
@@ -12913,8 +13133,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5211788620861009734}
-  m_LocalRotation: {x: 0, y: -0.9969201, z: 0.0784243, w: 0}
-  m_LocalPosition: {x: -0.6, y: -4.1, z: 8.9}
+  m_LocalRotation: {x: 0.0038767818, y: -0.99570125, z: 0.078328416, w: -0.04928118}
+  m_LocalPosition: {x: -0.86, y: -4.12, z: 8.74}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12923,7 +13143,7 @@ Transform:
   - {fileID: 6820521789362335216}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 8.996, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.952, y: -185.737, z: -0.896}
 --- !u!4 &5211788620860519272
 Transform:
   m_ObjectHideFlags: 0
