@@ -84,7 +84,12 @@ namespace Score
             {
                 string reloading = LeanLocalization.GetTranslationText("Relouding");
                 _textTimer.text = reloading;
-                ReloadLevelRPC();
+
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    _photonView.RPC(nameof(ReloadLevelRPC), RpcTarget.All);
+                }
+
                 _isTimerStope = false;
             }
         }
@@ -129,19 +134,28 @@ namespace Score
             PhotonNetwork.LoadLevel(0);
         }
 
-
+        [PunRPC]
         private void ReloadLevelRPC()
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
 
 #elif YANDEX_GAMES
             Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
 #elif VK_GAMES && !UNITY_EDITOR
             Agava.VKGames.Interstitial.Show();
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
 #elif CRAZY_GAMES
             CrazyAds.Instance.beginAdBreak(AdBreakCompletedCallback, AdErrorCallback);
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
 #endif
-            _photonView.RPC(nameof(ReloadLevel), RpcTarget.All);
+            //_photonView.RPC(nameof(ReloadLevel), RpcTarget.All);
         }
 
         private void OnAdError(string obj)
