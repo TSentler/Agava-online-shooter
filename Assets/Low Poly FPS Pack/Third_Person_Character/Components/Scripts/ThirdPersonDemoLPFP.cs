@@ -5,6 +5,8 @@ using Photon.Pun;
 using UnityEngine;
 
 public class ThirdPersonDemoLPFP : MonoBehaviour {
+	[SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
+
 	[Header("Camera")]
 	public Camera mainCamera;
 	[Header("Camera FOV Settings")]
@@ -103,8 +105,12 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		}
 
 		var moveInput = _inputSource.MovementInput;
-		anim.SetFloat ("Vertical", moveInput.y, 0, Time.deltaTime);
-		anim.SetFloat ("Horizontal", moveInput.x, 0, Time.deltaTime);
+		
+		if(_fpsController.IsGrounded == true)
+        {
+			anim.SetFloat("Vertical", moveInput.y, 0, Time.deltaTime);
+			anim.SetFloat("Horizontal", moveInput.x, 0, Time.deltaTime);
+		}
 
 		//Single fire with left click
 		if (Input.GetMouseButtonDown (0) && semi == true) 

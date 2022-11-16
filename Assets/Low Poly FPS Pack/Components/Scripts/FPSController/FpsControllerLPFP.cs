@@ -49,7 +49,7 @@ namespace FPSControllerLPFP
 
         [Header("Look Settings")]
         [Tooltip("Rotation speed of the fps controller."), SerializeField]
-        private float mouseSensitivity = 7f;
+        private float mouseSensitivity;
 
         [Tooltip("Approximately the amount of time it will take for the fps controller to reach maximum rotation speed."), SerializeField]
         private float rotationSmoothness = 0.05f;
@@ -92,10 +92,12 @@ namespace FPSControllerLPFP
                 if (PlayerPrefs.HasKey(MouseSensitivitySaveKey))
                 {
                     _sliederSensivity.value = PlayerPrefs.GetFloat(MouseSensitivitySaveKey);
+                    mouseSensitivity = _sliederSensivity.value;
                 }
                 else
                 {
                     _sliederSensivity.value = _standartSensetivity;
+                    mouseSensitivity = _sliederSensivity.value;
                 }
             }
         }

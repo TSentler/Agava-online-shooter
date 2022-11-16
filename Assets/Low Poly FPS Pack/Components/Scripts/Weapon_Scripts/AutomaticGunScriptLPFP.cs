@@ -268,6 +268,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 			{
 				_slider.value = _standartSensetivity;
 			}
+
+			swaySmoothValue = _slider.value;
 		}
 
 		maxAmmoQuanity = maxAmmo;
@@ -473,7 +475,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 				(movementX, movementY, 0);
 			transform.localPosition = Vector3.Lerp
 				(transform.localPosition, finalSwayPosition +
-					initialSwayPosition, Time.deltaTime * swaySmoothValue);
+					initialSwayPosition, /*Time.deltaTime **/ swaySmoothValue);
 		}
 	}
 

@@ -265,6 +265,8 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
             {
                 _slider.value = _standartSensetivity;
             }
+
+            swaySmoothValue = _slider.value;
         }
 
         maxAmmoQuanity = maxAmmo;
@@ -454,7 +456,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
                 (movementX, movementY, 0);
             transform.localPosition = Vector3.Lerp
                 (transform.localPosition, finalSwayPosition +
-                    initialSwayPosition, Time.deltaTime * swaySmoothValue);
+                    initialSwayPosition, /*Time.deltaTime **/ swaySmoothValue);
         }
     }
 

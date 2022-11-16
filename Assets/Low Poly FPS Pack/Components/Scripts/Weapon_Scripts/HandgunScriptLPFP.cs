@@ -245,6 +245,8 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             {
                 _slider.value = _standartSensetivity;
             }
+
+            swaySmoothValue = _slider.value;
         }
 
         //Set the animator component
@@ -388,7 +390,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
                 (movementX, movementY, 0);
             transform.localPosition = Vector3.Lerp
                 (transform.localPosition, finalSwayPosition +
-                initialSwayPosition, Time.deltaTime * swaySmoothValue);
+                initialSwayPosition, /*Time.deltaTime **/ swaySmoothValue);
         }
     }
 
@@ -746,7 +748,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         if (Input.GetKey(KeyCode.W) && !isRunning ||
             Input.GetKey(KeyCode.A) && !isRunning ||
             Input.GetKey(KeyCode.S) && !isRunning ||
-            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine)
+            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine && _fpsController.IsGrounded == true)
         {
             anim.SetBool("Walk", true);
         }
@@ -756,7 +758,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && _photonView.IsMine && _fpsController.IsGrounded) && _photonView.IsMine)
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && _photonView.IsMine && _fpsController.IsGrounded) && _photonView.IsMine && _fpsController.IsGrounded == true)
         {
             isRunning = true;
         }

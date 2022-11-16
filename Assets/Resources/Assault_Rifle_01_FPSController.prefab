@@ -62151,6 +62151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920abf3add0cc894f806736be5fca74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fpsController: {fileID: 114326437458149736}
   mainCamera: {fileID: 100414656708919175}
   zoomedFOV: 45
   defaultFOV: 75
