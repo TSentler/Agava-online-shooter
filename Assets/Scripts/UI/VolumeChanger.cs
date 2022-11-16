@@ -16,10 +16,9 @@ public class VolumeChanger : MonoBehaviour
 
     private void Start()
     {
-        if (_audioSource != null)
-        {
-            GetSavePlayerPrefs();
-        }
+
+        GetSavePlayerPrefs();
+
     }
 
     private void OnEnable()
@@ -37,32 +36,19 @@ public class VolumeChanger : MonoBehaviour
         if (PlayerPrefs.HasKey(VolumeSaveKey))
         {
             _slieder.value = PlayerPrefs.GetFloat(VolumeSaveKey);
-
-            if (_audioSource != null)
-            {
-                _audioSource.volume = _slieder.value;
-            }
+            AudioListener.volume = _slieder.value;
         }
         else
         {
             _slieder.value = _standartVolume;
-
-            if (_audioSource != null)
-            {
-                _audioSource.volume = _standartVolume;
-            }
+            AudioListener.volume = _standartVolume;
         }
     }
 
     private void OnChangeVolume(float value)
     {
         PlayerPrefs.SetFloat(VolumeSaveKey, _slieder.value);
-
-        if (_audioSource != null)
-        {
-            _audioSource.volume = value;
-        }
-
+        AudioListener.volume = value;
         Debug.Log(1);
         OnValueChanged?.Invoke(_slieder.value);
     }

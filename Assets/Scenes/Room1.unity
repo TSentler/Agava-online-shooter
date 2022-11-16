@@ -56624,61 +56624,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 64621539492296192, guid: a2507b8e2681bcc44ad4183e48f4589c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a2507b8e2681bcc44ad4183e48f4589c, type: 3}
---- !u!1 &1224309087
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1224309088}
-  - component: {fileID: 1224309089}
-  m_Layer: 0
-  m_Name: Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1224309088
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224309087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1288890213}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1224309089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224309087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  entries:
-  - Language: Turkish
-    Text: Ses
-    Object: {fileID: 0}
-  - Language: Russian
-    Text: "\u0413\u0440\u043E\u043C\u043A\u043E\u0441\u0442\u044C"
-    Object: {fileID: 0}
-  - Language: English
-    Text: Volume
-    Object: {fileID: 0}
 --- !u!1 &1224571152
 GameObject:
   m_ObjectHideFlags: 0
@@ -58031,6 +57976,7 @@ MonoBehaviour:
   _maxGrenadesCount: 0
   _delay: 0
   _fpsController: {fileID: 0}
+  _standartSensetivity: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 677085517}
   fovSpeed: 15
@@ -59342,19 +59288,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 578353688360086880, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: sceneViewId
-      value: 66
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 578353688360086881, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_Name
       value: Canvas (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353688360086881, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353688360086887, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 578353688360086906, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_Pivot.x
@@ -59452,18 +59390,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 578353688613642809, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.49995422
-      objectReference: {fileID: 0}
     - target: {fileID: 578353688613642815, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: _syncronizer
       value: 
       objectReference: {fileID: 365169197}
-    - target: {fileID: 578353688661234288, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 166
-      objectReference: {fileID: 0}
     - target: {fileID: 578353688756672742, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -59471,26 +59401,6 @@ PrefabInstance:
     - target: {fileID: 578353688756672742, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353689233014456, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 46
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353689234435328, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.26782227
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353689405069936, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.069298744
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353690083617415, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 602.4647
-      objectReference: {fileID: 0}
-    - target: {fileID: 578353690083617415, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22.568115
       objectReference: {fileID: 0}
     - target: {fileID: 2352977710806219633, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -59504,10 +59414,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3548471480739989744, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3572970131189614041, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -59516,26 +59422,28 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3675478867576324029, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675478867576324029, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_MaxValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675478867576324029, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-      propertyPath: m_MinValue
+    - target: {fileID: 6810192380408558679, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7385321946326704967, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+    - target: {fileID: 6810192380408558679, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810192380408558679, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055072652101251954, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055072652101251954, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
---- !u!4 &1288890213 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7993473338266273029, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
-  m_PrefabInstance: {fileID: 1288890212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1290073341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92548,6 +92456,7 @@ MonoBehaviour:
   _maxGrenadesCount: 0
   _delay: 0
   _fpsController: {fileID: 0}
+  _standartSensetivity: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 933746593}
   fovSpeed: 15
@@ -101324,6 +101233,7 @@ MonoBehaviour:
   _maxGrenadesCount: 0
   _delay: 0
   _fpsController: {fileID: 0}
+  _standartSensetivity: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 160260386}
   fovSpeed: 15
@@ -104093,6 +104003,7 @@ MonoBehaviour:
   _maxGrenadesCount: 0
   _delay: 0
   _fpsController: {fileID: 0}
+  _standartSensetivity: 0
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 2374949120214032590}
   fovSpeed: 15

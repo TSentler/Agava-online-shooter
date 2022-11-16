@@ -14494,14 +14494,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd38df9a0796d9842adfbe580ed6042e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 25
+  _damage: 10
   _gunView: {fileID: 4387319589381292558}
   _weaponsHolder: {fileID: 7312492307850879255}
   _photonView: {fileID: 324320900069819033}
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
-  _standartSensetivity: 0
+  _standartSensetivity: 5
   gunSprite: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 20607603889952386}
   fovSpeed: 15
@@ -15732,10 +15732,10 @@ RectTransform:
   m_Father: {fileID: 224249693280608806}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: 2100.7178, y: 1280.9814}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: 99.511, y: 55.9749}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2558785287144642883
 CanvasRenderer:
@@ -34822,14 +34822,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454d9b69473a2d248b0dc828be5c49ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 20
   _gunView: {fileID: 4387319589381292558}
   _weaponsHolder: {fileID: 7312492307850879255}
   _photonView: {fileID: 324320900069819033}
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
-  _standartSensetivity: 0
+  _standartSensetivity: 5
   gunSprite: {fileID: 21300018, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 7589460530982128827}
   fovSpeed: 15
@@ -36762,13 +36762,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56ac14cb72efeb4b92cf5cb025a97c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 15
+  _damage: 7
   _gunView: {fileID: 4387319589381292558}
   _photonView: {fileID: 324320900069819033}
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
-  _standartSensetivity: 0
+  _standartSensetivity: 5
   gunSprite: {fileID: 21300008, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 100414656708919175}
   fovSpeed: 15
@@ -54200,14 +54200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b47667facbc44418c1f79ef53ed2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 50
+  _damage: 100
   _gunView: {fileID: 4387319589381292558}
   _weaponsHolder: {fileID: 7312492307850879255}
   _photonView: {fileID: 324320900069819033}
   _maxGrenadesCount: 3
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
-  _standartSensetivity: 0
+  _standartSensetivity: 5
   gunSprite: {fileID: 21300030, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 3195077575992808416}
   fovSpeed: 15

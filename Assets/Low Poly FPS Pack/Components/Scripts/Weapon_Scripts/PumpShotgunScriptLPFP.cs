@@ -252,6 +252,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Awake()
     {
+        _aimSensentivity = FindObjectOfType<AimSensentivity>();
         _slider = _aimSensentivity.GetComponent<Slider>();
 
         if (_photonView.IsMine)
@@ -461,7 +462,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     {
         //Aiming
         //Toggle camera FOV when right click is held down
-        if (Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting && _photonView.IsMine)
+        if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine)
         {
             if (ironSights == true)
             {

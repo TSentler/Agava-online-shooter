@@ -294,7 +294,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		
 		//Aiming
 		//Toggle camera FOV when right click is held down
-		if(Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting && _photonView.IsMine) 
+		if(Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine) 
 		{
 			isAiming = true;
 
