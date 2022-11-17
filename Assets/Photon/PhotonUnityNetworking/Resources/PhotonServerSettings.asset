@@ -79,6 +79,7 @@ MonoBehaviour:
   - InstantiateBullet
   - SpawnGrenade
   - ReloadLevelRPC
+  - DisableRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

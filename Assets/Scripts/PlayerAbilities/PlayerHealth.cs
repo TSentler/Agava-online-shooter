@@ -25,6 +25,7 @@ namespace PlayerAbilities
         private PlayerSpawner _spawner;
         private PlayerInfo _playerInfo;
         private float _oldMaxHealth;
+        private KillFidPanel _killFidPanel;
 
         public PhotonView PhotonView => _photonView;
 
@@ -56,6 +57,11 @@ namespace PlayerAbilities
             _damagebleHit.gameObject.SetActive(false);
             _playerInfo = GetComponent<PlayerInfo>();
             _oldMaxHealth = _maxHealth;
+            _killFidPanel = FindObjectOfType<KillFidPanel>();
+
+            var fidPanel = _killFidPanel.gameObject.GetComponent<CanvasGroup>();
+            fidPanel.alpha = 0f;
+         
             InitializeImprovements();
         }
 
@@ -153,6 +159,8 @@ namespace PlayerAbilities
                     _deaths++;
                     if (_playerInfo.IsBot == false)
                     {
+                        _killFidPanel.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+                        _killFidPanel.InstantiateKills(player.NickName, PhotonNetwork.NickName);
                         int deathes = (int)player.CustomProperties["Death"] + 1;
                         PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", deathes } });
                         int kills = (int)player.CustomProperties["Kills"] + 1;
