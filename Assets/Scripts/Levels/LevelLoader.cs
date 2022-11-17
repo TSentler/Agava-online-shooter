@@ -2,6 +2,7 @@ using Network;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,19 +63,24 @@ namespace Levels
         {
             _matchCallback.OnCreateRoom += CreateRoomHandler;
             _matchCallback.OnJoinRandomFail += OnJoinRoomFailed;
+            _matchCallback.OnJoinRoomFail += OnJoinRoomFailed;
             _lobbyCalback.OnRoomsUpdate += RoomListUpdate;
-        }
-
-        private void OnJoinRoomFailed(short arg0, string arg1)
-        {
-            CreateRoom(_levelName.ToString());
-            CreateRoomHandler();
         }
 
         private void OnDisable()
         {
             _matchCallback.OnCreateRoom -= CreateRoomHandler;
+            _matchCallback.OnJoinRandomFail -= OnJoinRoomFailed;
+            _matchCallback.OnJoinRoomFail += OnJoinRoomFailed;
             _lobbyCalback.OnRoomsUpdate -= RoomListUpdate;
+        }
+
+        private void OnJoinRoomFailed(short arg0, string arg1)
+        {
+            Debug.Log("Faild join room");
+            var name = GenerateRoomName();
+            CreateRoom(name);
+            // CreateRoomHandler();
         }
 
         public void ActivateSmallMap()
@@ -154,7 +160,6 @@ namespace Levels
         {
             _levelName = levelName;
             _currentRoomOptions = options;
-            Debug.Log(options.CustomRoomProperties.ContainsKey(SceneNameKey));
             PhotonNetwork.JoinOrCreateRoom(
                 GetOrCreateRoomName(options, levelName), options, TypedLobby.Default);
         }
@@ -165,7 +170,6 @@ namespace Levels
             {
                 for (int i = 0; i < _roomInfos.Count; i++)
                 {
-                    Debug.Log(_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false);
                     if (_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false
                         || levelName.ToString() != _roomInfos[i].CustomProperties[SceneNameKey].ToString())
                     {
@@ -179,9 +183,14 @@ namespace Levels
                 }
             }
 
-            return "Room" + Random.Range(0, 1000).ToString() + PhotonNetwork.NickName;
+            return GenerateRoomName();
         }
 
+        private string GenerateRoomName()
+        {
+           return "Room" + Random.Range(0, 1000).ToString() + PhotonNetwork.NickName;
+        }
+        
         public void CreateOrJoinTestLargeMap()
         {
             CreateOrJoinMap(LevelNames.SmallMapCity, _largeRoomOptions);
@@ -199,8 +208,39 @@ namespace Levels
 
         public void RoomListUpdate(List<RoomInfo> roomInfos)
         {
-            _roomInfos.Clear();
-            _roomInfos = roomInfos;
+            Debug.Log("Room list update ");
+            for (int i = 0; i < roomInfos.Count; i++)
+            {
+                var roomInfo = roomInfos[i];
+                var roomIndex = _roomInfos.FindIndex(
+                        room => room.Name == roomInfo.Name);
+
+                if(roomInfo.RemovedFromList == true || roomInfo.IsOpen == false)
+                {
+                    if (roomIndex != -1)
+                    {
+                        _roomInfos.RemoveAt(roomIndex);
+                    }
+                    continue;
+                }
+                
+                if (roomIndex != -1)
+                {
+                    _roomInfos.RemoveAt(roomIndex);
+                }
+                _roomInfos.Add(roomInfo);
+            }
+            
+            /*
+            foreach (var roomInfo in _roomInfos)
+            {
+                if (roomInfo.CustomProperties.ContainsKey(SceneNameKey) == false)
+                {
+                    Debug.Log("Not contain key " + roomInfo.Name);
+                    continue;
+                }
+                Debug.Log("Available room: " + roomInfo.Name);
+            } */
         }
     }
 }

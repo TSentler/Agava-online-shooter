@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10817,7 +10817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07131456, y: 0.0731111}
   m_AnchorMax: {x: 0.61441255, y: 0.2932593}
-  m_AnchoredPosition: {x: 1.3161011, y: -1.0559692}
+  m_AnchoredPosition: {x: 1.3161621, y: -1.0559082}
   m_SizeDelta: {x: 0.6322, y: -1.0681992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880465888
