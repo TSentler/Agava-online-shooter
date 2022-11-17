@@ -16,6 +16,7 @@ public class SdkInitialization : MonoBehaviour
 #endif
     }
 
+#if !CRAZY_GAMES
     private IEnumerator Init()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
@@ -35,4 +36,5 @@ public class SdkInitialization : MonoBehaviour
 #endif
         SceneManager.LoadScene(1);
     }
+#endif
 }
