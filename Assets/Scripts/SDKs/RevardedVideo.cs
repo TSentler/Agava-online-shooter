@@ -7,6 +7,7 @@ using UnityEngine;
 public class RevardedVideo : MonoBehaviour
 {
     [SerializeField] private float _extraHP;
+    [SerializeField] private AnalitickEventSender _analitickEvenSender;
 
     private readonly string _increaseHPName = "IncreaseHP",
          _gunReadyName = "GunReady";
@@ -28,6 +29,7 @@ public class RevardedVideo : MonoBehaviour
     private void Awake()
     {
         _bonusReward = FindObjectOfType<BonusReward>();
+        _analitickEvenSender = FindObjectOfType<AnalitickEventSender>();
     }
 
     private void OnEnable()
@@ -83,14 +85,17 @@ public class RevardedVideo : MonoBehaviour
         if (_name == "Rifle")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 1);
+            _analitickEvenSender.OnRifleRevardWasShow();
         }
         else if (_name == "HP")
         {
             _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
+            _analitickEvenSender.OnHpRevardWasShown();
         }
         else if (_name == "Shorgun")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 2);
+            _analitickEvenSender.OnShotgunRevardWasShow();
         }
 
         _isRewarded = true;
