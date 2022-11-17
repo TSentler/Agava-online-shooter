@@ -390,13 +390,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
                 (movementX, movementY, 0);
             transform.localPosition = Vector3.Lerp
                 (transform.localPosition, finalSwayPosition +
-                initialSwayPosition, /*Time.deltaTime **/ swaySmoothValue);
+                initialSwayPosition, Time.deltaTime * swaySmoothValue);
         }
     }
 
     private void Update()
     {
-
         //Aiming
         //Toggle camera FOV when right click is held down
         if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine)
