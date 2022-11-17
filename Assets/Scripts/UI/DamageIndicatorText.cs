@@ -8,8 +8,16 @@ public class DamageIndicatorText : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private float _lifetime;
 
-    private float _speed = 5f;
+    private float _speed = 100f;
     private float _timer;
+    private float _minDistace = -300;
+    private float _maxDistance = 300;
+
+
+    private void Start()
+    {
+        transform.position += new Vector3(Random.Range(_minDistace, _maxDistance), 90 ,1);
+    }
 
     private void Update()
     {
