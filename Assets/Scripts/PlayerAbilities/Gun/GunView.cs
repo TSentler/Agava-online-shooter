@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GunView : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class GunView : MonoBehaviour
     {
         StartCoroutine(ShowHitIndicator());
         DamageIndicatorText damageText = Instantiate(_damageText, _hitIndicator.transform.position, Quaternion.identity);
+        damageText.gameObject.transform.SetParent(_playerCanvas.transform);
         damageText.SetDamageText(damage);
     }
 
