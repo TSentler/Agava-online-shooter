@@ -1,8 +1,6 @@
 using Network;
 using Photon.Pun;
 using Photon.Realtime;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -32,6 +30,7 @@ namespace Levels
         private List<RoomInfo> _roomInfos = new List<RoomInfo>();
         private bool _isSmallMap = false;
         private bool _isLargeMap = false;
+        private int _halfPecent = 50;
 
         private void Awake()
         {
@@ -92,9 +91,17 @@ namespace Levels
 
         public void StartGame()
         {
-            if(_isLargeMap == false && _isSmallMap == false)
+            if (_isLargeMap == false && _isSmallMap == false)
             {
-                return;
+                int chance = Random.Range(0, 100);
+                if (chance >= _halfPecent)
+                {
+                    CreateOrJoinLargeMap();
+                }
+                else
+                {
+                    CreateOrJoinSmallMap();
+                }
             }
 
             if (_isSmallMap)
@@ -159,7 +166,7 @@ namespace Levels
                 for (int i = 0; i < _roomInfos.Count; i++)
                 {
                     Debug.Log(_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false);
-                    if (_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false 
+                    if (_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false
                         || levelName.ToString() != _roomInfos[i].CustomProperties[SceneNameKey].ToString())
                     {
                         continue;
