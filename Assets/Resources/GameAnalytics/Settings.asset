@@ -25,16 +25,22 @@ MonoBehaviour:
   UserMessagesSubmitted: 0
   UserMessagesFailed: 0
   CustomArea: 
-  gameKey: []
-  secretKey: []
-  Build: []
-  SelectedPlatformOrganization: []
-  SelectedPlatformStudio: []
-  SelectedPlatformGame: []
-  SelectedPlatformGameID: 
-  SelectedOrganization: 
-  SelectedStudio: 
-  SelectedGame: 
+  gameKey:
+  - 0429c814277a02ab62806a3435db3a49
+  secretKey:
+  - 5262c783725e6191e4cd4073baf098063ca44dc6
+  Build:
+  - 0.1
+  SelectedPlatformOrganization:
+  - Dmitrii Dudin
+  SelectedPlatformStudio:
+  - Dmitrii Dudin
+  SelectedPlatformGame:
+  - Online shooter
+  SelectedPlatformGameID: e07c0300
+  SelectedOrganization: 01000000
+  SelectedStudio: 01000000
+  SelectedGame: 02000000
   NewVersion: 
   Changes: 
   SignUpOpen: 0
@@ -56,7 +62,7 @@ MonoBehaviour:
   ResourceItemTypes: []
   ResourceCurrencies: []
   LastCreatedGamePlatform: -1
-  Platforms: 
+  Platforms: 11000000
   CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
@@ -84,7 +90,7 @@ MonoBehaviour:
   IncludeGooglePlay: 1
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
-  PlatformFoldOut: 
+  PlatformFoldOut: 01
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0
