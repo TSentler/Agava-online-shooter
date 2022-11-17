@@ -4780,6 +4780,7 @@ MonoBehaviour:
   _killTemplate: {fileID: 7657476286262526896, guid: 84a518de353e6c644b019b16d2914a7d, type: 3}
   _fartherPanel: {fileID: 8932424543065171653}
   _photonView: {fileID: 7360736174632283649}
+  _canvasGroup: {fileID: 8670911983435902945}
 --- !u!114 &7360736174632283649
 MonoBehaviour:
   m_ObjectHideFlags: 0
