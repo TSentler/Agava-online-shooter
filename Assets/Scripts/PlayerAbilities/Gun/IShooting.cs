@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IShooting 
 {
-    public void HitOnPlayer();
+    public void HitOnPlayer(float damage);
 }

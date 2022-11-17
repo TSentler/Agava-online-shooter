@@ -729,9 +729,9 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 	}
 
-	public void HitOnPlayer()
+	public void HitOnPlayer(float damage)
 	{
-		_gunView.OnHit();
+		_gunView.OnHit(damage);
 	}
 
 	private void ChangeSensetivity(float value)

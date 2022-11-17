@@ -42,7 +42,7 @@ public class BulletScript : MonoBehaviour
                 if (hitDetector.PhotonView.IsMine == false)
                 {
                     hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer, transform.position);
-                    _gun.HitOnPlayer();
+                    _gun.HitOnPlayer(hitDetector.GetCalculatedDamage(_damage));
 
                 }                            
             }

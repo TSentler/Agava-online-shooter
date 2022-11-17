@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GunView : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GunView : MonoBehaviour
     [SerializeField] private Canvas _playerCanvas;
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private Image _hitIndicator;
+    [SerializeField] private DamageIndicatorText _damageText;
 
   
     private float _timeToShowIndicator = 0.1f;
@@ -48,9 +50,12 @@ public class GunView : MonoBehaviour
     //}
 
 
-    public void OnHit()
+    public void OnHit(float damage)
     {
         StartCoroutine(ShowHitIndicator());
+        DamageIndicatorText damageText = Instantiate(_damageText, _hitIndicator.transform.position, Quaternion.identity);
+        damageText.gameObject.transform.SetParent(_playerCanvas.transform);
+        damageText.SetDamageText(damage);
     }
 
     private IEnumerator ShowHitIndicator()

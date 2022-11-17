@@ -800,9 +800,9 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     }
 
-    public void HitOnPlayer()
+    public void HitOnPlayer(float damage)
     {
-        _gunView.OnHit();
+        _gunView.OnHit(damage);
     }
 
     private IEnumerator HandgunSliderBackDelay()

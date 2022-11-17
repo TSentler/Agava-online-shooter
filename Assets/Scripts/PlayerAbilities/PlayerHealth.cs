@@ -143,7 +143,7 @@ namespace PlayerAbilities
                 throw new ArgumentOutOfRangeException("Damage can't be negative");
             }
 
-            if (_photonView.IsMine)
+            if (_photonView.IsMine && _currentHealth > 0f)
             {
                 _currentHealth -= damage;
                 ChangeHealth?.Invoke(_currentHealth, _maxHealth);
@@ -159,7 +159,6 @@ namespace PlayerAbilities
                     _deaths++;
                     if (_playerInfo.IsBot == false)
                     {
-                        _killFidPanel.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
                         _killFidPanel.InstantiateKills(player.NickName, PhotonNetwork.NickName);
                         int deathes = (int)player.CustomProperties["Death"] + 1;
                         PhotonNetwork.SetPlayerCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Death", deathes } });

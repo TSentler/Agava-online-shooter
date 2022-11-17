@@ -7,4 +7,9 @@ public class BodyHit : HitDetector
     {
         PlayerHealth.ApplyDamage(damage, player, targetPostition);
     }
+  
+    public override float GetCalculatedDamage(float damage)
+    {
+        return damage;
+    }
 }
