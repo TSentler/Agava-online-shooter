@@ -94,14 +94,14 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		if (Input.GetMouseButton (1)) 
 		{
 			//Increase camera field of view
-			mainCamera.fieldOfView = Mathf.Lerp (mainCamera.fieldOfView,
-				zoomedFOV, fovSpeed * Time.deltaTime);
+			// mainCamera.fieldOfView = Mathf.Lerp (mainCamera.fieldOfView,
+				// zoomedFOV, fovSpeed * Time.deltaTime);
 		} 
 		else 
 		{
 			//Restore camera field of view
-			mainCamera.fieldOfView = Mathf.Lerp (mainCamera.fieldOfView,
-				defaultFOV, fovSpeed * Time.deltaTime);
+			// mainCamera.fieldOfView = Mathf.Lerp (mainCamera.fieldOfView,
+				// defaultFOV, fovSpeed * Time.deltaTime);
 		}
 
 		var moveInput = _inputSource.MovementInput;

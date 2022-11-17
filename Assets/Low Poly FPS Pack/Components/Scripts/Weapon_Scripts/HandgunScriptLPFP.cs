@@ -246,7 +246,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
                 _slider.value = _standartSensetivity;
             }
 
-            swaySmoothValue = _slider.value;
+            //swaySmoothValue = _slider.value; это не поворот, расскачивание рук
         }
 
         //Set the animator component
@@ -376,7 +376,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     private void LateUpdate()
     {
         //Weapon sway
-        if (weaponSway == true)
+        if (_photonView.IsMine && weaponSway == true)
         {
             float movementX = -Input.GetAxisRaw("Mouse X") * swayAmount;
             float movementY = -Input.GetAxisRaw("Mouse Y") * swayAmount;
@@ -396,9 +396,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Update()
     {
+        if (_photonView.IsMine == false)
+            return;
+        
         //Aiming
         //Toggle camera FOV when right click is held down
-        if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine)
+        if (Input.GetButton("Fire2") && !isReloading && !isInspecting)
         {
             if (ironSights == true)
             {
@@ -459,8 +462,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         else
         {
             //When right click is released
-            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
-                defaultFov, fovSpeed * Time.deltaTime);
+            var differenceFov = Mathf.Abs(gunCamera.fieldOfView - defaultFov);
+            if (differenceFov > 0.1f)
+            {
+                gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView,
+                    defaultFov, fovSpeed * Time.deltaTime);
+            }
 
             isAiming = false;
 
@@ -554,7 +561,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //}
 
         //Throw grenade when pressing G key
-        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false)
+        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _currenGrenadeCount != 0 && _timerIsStart == false)
         {
             _nextGrenadeTime = Time.time + _delay;
             _currentTime = Time.time;
@@ -566,7 +573,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //If out of ammo
-        if (currentAmmo == 0 && _photonView.IsMine)
+        if (currentAmmo == 0)
         {
             //Show out of ammo text
             currentWeaponText.text = "OUT OF AMMO";
@@ -594,7 +601,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Shooting 
-        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine)
+        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting)
         {
             anim.Play("Fire", 0, 0f);
             if (!silencer)
@@ -731,7 +738,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Reload 
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting)
         {
             //Reload
             Reload();
@@ -747,7 +754,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         if (Input.GetKey(KeyCode.W) && !isRunning ||
             Input.GetKey(KeyCode.A) && !isRunning ||
             Input.GetKey(KeyCode.S) && !isRunning ||
-            Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine && _fpsController.IsGrounded == true)
+            Input.GetKey(KeyCode.D) && !isRunning && _fpsController.IsGrounded == true)
         {
             anim.SetBool("Walk", true);
         }
@@ -757,7 +764,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && _photonView.IsMine && _fpsController.IsGrounded) && _photonView.IsMine && _fpsController.IsGrounded == true)
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && _fpsController.IsGrounded) && _fpsController.IsGrounded == true)
         {
             isRunning = true;
         }
@@ -858,7 +865,6 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     //Reload
     private void Reload()
     {
-
         if (outOfAmmo == true)
         {
             //Play diff anim if out of ammo
@@ -942,7 +948,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void ChangeSensetivity(float value)
     {
-        swaySmoothValue = _slider.value;
+        //swaySmoothValue = _slider.value; //Это для расскачивания оружия в руках, её лучше не трогать
         PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slider.value);
     }
 }
