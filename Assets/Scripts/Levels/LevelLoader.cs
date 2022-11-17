@@ -65,16 +65,17 @@ namespace Levels
             _lobbyCalback.OnRoomsUpdate += RoomListUpdate;
         }
 
+        private void OnDisable()
+        {
+            _matchCallback.OnCreateRoom -= CreateRoomHandler;
+            _matchCallback.OnJoinRandomFail -= OnJoinRoomFailed;
+            _lobbyCalback.OnRoomsUpdate -= RoomListUpdate;
+        }
+
         private void OnJoinRoomFailed(short arg0, string arg1)
         {
             CreateRoom(_levelName.ToString());
             CreateRoomHandler();
-        }
-
-        private void OnDisable()
-        {
-            _matchCallback.OnCreateRoom -= CreateRoomHandler;
-            _lobbyCalback.OnRoomsUpdate -= RoomListUpdate;
         }
 
         public void ActivateSmallMap()
@@ -199,8 +200,19 @@ namespace Levels
 
         public void RoomListUpdate(List<RoomInfo> roomInfos)
         {
+            // Debug.Log("Room list update ");
             _roomInfos.Clear();
             _roomInfos = roomInfos;
+            
+            for (int i = 0; i < _roomInfos.Count; i++)
+            {
+                // Debug.Log(_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false);
+                if (_roomInfos[i].CustomProperties.ContainsKey(SceneNameKey) == false)
+                {
+                    continue;
+                }
+                Debug.Log("Available room: " + _roomInfos[i].Name);
+            }
         }
     }
 }
