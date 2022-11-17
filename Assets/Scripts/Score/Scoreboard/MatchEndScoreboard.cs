@@ -131,6 +131,7 @@ namespace Score
 
         private void RoomLeftHandler()
         {
+            PhotonNetwork.LeaveRoom();
             PhotonNetwork.LoadLevel(0);
         }
 

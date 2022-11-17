@@ -31,10 +31,7 @@ public class SdkInitialization : MonoBehaviour
             yield return Agava.VKGames.VKGamesSdk.Initialize();
         }
 
-        //GameAnalyticsSDK.GameAnalytics.Initialize();
-        //Analitic.StartGame(_countOfStart);
-        //_countOfStart++;
-        //PlayerPrefs.SetInt("CountOfStart", _countOfStart);
+        GameAnalyticsSDK.GameAnalytics.Initialize();
 #endif
         SceneManager.LoadScene(1);
     }
