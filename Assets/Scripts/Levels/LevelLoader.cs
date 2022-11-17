@@ -201,11 +201,6 @@ namespace Levels
         {
             _roomInfos.Clear();
             _roomInfos = roomInfos;
-
-            for (int i = 0; i < _roomInfos.Count; i++)
-            {
-                Debug.Log(roomInfos[i].CustomProperties[SceneNameKey].ToString());
-            }
         }
     }
 }
