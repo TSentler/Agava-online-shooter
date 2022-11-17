@@ -61768,7 +61768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100072, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 100074, guid: 3a0fc50da26e55e49a89c167d5562115, type: 3}
       propertyPath: m_Layer
