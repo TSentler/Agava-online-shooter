@@ -62184,6 +62184,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasNickname
       objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontSize
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.24313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_overflowMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305212961412465760, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4282317567
+      objectReference: {fileID: 0}
     - target: {fileID: 2611068324248659532, guid: 578802f6ea823ae4fb2cdd0d1391bacb, type: 3}
       propertyPath: _photonView
       value: 
