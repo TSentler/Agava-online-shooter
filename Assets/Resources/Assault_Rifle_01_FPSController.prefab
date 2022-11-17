@@ -14542,10 +14542,10 @@ MonoBehaviour:
     scope2SpriteRenderer: {fileID: 212580035405794330}
     scope3SpriteRenderer: {fileID: 212238849701591756}
     scope4SpriteRenderer: {fileID: 212667696757572200}
-  weaponSway: 1
+  weaponSway: 0
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 5
+  swaySmoothValue: 0
   fireRate: 11.5
   autoReload: 1
   autoReloadDelay: 0.25
@@ -34868,10 +34868,10 @@ MonoBehaviour:
     scope2SpriteRenderer: {fileID: 5835304243263991285}
     scope3SpriteRenderer: {fileID: 7330545096827684456}
     scope4SpriteRenderer: {fileID: 2843555300114708364}
-  weaponSway: 1
+  weaponSway: 0
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 5
+  swaySmoothValue: 0
   fireRate: 0.85
   autoReload: 1
   autoReloadDelay: 0.5
@@ -36795,10 +36795,10 @@ MonoBehaviour:
     scope3RenderMesh: {fileID: 6518229640055903573}
     scope2SpriteRenderer: {fileID: 71988995521230594}
     scope3SpriteRenderer: {fileID: 8159965399961935589}
-  weaponSway: 1
+  weaponSway: 0
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 5
+  swaySmoothValue: 0
   sliderBackTimer: 1.58
   autoReload: 1
   autoReloadDelay: 0.15
@@ -54217,10 +54217,10 @@ MonoBehaviour:
   silencer: 0
   WeaponAttachmentRenderers:
     silencerRenderer: {fileID: 1109218884538781848}
-  weaponSway: 1
+  weaponSway: 0
   swayAmount: 0.02
   maxSwayAmount: 0.06
-  swaySmoothValue: 5
+  swaySmoothValue: 0
   fireRate: 0.75
   autoReload: 1
   autoReloadDelay: 0.75
