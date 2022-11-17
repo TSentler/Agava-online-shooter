@@ -1,33 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TMP_Text), 
-    typeof(PhotonView))]
+[RequireComponent(typeof(TMP_Text))]
 public class PlayerNickNameText : MonoBehaviour
 {
-    private PhotonView _view;
+    [SerializeField] private PhotonView _photonView;
+    
     private TMP_Text _text;
 
     private void Awake()
     {
         _text = GetComponent<TMP_Text>();
-        _view = GetComponent<PhotonView>();
     }
 
     private void Start()
     {
-        if (_view.IsMine)
+        if (_photonView.IsMine)
         {
             _text.text = PhotonNetwork.NickName;
             gameObject.SetActive(false);
         }
         else
         {
-            _text.text = _view.Owner.NickName;
+            _text.text = _photonView.Owner.NickName;
         }
     }
 }
