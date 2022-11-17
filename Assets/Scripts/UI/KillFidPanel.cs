@@ -1,42 +1,57 @@
-using Photon.Pun;
+using System;
 using System.Collections;
+using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KillFidPanel : MonoBehaviour
 {
     [SerializeField] private KillsItem _killTemplate;
-    [SerializeField] private GameObject _fartherPanel;
+    [SerializeField] private Transform _fartherPanel;
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private CanvasGroup _canvasGroup;
 
     private List<KillsItem> _killsTemplates = new List<KillsItem>();
+    private Coroutine _disableCoroutine;
+    private float _hideDelay = 3f;
+
+    private IEnumerator Start()
+    {
+        InstantiateKills("123", "321");
+        yield return new WaitForSeconds(1f);
+        InstantiateKills("123", "321");
+        yield return new WaitForSeconds(1f);
+        InstantiateKills("123", "321");
+        yield return new WaitForSeconds(1f);
+        InstantiateKills("123", "321");
+        yield return new WaitForSeconds(1f);
+        InstantiateKills("123", "321");
+    }
+
+    private void Update()
+    {
+        if (_killsTemplates.Count > 0
+                && _killsTemplates[_killsTemplates.Count - 1] == null)
+        {
+            _killsTemplates.Clear();
+        }
+        
+        _canvasGroup.alpha = _killsTemplates.Count == 0f ? 0f : 1f;
+    }
 
     public void InstantiateKills(string killerName, string deadPlayerName)
     {
-        GameObject killItem = PhotonNetwork.Instantiate(_killTemplate.name, _fartherPanel.transform.position, Quaternion.identity);
-        var item = killItem.GetComponent<KillsItem>();
-        _killsTemplates.Add(item);
-        item.InstantiateKills(killerName, deadPlayerName);
-        StartCoroutine(DisableWithDelay());
+        _photonView.RPC(nameof(InstantiateKillsRPC), RpcTarget.All, 
+            killerName, deadPlayerName);
     }
-
-    private IEnumerator DisableWithDelay()
-    {
-        yield return new WaitForSeconds(3f);
-
-        _photonView.RPC(nameof(DisableRPC), RpcTarget.All);
-    }
-
+    
     [PunRPC]
-    private void DisableRPC()
+    private void InstantiateKillsRPC(string killerName, string deadPlayerName)
     {
-        foreach (var kill in _killsTemplates)
-        {
-            Destroy(kill.gameObject);
-        }
-
-        _killsTemplates.Clear();
-        _canvasGroup.alpha = 0f;
+        GameObject item = Instantiate(_killTemplate.gameObject, 
+            _fartherPanel.position, Quaternion.identity, _fartherPanel);
+        var killsItem = item.GetComponent<KillsItem>();
+        _killsTemplates.Add(killsItem);
+        killsItem.Initialize(killerName, deadPlayerName, _hideDelay);
     }
 }

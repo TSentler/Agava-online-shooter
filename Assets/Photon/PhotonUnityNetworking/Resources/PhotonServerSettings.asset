@@ -80,6 +80,7 @@ MonoBehaviour:
   - SpawnGrenade
   - ReloadLevelRPC
   - DisableRPC
+  - InstantiateKillsRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
