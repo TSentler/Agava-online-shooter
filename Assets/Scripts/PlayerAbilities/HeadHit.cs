@@ -7,4 +7,9 @@ public class HeadHit : HitDetector
     {
         PlayerHealth.ApplyDamage(damage * 1.5f, player, targetPostition);
     }
+
+    public override float GetCalculatedDamage(float damage)
+    {
+        return damage * 1.5f;
+    }
 }

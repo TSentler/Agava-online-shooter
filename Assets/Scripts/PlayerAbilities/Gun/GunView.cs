@@ -9,6 +9,7 @@ public class GunView : MonoBehaviour
     [SerializeField] private Canvas _playerCanvas;
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private Image _hitIndicator;
+    [SerializeField] private DamageIndicatorText _damageText;
 
   
     private float _timeToShowIndicator = 0.1f;
@@ -48,9 +49,11 @@ public class GunView : MonoBehaviour
     //}
 
 
-    public void OnHit()
+    public void OnHit(float damage)
     {
         StartCoroutine(ShowHitIndicator());
+        DamageIndicatorText damageText = Instantiate(_damageText, _hitIndicator.transform.position, Quaternion.identity);
+        damageText.SetDamageText(damage);
     }
 
     private IEnumerator ShowHitIndicator()

@@ -15,6 +15,8 @@ public abstract class HitDetector : MonoBehaviour
 
     public abstract void DetectHit(float damage, Player player, Vector3 targetPostition);
 
+    public abstract float GetCalculatedDamage(float damage);
+
     public bool IsSameRootTransform(Transform otherRootTransform)
     {
         return otherRootTransform.Equals(_playerInfo.transform);
