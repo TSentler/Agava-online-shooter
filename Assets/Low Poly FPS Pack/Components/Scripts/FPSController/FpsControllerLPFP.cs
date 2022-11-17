@@ -1,5 +1,4 @@
 ﻿using Photon.Pun;
-using PlayerAbilities;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -323,7 +322,7 @@ namespace FPSControllerLPFP
                 _audioSource.clip = input.Run ? runningSound : walkingSound;
                 if (!_audioSource.isPlaying)
                 {
-                    _audioSource.Play();
+                    //_audioSource.Play();
                 }
             }
             else
