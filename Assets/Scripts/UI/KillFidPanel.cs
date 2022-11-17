@@ -15,19 +15,6 @@ public class KillFidPanel : MonoBehaviour
     private Coroutine _disableCoroutine;
     private float _hideDelay = 3f;
 
-    private IEnumerator Start()
-    {
-        InstantiateKills("123", "321");
-        yield return new WaitForSeconds(1f);
-        InstantiateKills("123", "321");
-        yield return new WaitForSeconds(1f);
-        InstantiateKills("123", "321");
-        yield return new WaitForSeconds(1f);
-        InstantiateKills("123", "321");
-        yield return new WaitForSeconds(1f);
-        InstantiateKills("123", "321");
-    }
-
     private void Update()
     {
         if (_killsTemplates.Count > 0
