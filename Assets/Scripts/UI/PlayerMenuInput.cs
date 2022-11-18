@@ -7,7 +7,10 @@ public class PlayerMenuInput : MonoBehaviour
 {
     [SerializeField] private PhotonView _photonView;
 
+    private bool _isOpen;
     private OpenMenu _openMenu;
+
+    public bool IsOpen => _isOpen;
 
     private void Awake()
     {
@@ -21,6 +24,7 @@ public class PlayerMenuInput : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 _openMenu.MenuButtonClick();
+                _isOpen = _openMenu.IsOpen;
             }
         }
     }
