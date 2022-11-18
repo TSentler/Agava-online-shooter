@@ -31,8 +31,7 @@ namespace PlayerAbilities
         private void Spawn(PlayerHealth player)
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
-            Debug.Log((Vector3)Random.insideUnitCircle);
-            player.transform.position = _spawnPoints[spawnId].position + (Vector3)Random.insideUnitCircle;
+            player.transform.position = _spawnPoints[spawnId].position + GetRandomOffset();
             player.EnableObject();
         }
 
@@ -42,7 +41,13 @@ namespace PlayerAbilities
             //_playerPrefab.GetComponent<PlayerInfo>().ToPlayer();
             Debug.Log((Vector3)Random.insideUnitCircle);
             PhotonNetwork.Instantiate(_playerPrefab.name,
-                _spawnPoints[spawnId].position + new Vector3(Random.Range(-1,1), 0, Random.Range(-1, 1)), Quaternion.identity, 0);
+                _spawnPoints[spawnId].position + GetRandomOffset(), Quaternion.identity, 0);
+        }
+
+        private Vector3 GetRandomOffset()
+        {
+            var offset = Random.insideUnitCircle;
+            return new Vector3(offset.x, 0, offset.y);
         }
     }
 }
