@@ -354,7 +354,9 @@ namespace FPSControllerLPFP
             /// Returns the smoothed rotation.
             public float Update(float target, float smoothTime)
             {
-                return _current = Mathf.SmoothDampAngle(_current, target, ref _currentVelocity, smoothTime);
+                Debug.Log(_current + " " + target);
+                //return _current = Mathf.SmoothDampAngle(_current, target, ref _currentVelocity, smoothTime) * Time.deltaTime;
+                return _current = Mathf.Lerp(_current, target, smoothTime * Time.deltaTime);
             }
 
             public float Current

@@ -246,7 +246,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
                 _slider.value = _standartSensetivity;
             }
 
-            //swaySmoothValue = _slider.value; это не поворот, расскачивание рук
+            swaySmoothValue = _slider.value; 
         }
 
         //Set the animator component
@@ -948,7 +948,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void ChangeSensetivity(float value)
     {
-        //swaySmoothValue = _slider.value; //Это для расскачивания оружия в руках, её лучше не трогать
+        swaySmoothValue = _slider.value; //Это для расскачивания оружия в руках, её лучше не трогать
         PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slider.value);
     }
 }
