@@ -775,7 +775,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Run anim toggle
-        if (isRunning == true && _playerMenuInput.IsOpen == false)
+        if (isRunning == true)
         {
             anim.SetBool("Run", true);
         }
