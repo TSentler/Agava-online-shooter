@@ -4196,7 +4196,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 11
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -17959,6 +17959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fpsController: {fileID: 0}
+  _playerMenuInput: {fileID: 0}
   mainCamera: {fileID: 0}
   zoomedFOV: 45
   defaultFOV: 75

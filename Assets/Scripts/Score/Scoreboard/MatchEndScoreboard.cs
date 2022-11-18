@@ -21,6 +21,7 @@ namespace Score
         [SerializeField] private TMP_Text _textTimer;
         [SerializeField] private float _maxTime;
         [SerializeField] private PhotonView _photonView;
+        [SerializeField] private OpenMenu _openMenu;
 
         private Dictionary<Player, int> _sortedScores = new Dictionary<Player, int>();
         private MatchmakingCallbacksCatcher _matchCallbacks;
@@ -170,10 +171,12 @@ namespace Score
 
         private void OnAdClose(bool obj)
         {
+            _openMenu.Close();
         }
 
         private void OnAdOpen()
         {
+            _openMenu.Open();
         }
 
         private void OnCrazyGamesRevardedAd()

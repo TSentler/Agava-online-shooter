@@ -41,4 +41,14 @@ public class OpenMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         _isOpen = false;
     }
+
+    public void Open()
+    {
+        _isOpen = true;
+    }
+
+    public void Close()
+    {
+        _isOpen = false;
+    }
 }
