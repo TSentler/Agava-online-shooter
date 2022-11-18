@@ -32,7 +32,7 @@ namespace PlayerAbilities
         {
             int spawnId = Random.Range(0, _spawnPoints.Length - 1);
             Debug.Log((Vector3)Random.insideUnitCircle);
-            player.transform.position = _spawnPoints[spawnId].position + (Vector3)Random.insideUnitCircle;
+            player.transform.position = _spawnPoints[spawnId].position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
             player.EnableObject();
         }
 
