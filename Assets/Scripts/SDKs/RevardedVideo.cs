@@ -109,6 +109,22 @@ public class RevardedVideo : MonoBehaviour
 
     private void OnCrazyGamesRevardedAd()
     {
+        if (_name == "Rifle")
+        {
+            _bonusReward.PrepareBonus(_gunReadyName, 1);
+            _analitickEvenSender.OnRifleRevardWasShow();
+        }
+        else if (_name == "HP")
+        {
+            _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
+            _analitickEvenSender.OnHpRevardWasShown();
+        }
+        else if (_name == "Shotgun")
+        {
+            _bonusReward.PrepareBonus(_gunReadyName, 2);
+            _analitickEvenSender.OnShotgunRevardWasShow();
+        }
+
         _isRewarded = true;
     }
 
