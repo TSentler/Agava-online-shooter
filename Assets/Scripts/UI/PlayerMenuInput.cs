@@ -24,8 +24,8 @@ public class PlayerMenuInput : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 _openMenu.MenuButtonClick();
-                _isOpen = _openMenu.IsOpen;
             }
+            _isOpen = _openMenu.IsOpen;
         }
     }
 }
