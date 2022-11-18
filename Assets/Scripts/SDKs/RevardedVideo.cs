@@ -92,7 +92,7 @@ public class RevardedVideo : MonoBehaviour
             _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
             _analitickEvenSender.OnHpRevardWasShown();
         }
-        else if (_name == "Shorgun")
+        else if (_name == "Shotgun")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 2);
             _analitickEvenSender.OnShotgunRevardWasShow();
