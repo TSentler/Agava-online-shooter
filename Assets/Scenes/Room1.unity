@@ -57977,6 +57977,7 @@ MonoBehaviour:
   _delay: 0
   _fpsController: {fileID: 0}
   _standartSensetivity: 0
+  _playerMenuInput: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 677085517}
   fovSpeed: 15
@@ -59294,6 +59295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 578353688360086887, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+      propertyPath: _openMenu
+      value: 
+      objectReference: {fileID: 1288890213}
     - target: {fileID: 578353688360086906, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -59508,6 +59513,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+--- !u!114 &1288890213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 578353688360086905, guid: 9ccda752170fba7499110c454c21c2f4, type: 3}
+  m_PrefabInstance: {fileID: 1288890212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee363bb9498c5d468bf64a3908000c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1290073341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92521,6 +92537,7 @@ MonoBehaviour:
   _delay: 0
   _fpsController: {fileID: 0}
   _standartSensetivity: 0
+  _playerMenuInput: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 933746593}
   fovSpeed: 15
@@ -101298,6 +101315,7 @@ MonoBehaviour:
   _delay: 0
   _fpsController: {fileID: 0}
   _standartSensetivity: 0
+  _playerMenuInput: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 160260386}
   fovSpeed: 15
@@ -104068,6 +104086,7 @@ MonoBehaviour:
   _delay: 0
   _fpsController: {fileID: 0}
   _standartSensetivity: 0
+  _playerMenuInput: {fileID: 0}
   gunSprite: {fileID: 0}
   gunCamera: {fileID: 2374949120214032590}
   fovSpeed: 15
