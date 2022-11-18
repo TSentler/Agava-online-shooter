@@ -15,6 +15,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 	[SerializeField] private float _delay;
 	[SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
 	[SerializeField] private float _standartSensetivity;
+	[SerializeField] private PlayerMenuInput _playerMenuInput;
 
 	private bool _timerIsStart = false;
 	private float _currentTime;
@@ -296,7 +297,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		
 		//Aiming
 		//Toggle camera FOV when right click is held down
-		if(Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine) 
+		if(Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false) 
 		{
 			isAiming = true;
 
@@ -391,7 +392,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		//}
 
 		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false) 
+		if (Input.GetKeyDown (KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false && _playerMenuInput.IsOpen == false) 
 		{
 			_nextGrenadeTime = Time.time + _delay;
 			_currentTime = Time.time;
@@ -425,7 +426,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Shoot
-		if (Input.GetMouseButton (0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine) 
+		if (Input.GetMouseButton (0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false) 
 		{
 			if (Time.time - lastFired > 1 / fireRate) 
 			{
@@ -570,17 +571,17 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Reload 
-		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine) 
+		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false) 
 		{
 			//Reload
 			Reload ();
 		}
 
 		//Walking when pressing down WASD keys
-		if (Input.GetKey (KeyCode.W) && !isRunning && !isShooting || 
-			Input.GetKey (KeyCode.A) && !isRunning && !isShooting || 
-			Input.GetKey (KeyCode.S) && !isRunning && !isShooting || 
-			Input.GetKey (KeyCode.D) && !isRunning && !isShooting && _photonView.IsMine) 
+		if (Input.GetKey (KeyCode.W) && !isRunning && !isShooting && _playerMenuInput.IsOpen == false || 
+			Input.GetKey (KeyCode.A) && !isRunning && !isShooting && _playerMenuInput.IsOpen == false || 
+			Input.GetKey (KeyCode.S) && !isRunning && !isShooting && _playerMenuInput.IsOpen == false || 
+			Input.GetKey (KeyCode.D) && !isRunning && !isShooting && _photonView.IsMine && _playerMenuInput.IsOpen == false) 
 		{
 			anim.SetBool ("Walk", true);
 		} else {
@@ -588,7 +589,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Running when pressing down W and Left Shift key
-		if ((Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.LeftShift)) && _photonView.IsMine && _fpsController.IsGrounded) 
+		if ((Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.LeftShift)) && _photonView.IsMine && _fpsController.IsGrounded && _playerMenuInput.IsOpen == false) 
 		{
 			isRunning = true;
 		} else {
