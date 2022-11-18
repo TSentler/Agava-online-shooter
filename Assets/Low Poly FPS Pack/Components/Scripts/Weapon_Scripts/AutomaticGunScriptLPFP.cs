@@ -15,6 +15,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	[SerializeField] private float _delay;
 	[SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
 	[SerializeField] private float _standartSensetivity;
+	[SerializeField] private PlayerMenuInput _playerMenuInput;
 
 	private bool _timerIsStart = false;
 	private float _currentTime;
@@ -484,7 +485,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 		//Aiming
 		//Toggle camera FOV when right click is held down
-		if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine)
+		if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false)
 		{
 			if (ironSights == true)
 			{
@@ -695,7 +696,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		//}
 
 		//Throw grenade when pressing G key
-		if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false)
+		if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _photonView.IsMine && _currenGrenadeCount != 0 && _timerIsStart == false && _playerMenuInput.IsOpen == false)
 		{
 			_nextGrenadeTime = Time.time + _delay;
 			_currentTime = Time.time;
@@ -730,7 +731,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 		//AUtomatic fire
 		//Left click hold 
-		if (Input.GetMouseButton(0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine)
+		if (Input.GetMouseButton(0) && !outOfAmmo && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false)
 		{
 			//Shoot automatic
 			if (Time.time - lastFired > 1 / fireRate)
@@ -897,17 +898,17 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Reload 
-		if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine)
+		if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false)
 		{
 			//Reload
 			Reload();
 		}
 
 		//Walking when pressing down WASD keys
-		if (Input.GetKey(KeyCode.W) && !isRunning ||
-			Input.GetKey(KeyCode.A) && !isRunning ||
-			Input.GetKey(KeyCode.S) && !isRunning ||
-			Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine)
+		if (Input.GetKey(KeyCode.W) && !isRunning && _playerMenuInput.IsOpen == false ||
+			Input.GetKey(KeyCode.A) && !isRunning && _playerMenuInput.IsOpen == false ||
+			Input.GetKey(KeyCode.S) && !isRunning && _playerMenuInput.IsOpen == false ||
+			Input.GetKey(KeyCode.D) && !isRunning && _photonView.IsMine && _playerMenuInput.IsOpen == false)
 		{
 			anim.SetBool("Walk", true);
 		}
@@ -917,7 +918,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		}
 
 		//Running when pressing down W and Left Shift key
-		if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine && _fpsController.IsGrounded)
+		if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) && _photonView.IsMine && _fpsController.IsGrounded && _playerMenuInput.IsOpen == false)
 		{
 			isRunning = true;
 		}
