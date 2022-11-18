@@ -16,6 +16,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     [SerializeField] private float _delay;
     [SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
     [SerializeField] private float _standartSensetivity;
+    [SerializeField] private PlayerMenuInput _playerMenuInput;
 
     private bool _timerIsStart = false;
     private float _currentTime;
@@ -246,7 +247,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
                 _slider.value = _standartSensetivity;
             }
 
-            //swaySmoothValue = _slider.value; это не поворот, расскачивание рук
+            swaySmoothValue = _slider.value; 
         }
 
         //Set the animator component
@@ -401,7 +402,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         
         //Aiming
         //Toggle camera FOV when right click is held down
-        if (Input.GetButton("Fire2") && !isReloading && !isInspecting)
+        if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _playerMenuInput.IsOpen == false)
         {
             if (ironSights == true)
             {
@@ -561,7 +562,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         //}
 
         //Throw grenade when pressing G key
-        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _currenGrenadeCount != 0 && _timerIsStart == false)
+        if (Input.GetKeyDown(KeyCode.G) && !isInspecting && _currenGrenadeCount != 0 && _timerIsStart == false && _playerMenuInput.IsOpen == false)
         {
             _nextGrenadeTime = Time.time + _delay;
             _currentTime = Time.time;
@@ -601,7 +602,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Shooting 
-        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting)
+        if (Input.GetMouseButtonDown(0) && !outOfAmmo && !isReloading && !isInspecting && _playerMenuInput.IsOpen == false)
         {
             anim.Play("Fire", 0, 0f);
             if (!silencer)
@@ -738,7 +739,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Reload 
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && _playerMenuInput.IsOpen == false)
         {
             //Reload
             Reload();
@@ -751,10 +752,10 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Walking when pressing down WASD keys
-        if (Input.GetKey(KeyCode.W) && !isRunning ||
-            Input.GetKey(KeyCode.A) && !isRunning ||
-            Input.GetKey(KeyCode.S) && !isRunning ||
-            Input.GetKey(KeyCode.D) && !isRunning && _fpsController.IsGrounded == true)
+        if (Input.GetKey(KeyCode.W) && !isRunning && _playerMenuInput.IsOpen == false ||
+            Input.GetKey(KeyCode.A) && !isRunning && _playerMenuInput.IsOpen == false ||
+            Input.GetKey(KeyCode.S) && !isRunning && _playerMenuInput.IsOpen == false ||
+            Input.GetKey(KeyCode.D) && !isRunning && _fpsController.IsGrounded == true && _playerMenuInput.IsOpen == false)
         {
             anim.SetBool("Walk", true);
         }
@@ -764,7 +765,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         }
 
         //Running when pressing down W and Left Shift key
-        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && _fpsController.IsGrounded) && _fpsController.IsGrounded == true)
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && _fpsController.IsGrounded) && _fpsController.IsGrounded == true && _playerMenuInput.IsOpen == false)
         {
             isRunning = true;
         }
@@ -948,7 +949,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void ChangeSensetivity(float value)
     {
-        //swaySmoothValue = _slider.value; //Это для расскачивания оружия в руках, её лучше не трогать
+        swaySmoothValue = _slider.value; //Это для расскачивания оружия в руках, её лучше не трогать
         PlayerPrefs.SetFloat(MouseSensitivitySaveKey, _slider.value);
     }
 }

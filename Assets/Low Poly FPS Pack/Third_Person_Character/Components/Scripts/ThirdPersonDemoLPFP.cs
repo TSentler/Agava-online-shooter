@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ThirdPersonDemoLPFP : MonoBehaviour {
 	[SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
+	[SerializeField] private PlayerMenuInput _playerMenuInput;
 
 	[Header("Camera")]
 	public Camera mainCamera;
@@ -106,14 +107,14 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 
 		var moveInput = _inputSource.MovementInput;
 		
-		if(_fpsController.IsGrounded == true)
+		if(_fpsController.IsGrounded == true && _playerMenuInput.IsOpen == false)
         {
 			anim.SetFloat("Vertical", moveInput.y, 0, Time.deltaTime);
 			anim.SetFloat("Horizontal", moveInput.x, 0, Time.deltaTime);
 		}
 
 		//Single fire with left click
-		if (Input.GetMouseButtonDown (0) && semi == true) 
+		if (Input.GetMouseButtonDown (0) && semi == true && _playerMenuInput.IsOpen == false) 
 		{
 			//Play shoot sound 
 			//shootAudioSource.clip = shootSound;
@@ -134,7 +135,7 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 
 		//AUtomatic fire
 		//Left click hold 
-		if (Input.GetMouseButton (0) && auto == true) 
+		if (Input.GetMouseButton (0) && auto == true && _playerMenuInput.IsOpen == false) 
 		{
 			//Shoot automatic
 			if (Time.time - lastFired > 1 / fireRate) 
@@ -175,7 +176,7 @@ public class ThirdPersonDemoLPFP : MonoBehaviour {
 		}
 
 		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G)) 
+		if (Input.GetKeyDown (KeyCode.G) && _playerMenuInput.IsOpen == false) 
 		{
 			//StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation

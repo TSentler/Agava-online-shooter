@@ -18,6 +18,7 @@ namespace FPSControllerLPFP
         [SerializeField] private float _standartSensetivity;
         [SerializeField] private float _gravity;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private PlayerMenuInput _playerMenuInput;
 #pragma warning disable 649
         [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
@@ -187,8 +188,12 @@ namespace FPSControllerLPFP
                 return;
 
             // FixedUpdate is used instead of Update because this code is dealing with physics and smoothing.
-            RotateCameraAndCharacter();
-            MoveCharacter();
+            if (_playerMenuInput.IsOpen == false)
+            {
+                RotateCameraAndCharacter();
+                MoveCharacter();
+            }
+            
             _isGrounded = false;
 
         }
@@ -354,7 +359,8 @@ namespace FPSControllerLPFP
             /// Returns the smoothed rotation.
             public float Update(float target, float smoothTime)
             {
-                return _current = Mathf.SmoothDampAngle(_current, target, ref _currentVelocity, smoothTime);
+                //return _current = Mathf.SmoothDampAngle(_current, target, ref _currentVelocity, smoothTime) * Time.deltaTime;
+                return _current = Mathf.Lerp(_current, target, smoothTime * Time.deltaTime);
             }
 
             public float Current

@@ -1300,6 +1300,7 @@ MonoBehaviour:
   _standartSensetivity: 3
   _gravity: 200
   _audioSource: {fileID: 82546348207642188}
+  _playerMenuInput: {fileID: 3879372588321397246}
   arms: {fileID: 340296900833809867}
   armPosition: {x: 0, y: 0, z: 0}
   walkingSound: {fileID: 8300000, guid: 5ac86ac5747770349a6c124f36d233e1, type: 3}
@@ -1309,7 +1310,7 @@ MonoBehaviour:
   movementSmoothness: 0.125
   jumpForce: 35
   mouseSensitivity: 7
-  rotationSmoothness: 0.05
+  rotationSmoothness: 30
   minVerticalAngle: -90
   maxVerticalAngle: 90
   input:
@@ -14503,6 +14504,7 @@ MonoBehaviour:
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
   _standartSensetivity: 5
+  _playerMenuInput: {fileID: 3879372588321397246}
   gunSprite: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 20607603889952386}
   fovSpeed: 15
@@ -34831,6 +34833,7 @@ MonoBehaviour:
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
   _standartSensetivity: 5
+  _playerMenuInput: {fileID: 3879372588321397246}
   gunSprite: {fileID: 21300018, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 7589460530982128827}
   fovSpeed: 15
@@ -36770,6 +36773,7 @@ MonoBehaviour:
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
   _standartSensetivity: 5
+  _playerMenuInput: {fileID: 3879372588321397246}
   gunSprite: {fileID: 21300008, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 100414656708919175}
   fovSpeed: 15
@@ -54209,6 +54213,7 @@ MonoBehaviour:
   _delay: 5
   _fpsController: {fileID: 114326437458149736}
   _standartSensetivity: 5
+  _playerMenuInput: {fileID: 3879372588321397246}
   gunSprite: {fileID: 21300030, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   gunCamera: {fileID: 3195077575992808416}
   fovSpeed: 15
@@ -62153,6 +62158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fpsController: {fileID: 114326437458149736}
+  _playerMenuInput: {fileID: 3879372588321397246}
   mainCamera: {fileID: 100414656708919175}
   zoomedFOV: 45
   defaultFOV: 75
