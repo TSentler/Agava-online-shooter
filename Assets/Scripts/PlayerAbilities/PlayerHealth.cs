@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,7 +17,8 @@ namespace PlayerAbilities
         [SerializeField] private DamagebleHit _damagebleHit;
         [SerializeField] private WeaponsHolder _weaponsHolder;
         [SerializeField] private GameObject _player;
-        [SerializeField] private GameObject _deadPanel;
+        [SerializeField] private DeadPanel _deadPanel;
+        [SerializeField] private Camera[] _cameras;
 
         private Animator _animator;
         private int _kills;
@@ -26,6 +28,8 @@ namespace PlayerAbilities
         private PlayerInfo _playerInfo;
         private float _oldMaxHealth;
         private KillFidPanel _killFidPanel;
+        private float _timer;
+        private TMP_Text _text;
 
         public PhotonView PhotonView => _photonView;
 
@@ -58,10 +62,12 @@ namespace PlayerAbilities
             _playerInfo = GetComponent<PlayerInfo>();
             _oldMaxHealth = _maxHealth;
             _killFidPanel = FindObjectOfType<KillFidPanel>();
+            _deadPanel = FindObjectOfType<DeadPanel>();
+            _deadPanel.gameObject.SetActive(true);
 
             var fidPanel = _killFidPanel.gameObject.GetComponent<CanvasGroup>();
             fidPanel.alpha = 0f;
-         
+            _text = _deadPanel.Text;
             InitializeImprovements();
         }
 
@@ -72,12 +78,19 @@ namespace PlayerAbilities
             _damagebleHit.gameObject.SetActive(false);
             _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
+
             if (_deadPanel == null)
             {
                 Debug.LogWarning("DeadPanel is NULL");
                 return;
             }
-            _deadPanel.SetActive(false);
+
+            foreach(var camera in _cameras)
+            {
+                camera.enabled = true;
+            }
+
+            _deadPanel.gameObject.SetActive(false);
         }
 
         private void OnDisable()
@@ -174,10 +187,17 @@ namespace PlayerAbilities
                     _animator = _player.GetComponent<Animator>();
                     //_animator.SetTrigger("Die");
                     _animator.SetBool("IsDie", true);
+                    _timer = 3f;
                     StartCoroutine(DisableWithDelay());
                     //_spawner.SpawnPlayer(this);
                     _weaponsHolder.SetNewGun(0);
-                    _deadPanel.SetActive(true);
+                    
+                    foreach(var camera in _cameras)
+                    {
+                        camera.enabled = false;
+                    }
+                  
+                    _deadPanel.gameObject.SetActive(true);
                 }
             }
         }
@@ -203,6 +223,9 @@ namespace PlayerAbilities
 
         private IEnumerator DisableWithDelay()
         {
+            _text.text = _timer.ToString("0") ;
+            Debug.Log(_timer);
+            _timer -= Time.deltaTime;
             yield return new WaitForSeconds(3f);
             _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
         }
