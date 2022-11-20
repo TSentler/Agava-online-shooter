@@ -9,14 +9,17 @@ namespace PlayerAbilities
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private float _cooldown;
+        [SerializeField] private DeadPanel _deadPanel;
 
         private void Start()
         {
+            _deadPanel = FindObjectOfType<DeadPanel>();
             Spawn();
         }
 
         public void SpawnPlayer(PlayerHealth player)
         {
+          
             Spawn(player);
             //StartCoroutine(SpawnWithCooldown(player));
         }
