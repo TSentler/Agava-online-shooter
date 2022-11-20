@@ -103,7 +103,10 @@ namespace Score
 
             foreach (var player in PhotonNetwork.PlayerList)
             {
-                _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
+                if (player.CustomProperties.ContainsKey("Kills"))
+                {
+                    _sortedScores.Add(player, (int)player.CustomProperties["Kills"]);
+                }
             }
 
             var scoreSort = _sortedScores.OrderByDescending(x => x.Value).ThenBy(y => y.Key.CustomProperties["Death"]);
@@ -141,7 +144,9 @@ namespace Score
         private void ReloadLevelRPC()
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
-
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.CurrentRoom.CustomProperties.Clear();
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
 #elif YANDEX_GAMES
             Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
             PhotonNetwork.AutomaticallySyncScene = true;

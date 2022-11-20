@@ -72,6 +72,11 @@ namespace PlayerAbilities
             _damagebleHit.gameObject.SetActive(false);
             _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
+            if (_deadPanel == null)
+            {
+                Debug.LogWarning("DeadPanel is NULL");
+                return;
+            }
             _deadPanel.SetActive(false);
         }
 
