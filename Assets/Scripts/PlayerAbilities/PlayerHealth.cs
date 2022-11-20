@@ -19,6 +19,11 @@ namespace PlayerAbilities
         [SerializeField] private GameObject _player;
         [SerializeField] private DeadPanel _deadPanel;
         [SerializeField] private Camera[] _cameras;
+        [SerializeField] private FPSControllerLPFP.FpsControllerLPFP _fpsController;
+        [SerializeField] private HandgunScriptLPFP _handgunScript;
+        [SerializeField] private PumpShotgunScriptLPFP _pumpShotgun;
+        [SerializeField] private AutomaticGunScriptLPFP _automaticGunScript;
+        [SerializeField] private BoltActionSniperScriptLPFP _sniperScript;
 
         private Animator _animator;
         private int _kills;
@@ -90,6 +95,10 @@ namespace PlayerAbilities
                 camera.enabled = true;
             }
 
+            _fpsController.enabled = true;
+            _handgunScript.enabled = true;
+            _automaticGunScript.enabled = true;
+            _sniperScript.enabled = true;
             _deadPanel.gameObject.SetActive(false);
         }
 
@@ -196,7 +205,11 @@ namespace PlayerAbilities
                     {
                         camera.enabled = false;
                     }
-                  
+
+                    _fpsController.enabled = false;
+                    _handgunScript.enabled = false;
+                    _automaticGunScript.enabled = false;
+                    _sniperScript.enabled = false;
                     _deadPanel.gameObject.SetActive(true);
                 }
             }
