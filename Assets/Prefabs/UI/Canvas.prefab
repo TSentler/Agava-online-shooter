@@ -1463,8 +1463,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 578353688360086887}
-        m_TargetAssemblyTypeName: MatchEndScoreboard, Score
-        m_MethodName: OnExitButtonClick
+        m_TargetAssemblyTypeName: Score.MatchEndScoreboard, Assembly-CSharp
+        m_MethodName: OnExitInReloudButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
