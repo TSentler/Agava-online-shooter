@@ -133,6 +133,18 @@ namespace Score
             PhotonNetwork.LeaveRoom();
         }
 
+        public void OnExitInReloudButtonClick()
+        {
+#if YANDEX_GAMES
+            Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
+#elif VK_GAMES && !UNITY_EDITOR
+            Agava.VKGames.Interstitial.Show();
+#elif CRAZY_GAMES
+            CrazyAds.Instance.beginAdBreak(AdBreakCompletedCallback, AdErrorCallback);
+#endif
+            PhotonNetwork.LeaveRoom();
+        }
+
         private void RoomLeftHandler()
         {
             PhotonNetwork.LeaveRoom();
