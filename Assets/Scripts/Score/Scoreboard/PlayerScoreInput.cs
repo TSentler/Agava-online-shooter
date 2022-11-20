@@ -45,6 +45,11 @@ public class PlayerScoreInput : MonoBehaviour
     private void OnMatchEnd()
     {
         GetComponent<PlayerScoreInput>().enabled = false;
+        if (_playerHealth == null)
+        {
+            Debug.LogWarning("PlayerHealth is NULL", this);
+            return;
+        }
         _playerHealth.SetActive(false);
     }
 }
