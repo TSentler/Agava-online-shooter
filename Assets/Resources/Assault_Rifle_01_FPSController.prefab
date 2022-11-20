@@ -1527,6 +1527,11 @@ MonoBehaviour:
   - {fileID: 20607603889952386}
   - {fileID: 7589460530982128827}
   - {fileID: 3195077575992808416}
+  _fpsController: {fileID: 114326437458149736}
+  _handgunScript: {fileID: 952312081458963594}
+  _pumpShotgun: {fileID: 5991887501758528313}
+  _automaticGunScript: {fileID: 114090783443918852}
+  _sniperScript: {fileID: 7047536469968301062}
 --- !u!114 &3879372588321397246
 MonoBehaviour:
   m_ObjectHideFlags: 0
