@@ -29,12 +29,15 @@ public class RevardedMoneyHolder : MonoBehaviour
     public void GiveMoney(int count)
     {
         _money += count;
+        PlayerPrefs.SetInt(SaveKey, Money);
+        Debug.Log("Money");
         MoneyChanged?.Invoke(Money);
     }
 
     public void TakeMoney(int count)
     {
         _money -= count;
+        PlayerPrefs.SetInt(SaveKey, Money);
         MoneyChanged?.Invoke(Money);
     }
 }

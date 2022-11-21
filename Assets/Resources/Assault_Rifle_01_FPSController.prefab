@@ -1532,6 +1532,7 @@ MonoBehaviour:
   _pumpShotgun: {fileID: 5991887501758528313}
   _automaticGunScript: {fileID: 114090783443918852}
   _sniperScript: {fileID: 7047536469968301062}
+  _respawnPrice: 100
 --- !u!114 &3879372588321397246
 MonoBehaviour:
   m_ObjectHideFlags: 0

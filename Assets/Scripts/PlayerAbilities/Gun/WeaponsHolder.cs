@@ -8,6 +8,9 @@ using UnityEngine.Events;
 
 public class WeaponsHolder : MonoBehaviour
 {
+    private const string ShotgunSaveKey = "ShotgunDontDrope";
+    private const string RifleSaveKey = "RifleDontDrope";
+
     private readonly string _gunReadyName = "GunReady", 
         _gunIDName = "GunID";
     
@@ -19,6 +22,8 @@ public class WeaponsHolder : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController _controllerOneHand;
 
     private int _currentGunId = 0;
+    private int _shotgunByed;
+    private int _rifleByed;
 
     public int CurrentGunId => _currentGunId;
 
@@ -37,6 +42,11 @@ public class WeaponsHolder : MonoBehaviour
                 _currentGunId = (int)_photonView.Owner.CustomProperties[_gunIDName];
             }
         }
+
+        _shotgunByed = PlayerPrefs.GetInt(ShotgunSaveKey);
+        _rifleByed = PlayerPrefs.GetInt(RifleSaveKey);
+        Debug.Log(_rifleByed);
+
         InitializeImprovements();
     }
 
@@ -47,7 +57,18 @@ public class WeaponsHolder : MonoBehaviour
 
     private void OnDisable()
     {
-        _currentGunId = 0;
+        if(_shotgunByed == 1)
+        {
+            _currentGunId = 2;
+        }
+        else if(_rifleByed == 1)
+        {
+            _currentGunId = 1;
+        }
+        else
+        {
+            _currentGunId = 0;
+        }   
     }
 
     private void InitializeImprovements()

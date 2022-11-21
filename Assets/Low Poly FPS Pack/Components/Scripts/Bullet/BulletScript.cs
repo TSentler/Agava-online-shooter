@@ -43,7 +43,6 @@ public class BulletScript : MonoBehaviour
                 {
                     hitDetector.DetectHit(_damage, PhotonNetwork.LocalPlayer, transform.position);
                     _gun.HitOnPlayer(hitDetector.GetCalculatedDamage(_damage));
-
                 }                            
             }
 

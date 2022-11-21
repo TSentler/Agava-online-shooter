@@ -85,6 +85,7 @@ namespace PlayerAbilities
             _text = _deadPanel.Text;
             _respawn = FindObjectOfType<Respawn>();
             InitializeImprovements();
+            _respawn.GetComponent<Button>().onClick.AddListener(Respawn);
         }
 
         private void OnEnable()
@@ -111,7 +112,7 @@ namespace PlayerAbilities
             _automaticGunScript.enabled = true;
             _sniperScript.enabled = true;
             _deadPanel.gameObject.SetActive(false);
-            _respawn.GetComponent<Button>().onClick.AddListener(Respawn);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnDisable()
@@ -212,11 +213,13 @@ namespace PlayerAbilities
                     StartCoroutine(DisableWithDelay());
                     //_spawner.SpawnPlayer(this);
                     
+                    
                     if(_rifleByed != 1 && _weaponsHolder.CurrentGunId != 1 || _shotgunByed != 1 && _weaponsHolder.CurrentGunId != 2)
                     {
                         _weaponsHolder.SetNewGun(0);
                     }
-                   
+
+                    Cursor.lockState = CursorLockMode.None;
                     
                     foreach(var camera in _cameras)
                     {

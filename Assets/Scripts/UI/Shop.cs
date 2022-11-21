@@ -29,6 +29,7 @@ public class Shop : MonoBehaviour
         if(_revardedMoneyHolder.Money >= _rifleCost)
         {
             PlayerPrefs.SetInt(RifleSaveKey, 1);
+            PlayerPrefs.Save();
             _revardedMoneyHolder.TakeMoney(_rifleCost);
             _bonusReward.PrepareBonus(GunReadyName, 1);
         }     
@@ -39,6 +40,7 @@ public class Shop : MonoBehaviour
         if(_revardedMoneyHolder.Money <= _shotgunCost)
         {
             PlayerPrefs.SetInt(ShotgunSaveKey, 1);
+            PlayerPrefs.Save();
             _revardedMoneyHolder.TakeMoney(_shotgunCost);
             _bonusReward.PrepareBonus(GunReadyName, 2);
         }
