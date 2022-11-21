@@ -20,6 +20,8 @@ public class WeaponsHolder : MonoBehaviour
 
     private int _currentGunId = 0;
 
+    public int CurrentGunId => _currentGunId;
+
     public event UnityAction<Transform> GunChanged;
 
     private void Awake()

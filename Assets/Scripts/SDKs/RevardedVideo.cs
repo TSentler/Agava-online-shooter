@@ -9,6 +9,7 @@ public class RevardedVideo : MonoBehaviour
 {
     [SerializeField] private float _extraHP;
     [SerializeField] private AnalitickEventSender _analitickEvenSender;
+    [SerializeField] private RevardedMoneyHolder _moneyHolder;
 
     private readonly string _increaseHPName = "IncreaseHP",
          _gunReadyName = "GunReady";
@@ -98,7 +99,10 @@ public class RevardedVideo : MonoBehaviour
             _bonusReward.PrepareBonus(_gunReadyName, 2);
             _analitickEvenSender.OnShotgunRevardWasShow();
         }
-
+        else if (_name == "Money")
+        {
+            _moneyHolder.GiveMoney(100);
+        }
         _isRewarded = true;
     }
 
@@ -112,17 +116,33 @@ public class RevardedVideo : MonoBehaviour
         if (_name == "Rifle")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 1);
+<<<<<<< HEAD
             //_analitickEvenSender.OnRifleRevardWasShow();
+=======
+            _analitickEvenSender.OnRifleRevardWasShow();
+>>>>>>> dev
         }
         else if (_name == "HP")
         {
             _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
+<<<<<<< HEAD
             //_analitickEvenSender.OnHpRevardWasShown();
+=======
+            _analitickEvenSender.OnHpRevardWasShown();
+>>>>>>> dev
         }
         else if (_name == "Shotgun")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 2);
+<<<<<<< HEAD
             //_analitickEvenSender.OnShotgunRevardWasShow();
+=======
+            _analitickEvenSender.OnShotgunRevardWasShow();
+        }
+        else if (_name == "Money")
+        {
+            _moneyHolder.GiveMoney(100);
+>>>>>>> dev
         }
 
         _isRewarded = true;

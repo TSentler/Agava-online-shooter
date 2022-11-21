@@ -5,13 +5,16 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace PlayerAbilities
 {
     public class PlayerHealth : MonoBehaviour, IPunObservable
     {
         private readonly string _increaseHPName = "IncreaseHP";
-        
+        private const string ShotgunSaveKey = "ShotgunDontDrope";
+        private const string RifleSaveKey = "RifleDontDrope";
+
         [SerializeField] private float _maxHealth;
         [SerializeField] private PhotonView _photonView;
         [SerializeField] private DamagebleHit _damagebleHit;
@@ -24,6 +27,7 @@ namespace PlayerAbilities
         [SerializeField] private PumpShotgunScriptLPFP _pumpShotgun;
         [SerializeField] private AutomaticGunScriptLPFP _automaticGunScript;
         [SerializeField] private BoltActionSniperScriptLPFP _sniperScript;
+        [SerializeField] private int _respawnPrice;
 
         private Animator _animator;
         private int _kills;
@@ -35,6 +39,10 @@ namespace PlayerAbilities
         private KillFidPanel _killFidPanel;
         private float _timer;
         private TMP_Text _text;
+        private int _rifleByed;
+        private int _shotgunByed;
+        private RevardedMoneyHolder _revardedMoneyHolder;
+        private Respawn _respawn;
 
         public PhotonView PhotonView => _photonView;
 
@@ -69,10 +77,13 @@ namespace PlayerAbilities
             _killFidPanel = FindObjectOfType<KillFidPanel>();
             _deadPanel = FindObjectOfType<DeadPanel>();
             _deadPanel.gameObject.SetActive(true);
-
+            _shotgunByed = PlayerPrefs.GetInt(ShotgunSaveKey, 0);
+            _rifleByed = PlayerPrefs.GetInt(RifleSaveKey, 0);
+            _revardedMoneyHolder = FindObjectOfType<RevardedMoneyHolder>();
             var fidPanel = _killFidPanel.gameObject.GetComponent<CanvasGroup>();
             fidPanel.alpha = 0f;
             _text = _deadPanel.Text;
+            _respawn = FindObjectOfType<Respawn>();
             InitializeImprovements();
         }
 
@@ -100,6 +111,7 @@ namespace PlayerAbilities
             _automaticGunScript.enabled = true;
             _sniperScript.enabled = true;
             _deadPanel.gameObject.SetActive(false);
+            _respawn.GetComponent<Button>().onClick.AddListener(Respawn);
         }
 
         private void OnDisable()
@@ -199,7 +211,12 @@ namespace PlayerAbilities
                     _timer = 3f;
                     StartCoroutine(DisableWithDelay());
                     //_spawner.SpawnPlayer(this);
-                    _weaponsHolder.SetNewGun(0);
+                    
+                    if(_rifleByed != 1 && _weaponsHolder.CurrentGunId != 1 || _shotgunByed != 1 && _weaponsHolder.CurrentGunId != 2)
+                    {
+                        _weaponsHolder.SetNewGun(0);
+                    }
+                   
                     
                     foreach(var camera in _cameras)
                     {
@@ -241,6 +258,17 @@ namespace PlayerAbilities
             _timer -= Time.deltaTime;
             yield return new WaitForSeconds(3f);
             _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
+        }
+
+        public void Respawn()
+        {
+            if (_revardedMoneyHolder.Money >= _respawnPrice)
+            {
+                StopCoroutine(DisableWithDelay());
+                _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.All);
+                _photonView.RPC(nameof(EnableObject), RpcTarget.All);
+                _revardedMoneyHolder.TakeMoney(_respawnPrice);
+            }
         }
     }
 }
