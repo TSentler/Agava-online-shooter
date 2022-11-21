@@ -8,6 +8,7 @@ public class RevardedVideo : MonoBehaviour
 {
     [SerializeField] private float _extraHP;
     [SerializeField] private AnalitickEventSender _analitickEvenSender;
+    [SerializeField] private RevardedMoneyHolder _moneyHolder;
 
     private readonly string _increaseHPName = "IncreaseHP",
          _gunReadyName = "GunReady";
@@ -97,7 +98,10 @@ public class RevardedVideo : MonoBehaviour
             _bonusReward.PrepareBonus(_gunReadyName, 2);
             _analitickEvenSender.OnShotgunRevardWasShow();
         }
-
+        else if (_name == "Money")
+        {
+            _moneyHolder.GiveMoney(100);
+        }
         _isRewarded = true;
     }
 
@@ -108,6 +112,26 @@ public class RevardedVideo : MonoBehaviour
 
     private void OnCrazyGamesRevardedAd()
     {
+        if (_name == "Rifle")
+        {
+            _bonusReward.PrepareBonus(_gunReadyName, 1);
+            _analitickEvenSender.OnRifleRevardWasShow();
+        }
+        else if (_name == "HP")
+        {
+            _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
+            _analitickEvenSender.OnHpRevardWasShown();
+        }
+        else if (_name == "Shotgun")
+        {
+            _bonusReward.PrepareBonus(_gunReadyName, 2);
+            _analitickEvenSender.OnShotgunRevardWasShow();
+        }
+        else if (_name == "Money")
+        {
+            _moneyHolder.GiveMoney(100);
+        }
+
         _isRewarded = true;
     }
 

@@ -50,6 +50,6 @@ namespace PlayerAbilities
         {
             var offset = Random.insideUnitCircle;
             return new Vector3(offset.x, 0, offset.y);
-        }
+        }      
     }
 }
