@@ -11,9 +11,9 @@ public class WeaponsHolder : MonoBehaviour
     private const string ShotgunSaveKey = "ShotgunDontDrope";
     private const string RifleSaveKey = "RifleDontDrope";
 
-    private readonly string _gunReadyName = "GunReady", 
+    private readonly string _gunReadyName = "GunReady",
         _gunIDName = "GunID";
-    
+
     [SerializeField] private GameObject[] _weapons;
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private GameObject[] _weaponsInThirdPersons;
@@ -51,24 +51,24 @@ public class WeaponsHolder : MonoBehaviour
     }
 
     private void OnEnable()
-    {   
+    {
         SetNewGun(_currentGunId);
     }
 
     private void OnDisable()
     {
-        if(_shotgunByed == 1)
+        if (_shotgunByed == 1)
         {
             _currentGunId = 2;
         }
-        else if(_rifleByed == 1)
+        else if (_rifleByed == 1)
         {
             _currentGunId = 1;
         }
         else
         {
             _currentGunId = 0;
-        }   
+        }
     }
 
     private void InitializeImprovements()
@@ -80,11 +80,16 @@ public class WeaponsHolder : MonoBehaviour
         }
     }
 
+    public Transform GetGunTransform()
+    {
+        return _weapons[_currentGunId].transform;
+    }
+
     public void SetNewGun(int id)
     {
         if (_photonView.IsMine)
         {
-            _photonView.RPC(nameof(EnableNewGun), RpcTarget.All, id, 
+            _photonView.RPC(nameof(EnableNewGun), RpcTarget.All, id,
                 PhotonNetwork.LocalPlayer);
         }
         else
@@ -100,21 +105,21 @@ public class WeaponsHolder : MonoBehaviour
         {
             HideAllHands();
         }
-        
+
         if (_photonView.Owner == player)
         {
             _currentGunId = id;
             if (_photonView.IsMine)
             {
-                GunChanged?.Invoke(_weapons[id].gameObject.transform);
                 HideAllHands();
+                GunChanged?.Invoke(_weapons[id].gameObject.transform);
                 _weapons[id].SetActive(true);
                 SetCustomProperies(id, _gunIDName);
             }
             HideAllWeaponsAtThirdPerson();
             _weaponsInThirdPersons[id].SetActive(true);
 
-            if(id > 0)
+            if (id > 0)
             {
                 _animator.runtimeAnimatorController = _controllerTwoHand;
             }
@@ -124,7 +129,7 @@ public class WeaponsHolder : MonoBehaviour
             }
         }
     }
-    
+
     private void SetCustomProperies(int id, string name)
     {
         var hash = PhotonNetwork.LocalPlayer.CustomProperties;
@@ -146,7 +151,7 @@ public class WeaponsHolder : MonoBehaviour
             _weaponsInThirdPersons[i].SetActive(false);
         }
     }
-    
+
     private void HideAllHands()
     {
         for (int i = 0; i < _weapons.Length; i++)

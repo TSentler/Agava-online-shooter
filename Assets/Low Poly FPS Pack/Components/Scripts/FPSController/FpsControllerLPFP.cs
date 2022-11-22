@@ -105,6 +105,7 @@ namespace FPSControllerLPFP
         private void OnEnable()
         {
             _weaponsHolder.GunChanged += SetNewArm;
+            arms = _weaponsHolder.GetGunTransform();
             _sliederSensivity.onValueChanged.AddListener(ChangeSensetivity);
         }
 
