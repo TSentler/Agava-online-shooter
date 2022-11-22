@@ -259,7 +259,7 @@ namespace PlayerAbilities
             _text.text = _timer.ToString("0") ;
             Debug.Log(_timer);
             _timer -= Time.deltaTime;
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(10f);
             _photonView.RPC(nameof(DisableObjectRPC), RpcTarget.AllBuffered);
         }
 
