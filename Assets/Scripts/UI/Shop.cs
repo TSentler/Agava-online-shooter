@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour
 
     public void BuyShotgun()
     {
-        if(_revardedMoneyHolder.Money <= _shotgunCost)
+        if(_revardedMoneyHolder.Money >= _shotgunCost)
         {
             PlayerPrefs.SetInt(ShotgunSaveKey, 1);
             PlayerPrefs.Save();
