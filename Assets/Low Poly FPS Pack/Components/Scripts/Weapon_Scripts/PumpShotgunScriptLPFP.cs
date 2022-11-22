@@ -6,6 +6,7 @@ using Photon.Pun;
 public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 {
     private const string MouseSensitivitySaveKey = "AimSensitivity";
+    private const string ShotgunSaveKey = "ShotgunDontDrope";
 
     [SerializeField] private float _damage;
     [SerializeField] private GunView _gunView;
@@ -23,6 +24,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     private int _currenGrenadeCount;
     private Slider _slider;
     private AimSensentivity _aimSensentivity;
+    private int _shotgunByed;
 
     //Animator component attached to weapon
     Animator anim;
@@ -268,6 +270,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
             }
 
             swaySmoothValue = _slider.value;
+            _shotgunByed = PlayerPrefs.GetInt(ShotgunSaveKey);
         }
 
         maxAmmoQuanity = maxAmmo;
@@ -725,7 +728,11 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
                     if (maxAmmo == 0)
                     {
-                        _weaponsHolder.SetNewGun(0);
+                        if(_shotgunByed == 0)
+                        {
+                            _weaponsHolder.SetNewGun(0);
+                        }
+                       
                         maxAmmo = 90;
                     }
                 }

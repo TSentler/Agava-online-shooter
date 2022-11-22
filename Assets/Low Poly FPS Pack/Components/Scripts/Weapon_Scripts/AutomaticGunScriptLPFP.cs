@@ -6,6 +6,7 @@ using Photon.Pun;
 public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 {
 	private const string MouseSensitivitySaveKey = "AimSensitivity";
+	private const string RifleSaveKey = "RifleDontDrope";
 
 	[SerializeField] private float _damage;
 	[SerializeField] private GunView _gunView;
@@ -23,6 +24,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	private int _currenGrenadeCount;
 	private Slider _slider;
 	private AimSensentivity _aimSensentivity;
+	private int _rifleByed;
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -273,6 +275,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 			swaySmoothValue = _slider.value;
 		}
 
+		_rifleByed = PlayerPrefs.GetInt(RifleSaveKey);
 		maxAmmoQuanity = maxAmmo;
 		//Set the animator component
 		anim = GetComponent<Animator>();
@@ -747,7 +750,11 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 					if (maxAmmo == 0)
 					{
-						_weaponsHolder.SetNewGun(0);
+						if(_rifleByed == 0)
+                        {
+							_weaponsHolder.SetNewGun(0);
+						}
+						
 						maxAmmo = 90;
 					}
 				}
