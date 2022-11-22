@@ -12635,7 +12635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Size.y
-      value: 1.2272309
+      value: 0.37185723
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Size.z
@@ -12643,15 +12643,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Center.x
-      value: -0.000015259124
+      value: -0.000015259324
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Center.y
-      value: -0.22433797
+      value: 0.20335245
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Center.z
-      value: 0.57625616
+      value: 0.57625604
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
@@ -48424,8 +48424,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1791134, y: 1.7448945, z: 3.4107587}
-  m_Center: {x: -0.04044342, y: -0.52166253, z: 0.54870915}
+  m_Size: {x: 2.1791134, y: 0.37392077, z: 3.4107587}
+  m_Center: {x: -0.04044342, y: 0.1638203, z: 0.54870915}
 --- !u!1001 &1112596023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101627,7 +101627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Size.y
-      value: 1.0872824
+      value: 0.47257558
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Size.z
@@ -101635,11 +101635,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Center.y
-      value: -0.14037356
+      value: 0.16698125
       objectReference: {fileID: 0}
     - target: {fileID: 65730770215184616, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
       propertyPath: m_Center.z
-      value: 0.45946765
+      value: 0.45946762
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21dcc5f62e503f0438b4e490cdd00d44, type: 3}
