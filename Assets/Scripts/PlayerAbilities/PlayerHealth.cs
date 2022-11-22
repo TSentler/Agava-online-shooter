@@ -86,6 +86,7 @@ namespace PlayerAbilities
             _respawn = FindObjectOfType<Respawn>();
             InitializeImprovements();
             _respawn.GetComponent<Button>().onClick.AddListener(Respawn);
+            _animator = _player.GetComponent<Animator>();
         }
 
         private void OnEnable()
@@ -93,7 +94,6 @@ namespace PlayerAbilities
             _currentHealth = _maxHealth;
             ChangeHealth?.Invoke(_currentHealth, _maxHealth);
             _damagebleHit.gameObject.SetActive(false);
-            _animator = _player.GetComponent<Animator>();
             _animator.SetBool("IsDie", false);
 
             if (_deadPanel == null)
@@ -206,7 +206,6 @@ namespace PlayerAbilities
                         player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Kills", kills } });
                     }
 
-                    _animator = _player.GetComponent<Animator>();
                     //_animator.SetTrigger("Die");
                     _animator.SetBool("IsDie", true);
                     _timer = 3f;
