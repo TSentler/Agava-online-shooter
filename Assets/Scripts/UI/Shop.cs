@@ -14,6 +14,13 @@ public class Shop : MonoBehaviour
     [SerializeField] private int _shotgunCost;
     [SerializeField] private Bonuses.BonusReward _bonusReward;
 
+    private void Start()
+    {
+        PlayerPrefs.SetInt(RifleSaveKey, 0);
+        PlayerPrefs.SetInt(ShotgunSaveKey, 0);
+        PlayerPrefs.Save();
+    }
+
     public void OpenShop()
     {
         _panel.SetActive(true);
