@@ -265,7 +265,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	{
 		_aimSensentivity = FindObjectOfType<AimSensentivity>();
 		_slider = _aimSensentivity.GetComponent<Slider>();
+#if YANDEX_GAMES
 		_matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
+#endif
 
 
 		if (_photonView.IsMine)
@@ -470,8 +472,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 	private void LateUpdate()
 	{
+#if YANDEX_GAMES
 		if (_matchEndScoreboard.CanPlay == false)
 			return;
+#endif
 
 		//Weapon sway
 		if (weaponSway == true)
@@ -494,9 +498,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 	private void Update()
 	{
+#if YANDEX_GAMES
 		if (_matchEndScoreboard.CanPlay == false)
 			return;
-
+#endif
 		//Aiming
 		//Toggle camera FOV when right click is held down
 		if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false)

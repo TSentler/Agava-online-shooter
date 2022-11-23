@@ -1,3 +1,4 @@
+using CrazyGames;
 using Lean.Localization;
 using Network;
 using Network.UI;
@@ -38,8 +39,8 @@ namespace Score
         private Action _adOfline;
         private Action<string> _adError;
         private Action _adErrorVk;
-        //private CrazyAds.AdBreakCompletedCallback AdBreakCompletedCallback;
-        //private CrazyAds.AdErrorCallback AdErrorCallback;
+        private CrazyAds.AdBreakCompletedCallback AdBreakCompletedCallback;
+        private CrazyAds.AdErrorCallback AdErrorCallback;
 
         private void Awake()
         {
@@ -62,8 +63,8 @@ namespace Score
             _adClosed += OnAdClose;
             _adOfline += OnAdOfline;
             _adError += OnAdError;
-            //AdBreakCompletedCallback += OnCrazyGamesRevardedAd;
-            //AdErrorCallback += OnCrazyGamesErrorAd;
+            AdBreakCompletedCallback += OnCrazyGamesRevardedAd;
+            AdErrorCallback += OnCrazyGamesErrorAd;
         }
 
         private void OnDisable()
@@ -73,8 +74,8 @@ namespace Score
             _adClosed -= OnAdClose;
             _adOfline -= OnAdOfline;
             _adError -= OnAdError;
-            //AdBreakCompletedCallback -= OnCrazyGamesRevardedAd;
-            //AdErrorCallback -= OnCrazyGamesErrorAd;
+            AdBreakCompletedCallback -= OnCrazyGamesRevardedAd;
+            AdErrorCallback -= OnCrazyGamesErrorAd;
         }
 
         private void Start()

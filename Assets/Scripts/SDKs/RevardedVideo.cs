@@ -1,4 +1,5 @@
 using Bonuses;
+using CrazyGames;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,8 +23,8 @@ public class RevardedVideo : MonoBehaviour
     private Action _adClosed;
     private Action<string> _adErrorOccured;
     private Action _adErrorVK;
-    //private CrazyAds.AdBreakCompletedCallback AdBreakCompletedCallback;
-    //private CrazyAds.AdErrorCallback AdErrorCallback;
+    private CrazyAds.AdBreakCompletedCallback AdBreakCompletedCallback;
+    private CrazyAds.AdErrorCallback AdErrorCallback;
 
     public bool IsRewarded => _isRewarded;
 
@@ -39,8 +40,8 @@ public class RevardedVideo : MonoBehaviour
         _adRewarded += OnAdRewarded;
         _adClosed += OnAdClosed;
         _adErrorOccured += OnAdErrorOccured;
-        //AdBreakCompletedCallback += OnCrazyGamesRevardedAd;
-        //AdErrorCallback += OnCrazyGamesErrorAd;
+        AdBreakCompletedCallback += OnCrazyGamesRevardedAd;
+        AdErrorCallback += OnCrazyGamesErrorAd;
         _adErrorVK += OnAdErrorVk;
         _isRewarded = false;
     }
@@ -51,8 +52,8 @@ public class RevardedVideo : MonoBehaviour
         _adRewarded -= OnAdRewarded;
         _adClosed -= OnAdClosed;
         _adErrorOccured -= OnAdErrorOccured;
-        //AdBreakCompletedCallback -= OnCrazyGamesRevardedAd;
-        //AdErrorCallback -= OnCrazyGamesErrorAd;
+        AdBreakCompletedCallback -= OnCrazyGamesRevardedAd;
+        AdErrorCallback -= OnCrazyGamesErrorAd;
         _adErrorVK -= OnAdErrorVk;
     }
 

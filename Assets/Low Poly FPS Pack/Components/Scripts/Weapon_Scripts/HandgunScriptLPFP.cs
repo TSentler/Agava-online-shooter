@@ -240,7 +240,9 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     {
         _aimSensentivity = FindObjectOfType<AimSensentivity>();
         _slider = _aimSensentivity.GetComponent<Slider>();
+#if YANDEX_GAMES
         _matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
+#endif
 
         if (_photonView.IsMine)
         {
@@ -383,9 +385,10 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void LateUpdate()
     {
+#if YANDEX_GAMES
         if (_matchEndScoreboard.CanPlay == false)
             return;
-
+#endif
         //Weapon sway
         if (_photonView.IsMine && weaponSway == true)
         {
@@ -407,10 +410,12 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Update()
     {
+#if YANDEX_GAMES
         if(_matchEndScoreboard.CanPlay == false)
         {
             return;
         }
+#endif
 
         if (_photonView.IsMine == false)
             return;
