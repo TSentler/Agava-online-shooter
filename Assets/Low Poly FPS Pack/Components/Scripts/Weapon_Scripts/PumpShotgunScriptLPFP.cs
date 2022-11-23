@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Photon.Pun;
+using Score;
 
 public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 {
@@ -25,6 +26,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     private Slider _slider;
     private AimSensentivity _aimSensentivity;
     private int _shotgunByed;
+    private MatchEndScoreboard _matchEndScoreboard;
 
     //Animator component attached to weapon
     Animator anim;
@@ -257,6 +259,7 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
     {
         _aimSensentivity = FindObjectOfType<AimSensentivity>();
         _slider = _aimSensentivity.GetComponent<Slider>();
+        _matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
 
         if (_photonView.IsMine)
         {
@@ -445,6 +448,9 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
     private void LateUpdate()
     {
+        if (_matchEndScoreboard.CanPlay == false)
+            return;
+
         //Weapon sway
         if (weaponSway == true)
         {
@@ -466,6 +472,9 @@ public class PumpShotgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Update()
     {
+        if (_matchEndScoreboard.CanPlay == false)
+            return;
+
         //Aiming
         //Toggle camera FOV when right click is held down
         if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false)

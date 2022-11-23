@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f3d07c468162f46b09cd56b7ddbb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _matchEndPanel: {fileID: 3548471480739989744}
+  _matchEndPanel: {fileID: 3548137920040553470}
   _fartherPanel: {fileID: 4494703928173842159}
   _scoreTemplate: {fileID: 8942237104176839078, guid: e969c7fbcb91fe745a82d024af7c1c9b, type: 3}
   _textTimer: {fileID: 2658104175072605468}
@@ -6202,6 +6202,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4123060437320824320, guid: cc6aaa486b609cd41ace5da07e735e6a, type: 3}
   m_PrefabInstance: {fileID: 578353688958336752}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &3548137920040553470
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548471480739989744}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4010140589578559993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4584761191474224905, guid: cc6aaa486b609cd41ace5da07e735e6a, type: 3}

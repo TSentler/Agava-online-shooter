@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Photon.Pun;
+using Score;
 
 public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 {
@@ -23,6 +24,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 	private int _currenGrenadeCount;
 	private Slider _slider;
 	private AimSensentivity _aimSensentivity;
+	private MatchEndScoreboard _matchEnd;
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -203,6 +205,7 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 	private void Awake () {
 		_aimSensentivity = FindObjectOfType<AimSensentivity>();
 		_slider = _aimSensentivity.GetComponent<Slider>();
+		_matchEnd = FindObjectOfType<MatchEndScoreboard>();
 
 		if (_photonView.IsMine)
 		{
@@ -273,8 +276,11 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		shootAudioSource.clip = SoundClips.shootSound;
 	}
 
-	private void LateUpdate () {
-		
+	private void LateUpdate () 
+	{
+		if (_matchEnd.CanPlay == false)
+			return;
+
 		//Weapon sway
 		if (weaponSway == true) {
 			float movementX = -Input.GetAxisRaw("Mouse X") * swayAmount;
@@ -293,8 +299,13 @@ public class BoltActionSniperScriptLPFP : MonoBehaviour, IShooting
 		}
 	}
 
-	private void Update () {
-		
+	private void Update () 
+	{
+		if (_matchEnd.CanPlay == false)
+        {
+			return;
+        }
+
 		//Aiming
 		//Toggle camera FOV when right click is held down
 		if(Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false) 

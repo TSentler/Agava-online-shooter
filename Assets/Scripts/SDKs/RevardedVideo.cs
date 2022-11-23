@@ -78,7 +78,7 @@ public class RevardedVideo : MonoBehaviour
 
     private void OnAdClosed()
     {
-
+        AudioListener.pause = false;
     }
 
     private void OnAdRewarded()
@@ -107,7 +107,7 @@ public class RevardedVideo : MonoBehaviour
 
     private void OnAdOpened()
     {
-
+        AudioListener.pause = true;
     }
 
     private void OnCrazyGamesRevardedAd()

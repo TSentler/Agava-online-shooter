@@ -14,7 +14,7 @@ namespace Score
 {
     public class MatchEndScoreboard : MonoBehaviour
     {
-        [SerializeField] private GameObject _matchEndPanel;
+        [SerializeField] private CanvasGroup _matchEndPanel;
         [SerializeField] private Transform _fartherPanel;
         [SerializeField] private ScoreboardItem _scoreTemplate;
         [SerializeField] private TMP_Text _textTimer;
@@ -27,6 +27,10 @@ namespace Score
         private bool _isTimerStope = false;
         private float _currentTime;
         private LeanLocalization _leanLocalization;
+        private bool _canPlay = true;
+        private bool _isAdOpened = false;
+
+        public bool CanPlay => _canPlay;
 
         public Action MatchComplete;
         private Action _adOpened;
@@ -39,6 +43,7 @@ namespace Score
 
         private void Awake()
         {
+            //_isAdOpened = true;
             _matchCallbacks = FindObjectOfType<MatchmakingCallbacksCatcher>();
             _sortedScores.Clear();
             _leanLocalization = FindObjectOfType<LeanLocalization>();
@@ -46,12 +51,13 @@ namespace Score
 
             PhotonNetwork.CurrentRoom.IsOpen = true;
             PhotonNetwork.CurrentRoom.IsVisible = true;
+
         }
 
         private void OnEnable()
         {
             _matchCallbacks.OnRoomLeft += RoomLeftHandler;
-            _matchEndPanel.SetActive(false);
+            _matchEndPanel.alpha = 0f;
             _adOpened += OnAdOpen;
             _adClosed += OnAdClose;
             _adOfline += OnAdOfline;
@@ -71,8 +77,22 @@ namespace Score
             //AdErrorCallback -= OnCrazyGamesErrorAd;
         }
 
+        private void Start()
+        {
+#if YANDEX_GAMES
+            Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
+#endif
+        }
+
         private void Update()
         {
+            if (_isAdOpened == true)
+            {
+                _canPlay = false;
+            }
+
+            Debug.Log(_isAdOpened);
+
             if (_isTimerStope == false)
                 return;
 
@@ -97,7 +117,7 @@ namespace Score
 
         public void OpenPanel()
         {
-            _matchEndPanel.SetActive(true);
+            _matchEndPanel.alpha = 1f;
             MatchComplete?.Invoke();
 
             foreach (var player in PhotonNetwork.PlayerList)
@@ -159,10 +179,10 @@ namespace Score
             PhotonNetwork.CurrentRoom.CustomProperties.Clear();
             PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
 #elif YANDEX_GAMES
-            Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.CurrentRoom.CustomProperties.Clear();
             PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            //Agava.YandexGames.InterstitialAd.Show(_adOpened, _adClosed, _adError, _adOfline);
 #elif VK_GAMES && !UNITY_EDITOR
             Agava.VKGames.Interstitial.Show();
             PhotonNetwork.AutomaticallySyncScene = true;
@@ -179,19 +199,33 @@ namespace Score
 
         private void OnAdError(string obj)
         {
+            _isAdOpened = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            _canPlay = true;
+            Debug.Log("Error");
         }
 
         private void OnAdOfline()
         {
+            _isAdOpened = false;
+            _canPlay = true;
+            Cursor.lockState = CursorLockMode.Locked;
+;
         }
 
         private void OnAdClose(bool obj)
         {
+            _isAdOpened = false;
+            _canPlay = true;
             _openMenu.Close();
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnAdOpen()
         {
+            _isAdOpened = true;
+            _canPlay = false;
+            Cursor.lockState = CursorLockMode.None;
             _openMenu.Open();
         }
 

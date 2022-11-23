@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Score;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class OpenMenu : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _canvasGroop;
+    private MatchEndScoreboard _matchEndScoreBoard;
 
     private bool _isOpen = false;
 
@@ -14,10 +16,14 @@ public class OpenMenu : MonoBehaviour
     private void Start()
     {
         _canvasGroop.alpha = 0f;
+        _matchEndScoreBoard = FindObjectOfType<MatchEndScoreboard>();
     }
 
     public void MenuButtonClick()
     {
+        if (_matchEndScoreBoard.CanPlay == false)
+            return;
+
         if (_canvasGroop.alpha == 0)
         {
             OpenMenuPanel();

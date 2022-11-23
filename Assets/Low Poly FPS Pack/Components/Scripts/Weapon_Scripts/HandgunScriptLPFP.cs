@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using PlayerAbilities;
 using UnityEngine.Events;
+using Score;
 
 public class HandgunScriptLPFP : MonoBehaviour, IShooting
 {
@@ -24,6 +25,10 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     private int _currenGrenadeCount;
     private Slider _slider;
     private AimSensentivity _aimSensentivity;
+#if YANDEX_GAMES
+    private MatchEndScoreboard _matchEndScoreboard;
+    private bool _canPlay;
+#endif
 
     //Animator component attached to weapon
     Animator anim;
@@ -235,6 +240,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     {
         _aimSensentivity = FindObjectOfType<AimSensentivity>();
         _slider = _aimSensentivity.GetComponent<Slider>();
+        _matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
 
         if (_photonView.IsMine)
         {
@@ -353,6 +359,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         _slider.onValueChanged.AddListener(ChangeSensetivity);
     }
 
+
     private void OnDisable()
     {
         _slider.onValueChanged.RemoveListener(ChangeSensetivity);
@@ -376,6 +383,9 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void LateUpdate()
     {
+        if (_matchEndScoreboard.CanPlay == false)
+            return;
+
         //Weapon sway
         if (_photonView.IsMine && weaponSway == true)
         {
@@ -397,6 +407,11 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
     private void Update()
     {
+        if(_matchEndScoreboard.CanPlay == false)
+        {
+            return;
+        }
+
         if (_photonView.IsMine == false)
             return;
         

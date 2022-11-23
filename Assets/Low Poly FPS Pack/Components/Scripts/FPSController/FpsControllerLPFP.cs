@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Score;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -76,6 +77,7 @@ namespace FPSControllerLPFP
         private bool _isGrounded;
         private Slider _sliederSensivity;
         private MouseSensitivityChange _mouseSensitivityChange;
+        private MatchEndScoreboard _matchEndScoreboard;
 
         private readonly RaycastHit[] _groundCastResults = new RaycastHit[8];
         private readonly RaycastHit[] _wallCastResults = new RaycastHit[8];
@@ -86,6 +88,7 @@ namespace FPSControllerLPFP
         {
             _mouseSensitivityChange = FindObjectOfType<MouseSensitivityChange>();
             _sliederSensivity = _mouseSensitivityChange.gameObject.GetComponent<Slider>();
+            _matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
 
             if (_photonView.IsMine)
             {
@@ -185,6 +188,9 @@ namespace FPSControllerLPFP
         /// Processes the character movement and the camera rotation every fixed framerate frame.
         private void FixedUpdate()
         {
+            if (_matchEndScoreboard.CanPlay == false)
+                return;
+
             if (_photonView.IsMine == false)
                 return;
 
@@ -202,6 +208,9 @@ namespace FPSControllerLPFP
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
         private void Update()
         {
+            if (_matchEndScoreboard.CanPlay == false)
+                return;
+
             if (_photonView.IsMine == false)
                 return;
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Photon.Pun;
+using Score;
 
 public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 {
@@ -25,6 +26,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	private Slider _slider;
 	private AimSensentivity _aimSensentivity;
 	private int _rifleByed;
+#if YANDEX_GAMES
+	private MatchEndScoreboard _matchEndScoreboard;
+	private bool _canPlay;
+#endif
 
 	//Animator component attached to weapon
 	Animator anim;
@@ -260,6 +265,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	{
 		_aimSensentivity = FindObjectOfType<AimSensentivity>();
 		_slider = _aimSensentivity.GetComponent<Slider>();
+		_matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
+
 
 		if (_photonView.IsMine)
 		{
@@ -463,6 +470,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 	private void LateUpdate()
 	{
+		if (_matchEndScoreboard.CanPlay == false)
+			return;
 
 		//Weapon sway
 		if (weaponSway == true)
@@ -485,6 +494,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 
 	private void Update()
 	{
+		if (_matchEndScoreboard.CanPlay == false)
+			return;
 
 		//Aiming
 		//Toggle camera FOV when right click is held down
