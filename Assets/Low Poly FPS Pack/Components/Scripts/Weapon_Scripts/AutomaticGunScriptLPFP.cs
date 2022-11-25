@@ -219,6 +219,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 	public Text currentWeaponText;
 	public Text currentAmmoText;
 	public Text totalAmmoText;
+	public Text currentGrenadeText;
 	public Image gunIcon;
 
 	[System.Serializable]
@@ -268,7 +269,6 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 #if YANDEX_GAMES
 		_matchEndScoreboard = FindObjectOfType<MatchEndScoreboard>();
 #endif
-
 
 		if (_photonView.IsMine)
 		{
@@ -445,6 +445,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		currentAmmoText.text = currentAmmo.ToString();
 		gunIcon.sprite = gunSprite;
 		_currenGrenadeCount = _maxGrenadesCount;
+		currentGrenadeText.text = _currenGrenadeCount.ToString();
 		_slider.onValueChanged.AddListener(ChangeSensetivity);
 	}
 
@@ -502,6 +503,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 		if (_matchEndScoreboard.CanPlay == false)
 			return;
 #endif
+
 		//Aiming
 		//Toggle camera FOV when right click is held down
 		if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _photonView.IsMine && _playerMenuInput.IsOpen == false)
@@ -721,6 +723,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour, IShooting
 			_currentTime = Time.time;
 			_currenGrenadeCount--;
 			_timerIsStart = true;
+			currentGrenadeText.text = _currenGrenadeCount.ToString();
 			StartCoroutine(GrenadeSpawnDelay());
 			//Play grenade throw animation
 			anim.Play("GrenadeThrow", 0, 0.0f);

@@ -193,6 +193,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     public Text currentWeaponText;
     public Text currentAmmoText;
     public Text totalAmmoText;
+    public Text currentGrenadeText;
     public Image gunIcon;
 
     [System.Serializable]
@@ -255,7 +256,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
                 _slider.value = _standartSensetivity;
             }
 
-            swaySmoothValue = _slider.value; 
+            swaySmoothValue = _slider.value;
         }
 
         //Set the animator component
@@ -358,6 +359,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         currentAmmoText.text = currentAmmo.ToString();
         gunIcon.sprite = gunSprite;
         _currenGrenadeCount = _maxGrenadesCount;
+        currentGrenadeText.text = _currenGrenadeCount.ToString();
         _slider.onValueChanged.AddListener(ChangeSensetivity);
     }
 
@@ -389,6 +391,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
         if (_matchEndScoreboard.CanPlay == false)
             return;
 #endif
+
         //Weapon sway
         if (_photonView.IsMine && weaponSway == true)
         {
@@ -411,7 +414,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
     private void Update()
     {
 #if YANDEX_GAMES
-        if(_matchEndScoreboard.CanPlay == false)
+        if (_matchEndScoreboard.CanPlay == false)
         {
             return;
         }
@@ -419,7 +422,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
 
         if (_photonView.IsMine == false)
             return;
-        
+
         //Aiming
         //Toggle camera FOV when right click is held down
         if (Input.GetButton("Fire2") && !isReloading && !isInspecting && _playerMenuInput.IsOpen == false)
@@ -591,6 +594,7 @@ public class HandgunScriptLPFP : MonoBehaviour, IShooting
             StartCoroutine(GrenadeSpawnDelay());
             //Play grenade throw animation
             anim.Play("GrenadeThrow", 0, 0.0f);
+            currentGrenadeText.text = _currenGrenadeCount.ToString();
         }
 
         //If out of ammo
