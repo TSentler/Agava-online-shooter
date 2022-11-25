@@ -9,6 +9,7 @@ public class RevardedVideo : MonoBehaviour
     [SerializeField] private float _extraHP;
     [SerializeField] private AnalitickEventSender _analitickEvenSender;
     [SerializeField] private RevardedMoneyHolder _moneyHolder;
+    [SerializeField] private CanvasGroup _rewardWindow;
 
     private readonly string _increaseHPName = "IncreaseHP",
          _gunReadyName = "GunReady";
@@ -16,6 +17,7 @@ public class RevardedVideo : MonoBehaviour
     private bool _isRewarded;
     private BonusReward _bonusReward;
     private string _name;
+    private float _speedAlpha = 2f;
 
     private Action _adOpened;
     private Action _adRewarded;
@@ -31,6 +33,7 @@ public class RevardedVideo : MonoBehaviour
     {
         _bonusReward = FindObjectOfType<BonusReward>();
         _analitickEvenSender = FindObjectOfType<AnalitickEventSender>();
+        _rewardWindow.alpha = 0;
     }
 
     private void OnEnable()
@@ -103,6 +106,7 @@ public class RevardedVideo : MonoBehaviour
             _moneyHolder.GiveMoney(100);
         }
         _isRewarded = true;
+        StartCoroutine(ShowRewardWindow());
     }
 
     private void OnAdOpened()
@@ -133,6 +137,7 @@ public class RevardedVideo : MonoBehaviour
         }
 
         _isRewarded = true;
+        StartCoroutine(ShowRewardWindow());
     }
 
     private void OnCrazyGamesErrorAd()
@@ -143,5 +148,17 @@ public class RevardedVideo : MonoBehaviour
     private void OnAdErrorVk()
     {
         _isRewarded = false;
+    }
+
+    private IEnumerator ShowRewardWindow()
+    {
+        _rewardWindow.alpha = 1;
+        yield return new WaitForSeconds(5f);
+
+        while(_rewardWindow.alpha != 0)
+        {
+            _rewardWindow.alpha = Mathf.MoveTowards(_rewardWindow.alpha, 0, Time.deltaTime * _speedAlpha);
+            yield return null;
+        }
     }
 }
