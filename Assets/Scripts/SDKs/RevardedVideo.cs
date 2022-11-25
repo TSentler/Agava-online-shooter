@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RevardedVideo : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class RevardedVideo : MonoBehaviour
     [SerializeField] private AnalitickEventSender _analitickEvenSender;
     [SerializeField] private RevardedMoneyHolder _moneyHolder;
     [SerializeField] private CanvasGroup _rewardWindow;
+    [SerializeField] private Image _rifleButton;
+    [SerializeField] private Image _shotgunButton;
+    [SerializeField] private Image _hpButton;
+    [SerializeField] private Sprite _graySprite;
 
     private readonly string _increaseHPName = "IncreaseHP",
          _gunReadyName = "GunReady";
@@ -90,23 +95,29 @@ public class RevardedVideo : MonoBehaviour
         {
             _bonusReward.PrepareBonus(_gunReadyName, 1);
             _analitickEvenSender.OnRifleRevardWasShow();
+            _rifleButton.sprite = _graySprite;
+            StartCoroutine(ShowRewardWindow());
         }
         else if (_name == "HP")
         {
             _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
             _analitickEvenSender.OnHpRevardWasShown();
+            _hpButton.sprite = _graySprite;
+            StartCoroutine(ShowRewardWindow());
         }
         else if (_name == "Shotgun")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 2);
             _analitickEvenSender.OnShotgunRevardWasShow();
+            _shotgunButton.sprite = _graySprite;
+            StartCoroutine(ShowRewardWindow());
         }
         else if (_name == "Money")
         {
             _moneyHolder.GiveMoney(100);
         }
         _isRewarded = true;
-        StartCoroutine(ShowRewardWindow());
+     
     }
 
     private void OnAdOpened()
@@ -120,16 +131,22 @@ public class RevardedVideo : MonoBehaviour
         {
             _bonusReward.PrepareBonus(_gunReadyName, 1);
             //_analitickEvenSender.OnRifleRevardWasShow();
+            _rifleButton.sprite = _graySprite;
+            StartCoroutine(ShowRewardWindow());
         }
         else if (_name == "HP")
         {
             _bonusReward.PrepareBonus(_increaseHPName, _extraHP);
             //_analitickEvenSender.OnHpRevardWasShown();
+            _hpButton.sprite = _graySprite;
+            StartCoroutine(ShowRewardWindow());
         }
         else if (_name == "Shotgun")
         {
             _bonusReward.PrepareBonus(_gunReadyName, 2);
             //_analitickEvenSender.OnShotgunRevardWasShow();
+            _shotgunButton.sprite = _graySprite;
+            StartCoroutine(ShowRewardWindow());
         }
         else if (_name == "Money")
         {
@@ -137,7 +154,7 @@ public class RevardedVideo : MonoBehaviour
         }
 
         _isRewarded = true;
-        StartCoroutine(ShowRewardWindow());
+       
     }
 
     private void OnCrazyGamesErrorAd()
